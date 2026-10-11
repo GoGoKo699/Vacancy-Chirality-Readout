@@ -1,0 +1,63 @@
+{
+  "all_incoming_files_preserved": 43,
+  "all_reports_match_their_canonical_references": true,
+  "apparatus_validated": false,
+  "between_final_runs": "Only PROJECT_HANDOFF.md was added; all existing source bytes and all scientific reports remained unchanged.",
+  "complete_sixteen_group_runs": 2,
+  "date": "2026-10-10",
+  "environment": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "numpy": "2.3.5",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+    "scipy": "1.17.0"
+  },
+  "exploratory_unpromoted": "development/full_image_probe.py tests full-parity-image linear spans and does not establish a one-setting theorem or global optimum.",
+  "helper_reuse": "prior/finite_repulsion.py, unchanged; no archived checker imported by new tests",
+  "initial_new_only_run": "PASS",
+  "largest_new_loss_liouville_dimension": 15761,
+  "loss_diagnostic_max_accepted_matrix_error": 2.6304973963813334e-15,
+  "loss_hilbert_sector_dimensions": [
+    1,
+    8,
+    36,
+    120
+  ],
+  "manuscript_written": false,
+  "new_check_assertions_tolerances_changed_after_first_run": false,
+  "new_groups": 5,
+  "preserved_groups": 11,
+  "priority_clearance": "Targeted comparison only",
+  "qualification": "Author-side proofs and finite reproducibility, not external peer review or interval-certified device values.",
+  "repeated_reports": [
+    {
+      "byte_identical": true,
+      "name": "new",
+      "relative_path": "resources.json",
+      "sha256": "156a8a349331c02d6c67a89805576ba1ef0ae001f8bb86994983830ac55af0d7"
+    },
+    {
+      "byte_identical": true,
+      "name": "finite_u",
+      "relative_path": "preserved/followup.json",
+      "sha256": "09c63d61e989e9a0567cf6b3da481f8a095c65306f6d1986917ea755ce8edf4a"
+    },
+    {
+      "byte_identical": true,
+      "name": "exact_coefficients",
+      "relative_path": "preserved/exact_series.json",
+      "sha256": "c7b21ca5f259538dc175ff37799b4b1ec664475fd9c6ce3284494ba8f1dedf0e"
+    },
+    {
+      "byte_identical": true,
+      "name": "original_pilot",
+      "relative_path": "preserved/pilot.json",
+      "sha256": "23ad86e618f28b70b048eed0e0ea5a675fbe9fe947c250228bafaacbdaf63416"
+    }
+  ],
+  "repositories_accessed_or_modified": false,
+  "scientific_repairs": [],
+  "scope": "Vacancy chirality source- and implementation-matched resource audit",
+  "source_manifests_checked": 2
+}

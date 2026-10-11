@@ -1,0 +1,31 @@
+{
+  "canonical_reports_byte_identical": true,
+  "errors": [],
+  "expected_files": 79,
+  "import_manifest_sha256": "4d5722486dabf82d0f320290f8e5c6904da8394bcb992760ec09654d1f115f08",
+  "scientific_assertions_pass": true,
+  "snapshot": "source/resource-review-2026-10-10",
+  "source_checks": {
+    "after_differences": {
+      "changed": [],
+      "extra": [],
+      "missing": []
+    },
+    "after_matches_manifest": true,
+    "archived_source_unchanged": true,
+    "archived_verifier_status": "PASS",
+    "before_differences": {
+      "changed": [],
+      "extra": [],
+      "missing": []
+    },
+    "before_matches_manifest": true,
+    "manifest_unchanged": true,
+    "snapshot_unchanged": true
+  },
+  "source_integrity_pass": true,
+  "source_receipt": "source-run/RECEIPT.json",
+  "source_verifier_returncode": 0,
+  "status": "PASS",
+  "total_scientific_groups": 16
+}

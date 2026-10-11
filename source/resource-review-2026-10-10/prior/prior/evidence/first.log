@@ -1,0 +1,10 @@
+test_01_spin_algebra_and_witness (__main__.Checks.test_01_spin_algebra_and_witness) ... ok
+test_02_full_hamiltonian_instrument (__main__.Checks.test_02_full_hamiltonian_instrument) ... ok
+test_03_heralding_repetition_and_local_marginals (__main__.Checks.test_03_heralding_repetition_and_local_marginals) ... ok
+test_04_scalar_disorder_and_open_chain_control (__main__.Checks.test_04_scalar_disorder_and_open_chain_control) ... ok
+test_05_finite_repulsion_control (__main__.Checks.test_05_finite_repulsion_control) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.077s
+
+OK

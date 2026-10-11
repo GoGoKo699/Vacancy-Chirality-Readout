@@ -1,0 +1,47 @@
+{
+  "all_final_assertions_pass": true,
+  "all_final_reports_byte_identical_to_respective_first_reports": true,
+  "allocation": "Retain in Chat for a source- and implementation-matched assessment; no repository promotion or demonstrated hardware advantage.",
+  "date": "2026-10-10",
+  "development_note": "After the first passing five-group followup, a separate exact-arithmetic coefficient certificate was added. It proves existence of identifying time pairs at every fixed finite u>0. Earlier five-group sources, numerical expectations, and reports were not changed.",
+  "environment": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "numpy": "2.3.5",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+    "scipy": "1.17.0"
+  },
+  "exact_short_time_coefficient_group_first_run": "PASS",
+  "final_full_runs": 2,
+  "groups_per_final_run": 11,
+  "incoming_archive_sha256": "60b7d0471cbb507303a15187e364f423d12cd78a704677265bed135021950992",
+  "incoming_files": 11,
+  "incoming_files_changed": 0,
+  "independent_checks": {
+    "complete_bosonic_sector": 120,
+    "exact_fixed_spin_sector": 40,
+    "first_quantized_dimension": 512,
+    "methods": [
+      "First-quantized symmetrization",
+      "Spectral decomposition",
+      "Scaling-squaring Taylor polynomial",
+      "Sparse exponential action",
+      "Exact integer/rational Taylor coefficients"
+    ]
+  },
+  "manuscript_written": false,
+  "new_exact_arithmetic_groups": 1,
+  "new_float_groups": 5,
+  "new_floating_checker_or_helper_repaired_after_first_run": false,
+  "numerical_boundary": "Longer-time response coefficients and examples are not interval-certified or device calibration. Exact short-time coefficients use no floating-point arithmetic. General instrument and symmetry results are analytical.",
+  "prior_assertions_or_tolerances_changed": false,
+  "receipts": [
+    "evidence/final_one/RECEIPT.json",
+    "evidence/final_two/RECEIPT.json"
+  ],
+  "repository_accessed_or_modified": false,
+  "scope": "Finite-repulsion continuation of the four-site vacancy pilot only.",
+  "unchanged_pilot_groups": 5
+}

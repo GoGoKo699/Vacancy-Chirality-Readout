@@ -1,0 +1,376 @@
+{
+  "finite_repulsion": {
+    "dimension": 120,
+    "independent_exponential_error_U16": 3.116115771137883e-14,
+    "rows": [
+      {
+        "GME_certified_by_ideal_spin_witness": false,
+        "U_over_J": 8.0,
+        "chi_component_in_flux_contrast": 0.7997616951601844,
+        "nonchirality_operator_norm": 0.0166643271401454,
+        "return_filter_C_commutator": 0.015842006588808705,
+        "selected_signed_chirality": 0.1851903804015323,
+        "success_probability": 0.20243399996992206
+      },
+      {
+        "GME_certified_by_ideal_spin_witness": true,
+        "U_over_J": 16.0,
+        "chi_component_in_flux_contrast": 1.7649907114014407,
+        "nonchirality_operator_norm": 0.04605342348762215,
+        "return_filter_C_commutator": 0.03628872529709735,
+        "selected_signed_chirality": 0.3045132971549055,
+        "success_probability": 0.27169237064500307
+      },
+      {
+        "GME_certified_by_ideal_spin_witness": true,
+        "U_over_J": 32.0,
+        "chi_component_in_flux_contrast": 2.1253027176823593,
+        "nonchirality_operator_norm": 0.019531061238956236,
+        "return_filter_C_commutator": 0.015303340710388738,
+        "selected_signed_chirality": 0.3621674880824496,
+        "success_probability": 0.2750759473712911
+      },
+      {
+        "GME_certified_by_ideal_spin_witness": true,
+        "U_over_J": 64.0,
+        "chi_component_in_flux_contrast": 2.2155346926964286,
+        "nonchirality_operator_norm": 0.00841456602600983,
+        "return_filter_C_commutator": 0.006414094676523293,
+        "selected_signed_chirality": 0.3814160905356607,
+        "success_probability": 0.27228318704198784
+      },
+      {
+        "GME_certified_by_ideal_spin_witness": true,
+        "U_over_J": 128.0,
+        "chi_component_in_flux_contrast": 2.237702590589135,
+        "nonchirality_operator_norm": 0.003998964467919083,
+        "return_filter_C_commutator": 0.002992438060313353,
+        "selected_signed_chirality": 0.3866731753471379,
+        "success_probability": 0.27126864655066407
+      }
+    ],
+    "scope": "Finite-system controls, not a uniform finite-U theorem or an apparatus model. Accepted occupancy is (0,1,1,1); a doublon is a failure. Hard-core calibration is not exact at finite U."
+  },
+  "heralding": {
+    "input": "I_8/8 on the three occupied spins; initial vacancy is known",
+    "measurement_assumption": "Repeated filters require nondestructive spin-insensitive vacancy-location measurement.",
+    "postselection": "Every nonreturn terminates that trial; probabilities include failed trials.",
+    "rows": [
+      {
+        "chirality": 0.3884692918149546,
+        "dimensionless_time": 3.141592653589793,
+        "pairwise_PT_min_eigenvalues": [
+          0.02571714979873259,
+          0.025717149798732852,
+          0.02571714979873263
+        ],
+        "returns": 1,
+        "success_probability": 0.270900355032719,
+        "target_sector_weight": 0.9228485506038018
+      },
+      {
+        "chirality": 0.4316707565897922,
+        "dimensionless_time": 6.283185307179586,
+        "pairwise_PT_min_eigenvalues": [
+          0.0007747724815939574,
+          0.0007747724815941881,
+          0.0007747724815939812
+        ],
+        "returns": 2,
+        "success_probability": 0.2505824331206584,
+        "target_sector_weight": 0.9976756825552177
+      },
+      {
+        "chirality": 0.4329752210248255,
+        "dimensionless_time": 9.42477796076938,
+        "pairwise_PT_min_eigenvalues": [
+          2.1639588879199256e-05,
+          2.163958887943518e-05,
+          2.1639588879213134e-05
+        ],
+        "returns": 3,
+        "success_probability": 0.25001623074533963,
+        "target_sector_weight": 0.9999350812333618
+      },
+      {
+        "chirality": 0.4330116573417173,
+        "dimensionless_time": 12.566370614359172,
+        "pairwise_PT_min_eigenvalues": [
+          6.030715133803488e-07,
+          6.030715135815767e-07,
+          6.030715134081044e-07
+        ],
+        "returns": 4,
+        "success_probability": 0.25000045230445367,
+        "target_sector_weight": 0.9999981907854594
+      }
+    ]
+  },
+  "instrument": {
+    "chirality_readout_coefficient": 2.245044673535575,
+    "dimension": 32,
+    "false_return_probability": 0.02786714004362532,
+    "maximum_operator_error": 6.339351970232467e-16,
+    "return_amplitude_nonselected": -0.16693453819873622,
+    "sparse_exponential_error": 8.372322936839629e-15,
+    "tested_flux_time_pairs": 20
+  },
+  "prior_project_modules_imported": false,
+  "random_seeds_fixed": true,
+  "scalar_disorder": {
+    "open_chain": "Return operator is spin scalar; no chiral filter",
+    "scope": "Exact operator structure survives static spin-independent disorder. Contrast is not protected and may vanish.",
+    "tests": [
+      {
+        "bonds": [
+          1.342796563028569,
+          1.401082855085889,
+          1.1995737050553452,
+          1.130527409450069
+        ],
+        "calibration_contrast": 0.4934172292344949,
+        "flux": 0.4543927142741233,
+        "hole_potentials": [
+          0.4938281777945175,
+          0.4803175787089853,
+          -0.3844901633661317,
+          0.17881451022127726
+        ],
+        "readout_operator_error": 1.3922883536909168e-15,
+        "reduction_error": 9.844471821309426e-16,
+        "time": 3.7032383305283725
+      },
+      {
+        "bonds": [
+          1.0972195328909278,
+          0.7602827503073173,
+          1.2537991900028933,
+          1.22069232660545
+        ],
+        "calibration_contrast": -0.1844919343378663,
+        "flux": 0.4908011063533165,
+        "hole_potentials": [
+          -0.2513986965802909,
+          -0.09815552302434982,
+          0.5408116400386216,
+          0.30729612215900315
+        ],
+        "readout_operator_error": 5.800111484405476e-16,
+        "reduction_error": 8.354427534440605e-16,
+        "time": 3.5417007209232123
+      },
+      {
+        "bonds": [
+          1.216019730776119,
+          0.874575613509499,
+          1.1375726815566027,
+          0.893762118887594
+        ],
+        "calibration_contrast": 0.6227248942403151,
+        "flux": 2.2931942478346703,
+        "hole_potentials": [
+          0.5836582924115505,
+          0.0009217621320510849,
+          0.13671282823184938,
+          0.4687544976667688
+        ],
+        "readout_operator_error": 4.0204244785690377e-16,
+        "reduction_error": 6.736487028645158e-16,
+        "time": 3.0323165077577827
+      },
+      {
+        "bonds": [
+          1.0492450812601022,
+          0.8835277972393821,
+          1.4437399892242677,
+          1.368682297872653
+        ],
+        "calibration_contrast": -0.19283658415676436,
+        "flux": 0.7622927940566142,
+        "hole_potentials": [
+          -0.06073281938271036,
+          0.3178055917047933,
+          0.44617254672723394,
+          0.025981993317499508
+        ],
+        "readout_operator_error": 4.440892098500626e-16,
+        "reduction_error": 5.481502257335801e-16,
+        "time": 2.28788336378423
+      },
+      {
+        "bonds": [
+          1.4620426609706612,
+          0.9540090359440897,
+          0.7447441036676258,
+          1.285877640952906
+        ],
+        "calibration_contrast": -0.2977799871346082,
+        "flux": 0.43859217293550634,
+        "hole_potentials": [
+          -0.05554193340722824,
+          0.07907884959376144,
+          0.22715476183608285,
+          0.29242078145749495
+        ],
+        "readout_operator_error": 8.384011011100653e-16,
+        "reduction_error": 5.345586592318254e-16,
+        "time": 1.4656202491152037
+      },
+      {
+        "bonds": [
+          1.4928501325558807,
+          1.2836006235403996,
+          1.051840456171155,
+          1.1858940869771628
+        ],
+        "calibration_contrast": -0.8342247789850671,
+        "flux": 1.355717642439689,
+        "hole_potentials": [
+          0.361989670105044,
+          -0.40685725233629816,
+          -0.3277651490854742,
+          -0.6259683563992328
+        ],
+        "readout_operator_error": 3.769839635921133e-16,
+        "reduction_error": 5.210537963602349e-16,
+        "time": 1.6595704797460027
+      },
+      {
+        "bonds": [
+          0.8666905708437728,
+          1.0288418601611165,
+          0.6321459363768639,
+          1.484257293408361
+        ],
+        "calibration_contrast": -0.4139227949658997,
+        "flux": 1.012827463238719,
+        "hole_potentials": [
+          0.32047276771093913,
+          0.4481817639538588,
+          -0.4334654613415865,
+          0.29272238545856943
+        ],
+        "readout_operator_error": 1.6480315785508933e-15,
+        "reduction_error": 1.2261533125704096e-15,
+        "time": 3.2382485111888117
+      },
+      {
+        "bonds": [
+          1.0916134517823126,
+          0.8060164305336146,
+          0.9092615035448882,
+          1.4833228064503412
+        ],
+        "calibration_contrast": 0.42883140708283995,
+        "flux": 2.4478935035897185,
+        "hole_potentials": [
+          -0.5790411885913539,
+          0.5417314074381459,
+          -0.6581438304333209,
+          0.5240794522023056
+        ],
+        "readout_operator_error": 8.595052314044525e-16,
+        "reduction_error": 1.1327227458717896e-15,
+        "time": 3.737355501611167
+      },
+      {
+        "bonds": [
+          0.5495903118516743,
+          0.8567331524659374,
+          0.7486809378873707,
+          1.1048201908281583
+        ],
+        "calibration_contrast": 0.07234941094374397,
+        "flux": 2.2568049785380455,
+        "hole_potentials": [
+          -0.6342089860811211,
+          -0.4602537738232561,
+          -0.6946740269784638,
+          0.38130362090300185
+        ],
+        "readout_operator_error": 3.7711259411391747e-16,
+        "reduction_error": 4.893309964565925e-16,
+        "time": 2.9733569387958743
+      },
+      {
+        "bonds": [
+          1.4910187964540693,
+          1.3932054904224556,
+          1.0488229286927802,
+          0.9102464536675645
+        ],
+        "calibration_contrast": 0.08903243464155527,
+        "flux": 1.6643915157939704,
+        "hole_potentials": [
+          -0.6144154399834124,
+          -0.3640354917576015,
+          -0.6131338119455156,
+          -0.5596890408989371
+        ],
+        "readout_operator_error": 2.4435839103816505e-16,
+        "reduction_error": 1.061150454203328e-15,
+        "time": 3.7785702894908213
+      },
+      {
+        "bonds": [
+          1.0192163918352617,
+          0.9092022900760071,
+          0.5965219757302872,
+          0.9686398470613647
+        ],
+        "calibration_contrast": -0.20888645439845527,
+        "flux": 0.9428764445907389,
+        "hole_potentials": [
+          0.6269113361868861,
+          0.023826965463218608,
+          -0.40639626860396255,
+          -0.07717441010254877
+        ],
+        "readout_operator_error": 4.905293045458718e-16,
+        "reduction_error": 5.189090480975896e-16,
+        "time": 2.7473074454671282
+      },
+      {
+        "bonds": [
+          0.8095035303737951,
+          1.4733745235863922,
+          1.1821759255797235,
+          1.006162214085427
+        ],
+        "calibration_contrast": -0.050035904301977074,
+        "flux": 2.047906988790874,
+        "hole_potentials": [
+          0.06979129039210796,
+          -0.6907726744549099,
+          0.5296135606291787,
+          -0.28814543777240176
+        ],
+        "readout_operator_error": 3.9466135278909044e-16,
+        "reduction_error": 5.974979251934396e-16,
+        "time": 3.1500094510021706
+      }
+    ]
+  },
+  "spin_algebra": {
+    "biseparable_bound": 0.25,
+    "chirality_eigenvalues": [
+      -0.43301270189221935,
+      -0.43301270189221935,
+      0.0,
+      0.0,
+      5.0306980803327406e-17,
+      5.551115123125783e-17,
+      0.4330127018922193,
+      0.4330127018922194
+    ],
+    "projector_ranks": [
+      4,
+      2,
+      2
+    ],
+    "random_product_bipartition_maximum": 0.228521669472535,
+    "scope": "The bound follows analytically from rotational invariance and a two-spin norm; samples are only checks."
+  },
+  "status": "PASS",
+  "test_groups": 5
+}

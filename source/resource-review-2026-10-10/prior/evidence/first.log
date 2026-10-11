@@ -1,0 +1,10 @@
+test_01_model_and_uniform_bound (__main__.Checks.test_01_model_and_uniform_bound) ... ok
+test_02_reference_input_and_repetitions (__main__.Checks.test_02_reference_input_and_repetitions) ... ok
+test_03_symmetry_and_leading_correction (__main__.Checks.test_03_symmetry_and_leading_correction) ... ok
+test_04_four_setting_readout (__main__.Checks.test_04_four_setting_readout) ... ok
+test_05_independent_evolution_and_noise_accounting (__main__.Checks.test_05_independent_evolution_and_noise_accounting) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.341s
+
+OK

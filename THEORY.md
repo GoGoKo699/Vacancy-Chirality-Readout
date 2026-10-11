@@ -1,0 +1,219 @@
+# Vacancy chirality readout: model, results, and proofs
+
+A localized vacancy in a four-site ring converts three-spin chirality into an occupation-return signal. At finite repulsion, two durations and two opposite fluxes suffice to recover the input chirality expectation from calibrated return frequencies. For a known total particle number at most three, total site parity recognizes the return event exactly. Retaining an entangled output additionally requires spin-coherent measurement back-action.
+
+## 1. Model and measurement
+
+Three spin-½ bosons initially occupy sites 1, 2, 3; site 0 is empty. Their input spin state $\rho$ is arbitrary and may be entangled with an external reference. With $\hbar=1$, the spin-independent Hamiltonian is
+
+$$
+H_{U,\Phi}=-J\sum_{j,\sigma}\left(e^{i\Phi/4}b^\dagger_{j\sigma}b_{j+1,\sigma}+\mathrm{h.c.}\right)+UW,
+\qquad W=\frac12\sum_j n_j(n_j-1).
+$$
+
+Indices are modulo four and $n_j$ counts both spin components. The four bonds are equal; interactions are independent of spin. Write $u=U/J$ and $\tau=Jt$. The fixed-three-particle Hilbert space has dimension 120. The no-double-occupancy projector $P$ has rank 32.
+
+Let $V$ embed the eight spin states into occupancy $(0,1,1,1)$ and $S=VV^\dagger$. The return operator and effect are
+
+$$
+K_{U,\Phi}(t)=V^\dagger e^{-itH_{U,\Phi}}V,
+\qquad E_{U,\Phi}(t)=K_{U,\Phi}(t)^\dagger K_{U,\Phi}(t).
+$$
+
+The probability is $\operatorname{Tr}(E\rho)$. An ideal spin-preserving accepted instrument produces the unnormalized state $K\rho K^\dagger$. Other outcomes terminate the trial. At finite $U$, detecting only that site 0 is empty does not identify the return event.
+
+Define the cyclic spin permutation and scalar chirality by
+
+$$
+C|s_1s_2s_3\rangle=|s_2s_3s_1\rangle,
+\qquad \chi=\mathbf S_1\cdot(\mathbf S_2\times\mathbf S_3),\qquad \mathbf S=\boldsymbol\sigma/2.
+$$
+
+With this convention $C-C^\dagger=4i\chi$. The eigenvalues of $\chi$ are $0,\pm\sqrt3/4$, with projectors $\Pi_0,\Pi_+,\Pi_-$ of ranks 4, 2, 2. For the displayed hopping convention, flux $-2\pi/3$ selects positive chirality in the hard-core filter below. Labels $+$ and $-$ refer to selected chirality, not the sign of the flux.
+
+## 2. Parity identifies the accepted occupancy exactly
+
+For $s=(0,1,1,1)$ define the projector onto total site parity $s$:
+
+$$
+Q_s=\prod_{j=0}^3\frac{I+(-1)^{s_j}(-1)^{n_j}}2.
+$$
+
+**Parity identity.** On the entire particle-number subspace $N\le3$, $Q_s=S$, extending $S$ by zero on $N<3$.
+
+**Proof.** Odd occupation at each of sites 1, 2, 3 requires at least three particles. With at most three particles, each occupation is exactly one and site 0 is empty. The converse is immediate. This proves a projector equality, including coherent superpositions and reference-entangled inputs. Consequently,
+
+$$
+V^\dagger e^{itH}Q_s e^{-itH}V=K^\dagger K.
+$$
+
+Ideal total-parity images therefore implement the required effect even when intermediate doublon and triplon amplitudes are appreciable. Hopping must be stopped during the modeled readout, and the reported bits must represent the pre-imaging total site parities. Additional particles invalidate the identity: $(0,3,1,1)$ has the same parity at $N=5$. Loss alone cannot produce three odd occupied sites from fewer than three particles.
+
+Parity imaging is an established technique [B24](REFERENCES.md); the identity specifies when its event equals this protocol's return event. It says nothing by itself about the retained spin state.
+
+## 3. Exact finite-repulsion reconstruction
+
+Set $R=P_{13}$ and $D=P_{12}-P_{23}$, where $P_{jk}$ swaps spins. Then $\|D\|=\sqrt3$ and $\|\chi\|=\sqrt3/4$. Define $E_+(t)=E_{U,-2\pi/3}(t)$ and $E_-(t)=E_{U,+2\pi/3}(t)$.
+
+**Contrast theorem.** For every $U$ and time in the uniform model,
+
+$$
+E_+(t)-E_-(t)=g_u(\tau)\chi+h_u(\tau)D.
+$$
+
+The real coefficients are the Hilbert–Schmidt projections onto the orthogonal operators $\chi$ and $D$.
+
+**Proof.** Collective spin rotations commute with the dynamics and occupancy projection. Their three-qubit commutant is the five-dimensional span of $I,P_{12},P_{23},P_{13},\chi$ [EW01](REFERENCES.md). Spatial reflection fixes the vacancy and return pattern, exchanges sites 1 and 3, and reverses the flux. Hence $K_-=RK_+R$, and the effect difference is odd under $R$. The odd Hermitian subspace is precisely the span of $\chi$ and $D$.
+
+Reciprocity also gives $K_-=K_+^T$ in the real occupation basis, but it does not imply $E_-=E_+^*$ for a nonnormal return operator. The $D$ term generally survives. Reflection-symmetric scalar imperfections preserve the symmetry argument with recalibrated coefficients; arbitrary finite-$U$ scalar disorder need not do so.
+
+Measure independent input copies at durations $t_1,t_2$ and both flux signs. Let $d_i=p_{i,+}-p_{i,-}$ and
+
+$$
+M=\begin{pmatrix}g_1&h_1\\g_2&h_2\end{pmatrix},\qquad \Delta=g_1h_2-g_2h_1.
+$$
+
+Whenever $\Delta\ne0$,
+
+$$
+\boxed{\langle\chi\rangle=\frac{h_2d_1-h_1d_2}{\Delta}=w_1d_1+w_2d_2.}
+$$
+
+This is an arbitrary-input expectation identity. It neither assigns a chirality eigenvalue to a single return nor corrects the accepted state's back-action.
+
+**Existence of suitable durations.** At every fixed finite $u>0$, exact short-time coefficients give
+
+$$
+g_u(\tau)=4\sqrt3\,\tau^4+O_u(\tau^6),\qquad
+h_u(\tau)=\sqrt3\left(\frac{7u}{72}+\frac{u^3}{2520}\right)\tau^9+O_u(\tau^{11}).
+$$
+
+Reciprocity makes $g$ even and $h$ odd in time. Taking $\tau_1=s$, $\tau_2=2s$ yields
+
+$$
+\Delta=5952\left(\frac{7u}{72}+\frac{u^3}{2520}\right)s^{13}+O_u(s^{15})>0
+$$
+
+for sufficiently small positive $s$. The coefficients are certified by exact integer/rational arithmetic in $\mathbb Q(\sqrt2,\sqrt3,i)[u]$ on the complete 40-state fixed-magnetization sector; see the [certificate](source/resource-review-2026-10-10/prior/exact_short_time.py) and [derivation, Section 4](source/resource-review-2026-10-10/prior/FOLLOWUP.md). This fixed-$u$ existence result does not imply efficient estimation at very short times or a uniform large-$u$ limit.
+
+An order-one numerical example uses $u=16$:
+
+| $\tau$ | $g$ | $h$ |
+|---|---:|---:|
+| $\pi$ | 1.76499071140 | 0.026588956448 |
+| $3\pi/4$ | −0.39157486049 | 0.020164887920 |
+
+Here $\Delta\simeq0.04600240679$ and $\langle\chi\rangle\simeq0.43834419389d_1-0.57799055104d_2$. Exact coefficients are defined by the finite-matrix functions, not these rounded decimals. The values are floating-point diagnostics rather than certified numerical intervals or device calibrations. A single duration at $\tau=\pi$ leaves the bias $(h_1/g_1)\langle D\rangle$; even $|\uparrow\uparrow\downarrow\rangle$ has zero chirality but contrast $h_1$.
+
+## 4. Hard-core return instrument and retained entanglement
+
+In the strict hard-core limit, transporting spin labels with the vacancy reduces each cycle eigenspace $C=e^{i\theta}$ to a scalar four-site ring with flux $\Phi+\theta$ [K22](REFERENCES.md). Its return amplitude is
+
+$$
+A(\tau;f)=\frac12\left[\cos\left(2\tau\cos\frac f4\right)+\cos\left(2\tau\sin\frac f4\right)\right],
+\qquad K_{\infty,\Phi}=\sum_{\theta=0,\pm2\pi/3}A(\tau;\Phi+\theta)\Pi_\theta.
+$$
+
+At $\tau=\pi$ and flux $\mp2\pi/3$,
+
+$$
+K_{\infty,\pm}=\Pi_\pm+a(I-\Pi_\pm),\quad
+a=\frac{\cos(\sqrt3\pi)-1}{2},\quad r=a^2=0.02786714004\ldots.
+$$
+
+Thus $E_{\infty,\pm}=rI+(1-r)\Pi_\pm$ and $\langle\chi\rangle=\sqrt3(p_+-p_-)/[4(1-r)]$. A single accepted return is a coherent filter, with nonzero acceptance outside the selected sector.
+
+From input $I_8/8$, the positive filter yields
+
+$$
+p_1=\frac{1+3r}{4}=0.2709003550\ldots,\qquad
+\rho_1=\frac{\Pi_++r(I-\Pi_+)}{2+6r},\qquad
+\langle\chi\rangle_{\rho_1}=\frac{\sqrt3}{4}\frac{1-r}{1+3r}=0.3884692918\ldots.
+$$
+
+Every biseparable three-qubit state obeys $|\langle\chi\rangle|\le1/4$ [R23](REFERENCES.md). For a state product across $1|23$, rotate the first spin's polarization to $z$: its magnitude is at most $1/2$, while $\|S_{2x}S_{3y}-S_{2y}S_{3x}\|=1/2$. The bound follows, then extends to the other cuts and their convex mixtures. Hence $\rho_1$ is genuinely tripartite entangled. Its one-spin marginals are maximally mixed and its pair marginals are separable.
+
+With ideal coherent readout after every accepted round,
+
+$$
+K_{\infty,+}^m=\Pi_++a^m(I-\Pi_+),\qquad
+p_m=q+(1-q)r^m,\quad q=\operatorname{Tr}(\Pi_+\rho).
+$$
+
+For $I_8/8$, $p_m\to1/4$ and the conditional state tends to the mixed doublet $\Pi_+/2$. The probability counts the entire successful record per original preparation. Spin coherence and atom survival between rounds are necessary assumptions. The [hard-core derivation](source/resource-review-2026-10-10/prior/prior/PILOT.md) gives the cycle reduction, pair marginals, and static scalar-disorder extension in detail.
+
+## 5. Uniform finite-$U$ operation bound
+
+For every $u>0$, $\tau\ge0$, and flux, the accepted operators satisfy
+
+$$
+\boxed{\|K_{U,\Phi}(t)-K_{\infty,\Phi}(t)\|\le\epsilon_u(\tau),\qquad
+\epsilon_u(\tau)=\min\{2,20\sqrt3\,\tau/u\}.}
+$$
+
+**Proof.** Write $H=T+UW$, $Q=I-P$, $A=PTP$, and $B=QTP$. The one-particle hopping norm gives $\|T\|\le6J$; the hard-core vacancy graph gives $\|A\|\le2J$. Counting two-hop paths gives $\|B\|^2\le12J^2$: at zero flux the nonnegative Gram matrix has every row sum equal to $12J^2$, and flux cannot increase absolute path sums. Thus $\|TP\|\le4J$.
+
+For a unit vector $\psi\in P$, energy conservation and $W\ge Q$ give
+
+$$
+U\|Qe^{-itH}\psi\|\le U\|We^{-itH}\psi\|
+\le\|H\psi\|+\|T\|\le10J.
+$$
+
+Therefore $\|Qe^{-itH}P\|\le\min\{1,10J/U\}$. Duhamel's formula for the projected equation then bounds its deviation from $e^{-itA}P$ by $t\|B\|(10J/U)=20\sqrt3 J^2t/U$. Compression with $V$ proves the claim. The [full proof and path-count verification](source/resource-review-2026-10-10/prior/FOLLOWUP.md) distinguish leakage probability from coherent spin-operation error.
+
+The success maps obey $\|\mathcal K_U-\mathcal K_\infty\|_\diamond\le2\epsilon_u$, including arbitrary external references. With a terminal failure flag and discarded failed spins, the complete flagged instruments differ by at most $\min\{2,4\epsilon_u\}$ in diamond norm.
+
+For a specified input with ideal success probability $p_0$, finite-$U$ probability $p_U$, and $p_U>0$,
+
+$$
+|\sqrt{p_U}-\sqrt{p_0}|\le\epsilon_u,\qquad
+D(\rho_U^{\mathrm{succ}},\rho_0^{\mathrm{succ}})\le\min\{1,\epsilon_u/\sqrt{p_0}\}.
+$$
+
+Here $D$ is trace distance. Purification reduces the proof to two unnormalized accepted vectors separated by at most $\epsilon_u$; distance to the line of the second vector bounds their normalized pure-state angle. Partial trace preserves the bound. For $m$ rounds, replace $\epsilon_u$ by $\min\{2,m\epsilon_u\}$ and use the whole-record ideal success probability.
+
+At $u=2048$, $\tau=\pi$, these conservative bounds prove $p_U>0.2184$ and $\langle\chi\rangle>0.3000>1/4$ for the maximally mixed input. This is a sufficient analytical example, not a necessary repulsion threshold. At $u=16$, full-matrix diagnostics give four-round success $0.1141865390$ and chirality $0.4324656707$. Fixed-round convergence as $u\to\infty$ does not establish an infinite-round survival plateau at finite $u$.
+
+## 6. Detector back-action, losses, and calibration
+
+Correct return probabilities do not fix the retained state. A trace-preserving spin channel $\mathcal N$ after ideal acceptance gives
+
+$$
+\mathcal S_{\mathcal N}(\rho)=\mathcal N(K\rho K^\dagger),\qquad
+\operatorname{Tr}\mathcal S_{\mathcal N}(\rho)=\operatorname{Tr}(K\rho K^\dagger).
+$$
+
+Complete local dephasing produces a fully separable spin output with exactly the ideal success probabilities. Destructive terminal imaging can therefore serve expectation estimation without realizing the retained-state instrument.
+
+For the explicit diagnostic of independent phase damping with single-spin coherence factor $\eta$, $(\mathcal D_\eta^{\otimes3})^\dagger(\chi)=\eta^2\chi$. The one-round hard-core output remains certified by the chirality witness precisely when $\eta>0.8022166239\ldots$. This is a witness threshold for that channel. Under the same disturbance after every accepted round, the exact recurrence has spectral radius below one for every $\eta<1$, so total success tends to zero; see [the recurrence and proof, Section 3](source/resource-review-2026-10-10/READOUT_AND_RESOURCES.md).
+
+For equal-rate Markovian loss $L_{j,\sigma}=\sqrt\gamma\,b_{j,\sigma}$ with no gains, every loss trajectory is rejected by ideal parity. Since $\sum L^\dagger L=\gamma N$, the accepted map is exactly
+
+$$
+\mathcal S_\gamma(\rho)=e^{-3\gamma t}K\rho K^\dagger.
+$$
+
+This particular loss model reduces success without changing the conditional state. Unequal rates need not have that property. The damping and loss channels are stated diagnostics, not fitted detector parameters.
+
+If the implemented occupation effect obeys $\|F_{i,\pm}-S\|\le b_{i,\pm}$, compression after evolution gives reconstructed systematic bias at most $\sum_i|w_i|(b_{i,+}+b_{i,-})$. Hamiltonian parameters, timing, symmetry errors, and coefficient uncertainty require their own calibration budgets. Calibration copies and characterization time are additional resources.
+
+## 7. Matched measurement resources
+
+For $n$ independent input preparations, ideal detection, and exact calibration, compare the same normalization of $\chi$. All failed return trials remain included in $n$.
+
+| Method | Primitive and allocation | Worst-case upper bound on $n\operatorname{Var}(\widehat\chi)$ |
+|---|---|---:|
+| Six Pauli products | Six local-axis settings, equal allocation | $9/16=0.5625$ |
+| Controlled-cycle Hadamard test | Ancilla quadrature after controlled cycle | $1/4=0.25$ |
+| Spectral chirality measurement | Outcomes $0,\pm\sqrt3/4$ | $3/16=0.1875$ |
+| Hard-core vacancy return | Two fluxes, equal allocation | $3/[16(1-r)^2]=0.1984038180\ldots$ |
+| Finite-$U$ example above | Four settings, allocation proportional to $|w_i|$ per sign | $(|w_1|+|w_2|)^2=1.0329363137\ldots$ |
+
+The Pauli decomposition is $\chi=(XYZ+YZX+ZXY-XZY-YXZ-ZYX)/8$; it needs no entangling measurement gate. The Hadamard test uses $\operatorname{Im}\langle C\rangle=2\langle\chi\rangle$. These established alternatives and projective sector preparation are described in [R23](REFERENCES.md).
+
+Spatial output counts carrying collective internal-state phases, including signed orientation-sensitive tritter contrasts, have optical antecedents [M17](REFERENCES.md). Those independent-photon experiments use different preparations and dynamics from the arbitrary correlated spin inputs and finite-repulsion vacancy instrument considered here.
+
+For the finite-$u=16$ allocation, the actual coefficient on input $I_8/8$ is $0.8759834953$, exceeding both direct Pauli and Hadamard-test coefficients on that same input. The hard-core bound is smaller than separately sampled Pauli products, but that sampling comparison does not equate their physical controls. Full derivations are in [the matched resource comparison, Section 6](source/resource-review-2026-10-10/READOUT_AND_RESOURCES.md).
+
+The vacancy implementation uses coherent spin-independent flux hopping, a localized motional ancilla, calibrated durations, and total site parity. Retained entanglement adds atom-preserving spin-coherent detection; repetition requires those properties after every cycle. Component experiments in [the references](REFERENCES.md) establish relevant imaging and flux capabilities separately. The mathematical result is the specified native instrument and its calibrated input readout, with these distinct operational requirements.

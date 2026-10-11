@@ -1,0 +1,23 @@
+{
+  "changes_after_first_formal_run": "None to checker, assertions, tolerances, or scientific formula. Documentation and package added.",
+  "complete_formal_runs": 2,
+  "date": "2026-10-10",
+  "environment": {
+    "numpy": "2.3.5",
+    "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+    "scipy": "1.17.0"
+  },
+  "experimental_measurement_assumption": "Spin-preserving occupancy projection; repetitions require nondestructive readout.",
+  "first_sha256": "23ad86e618f28b70b048eed0e0ea5a675fbe9fe947c250228bafaacbdaf63416",
+  "formal_failures": 0,
+  "formal_groups": 5,
+  "historical_electron_PDF_used_as_seed": false,
+  "largest_hilbert_dimension": 120,
+  "mathematical_claims": "Exact finite hard-core instrument and algebra; numerical finite-U controls do not establish a uniform theorem.",
+  "older_project_modules_imported": false,
+  "repeat_sha256": "23ad86e618f28b70b048eed0e0ea5a675fbe9fe947c250228bafaacbdaf63416",
+  "reports_byte_identical": true,
+  "repositories_accessed_or_modified": false,
+  "scope": "First pilot, no repository or manuscript promotion.",
+  "source_visual_retrieval": "Reascos PDF screenshot and container PDF download failed. Only parsed equations/prose were used; no image data attributed."
+}
