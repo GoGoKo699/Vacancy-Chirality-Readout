@@ -94,6 +94,55 @@
         "plugin_leading_reuse_threshold": 970.8815262727557,
         "scope": "Sufficient leading planning only; excludes pilot/moment-only overhead, finite remainders and acceptance margins; not a necessary reuse count."
       },
+      "repeated_state_scan": {
+        "full_cycle_requirements": [
+          {
+            "comparator_copies": 5625,
+            "native_to_comparator_cost_must_be_less_than": 1.2666066201306012,
+            "reference_cost_ratio_must_be_less_than": {
+              "1": 0.00013751451800232288,
+              "10": 0.0013751451800232289,
+              "100": 0.013751451800232288,
+              "1000": 0.1375145180023229
+            }
+          },
+          {
+            "comparator_copies": 5164,
+            "native_to_comparator_cost_must_be_less_than": 1.1628011709074533,
+            "reference_cost_ratio_must_be_less_than": {
+              "1": 8.397212543554008e-05,
+              "10": 0.0008397212543554007,
+              "100": 0.008397212543554007,
+              "1000": 0.08397212543554007
+            }
+          }
+        ],
+        "independent_samples_to_equal_cost_biased_break_even": 61497869,
+        "baseline_mse_slack": 3.75863959907619e-09,
+        "separate_mean_drift_limit": 5.605203018703084e-07,
+        "separate_second_drift_limit": 1.669211845949736e-05,
+        "illustrative_mean_drift_1e_minus4": {
+          "epsilon": 0.01,
+          "unknown_copies": 4476,
+          "pilot_copies": 10000,
+          "validation_copies": 8600000,
+          "total_reference_copies": 8610000,
+          "reference_weight": 1.0,
+          "certified_conditional_mse": 9.998271602598197e-05,
+          "ideal_pauli_copies": 5625,
+          "biased_separable_necessary_copies": 5164,
+          "strict_reuse_vs_pauli": 7494,
+          "strict_reuse_vs_biased_lower_bound": 12515
+        },
+        "mixture_crosscheck": {
+          "total_variation": 0.29999999999999993,
+          "mean_mismatch": 0.07641400621627398,
+          "second_mismatch": 0.20761245674740475,
+          "state_channel_correlation_error": 0.10697960870278361
+        },
+        "shared_frame_variance_inflation": 2.98,
+        "scope": "Analytical requirements and constructed cross-checks, not measured apparatus costs, rates, spatial noise, or stability. The class-wide time comparison additionally needs a valid comparator cost lower bound."
+      },
       "scope": "HYPOTHETICAL nominal summaries, not experimental data, guaranteed-pass counts, or an unconditional finite-risk advantage. Pilot count is an explicit illustrative charge, not a claim that 10000 preparations suffice to select this score. No preparation error or channel drift is assumed in this profile."
     }
   }

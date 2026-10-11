@@ -340,3 +340,8 @@ Cheaper reference preparation, repeated use of a stable apparatus, and
 tighter measured validation statistics can change that comparison. Their
 values belong in the resource report. No universal impossibility claim is
 made about calibrated native measurements.
+
+For a concrete use case, [repeated chirality scans](REPEATED_STATE_SCANS.md)
+translate these copy counts into full-cycle costs and a finite stability
+interval. That account also derives when heterogeneous parallel plaquettes
+can share a calibration and how unmatched sampling changes the bias budget.

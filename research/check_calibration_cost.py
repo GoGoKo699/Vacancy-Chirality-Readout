@@ -16,6 +16,7 @@ import numpy as np
 import complete_parity as cp
 from check_channel_calibration import PROBES
 from calibration_cost import (ProbeSummary, bernstein_radius, certificate,
+                              cycle_reuse_threshold, operator_allowances, stable_reuse_capacity,
                               leading_plan, preparation_budget, separable_required,
                               strict_reuse_threshold)
 
@@ -149,10 +150,84 @@ def run(exact_report):
     assert abs(12*vx/fraction_x-3*vd/(1-fraction_x)) < 1e-13
     assert abs(12*vx/fraction_x-nominal_plan['plugin_mse_coefficient']) < 1e-13
     noisy_plan = leading_plan(.445, .445, .445, delta)
+    m, n = budget['total_reference_copies'], budget['unknown_copies']
+    # Full-cycle accounting reduces to copy accounting only at equal costs.
+    cycle_rows = []
+    for comparator in (budget['ideal_pauli_copies'], budget['biased_separable_necessary_copies']):
+        assert cycle_reuse_threshold(m, n, comparator, 1., 1., 1.) == strict_reuse_threshold(m, n, comparator)
+        cycle_rows.append(dict(comparator_copies=comparator,
+                               native_to_comparator_cost_must_be_less_than=comparator/n,
+                               reference_cost_ratio_must_be_less_than={
+                                   str(k): k*(comparator-n)/m for k in (1, 10, 100, 1000)}))
+    assert cycle_reuse_threshold(100, 50, 100, 1., 2., 1.) is None
+    assert cycle_reuse_threshold(100, 50, 100, 0., 3., 1.) is None
+    # Check the capacity boundary for a complete sequential stable epoch.
+    required_k = budget['strict_reuse_vs_biased_lower_bound']
+    required_copies = m+required_k*n
+    assert required_copies == 61497869
+    assert stable_reuse_capacity(m, n, required_copies, 1., 1.) == required_k
+    assert stable_reuse_capacity(m, n, required_copies-1, 1., 1.) == required_k-1
+    assert stable_reuse_capacity(m, n, m-1, 1., 1.) == 0
+    assert stable_reuse_capacity(10, 5, 30., 1., 1., 5., 5.) == 1
+    drifted = preparation_budget(operator_allowances(validation, 1e-4), epsilon, 10000)
+    assert drifted['unknown_copies'] == 4476
+    assert drifted['strict_reuse_vs_biased_lower_bound'] == 12515
+    slack = epsilon**2-validation['second_moment_upper']/n-validation['beta']**2
+    assert slack > 0
+    mean_drift_limit = math.sqrt(validation['beta']**2+slack)-validation['beta']
+
+    # Construct two valid, covariant three-outcome input POVMs with different
+    # response strengths. Matching their mixture calibrates every input;
+    # correlating input states with the channel labels invalidates that result.
+    p, q = np.array([.3, .7]), np.array([.6, .4])
+    strengths = np.array([.5, 1.])
+    mix_score = 1/float(p@strengths)
+    channels = [np.array([a*(cp.fr.I8+cp.fr.CHI)/2,
+                          a*(cp.fr.I8-cp.fr.CHI)/2, (1-a)*cp.fr.I8]) for a in strengths]
+    scores = np.array([mix_score, -mix_score, 0.])
+    for channel in channels:
+        assert np.linalg.norm(channel.sum(axis=0)-cp.fr.I8, 2) < 1e-14
+        assert min(np.linalg.eigvalsh(effect)[0] for effect in channel) >= -1e-14
+    means = np.array([np.einsum('p,pij->ij', scores, channel) for channel in channels])
+    seconds = np.array([np.einsum('p,pij->ij', scores**2, channel) for channel in channels])
+    matched_mean = np.einsum('i,ijk->jk', p, means)
+    assert np.linalg.norm(matched_mean-cp.fr.CHI, 2) < 1e-14
+    tv = float(np.sum(abs(p-q))/2)
+    mismatch_mean = float(np.linalg.norm(np.einsum('i,ijk->jk', q-p, means), 2))
+    mismatch_second = float(np.linalg.norm(np.einsum('i,ijk->jk', q-p, seconds), 2))
+    assert 0 < mismatch_mean <= 2*mix_score*tv
+    assert 0 < mismatch_second <= mix_score**2*tv
+    values, vectors = np.linalg.eigh(cp.fr.CHI)
+    rho_plus = np.outer(vectors[:, -1], vectors[:, -1].conj())
+    rho_minus = np.outer(vectors[:, 0], vectors[:, 0].conj())
+    correlated_output = sum(pi*np.trace(ai@rho).real
+                            for pi, ai, rho in zip(p, means, (rho_plus, rho_minus)))
+    average_target = np.trace(cp.fr.CHI@(p[0]*rho_plus+p[1]*rho_minus)).real
+    assert abs(correlated_output-average_target) > .05
+    # A common random setting/noise component is enough to invalidate the
+    # independent-pixel variance formula, even for independent local noise.
+    pixels, frames, correlation = 100, 20, .02
+    covariance = (1-correlation)*np.eye(pixels)+correlation*np.ones((pixels, pixels))
+    frame_variance = float(np.ones(pixels)@covariance@np.ones(pixels)/pixels**2)
+    factor = 1+(pixels-1)*correlation
+    assert abs(frame_variance/frames-factor/(pixels*frames)) < 1e-15
+    use_case = dict(full_cycle_requirements=cycle_rows,
+                    independent_samples_to_equal_cost_biased_break_even=required_copies,
+                    baseline_mse_slack=slack, separate_mean_drift_limit=mean_drift_limit,
+                    separate_second_drift_limit=n*slack,
+                    illustrative_mean_drift_1e_minus4=drifted,
+                    mixture_crosscheck=dict(total_variation=tv,
+                        mean_mismatch=mismatch_mean, second_mismatch=mismatch_second,
+                        state_channel_correlation_error=abs(correlated_output-average_target)),
+                    shared_frame_variance_inflation=factor,
+                    scope='Analytical requirements and constructed cross-checks, not measured apparatus '
+                          'costs, rates, spatial noise, or stability. The class-wide time comparison '
+                          'additionally needs a valid comparator cost lower bound.')
     group3 = dict(planning_profile={k: vars(v) for k, v in profile.items()},
                   score_bound=bound, confidence_failure=delta, validation=validation,
                   budget=budget, nominal_leading_plan=nominal_plan,
                   conservative_noisy_leading_plan=noisy_plan,
+                  repeated_state_scan=use_case,
                   scope='HYPOTHETICAL nominal summaries, not experimental data, guaranteed-pass counts, '
                         'or an unconditional finite-risk advantage. Pilot count is an explicit illustrative '
                         'charge, not a claim that 10000 preparations suffice to select this score. '

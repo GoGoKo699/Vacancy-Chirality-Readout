@@ -129,3 +129,47 @@ def leading_plan(vx, vd, worst_second, delta=.05):
                 plugin_leading_reuse_threshold=plugin_c/margin,
                 scope="Sufficient leading planning only; excludes pilot/moment-only overhead, "
                       "finite remainders and acceptance margins; not a necessary reuse count.")
+
+
+def cycle_reuse_threshold(reference_count, target_count, comparator_count,
+                          reference_cost, native_cost, comparator_cost):
+    """Least integer reuse for additive complete-cycle costs.
+
+The comparator cost describes a specified implementation, or a separately
+justified lower bound when making a measurement-class resource comparison.
+"""
+    if (not isinstance(reference_count, int) or reference_count < 0
+            or any(not isinstance(n, int) or n < 1 for n in (target_count, comparator_count))
+            or not all(math.isfinite(c) and c >= 0
+                       for c in (reference_cost, native_cost, comparator_cost))
+            or native_cost == 0 or comparator_cost == 0):
+        raise ValueError("Use valid counts and nonnegative finite full-cycle costs.")
+    saving = comparator_count*comparator_cost-target_count*native_cost
+    if saving <= 0:
+        return None
+    return math.floor(reference_count*reference_cost/saving)+1
+
+
+def stable_reuse_capacity(epoch_references, target_count, stable_time,
+                          reference_rate, target_rate, calibration_setup=0., target_setup=0.):
+    """Sequential calibration-then-target schedule within an assumed stable epoch.
+
+Rates count samples justified by the statistical model, not unexamined pixels.
+All times use the same units. The epoch and rates must be supplied externally.
+"""
+    if (not isinstance(epoch_references, int) or epoch_references < 0
+            or not isinstance(target_count, int) or target_count < 1
+            or not all(math.isfinite(t) and t >= 0
+                       for t in (stable_time, calibration_setup, target_setup))
+            or not all(math.isfinite(r) and r > 0 for r in (reference_rate, target_rate))):
+        raise ValueError("Use nonnegative times, valid counts, and positive sample rates.")
+    available = stable_time-epoch_references/reference_rate-calibration_setup
+    return max(0, math.floor(available/(target_count/target_rate+target_setup)))
+
+
+def operator_allowances(validation, mean_allowance=0., second_allowance=0.):
+    """Add independently justified drift or channel-mixture mismatch bounds."""
+    if not all(math.isfinite(d) and d >= 0 for d in (mean_allowance, second_allowance)):
+        raise ValueError("Operator allowances must be finite and nonnegative.")
+    return dict(validation, beta=validation['beta']+mean_allowance,
+                second_moment_upper=validation['second_moment_upper']+second_allowance)
