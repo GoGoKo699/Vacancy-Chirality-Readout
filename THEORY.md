@@ -1,6 +1,6 @@
 # Vacancy chirality readout: model, results, and proofs
 
-A localized vacancy in a four-site ring converts three-spin chirality into an occupation-return signal. At finite repulsion, two durations and two opposite fluxes suffice to recover the input chirality expectation from calibrated return frequencies. For a known total particle number at most three, total site parity recognizes the return event exactly. Retaining an entangled output additionally requires spin-coherent measurement back-action.
+A localized vacancy in a four-site ring converts three-spin chirality into position statistics. Complete parity images permit exact reconstruction at one duration and two opposite fluxes whenever their calibrated contrasts span the target observable; a certified finite-repulsion example achieves a minimax sampling advantage over universally unbiased protocols using fully separable measurements on each input copy. Return frequencies alone provide a two-duration reconstruction for every fixed finite repulsion. For a known total particle number at most three, total site parity recognizes the return event exactly. Retaining an entangled output additionally requires spin-coherent measurement back-action.
 
 ## 1. Model and measurement
 
@@ -105,6 +105,41 @@ An order-one numerical example uses $u=16$:
 
 Here $\Delta\simeq0.04600240679$ and $\langle\chi\rangle\simeq0.43834419389d_1-0.57799055104d_2$. Exact coefficients are defined by the finite-matrix functions, not these rounded decimals. The values are floating-point diagnostics rather than certified numerical intervals or device calibrations. A single duration at $\tau=\pi$ leaves the bias $(h_1/g_1)\langle D\rangle$; even $|\uparrow\uparrow\downarrow\rangle$ has zero chirality but contrast $h_1$.
 
+### Complete parity images: one duration and two fluxes
+
+At exactly three particles, the eight possible parity strings have odd Hamming weight. Let $E_p$ be the effect for pattern $p$ at flux $-2\pi/3$, and let $r(p_0,p_1,p_2,p_3)=(p_0,p_3,p_2,p_1)$. At the opposite flux, the **reflected physical pattern** $r(p)$ has effect $RE_pR$. Each contrast obeys
+
+$$
+O_p=\frac{E_p-RE_pR}{2}=c_p\chi+d_pD.
+$$
+
+This follows from the same collective-spin and reflection symmetries as the return contrast. Choose either flux independently with probability $1/2$. Assign score $a_p$ to pattern $p$ at the first flux and $-a_p$ to pattern $r(p)$ at the second. Then
+
+$$
+\boxed{\sum_pc_pa_p=1,\qquad\sum_pd_pa_p=0}
+$$
+
+is exactly the condition for an unbiased chirality estimate on every input. Rank two of the matrix with columns $(c_p,d_p)^T$ suffices. All original preparations count, and even-weight parity strings receive score zero. With $F_p=(E_p+RE_pR)/2$ and $T=\sum_pa_p^2F_p$, the randomized sample mean obeys
+
+$$
+n\operatorname{Var}_\rho(\widehat\chi)=\operatorname{Tr}(T\rho)-\langle\chi\rangle_\rho^2,
+\qquad \sup_\rho n\operatorname{Var}_\rho(\widehat\chi)=\|T\|.
+$$
+
+The last equality follows because $T$ has three scalar total-spin/reflection blocks, and a state in its largest-eigenvalue block has zero chirality. Fixed equal allocations between fluxes have no larger variance. The [complete proof](research/COMPLETE_PARITY_THEORY.md) also derives the weighted Gram formula for the minimum mixed-input variance.
+
+At $u=16$, $\tau=\pi$, an [integer/rational certificate](research/CERTIFICATE.md) proves a nonzero calibration minor and constructs an exactly feasible score by correcting two rational reference scores. For this corrected score,
+
+$$
+\boxed{\sup_\rho n\operatorname{Var}_\rho(\widehat\chi)<0.389156263913,}
+$$
+
+$$
+0.284895494200<n\operatorname{Var}_{I_8/8}(\widehat\chi)<0.284895494206.
+$$
+
+These are outward-certified bounds for the stated finite model. Recalibrating the score preserves $\|T\|<0.395388567053$ throughout the sufficient box $|u-16|,|\tau-\pi|,|\Phi_++2\pi/3|<10^{-7}$ with $\Phi_-=-\Phi_+$. This conservative box proves continuity with a nonzero margin; it is not an estimate of laboratory tolerance. The [noise budget](research/NOISE_BUDGET.md) treats losses, detector-bit errors, calibration, and normalization separately. In particular, singleton patterns retain collision information but can also occur after two particles are lost. The return-only existence theorem above remains the alternative established for every fixed finite $u>0$.
+
 ## 4. Hard-core return instrument and retained entanglement
 
 In the strict hard-core limit, transporting spin labels with the vacancy reduces each cycle eigenspace $C=e^{i\theta}$ to a scalar four-site ring with flux $\Phi+\theta$ [K22](REFERENCES.md). Its return amplitude is
@@ -188,7 +223,7 @@ Complete local dephasing produces a fully separable spin output with exactly the
 
 For the explicit diagnostic of independent phase damping with single-spin coherence factor $\eta$, $(\mathcal D_\eta^{\otimes3})^\dagger(\chi)=\eta^2\chi$. The one-round hard-core output remains certified by the chirality witness precisely when $\eta>0.8022166239\ldots$. This is a witness threshold for that channel. Under the same disturbance after every accepted round, the exact recurrence has spectral radius below one for every $\eta<1$, so total success tends to zero; see [the recurrence and proof, Section 3](source/resource-review-2026-10-10/READOUT_AND_RESOURCES.md).
 
-For equal-rate Markovian loss $L_{j,\sigma}=\sqrt\gamma\,b_{j,\sigma}$ with no gains, every loss trajectory is rejected by ideal parity. Since $\sum L^\dagger L=\gamma N$, the accepted map is exactly
+For equal-rate Markovian loss $L_{j,\sigma}=\sqrt\gamma\,b_{j,\sigma}$ with no gains, every loss trajectory is rejected by the ideal **return parity event** $0111$. Since $\sum L^\dagger L=\gamma N$, the accepted return map is exactly
 
 $$
 \mathcal S_\gamma(\rho)=e^{-3\gamma t}K\rho K^\dagger.
@@ -196,24 +231,38 @@ $$
 
 This particular loss model reduces success without changing the conditional state. Unequal rates need not have that property. The damping and loss channels are stated diagnostics, not fitted detector parameters.
 
+For the complete-image estimator, one loss changes the parity weight to even and receives zero score, while two losses can imitate a singleton collision pattern. If $\lambda=\gamma t$ and each parity bit independently flips with known probability $q$, dividing scores by $e^{-3\lambda}(1-q)^4$ leaves bounded contributions of orders $\lambda^2$, $q^2$, and $\lambda q$. For the exactly calibrated nominal score, the [certificate](research/CERTIFICATE.md) and [analytical noise budget](research/NOISE_BUDGET.md) give the uniform sufficient window
+
+$$
+0\le\lambda\le0.01,\quad0\le q\le0.003:
+\qquad |\operatorname{bias}|<0.001430,\qquad \mathbb EY^2<0.411.
+$$
+
+On the maximally mixed input the second-moment bound is $0.302$. Thus the mean-square error is bounded by $0.411/n+(0.001430)^2$ for arbitrary input, before adding calibration and rate uncertainty. These guarantees concern the stated loss and detector channels, and the residual bias must be included when comparing total estimation error.
+
 If the implemented occupation effect obeys $\|F_{i,\pm}-S\|\le b_{i,\pm}$, compression after evolution gives reconstructed systematic bias at most $\sum_i|w_i|(b_{i,+}+b_{i,-})$. Hamiltonian parameters, timing, symmetry errors, and coefficient uncertainty require their own calibration budgets. Calibration copies and characterization time are additional resources.
 
 ## 7. Matched measurement resources
 
 For $n$ independent input preparations, ideal detection, and exact calibration, compare the same normalization of $\chi$. All failed return trials remain included in $n$.
 
-| Method | Primitive and allocation | Worst-case upper bound on $n\operatorname{Var}(\widehat\chi)$ |
+| Method | Primitive and allocation | Worst-case coefficient or upper bound on $n\operatorname{Var}(\widehat\chi)$ |
 |---|---|---:|
-| Six Pauli products | Six local-axis settings, equal allocation | $9/16=0.5625$ |
+| Optimal fully separable measurements per input copy | Classical adaptation allowed; six uniformly randomized Pauli settings attain the minimax value | $9/16=0.5625$ exactly |
 | Controlled-cycle Hadamard test | Ancilla quadrature after controlled cycle | $1/4=0.25$ |
 | Spectral chirality measurement | Outcomes $0,\pm\sqrt3/4$ | $3/16=0.1875$ |
 | Hard-core vacancy return | Two fluxes, equal allocation | $3/[16(1-r)^2]=0.1984038180\ldots$ |
-| Finite-$U$ example above | Four settings, allocation proportional to $|w_i|$ per sign | $(|w_1|+|w_2|)^2=1.0329363137\ldots$ |
+| Finite-$U$ complete parity, $u=16$, $\tau=\pi$ | One duration, two equally randomized fluxes; certified corrected score | $<0.389156263913$ |
+| Finite-$U$ return-only example above | Four settings, allocation proportional to $|w_i|$ per sign | $(|w_1|+|w_2|)^2=1.0329363137\ldots$ |
 
 The Pauli decomposition is $\chi=(XYZ+YZX+ZXY-XZY-YXZ-ZYX)/8$; it needs no entangling measurement gate. The Hadamard test uses $\operatorname{Im}\langle C\rangle=2\langle\chi\rangle$. These established alternatives and projective sector preparation are described in [R23](REFERENCES.md).
 
+The separable benchmark is a lower bound for the whole declared measurement class. A normalized fully separable effect has chirality expectation at most $1/8$ in absolute value. With $\operatorname{Tr}\chi^2=3/4$, Cauchy–Schwarz yields $n\operatorname{Var}_{I_8/8}(\widehat\chi)\ge9/16$ for unbiased scoring. A classical score/Fisher-information argument extends the bound to arbitrary estimators locally unbiased around that input, even with classical adaptation between copies. Randomized Pauli scores $\pm3/4$ attain worst-case coefficient $9/16$. The [self-contained proof](research/SEPARABLE_BENCHMARK.md) establishes the exact minimax value without claiming a new general statistical principle; LOCC measurements within one copy are included [CLMOW14](REFERENCES.md).
+
+The certified complete-parity bound therefore proves a strict minimax sampling advantage over universally unbiased protocols using fully separable effects across the three spins of each copy. It also improves the mixed-input coefficient from $9/16$ to the certified interval above. This does not assert pointwise superiority on every state, superiority to the controlled-cycle test, or a bound on collective measurements across copies or estimators exploiting a state promise.
+
 Spatial output counts carrying collective internal-state phases, including signed orientation-sensitive tritter contrasts, have optical antecedents [M17](REFERENCES.md). Those independent-photon experiments use different preparations and dynamics from the arbitrary correlated spin inputs and finite-repulsion vacancy instrument considered here.
 
-For the finite-$u=16$ allocation, the actual coefficient on input $I_8/8$ is $0.8759834953$, exceeding both direct Pauli and Hadamard-test coefficients on that same input. The hard-core bound is smaller than separately sampled Pauli products, but that sampling comparison does not equate their physical controls. Full derivations are in [the matched resource comparison, Section 6](source/resource-review-2026-10-10/READOUT_AND_RESOURCES.md).
+For the four-setting finite-$u=16$ return-only allocation, the coefficient on input $I_8/8$ is $0.8759834953$. Retaining complete parity images reduces this coefficient to the certified interval near $0.2848954942$, with one evolution duration. Both methods count all original preparations. The original return-only derivations remain in [the matched resource comparison, Section 6](source/resource-review-2026-10-10/READOUT_AND_RESOURCES.md); the complete-image and separable-benchmark proofs above specify the stronger comparison.
 
 The vacancy implementation uses coherent spin-independent flux hopping, a localized motional ancilla, calibrated durations, and total site parity. Retained entanglement adds atom-preserving spin-coherent detection; repetition requires those properties after every cycle. Component experiments in [the references](REFERENCES.md) establish relevant imaging and flux capabilities separately. The mathematical result is the specified native instrument and its calibrated input readout, with these distinct operational requirements.

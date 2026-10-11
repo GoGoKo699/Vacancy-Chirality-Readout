@@ -1,0 +1,236 @@
+{
+  "certificate": "PASS: exact integer and rational enclosures; no floating arithmetic",
+  "parameters": {
+    "u": 16,
+    "tau": "pi",
+    "phi": "-2*pi/3"
+  },
+  "dimension": 40,
+  "input_sector": [
+    "001",
+    "010",
+    "100"
+  ],
+  "fixed_point_bits": 1024,
+  "taylor_order": 1280,
+  "matrix_infinity_norm_upper": 256,
+  "arctan_terms": [
+    219,
+    64
+  ],
+  "matrix_rounding_error_units": 206388,
+  "action_error_strict_upper": "1e-170",
+  "patterns": [
+    "0001",
+    "0010",
+    "0100",
+    "0111",
+    "1000",
+    "1011",
+    "1101",
+    "1110"
+  ],
+  "rational_reference_scores": [
+    "0.736714019013",
+    "0.252900613464",
+    "2.336375499791",
+    "0.730697335072",
+    "-0.660422527924",
+    "-0.288874449056",
+    "-0.305946882115",
+    "-0.540240033331"
+  ],
+  "calibration_c": [
+    [
+      "0.016861900419535",
+      "0.016861900419536"
+    ],
+    [
+      "-0.001782419793016",
+      "-0.001782419793015"
+    ],
+    [
+      "0.009876735985593",
+      "0.009876735985594"
+    ],
+    [
+      "0.882495355700744",
+      "0.882495355700745"
+    ],
+    [
+      "-0.007983517467391",
+      "-0.007983517467390"
+    ],
+    [
+      "-0.168607694064298",
+      "-0.168607694064297"
+    ],
+    [
+      "-0.549326203023017",
+      "-0.549326203023016"
+    ],
+    [
+      "-0.181534157758153",
+      "-0.181534157758152"
+    ]
+  ],
+  "calibration_d": [
+    [
+      "-0.002471027799714",
+      "-0.002471027799713"
+    ],
+    [
+      "-0.000695435789215",
+      "-0.000695435789214"
+    ],
+    [
+      "-0.004004068088556",
+      "-0.004004068088555"
+    ],
+    [
+      "0.013294478223838",
+      "0.013294478223839"
+    ],
+    [
+      "0.000150469675469",
+      "0.000150469675470"
+    ],
+    [
+      "-0.001134147296669",
+      "-0.001134147296668"
+    ],
+    [
+      "-0.005839470462484",
+      "-0.005839470462483"
+    ],
+    [
+      "0.000699201537325",
+      "0.000699201537326"
+    ]
+  ],
+  "pivot_patterns": [
+    "0111",
+    "0100"
+  ],
+  "pivot_determinant": [
+    "-0.003664877543543",
+    "-0.003664877543542"
+  ],
+  "exact_score_correction_intervals": {
+    "alpha": [
+      "0.000000000000376658",
+      "0.000000000000376659"
+    ],
+    "beta": [
+      "-0.000000000000483984",
+      "-0.000000000000483983"
+    ]
+  },
+  "calibrated_second_moment_eigenvalues": {
+    "symmetric": [
+      "0.200630608735832",
+      "0.200630608740356"
+    ],
+    "reflection_odd": [
+      "0.389156263907647",
+      "0.389156263912171"
+    ],
+    "reflection_even_standard": [
+      "0.349164495423067",
+      "0.349164495427591"
+    ]
+  },
+  "calibrated_second_moment_norm_upper": "0.389156263913",
+  "maximally_mixed_second_moment": [
+    "0.284895494200",
+    "0.284895494206"
+  ],
+  "noise_window": {
+    "score_absolute_upper": "2.336375499790517",
+    "singleton_score_half_range": [
+      "1.498399013857258",
+      "1.498399013857259"
+    ],
+    "coarse_bounds": {
+      "A": "2.337",
+      "C1": "1.499",
+      "T_operator_norm": "0.390",
+      "Q_maximally_mixed": "0.285"
+    },
+    "uniform_window": {
+      "lambda": [
+        "0",
+        "0.01"
+      ],
+      "bit_error_q": [
+        "0",
+        "0.003"
+      ]
+    },
+    "requires": "equal spin-independent loss, independent symmetric bit errors, known survival-and-no-flip correction, exactly calibrated nominal scores",
+    "exponential_series_order": 20,
+    "exp_lambda_endpoint": [
+      "1.010050167084168057",
+      "1.010050167084168058"
+    ],
+    "exp_3lambda_endpoint": [
+      "1.030454533953516855",
+      "1.030454533953516856"
+    ],
+    "bias_upper": "0.001429313207303",
+    "all_input_second_moment_upper": "0.410838798136739",
+    "maximally_mixed_second_moment_upper": "0.301332902828501",
+    "coarse_certified_bounds": {
+      "bias": "0.001430",
+      "all_input_second_moment": "0.411",
+      "maximally_mixed_second_moment": "0.302"
+    },
+    "scope": "Calibration and noise-rate uncertainty require separate budgets."
+  },
+  "effect_neighborhood": {
+    "uniform_effect_operator_norm_radius": "0.00001",
+    "requires": "SU(2) invariance, flux reflection, exact recalibration, complete POVM",
+    "pivot_determinant": [
+      "-0.003670429415698",
+      "-0.003659326204720"
+    ],
+    "score_correction_intervals": {
+      "alpha": [
+        "-0.000239503463090",
+        "0.000239503463845"
+      ],
+      "beta": [
+        "-0.008639745333051",
+        "0.008639745332082"
+      ]
+    },
+    "second_moment_norm_upper": "0.429677331196",
+    "certified_less_than": "0.45"
+  },
+  "parameter_box": {
+    "strict_coordinate_radius": "0.0000001",
+    "coordinates": [
+      "u",
+      "tau",
+      "phi"
+    ],
+    "requires": "uniform spin-independent ring, exact recalibration at actual parameters",
+    "effect_variation_upper": "0.000001542477827",
+    "pivot_determinant": [
+      "-0.003665733872724",
+      "-0.003664021227050"
+    ],
+    "score_correction_intervals": {
+      "alpha": [
+        "-0.000036839976201",
+        "0.000036839976955"
+      ],
+      "beta": [
+        "-0.001330898344083",
+        "0.001330898343115"
+      ]
+    },
+    "second_moment_norm_upper": "0.395388567053",
+    "certified_less_than": "0.4"
+  }
+}

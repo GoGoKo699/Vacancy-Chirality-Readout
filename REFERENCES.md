@@ -1,6 +1,6 @@
 # References and attribution
 
-The result is a specified vacancy-return instrument and its finite-repulsion chirality reconstruction. The spin-cycle mechanism, chirality observables, permutation algebra, and standard measurement tools have established antecedents.
+The results specify a vacancy-return instrument, finite-repulsion chirality reconstruction from return or complete-parity statistics, and a certified sampling comparison with separable measurements. The spin-cycle mechanism, chirality observables, permutation algebra, and standard measurement tools have established antecedents.
 
 ## Mathematical and measurement predecessors
 
@@ -9,6 +9,8 @@ The result is a specified vacancy-return instrument and its finite-repulsion chi
 **[R23]** L. I. Reascos, B. Murta, E. F. Galvão, and J. Fernández-Rossier, *Quantum circuits to measure scalar spin chirality*, Physical Review Research **5**, 043087 (2023). [Article](https://doi.org/10.1103/PhysRevResearch.5.043087) · [arXiv:2306.14804](https://arxiv.org/abs/2306.14804). This work supplies direct Pauli-string measurements, a controlled-cycle Hadamard test, qutrit phase estimation, and measurement-based chirality-sector preparation. Its normalized observable is $\widehat\chi=4\chi/\sqrt3$. The chirality witness and sector-preparation principle are inherited. The direct Pauli baseline requires no entangling measurement gate.
 
 **[EW01]** T. Eggeling and R. F. Werner, *Separability properties of tripartite states with $U\otimes U\otimes U$ symmetry*, Physical Review A **63**, 042111 (2001). [arXiv:quant-ph/0010096](https://arxiv.org/abs/quant-ph/0010096). The collective-unitary commutant is permutation-generated. For three qubits its Hermitian span is five-dimensional; combining it with spatial reflection gives the two-observable finite-repulsion contrast used here.
+
+**[CLMOW14]** E. Chitambar, D. Leung, L. Mancinska, M. Ozols, and A. Winter, *Everything You Always Wanted to Know About LOCC (But Were Afraid to Ask)*, Communications in Mathematical Physics **328**, 303–326 (2014). [Article](https://doi.org/10.1007/s00220-014-1953-9) · [arXiv:1210.4583](https://arxiv.org/abs/1210.4583). Section 2.3 establishes the inclusion of LOCC in separable operations. This supports the operational scope of the per-copy separable-effects benchmark; it does not supply the chirality-specific constant derived here.
 
 **[BDL11]** S. Bravyi, D. P. DiVincenzo, and D. Loss, *Schrieffer–Wolff transformation for quantum many-body systems*, Annals of Physics **326**, 2793–2826 (2011). [arXiv:1105.0675](https://arxiv.org/abs/1105.0675). This is the background for the optional fixed-time block-elimination interpretation. The quantitative operation bound in this repository instead follows directly from energy conservation and Duhamel’s formula.
 
@@ -41,6 +43,10 @@ These are component-level comparisons. Combining their capabilities into the par
 
 ## Sampling comparison
 
-Use the common $\chi=\mathbf S_1\cdot(\mathbf S_2\times\mathbf S_3)$ normalization and count $n$ original independent input trials. On the maximally mixed input, the declared $U/J=16$ four-setting example has $n\operatorname{Var}(\widehat\chi)\simeq0.8759835$ under its stated allocation. Separately sampled Pauli products give $0.5625$ and the controlled-cycle Hadamard test gives $0.25$. These ideal sampling coefficients compare the named implementations; they do not assign equal hardware cost to their controls.
+Use the common $\chi=\mathbf S_1\cdot(\mathbf S_2\times\mathbf S_3)$ normalization and count $n$ original independent input trials. The [separable benchmark](research/SEPARABLE_BENCHMARK.md) proves exact minimax coefficient $9/16=0.5625$ for universally unbiased estimation with fully separable effects on each three-spin copy, including classical adaptation between copies. Six uniformly randomized Pauli-product settings attain it. Its proof applies elementary Cauchy–Schwarz and classical Fisher-information arguments to the product-state chirality bound; no new general statistical principle or exhaustive priority result is claimed.
+
+For complete parity images at $U/J=16$, $Jt=\pi$, the [rational certificate](research/CERTIFICATE.md) proves a worst-case variance coefficient below $0.389156263913$ and a mixed-input coefficient in $(0.284895494200,0.284895494206)$. This gives strict minimax sampling advantage over the declared separable-effects class. The controlled-cycle Hadamard test has coefficient $0.25$ on the mixed input and uses an entangling measurement outside that class. These ideal comparisons do not equate hardware costs or establish pointwise superiority on every input.
+
+The return-only four-setting example has mixed-input coefficient approximately $0.8759835$ under its stated allocation. Its reconstruction remains valid for every fixed finite positive repulsion with a suitable pair of durations. Complete-image scoring extracts additional information from the detector record, with the separate loss and calibration conditions in [the noise budget](research/NOISE_BUDGET.md).
 
 For derivations and the exact allocation, see [the resource account, §6](source/resource-review-2026-10-10/READOUT_AND_RESOURCES.md#6-compare-the-correct-tasks-and-input-trial-normalization). The [preserved source reading record](source/resource-review-2026-10-10/SOURCES.md) documents the original targeted comparison. The present references refine attribution without asserting exhaustive priority clearance.
