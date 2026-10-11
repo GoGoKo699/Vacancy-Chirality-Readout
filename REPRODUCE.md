@@ -23,7 +23,7 @@ python research/parity_certificate.py --output ../parity-certificate/certificate
 
 | Groups | Implementation | Coverage |
 |---:|---|---|
-| 3 | [Calibration-cost cross-checks](research/check_calibration_cost.py) | Exact moments against the numerical model; confidence-box propagation; biased separable information/prior bound; finite counts and reuse accounting |
+| 3 | [Calibration-cost cross-checks](research/check_calibration_cost.py) | Exact moments against the numerical model; confidence-box propagation; biased separable information/prior bound; finite counts, full-cycle cost, stability, and matched-channel pooling |
 | 3 | [Channel-calibration cross-checks](research/check_channel_calibration.py) | Product-reference identities; full noisy-effect reconstruction; calibrated mean and variance; a symmetry-breaking counterexample |
 | 4 | [Complete-parity cross-checks](research/check_complete_parity.py) | Physical opposite-flux effects, exact reconstruction identities checked numerically, symmetry-block variance, separable benchmark attainment, and loss/detector probability budgets |
 | 1 | [Complete-parity exact certificate](research/parity_certificate.py) | Rational/integer enclosure of propagator, calibration rank, exactly corrected scores, second and fourth moments, sufficient neighborhoods, and a uniform noise window |
@@ -37,6 +37,8 @@ The floating-point [complete-parity model](research/complete_parity.py) uses the
 The channel-calibration diagnostic includes uniform particle attenuation after the hopping interval and parity-bit errors. This terminal-loss model is distinct from the continuous-time Lindblad model in the preserved checks. Its displayed numerical examples are not interval-certified operating regions. The channel theorem itself follows analytically from the stated symmetries.
 
 The calibration-cost checker reads the exact-certificate report produced earlier in the same run. It independently compares its nominal moments with the numerical model and exercises the confidence and counting algebra. Its finite planning profile substitutes model moments for hypothetical empirical moments, including the unbiased sample-variance factors. It is not an experimental record or a guaranteed-pass sample budget. The [cost account](research/CALIBRATION_COST.md) separates confidence-qualified conditional risk, unconditional risk, and leading asymptotic forecasts. The calculator is [calibration_cost.py](research/calibration_cost.py); its floating-point results are not interval certificates.
+
+The same checker tests full-cycle reuse and stability boundaries, adds a specified operator-drift allowance, and constructs valid heterogeneous POVMs to check matched-mixture calibration and its failure under state-channel correlation. These are analytical cross-checks for [repeated scans](research/REPEATED_STATE_SCANS.md), not measurements of cycle time, spatial independence, or laboratory stability.
 
 The new exact checker constructs its own Hamiltonian in the complete 40-state fixed-magnetization sector. Collective spin symmetry makes its three input columns sufficient to certify the full eight-dimensional input effects. Its numerical bounds use no floating matrix exponential or eigensolver. The [certificate account](research/CERTIFICATE.md) explains the enclosure, while the [separable benchmark](research/SEPARABLE_BENCHMARK.md) is an analytical theorem; the numerical checker verifies its saturating local protocol.
 

@@ -42,12 +42,16 @@ This algebraic consequence explicitly credits a precedent for **signed** interna
 
 | Source | Established component | Scope of its use here |
 |---|---|---|
+| **[N12]** S. Nascimbène et al., *Experimental Realization of Plaquette Resonating Valence-Bond States with Ultracold Atoms in Optical Superlattices*, Physical Review Letters **108**, 205301 (2012). [Article](https://doi.org/10.1103/PhysRevLett.108.205301) · [arXiv:1202.6361](https://arxiv.org/abs/1202.6361) | Parallel spinful bosonic plaquettes and controlled spin-state preparation | Supports a repeated spin-preparation scan; four occupied sites and ensemble detection differ from the three-spin parity instrument |
+| **[I25]** A. Impertro et al., *Realization of strongly-interacting Meissner phases in large bosonic flux ladders*, Nature Physics **21**, 895–901 (2025). [Article](https://doi.org/10.1038/s41567-025-02890-0) · [arXiv:2412.09481](https://arxiv.org/abs/2412.09481) | Interacting cesium flux systems, parallel plaquettes, and parity microscopy | Supplies integrated orbital-control and imaging evidence; its orbital pseudospins are distinct from this protocol's internal spins |
 | **[B24]** S. Buob et al., *A Strontium Quantum-Gas Microscope*, PRX Quantum **5**, 020316 (2024). [Article](https://doi.org/10.1103/PRXQuantum.5.020316) | On-site parity projection through light-assisted collisions during cooling | Supports the parity-imaging primitive; the stated experiment uses bosonic strontium |
 | **[A13]** M. Aidelsburger et al., *Experimental realization of strong effective magnetic fields in optical superlattice potentials*, Applied Physics B **113**, 1–11 (2013). [Article](https://doi.org/10.1007/s00340-013-5418-1) · [arXiv:1212.2911](https://arxiv.org/abs/1212.2911) | Photon-assisted orbital phases independent of internal atomic structure; four-site single-particle plaquette dynamics | Supports the synthetic-flux control concept |
 | **[F25]** A. Muzi Falconi et al., *Microsecond-Scale High-Survival and Number-Resolved Detection of Ytterbium Atom Arrays*, Physical Review Letters **135**, 203402 (2025). [Article](https://doi.org/10.1103/n3bg-7yw7) · [arXiv:2507.01011](https://arxiv.org/abs/2507.01011) | Fast number-resolved imaging and atom survival | Supports those detector capabilities; arbitrary retained internal-spin coherence requires its own evidence |
 | **[N24]** Y. Nakamura et al., *Hybrid Atom Tweezer Array of Nuclear Spin and Optical Clock Qubits*, Physical Review X **14**, 041062 (2024). [Article](https://doi.org/10.1103/PhysRevX.14.041062) · [arXiv:2406.12247](https://arxiv.org/abs/2406.12247) | Nuclear-spin coherence tested while imaging a different isotope | Demonstrates a relevant coherence test in a dual-isotope architecture |
 
 These are component-level comparisons. Combining their capabilities into the particular spinful flux ring and coherent retained detector is an additional apparatus question. The analytical result specifies that detector requirement explicitly.
+
+The [repeated-state-scan account](research/REPEATED_STATE_SCANS.md) uses [N12], [A13], and [I25] to identify a concrete candidate workflow. It derives full-cycle cost and stability requirements without converting component demonstrations into a measured advantage for the proposed instrument.
 
 ## Sampling comparison
 

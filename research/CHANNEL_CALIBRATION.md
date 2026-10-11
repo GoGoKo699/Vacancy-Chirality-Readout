@@ -342,6 +342,10 @@ probes remain $\rho_x,\rho_d$.
 The same fixed-score certificate can be reused for different unknown input
 states and repeated batches while the physical channel remains stable.
 This can amortize calibration effort; it does not make calibration free.
+For parallel arrays, a common calibration also applies to a matched,
+state-independent mixture of channels. The [repeated-scan proof](REPEATED_STATE_SCANS.md)
+states that condition and bounds errors from mismatched mixtures; parallel
+pixels are not automatically independent validation samples.
 If all preparations are charged equally, compare an actual total resource
 budget containing both known and unknown preparations. A finite-validation
 estimator can have residual bias, so the exact unbiased separable benchmark

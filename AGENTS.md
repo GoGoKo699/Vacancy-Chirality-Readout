@@ -12,7 +12,7 @@ Before editing, check the Git remote and current branch. Do not modify any other
 3. `REFERENCES.md`
 4. `REPRODUCE.md`
 5. `research/COMPLETE_PARITY_THEORY.md`, `research/SEPARABLE_BENCHMARK.md`,
-   `research/CERTIFICATE.md`, `research/CHANNEL_CALIBRATION.md`, `research/CALIBRATION_COST.md`, and `research/NOISE_BUDGET.md` for the two-setting result.
+   `research/CERTIFICATE.md`, `research/CHANNEL_CALIBRATION.md`, `research/CALIBRATION_COST.md`, `research/REPEATED_STATE_SCANS.md`, and `research/NOISE_BUDGET.md` for the two-setting result.
 6. The linked proof and implementation records needed for the task.
 
 This project concerns a four-site vacancy-return implementation of scalar-spin-chirality readout. Retrieval terms include vacancy chirality, spin-independent Bose–Hubbard ring, finite-repulsion parity readout, complete-parity two-flux estimation, separable measurement benchmark, two-time chirality calibration, and coherent retained-state filtering. Use this repository for those results and follow the attribution in `REFERENCES.md`.
@@ -28,6 +28,7 @@ This project concerns a four-site vacancy-return implementation of scalar-spin-c
 - The exact $9/16$ separable benchmark concerns unbiased estimation with fully separable effects on each three-spin copy, including classical adaptation. Its finite-sample extension permits biased estimators with uniformly bounded mean-square error. Neither establishes collective-measurement, hardware-cost, or pointwise-all-states advantage. Noisy estimates require mean-square-error budgets including bias.
 - Direct channel calibration assumes spin and reflection covariance and a stable instrument. Separate pilot, validation, and unknown-input data; include reference-preparation errors and known-reference costs. Three product probes calibrate the symmetry class but do not verify that the instrument belongs to it.
 - Distinguish a confidence-qualified conditional risk from the unconditional risk of random calibration and estimation. Hypothetical moment profiles are not observed validation data or guaranteed-pass counts. Leading reuse forecasts are neither finite-sample guarantees nor necessary thresholds; shared bias does not shrink with reuse.
+- A copy-count lower bound becomes a class-wide time lower bound only with a justified minimum cost per copy. Parallel calibration requires a matched state-independent channel mixture and valid sampling assumptions; shared flux choices and frame noise can correlate pixels. Single-shot coherence times do not establish inter-shot calibration stability.
 - Retain the established-source attribution. Do not claim a new chirality principle, universal hardware advantage, or exhaustive priority result.
 - Manuscript drafting and new scientific directions require an author request. Keep journal targets out of repository text.
 

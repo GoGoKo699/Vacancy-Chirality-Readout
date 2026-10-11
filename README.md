@@ -26,7 +26,7 @@ The value $9/16$ is the exact minimax coefficient for universally unbiased estim
 
 The implemented readout can also be calibrated directly using **three known product-state preparations**. They determine the full response within the spin-rotation and reflection symmetry class, including loss and detector errors, without separately known noise rates. At the nominal operating point, exact channel recalibration retains a certified variance coefficient below $0.446<9/16$ throughout the specified equal-loss and bit-error window $\gamma t\le0.01$, $q\le0.003$. Independent validation bounds finite-calibration bias and sampling cost; see [direct channel calibration](research/CHANNEL_CALIBRATION.md).
 
-**Calibration cost limits the practical claim.** Variance-sensitive validation and a finite-sample separable lower bound that permits biased estimators now support an explicit [preparation-cost audit](research/CALIBRATION_COST.md). It does not establish a one-use total-cost advantage when reference and unknown-state preparations cost the same. Cheap product references or many uses of a stable calibration can change that conclusion. The worked finite profile is a labeled forecast, not experimental data or an unconditional risk guarantee.
+**Calibration cost limits the practical claim.** Variance-sensitive validation and a finite-sample separable lower bound that permits biased estimators support an explicit [preparation-cost audit](research/CALIBRATION_COST.md). It does not establish a one-use total-cost advantage when reference and unknown-state preparations cost the same. A [repeated chirality scan](research/REPEATED_STATE_SCANS.md) provides a concrete reuse model with full-cycle costs, drift allowances, and conditions for pooling parallel plaquettes. Its experimental precedents support components; the worked cost profile remains a forecast rather than measured apparatus performance.
 
 A complementary [return-only reconstruction](THEORY.md#3-exact-finite-repulsion-reconstruction), using two durations and two fluxes, has a general existence proof for every fixed finite $U/J>0$. The two-setting result is certified at the stated point and in a sufficient neighborhood; it is not asserted for every repulsion.
 
@@ -51,6 +51,7 @@ For known particle number at most three, parity pattern $0111$ is exactly occupa
 | [Exact certificate](research/CERTIFICATE.md) | Validated finite-repulsion performance and sufficient neighborhoods |
 | [Direct channel calibration](research/CHANNEL_CALIBRATION.md) | Three product references, unknown noise rates, and finite-sample validation |
 | [Calibration cost and reuse](research/CALIBRATION_COST.md) | Reference counts, finite biased-estimator comparison, confidence, and amortization |
+| [Repeated chirality scans](research/REPEATED_STATE_SCANS.md) | Candidate workflow, experimental precedents, full-cycle costs, stability, and parallel-channel pooling |
 | [Noise budget](research/NOISE_BUDGET.md) | Loss, parity errors, calibration uncertainty, and mean-square error |
 | [References and attribution](REFERENCES.md) | Mathematical predecessors, measurement baselines, and component experiments |
 | [Reproduce the results](REPRODUCE.md) | Twenty-seven check groups, exact certificates, and source integrity |
