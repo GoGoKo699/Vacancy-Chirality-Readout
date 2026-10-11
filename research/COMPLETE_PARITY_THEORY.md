@@ -253,6 +253,8 @@ singleton scores. The [noise budget](NOISE_BUDGET.md) treats this distinction,
 survival normalization, parity-bit confusion, and calibration errors.
 No successful-trial postselection is used in the estimator or variance.
 
+For a stable spin-invariant, reflection-related noisy instrument, [direct channel calibration](CHANNEL_CALIBRATION.md) reconstructs its complete response from three product references. This route includes lower-particle-number aliases and detector confusion in the calibrated effect itself. Exact coefficients give exact unbiasedness; independent validation controls finite-calibration error.
+
 This result changes the terminal use of recorded parity images. The
 return event's retained-state operation and its coherence requirements
 remain those of the main theory. The collective-spin commutant and

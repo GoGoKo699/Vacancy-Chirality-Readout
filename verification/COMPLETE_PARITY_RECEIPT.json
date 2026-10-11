@@ -1,5 +1,9 @@
 {
   "canonical_reports_byte_identical": true,
+  "channel_calibration_groups": 3,
+  "channel_calibration_pass": true,
+  "channel_calibration_report": "channel-calibration.json",
+  "channel_calibration_returncode": 0,
   "complete_parity_certificate_groups": 1,
   "complete_parity_certificate_pass": true,
   "complete_parity_certificate_report": "complete-parity-certificate.json",
@@ -14,16 +18,18 @@
   "preserved_assertions_pass": true,
   "preserved_scientific_groups": 16,
   "research_inputs_sha256_after": {
+    "research/check_channel_calibration.py": "8c9bd1db70286b37f0c778c643d0698ec77023f2307ed788703058eb6158dfa5",
     "research/check_complete_parity.py": "71010eff8abb0223cafea8fbd31c5b7360d5f63055eabe47332be79d45d21f2d",
     "research/complete_parity.py": "98f425d23277f61c2fa76b938a136b143fbf74bd9730482101ff4b4deaa32aa9",
-    "research/parity_certificate.py": "8899bc6880e5ece6a4b3a6c5676959cd308769e83132a7c81ec36d90f7fb88a5",
-    "verify.py": "adb559b7c15391c590251bba7ce7208e598923e8a3ab91c558ebda297a71d9c2"
+    "research/parity_certificate.py": "6ba3817f470e94c982bb958862bfb25c171d9ec60187d4812ed41278c5a72b56",
+    "verify.py": "bb3dc224e5d20a29d0ae3c3e374e88ad7f13dc9be82d25a1f404a9595590c156"
   },
   "research_inputs_sha256_before": {
+    "research/check_channel_calibration.py": "8c9bd1db70286b37f0c778c643d0698ec77023f2307ed788703058eb6158dfa5",
     "research/check_complete_parity.py": "71010eff8abb0223cafea8fbd31c5b7360d5f63055eabe47332be79d45d21f2d",
     "research/complete_parity.py": "98f425d23277f61c2fa76b938a136b143fbf74bd9730482101ff4b4deaa32aa9",
-    "research/parity_certificate.py": "8899bc6880e5ece6a4b3a6c5676959cd308769e83132a7c81ec36d90f7fb88a5",
-    "verify.py": "adb559b7c15391c590251bba7ce7208e598923e8a3ab91c558ebda297a71d9c2"
+    "research/parity_certificate.py": "6ba3817f470e94c982bb958862bfb25c171d9ec60187d4812ed41278c5a72b56",
+    "verify.py": "bb3dc224e5d20a29d0ae3c3e374e88ad7f13dc9be82d25a1f404a9595590c156"
   },
   "research_inputs_unchanged": true,
   "scientific_assertions_pass": true,
@@ -50,5 +56,5 @@
   "source_receipt": "source-run/RECEIPT.json",
   "source_verifier_returncode": 0,
   "status": "PASS",
-  "total_scientific_groups": 21
+  "total_scientific_groups": 24
 }

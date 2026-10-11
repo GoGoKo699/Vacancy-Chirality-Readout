@@ -24,6 +24,8 @@ $$
 
 The value $9/16$ is the exact minimax coefficient for universally unbiased estimation using **fully separable measurement effects on each three-spin copy**, including adaptive local measurements. The [benchmark proof](research/SEPARABLE_BENCHMARK.md) states the precise measurement class. The certified result reduces the worst-case copy requirement by over 30.8% within this comparison. It does not equate apparatus costs or cover collective measurements across copies.
 
+The implemented readout can also be calibrated directly using **three known product-state preparations**. They determine the full response within the spin-rotation and reflection symmetry class, including loss and detector errors, without separately known noise rates. At the nominal operating point, exact channel recalibration retains a certified variance coefficient below $0.446<9/16$ throughout the specified equal-loss and bit-error window $\gamma t\le0.01$, $q\le0.003$. Independent validation bounds finite-calibration bias and sampling cost; see [direct channel calibration](research/CHANNEL_CALIBRATION.md).
+
 A complementary [return-only reconstruction](THEORY.md#3-exact-finite-repulsion-reconstruction), using two durations and two fluxes, has a general existence proof for every fixed finite $U/J>0$. The two-setting result is certified at the stated point and in a sufficient neighborhood; it is not asserted for every repulsion.
 
 ## What the detector must do
@@ -45,11 +47,12 @@ For known particle number at most three, parity pattern $0111$ is exactly occupa
 | [Complete-parity derivation](research/COMPLETE_PARITY_THEORY.md) | One-duration calibration, score optimization, and exact worst-case variance |
 | [Separable measurement benchmark](research/SEPARABLE_BENCHMARK.md) | Tight lower bound, adaptive measurements, and scope |
 | [Exact certificate](research/CERTIFICATE.md) | Validated finite-repulsion performance and sufficient neighborhoods |
+| [Direct channel calibration](research/CHANNEL_CALIBRATION.md) | Three product references, unknown noise rates, and finite-sample validation |
 | [Noise budget](research/NOISE_BUDGET.md) | Loss, parity errors, calibration uncertainty, and mean-square error |
 | [References and attribution](REFERENCES.md) | Mathematical predecessors, measurement baselines, and component experiments |
-| [Reproduce the results](REPRODUCE.md) | Twenty-one check groups, exact certificates, and source integrity |
+| [Reproduce the results](REPRODUCE.md) | Twenty-four check groups, exact certificates, and source integrity |
 
-The runtime protocol uses coherent flux hopping, a localized vacancy, calibrated dynamics, and parity detection. It requires no local spin rotations, controlled permutations, or spin-resolved measurements. Calibration, survival, and sampling costs remain part of the comparison with other measurement resources.
+The runtime protocol uses coherent flux hopping, a localized vacancy, calibrated dynamics, and parity detection. It requires no local spin rotations, controlled permutations, or spin-resolved measurements. Direct channel calibration additionally uses known local spin-axis preparations. Calibration, survival, and sampling costs remain part of the comparison with other measurement resources.
 
 ## Reproduce
 

@@ -7,7 +7,7 @@ below are analytical. The [exact certificate](CERTIFICATE.md) establishes the
 score and operator bounds used in the uniform noise window in Section 5.
 The finer numerical table evaluates the bounds with the floating-point scores
 in [complete_parity.py](complete_parity.py). The loss and detector channels
-are diagnostic models; their parameters are not measured apparatus data.
+are diagnostic models; their parameters are not measured apparatus data. An alternative [direct channel calibration](CHANNEL_CALIBRATION.md) includes the whole noisy response in its two-coordinate reconstruction, without separately known rates. At the nominal operating point, the [exact certificate](CERTIFICATE.md) proves that this full-channel recalibration gives an unbiased estimator with second moment below $0.446$ throughout the same $\lambda\le0.01$, $q\le0.003$ rectangle. Exact response coefficients are assumed for that unbiasedness statement. The method uses known product references and an independent finite-data validation budget; the fixed-score bounds below remain useful when that recalibration is not performed.
 
 ## 1. Score convention and input-trial accounting
 

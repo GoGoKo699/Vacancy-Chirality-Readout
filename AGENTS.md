@@ -12,7 +12,7 @@ Before editing, check the Git remote and current branch. Do not modify any other
 3. `REFERENCES.md`
 4. `REPRODUCE.md`
 5. `research/COMPLETE_PARITY_THEORY.md`, `research/SEPARABLE_BENCHMARK.md`,
-   `research/CERTIFICATE.md`, and `research/NOISE_BUDGET.md` for the two-setting result.
+   `research/CERTIFICATE.md`, `research/CHANNEL_CALIBRATION.md`, and `research/NOISE_BUDGET.md` for the two-setting result.
 6. The linked proof and implementation records needed for the task.
 
 This project concerns a four-site vacancy-return implementation of scalar-spin-chirality readout. Retrieval terms include vacancy chirality, spin-independent Bose–Hubbard ring, finite-repulsion parity readout, complete-parity two-flux estimation, separable measurement benchmark, two-time chirality calibration, and coherent retained-state filtering. Use this repository for those results and follow the attribution in `REFERENCES.md`.
@@ -26,6 +26,7 @@ This project concerns a four-site vacancy-return implementation of scalar-spin-c
 - Numerical examples and diagnostic noise channels are not measured apparatus parameters. Analytical bounds, floating-point diagnostics, and external experimental evidence must remain distinguishable.
 - Keep the certified feasible score distinct from the floating-point mixed-input optimum. The two-setting theorem is certified at a specified finite-repulsion point and sufficient neighborhoods; the four-setting existence theorem covers every fixed positive repulsion.
 - The separable benchmark concerns unbiased estimation with fully separable effects on each three-spin copy, including classical adaptation. No collective-measurement, hardware-cost, or pointwise-all-states advantage follows. Noisy estimates require mean-square-error budgets including bias.
+- Direct channel calibration assumes spin and reflection covariance and a stable instrument. Separate pilot, validation, and unknown-input data; include reference-preparation errors and known-reference costs. Three product probes calibrate the symmetry class but do not verify that the instrument belongs to it.
 - Retain the established-source attribution. Do not claim a new chirality principle, universal hardware advantage, or exhaustive priority result.
 - Manuscript drafting and new scientific directions require an author request. Keep journal targets out of repository text.
 
@@ -37,6 +38,6 @@ Corrections, new results, and new implementations belong outside the preserved s
 
 ## Verification
 
-For scientific or executable changes, run `python verify.py --output-dir /absolute/new/path` with an output directory outside the repository. Do not run with Python optimization enabled. Check assertion status, source integrity, and canonical-report identity separately; do not relabel a byte-identity mismatch as a scientific failure or silently replace old evidence. The root verifier runs 21 groups: 16 preserved groups, four new numerical cross-checks, and one new integer/rational certificate. It also hashes current verification code before and after execution. `REPRODUCE.md` defines the workflow.
+For scientific or executable changes, run `python verify.py --output-dir /absolute/new/path` with an output directory outside the repository. Do not run with Python optimization enabled. Check assertion status, source integrity, and canonical-report identity separately; do not relabel a byte-identity mismatch as a scientific failure or silently replace old evidence. The root verifier runs 24 groups: 16 preserved groups, four complete-parity numerical cross-checks, three channel-calibration cross-checks, and one integer/rational certificate. It also hashes current verification code before and after execution. `REPRODUCE.md` defines the workflow.
 
 Keep generated outputs outside source directories. Check relative links and `git diff --check` for documentation changes. Preserve unrelated user changes and confirm the remote branch state before merging.

@@ -26,6 +26,13 @@ SCORE_DECIMALS = (
 )
 # The exact correction uses these two columns of the two-row calibration map.
 PIVOTS = (PATTERNS.index((0, 1, 1, 1)), PATTERNS.index((0, 1, 0, 0)))
+# Rational approximation to a second right-inverse column for the scaled map
+# G=(c;4d).  Multiplication by (G B0)^(-1) below makes the inverse exact.
+RIGHT_INVERSE_SECOND = (
+    '-12.579980610295', '-7.146759029809', '-48.311368416521',
+    '1.385838754865', '5.088534362922', '0.402902729639',
+    '-0.010440970833', '2.443795589669',
+)
 
 
 def ceil_fraction(x: F) -> int:
@@ -258,12 +265,12 @@ def calibration_intervals(es, error):
     return cs, ds
 
 
-def correction(cs, ds, b):
+def correction(cs, ds, b, target=(1, 0)):
     p, q = PIVOTS
     determinant = cs[p]*ds[q] - cs[q]*ds[p]
     assert not determinant.lo <= 0 <= determinant.hi
-    residual_c = 1 - sum((bp*cp for bp, cp in zip(b, cs)), Interval(0))
-    residual_d = -sum((bp*dp for bp, dp in zip(b, ds)), Interval(0))
+    residual_c = target[0] - sum((bp*cp for bp, cp in zip(b, cs)), Interval(0))
+    residual_d = target[1] - sum((bp*dp for bp, dp in zip(b, ds)), Interval(0))
     alpha = (residual_c*ds[q] - cs[q]*residual_d)/determinant
     beta = (cs[p]*residual_d - residual_c*ds[p])/determinant
     square_change = max(2*abs(b[index])*z.abs_upper() + z.abs_upper()**2
@@ -286,6 +293,97 @@ def second_moment(es, error, b):
         'reflection_even_standard': Interval(a+c-2*bb).centered_widen(4*err),
     }
     return eigenvalues
+
+
+def sqrt_upper(x):
+    """Strict rational square-root upper bound, by integer square root."""
+    x = F(x)
+    assert x >= 0
+    root = isqrt((x.numerator*SCALE*SCALE)//x.denominator)
+    return F(root+1, SCALE)
+
+
+def strong_neighborhood(es, effect_error, cs, ds, b, alpha, beta, pi, roots):
+    """All-outcome calibration and sectorwise quadratic variance enclosure."""
+    scores = [Interval(v) for v in b]
+    scores[PIVOTS[0]] += alpha
+    scores[PIVOTS[1]] += beta
+    g = [cs, [4*v for v in ds]]
+    b0 = [[bp, F(second)] for bp, second in zip(b, RIGHT_INVERSE_SECOND)]
+    calibration = [[sum((g[i][p]*b0[p][j] for p in range(8)), Interval(0))
+                    for j in range(2)] for i in range(2)]
+    det = calibration[0][0]*calibration[1][1]-calibration[0][1]*calibration[1][0]
+    assert det.lo > F(999, 1000) and det.hi < F(1001, 1000)
+    inverse = [[(row[0]*calibration[1][1]-row[1]*calibration[1][0])/det,
+                (-row[0]*calibration[0][1]+row[1]*calibration[0][0])/det]
+               for row in b0]
+    row_squares = [sum(v.abs_upper()**2 for v in row) for row in inverse]
+    sum_row_norms = sum(sqrt_upper(v) for v in row_squares)
+    inverse_frobenius = sqrt_upper(sum(row_squares))
+    score_l1 = sum(v.abs_upper() for v in scores)
+    score_l2 = sqrt_upper(sum(v.abs_upper()**2 for v in scores))
+    sectors = [[], [], []]
+    for e in es:
+        a = F(e[0][0][0]+e[2][2][0], 2*SCALE)
+        bb = F(e[0][1][0]+e[2][1][0], 2*SCALE)
+        c = F(e[0][2][0]+e[2][0][0], 2*SCALE)
+        for dest, value, multiplier in zip(sectors, (a+bb+c, a-c, a+c-2*bb), (3, 2, 4)):
+            enclosed = Interval(value).centered_widen(multiplier*effect_error)
+            # These are eigenvalues of genuine effects, hence lie in [0,1].
+            dest.append(Interval(max(F(0), enclosed.lo), min(F(1), enclosed.hi)))
+    effect_radius = F(15, 10000)
+    column_radius = 4*effect_radius/roots[3].lo
+    contraction = column_radius*sum_row_norms
+    assert contraction < 1
+    correction_radius = column_radius*score_l1/(1-contraction)
+    effect_moment_error = effect_radius*(score_l2+inverse_frobenius*correction_radius)**2
+    sector_report = []
+    sector_bounds = []
+    for values in sectors:
+        baseline = sum((v*a*a for v, a in zip(values, scores)), Interval(0))
+        linear = [sum((v*a*row[j] for v, a, row in zip(values, scores, inverse)), Interval(0))
+                  for j in range(2)]
+        linear_norm = sqrt_upper(sum(v.abs_upper()**2 for v in linear))
+        # The quadratic coefficient matrix is positive semidefinite, so its
+        # trace bounds its largest eigenvalue without an eigenvalue algorithm.
+        quadratic_trace = sum(v.hi*row_square for v, row_square in zip(values, row_squares))
+        upper = (baseline.hi+2*correction_radius*linear_norm
+                 +correction_radius**2*quadratic_trace+effect_moment_error)
+        sector_bounds.append(upper)
+        sector_report.append({
+            'baseline': display(baseline),
+            'linear_vector_norm_upper': decimal_bound(linear_norm, 12, True),
+            'quadratic_matrix_trace_upper': decimal_bound(quadratic_trace, 12, True),
+            'perturbed_second_moment_upper': decimal_bound(upper, 12, True),
+        })
+    second_upper = max(sector_bounds)
+    assert second_upper < F(54, 100) < F(9, 16)
+    parameter_radius = F(9, 100000)
+    parameter_effect_bound = 6*parameter_radius+3*(pi.hi+parameter_radius)*parameter_radius
+    assert parameter_effect_bound < effect_radius
+    return {
+        'effect_operator_norm_radius': '0.0015',
+        'requires': 'complete SU(2)-invariant effects, flux reflection, exact recalibration',
+        'right_inverse_definition': 'B=B0 (G B0)^(-1), G=(c;4d)',
+        'right_inverse_reference_second_column': list(RIGHT_INVERSE_SECOND),
+        'right_inverse_normalizer_determinant': display(det),
+        'score_l1_upper': decimal_bound(score_l1, 12, True),
+        'score_l2_upper': decimal_bound(score_l2, 12, True),
+        'sum_right_inverse_row_norms_upper': decimal_bound(sum_row_norms, 12, True),
+        'right_inverse_frobenius_norm_upper': decimal_bound(inverse_frobenius, 12, True),
+        'neumann_contraction_upper': decimal_bound(contraction, 12, True),
+        'two_component_correction_norm_upper': decimal_bound(correction_radius, 12, True),
+        'sectors': dict(zip(['symmetric', 'reflection_odd', 'reflection_even_standard'], sector_report)),
+        'second_moment_operator_norm_upper': decimal_bound(second_upper, 12, True),
+        'certified_less_than': '0.54 < 9/16',
+        'uniform_ring_parameter_box': {
+            'strict_coordinate_radius': '0.00009',
+            'coordinates': ['u', 'tau', 'phi'],
+            'effect_operator_norm_upper': decimal_bound(parameter_effect_bound, 15, True),
+            'requires': 'opposite flux signs and exact recalibration at actual parameters',
+        },
+        'scope': 'A sufficient stability theorem, not an apparatus tolerance estimate.',
+    }
 
 
 def positive_exponential(x, order=20):
@@ -356,6 +454,84 @@ def noise_certificate(b, alpha_correction, beta_correction, mixed, t_upper):
     }
 
 
+def channel_recalibration_certificate(es, error, cs, ds, roots):
+    """Exact auxiliary-D reconstruction and rate-free two-feature readout."""
+    reference = tuple(4*F(v) for v in RIGHT_INVERSE_SECOND)
+    det, alpha, beta, correction_norm = correction(cs, ds, reference, target=(0, 1))
+    scores = [Interval(v) for v in reference]
+    scores[PIVOTS[0]] += alpha
+    scores[PIVOTS[1]] += beta
+    auxiliary_eigenvalues = second_moment(es, error, reference)
+    auxiliary_upper = max(v.hi for v in auxiliary_eigenvalues.values())+correction_norm
+    auxiliary_a = max(v.abs_upper() for v in scores)
+    singleton = [v for p, v in zip(PATTERNS, scores) if sum(p) == 1]
+    auxiliary_c1 = (max(v.hi for v in singleton)-min(v.lo for v in singleton))/2
+    assert auxiliary_a < 194 and auxiliary_c1 < 107 and auxiliary_upper < 646
+    z = positive_exponential(F(1, 100))-1
+    exp_3lambda = positive_exponential(F(3, 100))
+    q = F(3, 1000)
+    no_flip = (1-q)**4
+    even_flip = 6*q*q*(1-q)**2+q**4
+    odd_flip = 4*q*(1-q)**3+4*q**3*(1-q)
+
+    def budgets(a, c1, t):
+        bias = (3*c1*z*z+a*even_flip/no_flip*(1+3*z*z)
+                +3*a*odd_flip/no_flip*z)
+        second = exp_3lambda*(no_flip*t+even_flip*a*a
+                             +3*z*z*(no_flip+even_flip)*a*a
+                             +(3*z+z*z*z)*odd_flip*a*a)/(no_flip*no_flip)
+        return bias.hi, second.hi
+
+    error_a, variance_a = budgets(F(2337, 1000), F(1499, 1000), F(390, 1000))
+    error_v, variance_v = budgets(F(194), F(107), F(646))
+    # Normalized response M has rows (1+dc_a, dd_a), (dc_v,1+dd_v).
+    # The response norm constraints follow from the anticommuting odd basis.
+    dc_a, dd_a = 4*error_a/roots[3].lo, error_a/roots[3].lo
+    dc_v, dd_v = 4*error_v/roots[3].lo, error_v/roots[3].lo
+    assert dd_v < 1
+    schur_lower = 1-dc_a-dd_a*dc_v/(1-dd_v)
+    assert schur_lower > 0
+    determinant_lower = (1-dd_v)*schur_lower
+    assert determinant_lower > F(93, 100)
+    # Use the Schur complement before bounding; bounding the inverse's
+    # numerator and determinant independently loses their cancellation.
+    wa = 1/schur_lower
+    wv = wa*dd_a/(1-dd_v)
+    corrected_second = (wa*sqrt_upper(variance_a)+wv*sqrt_upper(variance_v))**2
+    assert corrected_second < F(446, 1000) < F(9, 16)
+    raw_determinant_lower = (no_flip/exp_3lambda.hi)**2*determinant_lower
+    absolute_score_upper = (wa*F(2337, 1000)+wv*194)*exp_3lambda.hi/no_flip
+    assert absolute_score_upper < F(263, 100)
+    return {
+        'auxiliary_target': 'D=P12-P23',
+        'rational_reference_scores': [str(v) for v in reference],
+        'exact_two_outcome_corrections': {'alpha': display(alpha, 18), 'beta': display(beta, 18)},
+        'auxiliary_score_absolute_upper': decimal_bound(auxiliary_a, 12, True),
+        'auxiliary_singleton_half_range_upper': decimal_bound(auxiliary_c1, 12, True),
+        'auxiliary_second_moment_norm_upper': decimal_bound(auxiliary_upper, 12, True),
+        'auxiliary_coarse_bounds': {'A_D': '194', 'C1_D': '107', 'T_D_norm': '646'},
+        'uniform_window': {'lambda': ['0', '0.01'], 'bit_error_q': ['0', '0.003']},
+        'normalized_feature_budgets': {
+            'chi_mean_error_upper': decimal_bound(error_a, 15, True),
+            'D_mean_error_upper': decimal_bound(error_v, 15, True),
+            'chi_second_moment_upper': decimal_bound(variance_a, 15, True),
+            'D_second_moment_upper': decimal_bound(variance_v, 15, True),
+        },
+        'normalized_response_determinant_lower': decimal_bound(determinant_lower, 15),
+        'raw_response_determinant_lower': decimal_bound(raw_determinant_lower, 15),
+        'normalized_chi_weight_upper': decimal_bound(wa, 15, True),
+        'normalized_D_weight_absolute_upper': decimal_bound(wv, 15, True),
+        'channel_recalibrated_score_absolute_upper': decimal_bound(absolute_score_upper, 12, True),
+        'channel_recalibrated_second_moment_upper': decimal_bound(corrected_second, 12, True),
+        'certified_less_than': '0.446 < 9/16',
+        'requires': ('exact full-channel response coefficients; equal spin-independent loss; '
+                     'independent symmetric parity-bit errors; stable symmetry-preserving channel'),
+        'operational_rates_required': False,
+        'operational_calibration': 'Use raw two-feature response; common survival/no-flip factor cancels.',
+        'finite_data_scope': 'Finite empirical calibration needs CHANNEL_CALIBRATION.md validation bounds.',
+    }
+
+
 def run():
     if not __debug__:
         raise RuntimeError("Run the certificate without Python optimization.")
@@ -373,6 +549,8 @@ def run():
     mixed = (2*calibrated_eig['symmetric'] + calibrated_eig['reflection_odd']
              + calibrated_eig['reflection_even_standard'])/4
     noise_report = noise_certificate(b, alpha, beta, mixed, upper)
+    strong_report = strong_neighborhood(es, effect_error, cs, ds, b, alpha, beta, pi, roots)
+    channel_report = channel_recalibration_certificate(es, effect_error, cs, ds, roots)
     # A finite open parameter box, all parameters varied while preserving the
     # uniform spin-independent ring and using recalibrated outcome scores.
     radius = F(1, 10**7)
@@ -416,6 +594,8 @@ def run():
         'calibrated_second_moment_norm_upper': decimal_bound(upper, 12, True),
         'maximally_mixed_second_moment': display(mixed, 12),
         'noise_window': noise_report,
+        'all_outcome_robustness': strong_report,
+        'channel_recalibration': channel_report,
         'effect_neighborhood': {
             'uniform_effect_operator_norm_radius': '0.00001',
             'requires': 'SU(2) invariance, flux reflection, exact recalibration, complete POVM',

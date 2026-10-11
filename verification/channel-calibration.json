@@ -1,0 +1,85 @@
+{
+  "status": "PASS",
+  "scientific_groups": 3,
+  "groups": {
+    "product_reference_identities": {
+      "probe_coordinates": [
+        [
+          0.12499999999999994,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "block_weights": [
+        [
+          0.4999999999999997,
+          0.24999999999999992,
+          0.2499999999999999
+        ],
+        [
+          0.3333333333333333,
+          0.1666666666666667,
+          0.5
+        ],
+        [
+          1.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "calibrated_noisy_instrument": {
+      "cases": [
+        {
+          "u": 16.0,
+          "tau": 3.141592653589793,
+          "phi": -2.0943951023931953,
+          "terminal_survival": 1.0,
+          "bit_error": 0.0,
+          "calibration_residual": 6.379088470697989e-15,
+          "symmetry_residual": 1.1795767179898195e-14,
+          "reflection_residual": 1.3403527909882976e-14,
+          "full_effect_reconstruction_residual": 1.58858961900458e-14,
+          "inferred_moment_eigenvalues": [
+            0.20063060873814806,
+            0.3491644954255279,
+            0.3891562639101168
+          ],
+          "max_score": 2.3363754997907855,
+          "mixed_second_moment": 0.2848954942029846
+        },
+        {
+          "u": 15.7,
+          "tau": 3.173008580125691,
+          "phi": -2.1362830044410592,
+          "terminal_survival": 0.985,
+          "bit_error": 0.006,
+          "calibration_residual": 1.4179430877031056e-14,
+          "symmetry_residual": 1.2014892903464024e-14,
+          "reflection_residual": 9.095441981404856e-15,
+          "full_effect_reconstruction_residual": 1.6944008646432314e-14,
+          "inferred_moment_eigenvalues": [
+            0.20110874107398735,
+            0.3542193064247725,
+            0.36396934505159195
+          ],
+          "max_score": 1.44845790693591,
+          "mixed_second_moment": 0.2801015334060854
+        }
+      ],
+      "scope": "Floating-point diagnostics, not interval-certified parameter windows or device data."
+    },
+    "bias_norm_and_scope": {
+      "residual_norm": 0.01643167672515498,
+      "symmetry_breaking_unseen_residual": 0.05000000000000008,
+      "scope": "The confidence theorem requires independently justified spin and reflection covariance."
+    }
+  }
+}

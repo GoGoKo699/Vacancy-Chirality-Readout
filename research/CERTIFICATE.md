@@ -117,6 +117,32 @@ Uncharacterized errors with nominal scores, detector misclassification, and loss
 require the separate bias budgets in the complete-parity analysis. In particular,
 using single-odd parity patterns does not inherit return-event loss rejection.
 
+## Stronger stability with all-outcome recalibration
+
+Using all eight score corrections gives a larger certified neighborhood than
+the two-outcome correction above. If each effect obeys
+$\|E'_p-E_p\|\le0.0015$, and the perturbed effects remain a complete
+spin-rotation-invariant POVM with reflection-related opposite fluxes, there are
+exactly unbiased recalibrated scores satisfying
+
+$$
+\boxed{\|T'\|<0.536350926403<0.54<9/16.}
+$$
+
+This is a statement about existence and construction of calibrated scores;
+using nominal scores without recalibration is not covered. In the uniform ring,
+it applies throughout the sufficient box
+
+$$
+|u-16|,\ |\tau-\pi|,\ |\Phi_++2\pi/3|<0.00009,
+\qquad \Phi_-=-\Phi_+,
+$$
+
+because the effect-norm bound is less than $0.001388254316470$ there. This
+sufficient box is a mathematical continuity guarantee, not an experimentally
+measured tolerance. The derivation below uses the known common eigenspaces of
+all reflection-even effects to avoid a loose maximum-score-square estimate.
+
 ## Certified loss and bit-error window
 
 The same rational score corrections certify
@@ -156,6 +182,97 @@ $$
 The error and second-moment budgets increase throughout the displayed
 rectangle, as proved in the noise analysis. Exact rational interval arithmetic
 therefore extends the endpoint certificate to the entire rectangle.
+
+## Exact channel recalibration throughout the noise window
+
+A second fixed image feature removes the modeled noise bias through direct
+channel calibration. Let $v$ be an auxiliary score that reconstructs $D$ in
+the ideal nominal model. The checker starts from four times
+`RIGHT_INVERSE_SECOND` and applies the same two-outcome correction, now with
+target coefficients $(0,1)$. It certifies
+
+$$
+\max_p|v_p|<194,\qquad C_{1,v}<107,\qquad \|T_v\|<646.
+$$
+
+For the full channel with $0\le\lambda\le0.01$ and $0\le q\le0.003$, extract
+both signed features from every image, including zero-score events. Calibrating
+their actual two-dimensional mean response gives an exactly unbiased chirality
+score with
+
+$$
+\boxed{n\operatorname{Var}(\widehat\chi)
+\le\|T_{\rm calibrated}\|
+<0.444512137719<0.446<9/16.}
+$$
+
+The final per-trial score has absolute value less than $2.625215826513$.
+This theorem assumes the exact full-channel response coefficients. It requires
+neither separately known loss rates nor separately known bit-error rates:
+the response can be obtained from the product probes in
+[CHANNEL_CALIBRATION.md](CHANNEL_CALIBRATION.md). Finite empirical response
+estimates must instead use that document's independent validation and bias
+bounds. The $0.446$ guarantee here concerns the stated noise channel at the
+nominal Hamiltonian parameters; it is not a joint assertion over the preceding
+Hamiltonian perturbation box.
+
+**Certificate.** For the proof only, divide both raw features by the common
+factor $r=e^{-3\lambda}(1-q)^4$. Let their normalized mean responses be
+
+$$
+A_a=(1+x)\chi+yD,\qquad A_v=z\chi+(1+w)D.
+$$
+
+The same analytical noise budget, now also applied to the certified auxiliary
+score, gives
+
+$$
+\|A_a-\chi\|<0.001429313207303=:\epsilon_a,\qquad
+\|A_v-D\|<0.113367439057571=:\epsilon_v,
+$$
+
+with normalized second moments bounded by
+$V_a<0.410838798136739$ and $V_v<701.993354716872$.
+For coefficient bounds set
+
+$$
+X=4\epsilon_a/\sqrt3,\quad Y=\epsilon_a/\sqrt3,
+\quad Z=4\epsilon_v/\sqrt3,\quad W=\epsilon_v/\sqrt3.
+$$
+
+Anticommutation of $\chi$ and $D$ implies
+$|x|\le X$, $|y|\le Y$, $|z|\le Z$, and $|w|\le W$.
+The checker evaluates the unrounded rational error bounds and encloses the
+Schur complement using
+
+$$
+\kappa=1-X-\frac{YZ}{1-W}>0.
+$$
+
+The normalized response determinant is at least $(1-W)\kappa$, certified
+larger than $0.931246421082804$. The unnormalized, directly measured response
+has determinant larger than $0.856186181626231$, so it too is invertible.
+For the first row $(w_a,w_v)$ of the normalized inverse,
+
+$$
+|w_a|\le\kappa^{-1}<1.003544558545665,\qquad
+|w_v|\le\frac{Y}{(1-W)\kappa}<0.000886139636417.
+$$
+
+Keeping the Schur complement before bounding avoids an unnecessarily loose
+ratio of independent numerator and determinant bounds. Cauchy–Schwarz then
+gives the uniform second-moment bound
+
+$$
+\mathbb E(w_aY_a+w_vY_v)^2
+\le(|w_a|\sqrt{V_a}+|w_v|\sqrt{V_v})^2
+<0.444512137719.
+$$
+
+The two features share an image, and this inequality includes their covariance.
+Finally, the raw response matrix is $r$ times the normalized response matrix;
+its inverse absorbs $1/r$. Therefore an operational reconstruction using raw
+reference responses implements the same score without knowing $r$.
 
 ## Arithmetic enclosure
 
@@ -261,6 +378,76 @@ Here $\|T_{\rm hop}\|\le6$, $\|W-3I/2\|=3/2$, and
 $\|\partial_\Phi T_{\rm hop}\|\le3/2$. The commutator of a Hermitian operator
 with a projector is bounded by the norm of the operator after an arbitrary
 scalar shift. A Duhamel interpolation therefore gives the displayed constants.
+
+## Proof of the all-outcome stability bound
+
+Scale the calibration columns as $g_p=(c_p,4d_p)^T$ and let $G$ be the
+resulting $2\times8$ matrix. On the total-spin-1/2 multiplicity space,
+$\chi$ and $D/4$ are anticommuting Pauli directions with common norm
+$\sqrt3/4$. Thus an effect perturbation of norm at most $\epsilon$ implies
+
+$$
+\|\delta g_p\|_2\le r:=4\epsilon/\sqrt3.
+$$
+
+Let $b$ be the exactly calibrated nominal score above. Define a rational
+$8\times2$ matrix $B_0$: its first column is $b^0$, and its second column is
+the eight exact finite decimals in `RIGHT_INVERSE_SECOND` in the checker. Set
+
+$$
+B=B_0(GB_0)^{-1},\qquad GB=I_2.
+$$
+
+The checker encloses the determinant of $GB_0$ between
+$0.999999999999640$ and $0.999999999999641$, so this definition is nonsingular.
+All entries of $B$ are obtained by exact rational interval formulas for the
+$2\times2$ inverse. No floating-point inverse supplies a certified value.
+
+For a perturbed calibration $G'=G+\delta G$, choose
+
+$$
+b'=b+Bz,\qquad
+z=-(I_2+\delta GB)^{-1}\delta Gb.
+$$
+
+This satisfies $G'b'=(1,0)^T$ exactly. Write $B_{p,:}$ for its rows and
+$L=\sum_p\|B_{p,:}\|_2$. If $rL<1$, the Neumann bound gives
+
+$$
+\|z\|_2\le\zeta:=\frac{r\|b\|_1}{1-rL}.
+$$
+
+At $\epsilon=0.0015$, the checker proves
+$rL<0.270626586743$ and $\zeta<0.027794427232$.
+
+Let $f_{pj}$ be the eigenvalue of the nominal $F_p$ in one of the three
+common sectors $j$. They are nonnegative and obey $\sum_p f_{pj}=1$.
+Define
+
+$$
+t_j=\sum_p f_{pj}b_p^2,\qquad
+\ell_j=\sum_p f_{pj}b_p B_{p,:}^{T},\qquad
+K_j=\sum_p f_{pj}B_{p,:}^{T}B_{p,:}.
+$$
+
+The nominal effects at the corrected score have sector second moment
+$t_j+2\ell_j^Tz+z^TK_jz$. Since $K_j$ is positive semidefinite,
+$\|K_j\|\le\operatorname{Tr}K_j$. Changing each effect by at most
+$\epsilon$ adds at most $\epsilon\|b+Bz\|_2^2$. Consequently,
+
+$$
+\lambda_j(T')\le
+ t_j+2\zeta\|\ell_j\|_2
+ +\zeta^2\operatorname{Tr}K_j
+ +\epsilon(\|b\|_2+\|B\|_F\zeta)^2.
+$$
+
+Every constant on the right is enclosed from the original rational effect
+certificate, using integer square roots for the Euclidean and Frobenius norms.
+The certified bounds for the symmetric, reflection-odd, and remaining
+reflection-even sectors are respectively
+$0.294482501767$, $0.536350926403$, and $0.423599386487$.
+The largest gives the stated all-input second-moment bound.
 
 ## Reproduction
 

@@ -187,6 +187,131 @@
     },
     "scope": "Calibration and noise-rate uncertainty require separate budgets."
   },
+  "all_outcome_robustness": {
+    "effect_operator_norm_radius": "0.0015",
+    "requires": "complete SU(2)-invariant effects, flux reflection, exact recalibration",
+    "right_inverse_definition": "B=B0 (G B0)^(-1), G=(c;4d)",
+    "right_inverse_reference_second_column": [
+      "-12.579980610295",
+      "-7.146759029809",
+      "-48.311368416521",
+      "1.385838754865",
+      "5.088534362922",
+      "0.402902729639",
+      "-0.010440970833",
+      "2.443795589669"
+    ],
+    "right_inverse_normalizer_determinant": [
+      "0.999999999999640",
+      "0.999999999999641"
+    ],
+    "score_l1_upper": "5.852171359766",
+    "score_l2_upper": "2.739405864162",
+    "sum_right_inverse_row_norms_upper": "78.123166352946",
+    "right_inverse_frobenius_norm_upper": "50.840663322538",
+    "neumann_contraction_upper": "0.270626586743",
+    "two_component_correction_norm_upper": "0.027794427232",
+    "sectors": {
+      "symmetric": {
+        "baseline": [
+          "0.200630608738138",
+          "0.200630608738139"
+        ],
+        "linear_vector_norm_upper": "0.968451552671",
+        "quadratic_matrix_trace_upper": "18.319004156550",
+        "perturbed_second_moment_upper": "0.294482501767"
+      },
+      "reflection_odd": {
+        "baseline": [
+          "0.389156263910113",
+          "0.389156263910114"
+        ],
+        "linear_vector_norm_upper": "1.616338800966",
+        "quadratic_matrix_trace_upper": "40.748496031438",
+        "perturbed_second_moment_upper": "0.536350926403"
+      },
+      "reflection_even_standard": {
+        "baseline": [
+          "0.349164495425559",
+          "0.349164495425560"
+        ],
+        "linear_vector_norm_upper": "0.622184340476",
+        "quadratic_matrix_trace_upper": "18.101013576805",
+        "perturbed_second_moment_upper": "0.423599386487"
+      }
+    },
+    "second_moment_operator_norm_upper": "0.536350926403",
+    "certified_less_than": "0.54 < 9/16",
+    "uniform_ring_parameter_box": {
+      "strict_coordinate_radius": "0.00009",
+      "coordinates": [
+        "u",
+        "tau",
+        "phi"
+      ],
+      "effect_operator_norm_upper": "0.001388254316470",
+      "requires": "opposite flux signs and exact recalibration at actual parameters"
+    },
+    "scope": "A sufficient stability theorem, not an apparatus tolerance estimate."
+  },
+  "channel_recalibration": {
+    "auxiliary_target": "D=P12-P23",
+    "rational_reference_scores": [
+      "-2515996122059/50000000000",
+      "-7146759029809/250000000000",
+      "-48311368416521/250000000000",
+      "277167750973/50000000000",
+      "2544267181461/125000000000",
+      "402902729639/250000000000",
+      "-10440970833/250000000000",
+      "2443795589669/250000000000"
+    ],
+    "exact_two_outcome_corrections": {
+      "alpha": [
+        "0.000000000002703845",
+        "0.000000000002703846"
+      ],
+      "beta": [
+        "0.000000000000950736",
+        "0.000000000000950737"
+      ]
+    },
+    "auxiliary_score_absolute_upper": "193.245473666084",
+    "auxiliary_singleton_half_range_upper": "106.799805558886",
+    "auxiliary_second_moment_norm_upper": "645.749436280796",
+    "auxiliary_coarse_bounds": {
+      "A_D": "194",
+      "C1_D": "107",
+      "T_D_norm": "646"
+    },
+    "uniform_window": {
+      "lambda": [
+        "0",
+        "0.01"
+      ],
+      "bit_error_q": [
+        "0",
+        "0.003"
+      ]
+    },
+    "normalized_feature_budgets": {
+      "chi_mean_error_upper": "0.001429313207303",
+      "D_mean_error_upper": "0.113367439057571",
+      "chi_second_moment_upper": "0.410838798136739",
+      "D_second_moment_upper": "701.993354716871592"
+    },
+    "normalized_response_determinant_lower": "0.931246421082804",
+    "raw_response_determinant_lower": "0.856186181626231",
+    "normalized_chi_weight_upper": "1.003544558545665",
+    "normalized_D_weight_absolute_upper": "0.000886139636417",
+    "channel_recalibrated_score_absolute_upper": "2.625215826513",
+    "channel_recalibrated_second_moment_upper": "0.444512137719",
+    "certified_less_than": "0.446 < 9/16",
+    "requires": "exact full-channel response coefficients; equal spin-independent loss; independent symmetric parity-bit errors; stable symmetry-preserving channel",
+    "operational_rates_required": false,
+    "operational_calibration": "Use raw two-feature response; common survival/no-flip factor cancels.",
+    "finite_data_scope": "Finite empirical calibration needs CHANNEL_CALIBRATION.md validation bounds."
+  },
   "effect_neighborhood": {
     "uniform_effect_operator_norm_radius": "0.00001",
     "requires": "SU(2) invariance, flux reflection, exact recalibration, complete POVM",

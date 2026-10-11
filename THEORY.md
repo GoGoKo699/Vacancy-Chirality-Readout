@@ -138,7 +138,7 @@ $$
 0.284895494200<n\operatorname{Var}_{I_8/8}(\widehat\chi)<0.284895494206.
 $$
 
-These are outward-certified bounds for the stated finite model. Recalibrating the score preserves $\|T\|<0.395388567053$ throughout the sufficient box $|u-16|,|\tau-\pi|,|\Phi_++2\pi/3|<10^{-7}$ with $\Phi_-=-\Phi_+$. This conservative box proves continuity with a nonzero margin; it is not an estimate of laboratory tolerance. The [noise budget](research/NOISE_BUDGET.md) treats losses, detector-bit errors, calibration, and normalization separately. In particular, singleton patterns retain collision information but can also occur after two particles are lost. The return-only existence theorem above remains the alternative established for every fixed finite $u>0$.
+These are outward-certified bounds for the stated finite model. An all-outcome recalibration also guarantees $\|T\|<0.536350926403<9/16$ whenever each parity effect changes by operator norm at most $0.0015$, preserving the stated symmetries and completeness. In the uniform ring this includes the sufficient box $|u-16|,|\tau-\pi|,|\Phi_++2\pi/3|<0.00009$ with $\Phi_-=-\Phi_+$. This conservative box proves stability with a nonzero margin; it is not an estimate of laboratory tolerance. The certificate also retains smaller neighborhoods with tighter variance bounds. The [noise budget](research/NOISE_BUDGET.md) treats losses, detector-bit errors, calibration, and normalization separately. In particular, singleton patterns retain collision information but can also occur after two particles are lost. The return-only existence theorem above remains the alternative established for every fixed finite $u>0$.
 
 ## 4. Hard-core return instrument and retained entanglement
 
@@ -242,17 +242,47 @@ On the maximally mixed input the second-moment bound is $0.302$. Thus the mean-s
 
 If the implemented occupation effect obeys $\|F_{i,\pm}-S\|\le b_{i,\pm}$, compression after evolution gives reconstructed systematic bias at most $\sum_i|w_i|(b_{i,+}+b_{i,-})$. Hamiltonian parameters, timing, symmetry errors, and coefficient uncertainty require their own calibration budgets. Calibration copies and characterization time are additional resources.
 
+### Direct calibration of the implemented channel
+
+Spin-rotation invariance and paired reflection constrain the input effects even when atoms are lost or parity labels are mistaken. Include all outcomes, with no successful-trial postselection. Any signed two-flux image score then has mean operator $A=c\chi+dD$ and a reflection-even second-moment operator $T$ with three scalar blocks. The channel's noise rates need not be separately known.
+
+Use three product references with the same orbital loading and measurement channel:
+
+$$
+\rho_x=|{+x},{+y},{+z}\rangle\langle{+x},{+y},{+z}|,
+\quad \rho_d=|{+z},{+z},{-z}\rangle\langle{+z},{+z},{-z}|,
+\quad \rho_0=|{+z},{+z},{+z}\rangle\langle{+z},{+z},{+z}|.
+$$
+
+Their score means determine $c=8m_x$ and $d=m_d$. Two image features with a nonsingular two-coordinate response can therefore be combined into an exactly unbiased estimator when that response is known. Their second moments $Q_j=\mathbb E_jX^2$ determine all three blocks:
+
+$$
+t_{\rm s}=Q_0,\qquad t_{\rm o}=3Q_d-2Q_x,\qquad
+ t_{\rm e}=6Q_x-3Q_d-2Q_0.
+$$
+
+The same identities reconstruct every outcome effect within the five-dimensional symmetry class. They apply at arbitrary noise strength when the response remains informative; complete erasure cannot be inverted. At the nominal operating point, the [exact certificate](research/CERTIFICATE.md) constructs a second score for $D$ and proves that their full noisy response stays nonsingular throughout $0\le\gamma t\le0.01$, $0\le q\le0.003$ under the stated equal-loss and bit-error channels. Exact channel recalibration removes the mean bias and gives $\|T\|<0.444512137719<0.446<9/16$. The rates are used to establish this sufficient window; operational recalibration uses the raw reference responses, without those rates.
+
+With finite calibration data, freeze a score chosen from pilot data and use independent reference data to validate it. Its exact all-input bias is
+
+$$
+\|A-\chi\|=\sqrt{3(c-1)^2/16+3d^2}.
+$$
+
+The [channel-calibration proof](research/CHANNEL_CALIBRATION.md) converts the two means and three second moments into simultaneous confidence bounds $\beta$ and $U_T$, giving mean-square error at most $U_T/n+\beta^2$ for every unknown input. It includes reference-preparation errors and the cost of known reference copies separately from unknown input copies. Three probes do not establish the symmetry assumptions themselves, and a random inverse of estimated calibration coefficients is not automatically unbiased.
+
 ## 7. Matched measurement resources
 
-For $n$ independent input preparations, ideal detection, and exact calibration, compare the same normalization of $\chi$. All failed return trials remain included in $n$.
+For $n$ independent input preparations and exact calibration, with ideal detection except in the stated noisy row, compare the same normalization of $\chi$. All failed return trials remain included in $n$.
 
 | Method | Primitive and allocation | Worst-case coefficient or upper bound on $n\operatorname{Var}(\widehat\chi)$ |
 |---|---|---:|
 | Optimal fully separable measurements per input copy | Classical adaptation allowed; six uniformly randomized Pauli settings attain the minimax value | $9/16=0.5625$ exactly |
 | Controlled-cycle Hadamard test | Ancilla quadrature after controlled cycle | $1/4=0.25$ |
-| Spectral chirality measurement | Outcomes $0,\pm\sqrt3/4$ | $3/16=0.1875$ |
+| Spectral chirality measurement | Outcomes $0,\pm\sqrt3/4$; Fourier/count implementation follows [N26](REFERENCES.md) | $3/16=0.1875$ |
 | Hard-core vacancy return | Two fluxes, equal allocation | $3/[16(1-r)^2]=0.1984038180\ldots$ |
 | Finite-$U$ complete parity, $u=16$, $\tau=\pi$ | One duration, two equally randomized fluxes; certified corrected score | $<0.389156263913$ |
+| Finite-$U$ channel-calibrated readout | Same nominal point; equal loss $\gamma t\le0.01$, independent bit errors $q\le0.003$ | $<0.444512137719$ |
 | Finite-$U$ return-only example above | Four settings, allocation proportional to $|w_i|$ per sign | $(|w_1|+|w_2|)^2=1.0329363137\ldots$ |
 
 The Pauli decomposition is $\chi=(XYZ+YZX+ZXY-XZY-YXZ-ZYX)/8$; it needs no entangling measurement gate. The Hadamard test uses $\operatorname{Im}\langle C\rangle=2\langle\chi\rangle$. These established alternatives and projective sector preparation are described in [R23](REFERENCES.md).
@@ -261,7 +291,7 @@ The separable benchmark is a lower bound for the whole declared measurement clas
 
 The certified complete-parity bound therefore proves a strict minimax sampling advantage over universally unbiased protocols using fully separable effects across the three spins of each copy. It also improves the mixed-input coefficient from $9/16$ to the certified interval above. This does not assert pointwise superiority on every state, superiority to the controlled-cycle test, or a bound on collective measurements across copies or estimators exploiting a state promise.
 
-Spatial output counts carrying collective internal-state phases, including signed orientation-sensitive tritter contrasts, have optical antecedents [M17](REFERENCES.md). Those independent-photon experiments use different preparations and dynamics from the arbitrary correlated spin inputs and finite-repulsion vacancy instrument considered here.
+Signed internal-state information in spatial counts has optical antecedents [M17](REFERENCES.md). Fourier interferometry already reads cyclic observables with entangled inputs [N26](REFERENCES.md), and phase-sensitive scattering measurements isolate static Hubbard spin chirality [NGH25](REFERENCES.md). The implementation studied here combines interacting four-site vacancy dynamics, parity-only detection, and finite-repulsion calibration. Correlated inputs alone do not distinguish it from these general cycle-readout methods.
 
 For the four-setting finite-$u=16$ return-only allocation, the coefficient on input $I_8/8$ is $0.8759834953$. Retaining complete parity images reduces this coefficient to the certified interval near $0.2848954942$, with one evolution duration. Both methods count all original preparations. The original return-only derivations remain in [the matched resource comparison, Section 6](source/resource-review-2026-10-10/READOUT_AND_RESOURCES.md); the complete-image and separable-benchmark proofs above specify the stronger comparison.
 
