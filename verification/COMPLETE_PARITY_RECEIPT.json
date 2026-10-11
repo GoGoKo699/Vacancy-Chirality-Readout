@@ -1,4 +1,8 @@
 {
+  "calibration_cost_groups": 3,
+  "calibration_cost_pass": true,
+  "calibration_cost_report": "calibration-cost.json",
+  "calibration_cost_returncode": 0,
   "canonical_reports_byte_identical": true,
   "channel_calibration_groups": 3,
   "channel_calibration_pass": true,
@@ -18,18 +22,22 @@
   "preserved_assertions_pass": true,
   "preserved_scientific_groups": 16,
   "research_inputs_sha256_after": {
+    "research/calibration_cost.py": "7928d8b3225b7fdfedbefa4fe439c3f4b1c305e3bbf11bbe5590a13f7ce358d8",
+    "research/check_calibration_cost.py": "6cb82d9e0085811cf94a9f2834bc45a7fe59594a270c4a664f5af68695effa7a",
     "research/check_channel_calibration.py": "8c9bd1db70286b37f0c778c643d0698ec77023f2307ed788703058eb6158dfa5",
     "research/check_complete_parity.py": "71010eff8abb0223cafea8fbd31c5b7360d5f63055eabe47332be79d45d21f2d",
     "research/complete_parity.py": "98f425d23277f61c2fa76b938a136b143fbf74bd9730482101ff4b4deaa32aa9",
-    "research/parity_certificate.py": "6ba3817f470e94c982bb958862bfb25c171d9ec60187d4812ed41278c5a72b56",
-    "verify.py": "bb3dc224e5d20a29d0ae3c3e374e88ad7f13dc9be82d25a1f404a9595590c156"
+    "research/parity_certificate.py": "a87ea9333cebe9bda76181b4a2a737efa7dffe59d2580a2f1622467f17ef73ac",
+    "verify.py": "d7abdeea682e3a2cbc8d357042b3bbc063bb291ce5ea846e2d21789fb55d3024"
   },
   "research_inputs_sha256_before": {
+    "research/calibration_cost.py": "7928d8b3225b7fdfedbefa4fe439c3f4b1c305e3bbf11bbe5590a13f7ce358d8",
+    "research/check_calibration_cost.py": "6cb82d9e0085811cf94a9f2834bc45a7fe59594a270c4a664f5af68695effa7a",
     "research/check_channel_calibration.py": "8c9bd1db70286b37f0c778c643d0698ec77023f2307ed788703058eb6158dfa5",
     "research/check_complete_parity.py": "71010eff8abb0223cafea8fbd31c5b7360d5f63055eabe47332be79d45d21f2d",
     "research/complete_parity.py": "98f425d23277f61c2fa76b938a136b143fbf74bd9730482101ff4b4deaa32aa9",
-    "research/parity_certificate.py": "6ba3817f470e94c982bb958862bfb25c171d9ec60187d4812ed41278c5a72b56",
-    "verify.py": "bb3dc224e5d20a29d0ae3c3e374e88ad7f13dc9be82d25a1f404a9595590c156"
+    "research/parity_certificate.py": "a87ea9333cebe9bda76181b4a2a737efa7dffe59d2580a2f1622467f17ef73ac",
+    "verify.py": "d7abdeea682e3a2cbc8d357042b3bbc063bb291ce5ea846e2d21789fb55d3024"
   },
   "research_inputs_unchanged": true,
   "scientific_assertions_pass": true,
@@ -56,5 +64,5 @@
   "source_receipt": "source-run/RECEIPT.json",
   "source_verifier_returncode": 0,
   "status": "PASS",
-  "total_scientific_groups": 24
+  "total_scientific_groups": 27
 }

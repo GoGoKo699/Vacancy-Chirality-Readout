@@ -64,6 +64,7 @@ def main():
         "complete_parity_diagnostics_pass": False,
         "complete_parity_certificate_pass": False,
         "channel_calibration_pass": False,
+        "calibration_cost_pass": False,
         "canonical_reports_byte_identical": False,
         "source_integrity_pass": False,
         "research_inputs_unchanged": False,
@@ -72,14 +73,17 @@ def main():
         "complete_parity_diagnostic_groups": 0,
         "complete_parity_certificate_groups": 0,
         "channel_calibration_groups": 0,
+        "calibration_cost_groups": 0,
         "source_verifier_returncode": None,
         "complete_parity_diagnostics_returncode": None,
         "complete_parity_certificate_returncode": None,
         "channel_calibration_returncode": None,
+        "calibration_cost_returncode": None,
         "source_receipt": "source-run/RECEIPT.json",
         "complete_parity_diagnostics_report": "complete-parity-diagnostics.json",
         "complete_parity_certificate_report": "complete-parity-certificate.json",
         "channel_calibration_report": "channel-calibration.json",
+        "calibration_cost_report": "calibration-cost.json",
         "source_checks": {},
         "errors": [],
     }
@@ -126,6 +130,7 @@ def main():
             ("complete_parity_diagnostics", "check_complete_parity.py"),
             ("complete_parity_certificate", "parity_certificate.py"),
             ("channel_calibration", "check_channel_calibration.py"),
+            ("calibration_cost", "check_calibration_cost.py"),
         ):
             try:
                 report_path = output / receipt[f"{suite}_report"]
@@ -142,9 +147,9 @@ def main():
                     groups = report.get("scientific_groups", 0)
                     receipt["complete_parity_diagnostic_groups"] = groups
                     report_pass = report.get("status") == "PASS" and groups == 4
-                elif suite == "channel_calibration":
+                elif suite in ("channel_calibration", "calibration_cost"):
                     groups = report.get("scientific_groups", 0)
-                    receipt["channel_calibration_groups"] = groups
+                    receipt[f"{suite}_groups"] = groups
                     report_pass = report.get("status") == "PASS" and groups == 3
                 else:
                     report_pass = report.get("certificate") == (
@@ -179,11 +184,13 @@ def main():
     receipt["total_scientific_groups"] = sum(receipt[name] for name in (
         "preserved_scientific_groups", "complete_parity_diagnostic_groups",
         "complete_parity_certificate_groups", "channel_calibration_groups",
+        "calibration_cost_groups",
     ))
     receipt["scientific_assertions_pass"] = all(receipt[name] for name in (
         "preserved_assertions_pass", "complete_parity_diagnostics_pass",
         "complete_parity_certificate_pass", "channel_calibration_pass",
-    )) and receipt["total_scientific_groups"] == 24
+        "calibration_cost_pass",
+    )) and receipt["total_scientific_groups"] == 27
     receipt["source_integrity_pass"] = all(checks.get(name) is True for name in (
         "before_matches_manifest", "after_matches_manifest", "manifest_unchanged",
         "snapshot_unchanged", "archived_source_unchanged",

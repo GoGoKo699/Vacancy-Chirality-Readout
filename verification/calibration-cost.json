@@ -1,0 +1,100 @@
+{
+  "status": "PASS",
+  "scientific_groups": 3,
+  "groups": {
+    "moment_and_confidence_algebra": {
+      "nominal_moment_max_crosscheck_error": 9.431344594190705e-14,
+      "operator_error_box_corners": 32,
+      "true_imperfect_bias": 0.0038729833462074177,
+      "scope": "Numerical checks of exact moment and confidence-box algebra; not empirical coverage evidence."
+    },
+    "biased_separable_bound": {
+      "endpoint_information_max_error": 2.220446049250313e-16,
+      "prior_integral": 1.0000000000000018,
+      "prior_information": 418.8790204786386,
+      "epsilon": 0.01,
+      "optimized_necessary_count": 5163.63070636262,
+      "required_integer_copies": 5164,
+      "scope": "Analytical all-biased bound is proved in SEPARABLE_BENCHMARK.md; grid and quadrature are cross-checks."
+    },
+    "preparation_cost_accounting": {
+      "planning_profile": {
+        "x": {
+          "count": 5500000,
+          "mean": 0.125,
+          "second": 0.2848954942029875,
+          "variance": 0.2692705431612681,
+          "squared_variance": 0.25551932147612094
+        },
+        "d": {
+          "count": 3000000,
+          "mean": 0.0,
+          "second": 0.3196490841053635,
+          "variance": 0.31964919065509373,
+          "squared_variance": 0.32463266103150545
+        },
+        "0": {
+          "count": 100000,
+          "mean": 0.0,
+          "second": 0.2006306087381385,
+          "variance": 0.20063261506428914,
+          "squared_variance": 0.17049718021381663
+        }
+      },
+      "score_bound": 2.337,
+      "confidence_failure": 0.05,
+      "validation": {
+        "beta": 0.0033525328195305273,
+        "second_moment_upper": 0.3941687936064644,
+        "mean_radii": {
+          "x": 0.0007778202190574372,
+          "d": 0.0011517269334835978
+        },
+        "moment_radii": {
+          "x": 0.0007600081415163119,
+          "d": 0.0011641711377720614,
+          "0": 0.00528355684634268
+        },
+        "block_upper_s_o_e": [
+          0.2059141655844812,
+          0.3941687936064644,
+          0.36778417138065667
+        ],
+        "reference_validation": 8600000,
+        "confidence_failure": 0.05
+      },
+      "budget": {
+        "epsilon": 0.01,
+        "unknown_copies": 4441,
+        "pilot_copies": 10000,
+        "validation_copies": 8600000,
+        "total_reference_copies": 8610000,
+        "reference_weight": 1.0,
+        "certified_conditional_mse": 9.999624136040093e-05,
+        "ideal_pauli_copies": 5625,
+        "biased_separable_necessary_copies": 5164,
+        "strict_reuse_vs_pauli": 7272,
+        "strict_reuse_vs_biased_lower_bound": 11909
+      },
+      "nominal_leading_plan": {
+        "confidence_radius_coefficient": 92.39746806787143,
+        "confidence_allocation_x_over_d": 1.8356405682795518,
+        "confidence_leading_reuse_threshold": 5803.712664602854,
+        "plugin_mse_coefficient": 4.1901931827519405,
+        "plugin_allocation_x_over_d": 3.369576295913676,
+        "plugin_leading_reuse_threshold": 263.19635970984035,
+        "scope": "Sufficient leading planning only; excludes pilot/moment-only overhead, finite remainders and acceptance margins; not a necessary reuse count."
+      },
+      "conservative_noisy_leading_plan": {
+        "confidence_radius_coefficient": 143.9748930670048,
+        "confidence_allocation_x_over_d": 2.0,
+        "confidence_leading_reuse_threshold": 20941.208078779087,
+        "plugin_mse_coefficient": 6.675,
+        "plugin_allocation_x_over_d": 4.0,
+        "plugin_leading_reuse_threshold": 970.8815262727557,
+        "scope": "Sufficient leading planning only; excludes pilot/moment-only overhead, finite remainders and acceptance margins; not a necessary reuse count."
+      },
+      "scope": "HYPOTHETICAL nominal summaries, not experimental data, guaranteed-pass counts, or an unconditional finite-risk advantage. Pilot count is an explicit illustrative charge, not a claim that 10000 preparations suffice to select this score. No preparation error or channel drift is assumed in this profile."
+    }
+  }
+}

@@ -193,20 +193,51 @@ expectation of every reflection-odd $A_f$.
 ## 4. Explicit finite-sample confidence certificate
 
 Suppose $|f(y)|\le B$ and collect independent validation batches of sizes
-$N_x,N_d,N_0$. Let $\widehat m_x,\widehat m_d$ be the sample means and
-$\widehat Q_x,\widehat Q_d,\widehat Q_0$ the sample second moments.
-For a chosen failure probability $0<\delta<1$, set
+$N_x,N_d,N_0\ge2$, fixed before observing those batches. Let
+$\widehat m_x,\widehat m_d$ be the sample means and
+$\widehat Q_x,\widehat Q_d,\widehat Q_0$ the sample second moments. The
+default variance-sensitive certificate also uses the unbiased sample variances
 
 $$
-L=\log(10/\delta),\qquad
-\epsilon_j=B\sqrt{2L/N_j},\qquad
-\nu_j=B^2\sqrt{L/(2N_j)}.
+\widehat v_j=\frac1{N_j-1}\sum_i(X_{j,i}-\widehat m_j)^2,\qquad
+\widehat w_j=\frac1{N_j-1}\sum_i(X_{j,i}^2-\widehat Q_j)^2.
 $$
 
-Hoeffding's inequality and a union bound for these five statistics give,
-with probability at least $1-\delta$, their simultaneous respective error
-bounds $\epsilon_j$ and $\nu_j$. No independence between a probe's mean
-and its second moment is required. On this event define
+For a failure probability $0<\delta<1$, take $L_E=\log(20/\delta)$ and
+
+$$
+\boxed{\epsilon_j=
+\sqrt{\frac{2\widehat v_jL_E}{N_j}}
++\frac{14BL_E}{3(N_j-1)},\qquad
+\nu_j=\sqrt{\frac{2\widehat w_jL_E}{N_j}}
++\frac{7B^2L_E}{3(N_j-1)}.}
+$$
+
+These are affine rescalings of
+[Maurer and Pontil (2009), Theorem 4](https://arxiv.org/abs/0907.3740),
+applied to $X\in[-B,B]$ and $X^2\in[0,B^2]$. Applying the one-sided
+theorem to both tails and allocating failure probability $\delta/5$ to each
+of the five statistics gives the displayed logarithm. With probability at
+least $1-\delta$, all five mean and second-moment errors are within their
+respective radii. The theorem permits the mean and sample variance to use
+the same observations; no independence among statistics from the same
+probe batch is assumed. It does require the score to have been frozen
+independently of these validation data. Repeatedly checking the same batch
+until a bound passes requires a separate confidence allocation over the
+looks or a valid confidence sequence.
+
+The simpler range-only alternative remains
+
+$$
+L_H=\log(10/\delta),\qquad
+\epsilon_j=B\sqrt{2L_H/N_j},\qquad
+\nu_j=B^2\sqrt{L_H/(2N_j)}.
+$$
+
+It follows from Hoeffding's inequality. Choose the method before inspecting
+validation results, or divide the failure budget between the two methods
+before intersecting their confidence intervals. Either set of radii can be
+inserted into the same operator certificate. On its confidence event define
 
 $$
 b_c=|8\widehat m_x-1|+8\epsilon_x,\qquad
@@ -238,8 +269,15 @@ $$
 
 The inequality holds for all validation data in the stated confidence event;
 it is not an unconditional assertion that the random calibration is exact.
-Independently, for any $0<\eta<1$, the probability that
-$|\widehat\chi-\langle\chi\rangle_\rho|$
+If a certificate is issued only when its observed bounds pass a threshold,
+the probability of issuing a false certificate is at most $\delta$.
+This does not imply $1-\delta$ coverage conditional on passing: that
+conditional error probability can be as large as
+$\delta/\Pr(\mathrm{pass})$. Rejecting a validation run without reporting
+an estimate is abstention, not an unconditional estimation procedure with
+the displayed mean-square error.
+Independently, for any $0<\eta<1$, the probability of reporting an estimate
+whose error $|\widehat\chi-\langle\chi\rangle_\rho|$
 exceeds $\beta+B\sqrt{2\log(2/\eta)/n}$ is at most $\delta+\eta$.
 The operator certificate is uniform in the input and also applies when its
 three spins are entangled with an unmeasured reference.
@@ -247,18 +285,39 @@ three spins are entangled with an unmeasured reference.
 ## 5. Calibration cost, conditioning, and reuse
 
 The known probes consume preparations and characterization time. They are
-additional resources to the $n$ unknown input copies. With empirical mean
-residuals near zero, the statistical part of the squared bias budget is
+additional resources to the $n$ unknown input copies. Finite preparation
+counts and the number of uses needed to amortize them are treated in
+[the calibration-cost account](CALIBRATION_COST.md).
+
+Let $r_\beta=\sqrt{12\epsilon_x^2+3\epsilon_d^2}$. For the Hoeffding
+radii its squared value is
 
 $$
-\beta_{\rm stat}^2\le B^2L\left(\frac{24}{N_x}+\frac6{N_d}\right).
+r_\beta^2=B^2L_H\left(\frac{24}{N_x}+\frac6{N_d}\right).
 $$
 
 At fixed $N_x+N_d=N_{\rm mean}$, this sufficient bound is minimized by
-$N_x:N_d=2:1$, giving $54B^2L/N_{\rm mean}$. Nonzero observed residuals
-must still be included in the preceding formula for $\beta$. This allocation
-optimizes this Hoeffding budget, not the information-theoretic calibration
-cost. Variance-sensitive confidence methods can improve conservative counts.
+$N_x:N_d=2:1$, giving $54B^2L_H/N_{\rm mean}$. This allocation optimizes
+the Hoeffding radius, not the information-theoretic calibration cost. With
+empirical Bernstein radii, the observed variances and the finite-$N$
+linear terms must also be included.
+
+Crucially, $r_\beta$ equals the reported bias bound only when the observed
+mean residuals are zero. A forecast that substitutes their nominal
+expectations is not a guarantee that a validation batch will pass. On the
+confidence event, if the actual fixed score has bias norm $\beta_{\rm true}$,
+the reported bound satisfies
+
+$$
+\beta_{\rm true}\le\beta\le\beta_{\rm true}+2r_\beta.
+$$
+
+The second inequality follows by applying the triangle inequality to the two
+weighted mean errors. Similarly, writing
+$r_T=\max\{\nu_0,3\nu_d+2\nu_x,6\nu_x+3\nu_d+2\nu_0\}$,
+one has $U_T\le\|T_f\|+2r_T$ on that event. A prospective passing
+guarantee must budget these fluctuations as well as the confidence radii.
+
 For a desired mean-square error $\varepsilon^2$, the displayed certificate
 requires $\beta<\varepsilon$ and permits
 $n\ge U_T/(\varepsilon^2-\beta^2)$ unknown-input preparations, rounded up.
@@ -298,12 +357,55 @@ assumptions require physical justification or additional characterization.
 
 Reference states must have the stated spin expectations and use the same
 orbital preparation and channel as the unknown inputs. If a reference state
-has trace-distance error at most $e_j$, adding $2Be_j$ to its mean-error
-radius and $B^2e_j$ to its second-moment-error radius is sufficient.
-Channel drift between validation and use requires its own operator-error
-allowance. In particular, spin-dependent loss, unpaired flux errors, or
-spin-selective detector responses are not automatically absorbed by this
-two-coordinate calibration.
+has trace-distance error at most $\eta_j$, adding $2B\eta_j$ to its
+mean-error radius and $B^2\eta_j$ to its second-moment-error radius is
+always sufficient. The following sharper correction can be much smaller.
+For that sharper correction, the preparation error must be a spin-state
+error within the same three-spin orbital embedding: the actual reference
+and its target are states of the same eight-dimensional input space.
+Wrong particle number, different orbital loading, or leakage outside that
+embedding do not satisfy this assumption. When such errors have an
+independently established full-preparation trace-distance bound, use the
+coarse $2B\eta_j$ and $B^2\eta_j$ allowances instead.
+
+Let $\beta_{\rm stat},U_{\rm stat}$ denote the full observed certificate
+above, including the observed mean residuals but before preparation and
+drift corrections. Set
+
+$$
+\kappa_A=\sqrt{48\eta_x^2+12\eta_d^2},\qquad
+\kappa_T=\max\{\eta_0,3\eta_d+2\eta_x,
+                         6\eta_x+3\eta_d+2\eta_0\}.
+$$
+
+If both are less than one, a sufficient corrected certificate is
+
+$$
+\boxed{\beta_{\rm use}\le
+\frac{\beta_{\rm stat}+\kappa_A\sqrt3/4}{1-\kappa_A}+d_A,
+\qquad
+U_{\rm use}\le
+\min\left\{B^2,\frac{U_{\rm stat}}{1-\kappa_T}\right\}+d_T.}
+$$
+
+Here $d_A$ and $d_T$ bound the operator-norm drift of the mean and
+second-moment operators between validation and use. To prove the preparation
+correction, a reference perturbation changes its mean by at most
+$2\eta_j\|A_f\|$ and its second moment by at most $\eta_j\|T_f\|$.
+Propagating the first pair of errors through the exact bias norm gives
+$\beta_{\rm cal}\le\beta_{\rm stat}+\kappa_A\|A_f\|$.
+Use $\|A_f\|\le\sqrt3/4+\beta_{\rm cal}$ and rearrange.
+The three second-moment equations similarly give
+$\|T_f\|\le U_{\rm stat}+\kappa_T\|T_f\|$; positivity of $T_f$
+is what permits the smaller second-moment perturbation bound. Finally apply
+the triangle inequality to the channel drift. The coarse radius additions
+remain available if these denominators are not useful.
+
+Use $\beta_{\rm use},U_{\rm use}$ in the mean-square-error budget. These
+are independently justified error allowances, not quantities established by
+the three probe data themselves. In particular, spin-dependent loss,
+unpaired flux errors, or spin-selective detector responses are not
+automatically absorbed by the two-coordinate calibration theorem.
 
 The exact statement is therefore a calibration theorem for a symmetry class
 of implemented measurement channels, with finite-data certification of the

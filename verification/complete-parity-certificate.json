@@ -312,6 +312,143 @@
     "operational_calibration": "Use raw two-feature response; common survival/no-flip factor cancels.",
     "finite_data_scope": "Finite empirical calibration needs CHANNEL_CALIBRATION.md validation bounds."
   },
+  "calibration_moments": {
+    "scope": "Exact nominal ideal-model planning profiles; not measured variances of an implemented channel or a pilot-fitted score.",
+    "flux_allocation": "independent equal-probability randomization",
+    "score_definition": "nominal rational reference scores plus exact two-outcome correction",
+    "score_absolute_upper": "2.336375499790517",
+    "sector_order": [
+      "symmetric",
+      "reflection_odd",
+      "reflection_even_standard"
+    ],
+    "second_moment_eigenvalues": [
+      [
+        "0.200630608738138",
+        "0.200630608738139"
+      ],
+      [
+        "0.389156263910113",
+        "0.389156263910114"
+      ],
+      [
+        "0.349164495425559",
+        "0.349164495425560"
+      ]
+    ],
+    "fourth_moment_eigenvalues": [
+      [
+        "0.210748116404650",
+        "0.210748116404651"
+      ],
+      [
+        "0.607054834099594",
+        "0.607054834099595"
+      ],
+      [
+        "0.318187803632012",
+        "0.318187803632013"
+      ]
+    ],
+    "probes": {
+      "xyz": {
+        "mean_exact": "1/8",
+        "sector_weights_exact": [
+          "1/2",
+          "1/4",
+          "1/4"
+        ],
+        "second_moment": [
+          "0.284895494202987",
+          "0.284895494202988"
+        ],
+        "fourth_moment": [
+          "0.336684717635226",
+          "0.336684717635227"
+        ],
+        "variance_X": [
+          "0.269270494202987",
+          "0.269270494202988"
+        ],
+        "variance_X_squared": [
+          "0.255519275018062",
+          "0.255519275018063"
+        ]
+      },
+      "001": {
+        "mean_exact": "0",
+        "sector_weights_exact": [
+          "1/3",
+          "1/2",
+          "1/6"
+        ],
+        "second_moment": [
+          "0.319649084105363",
+          "0.319649084105364"
+        ],
+        "fourth_moment": [
+          "0.426808089790016",
+          "0.426808089790017"
+        ],
+        "variance_X": [
+          "0.319649084105363",
+          "0.319649084105364"
+        ],
+        "variance_X_squared": [
+          "0.324632552820618",
+          "0.324632552820619"
+        ]
+      },
+      "000": {
+        "mean_exact": "0",
+        "sector_weights_exact": [
+          "1",
+          "0",
+          "0"
+        ],
+        "second_moment": [
+          "0.200630608738138",
+          "0.200630608738139"
+        ],
+        "fourth_moment": [
+          "0.210748116404650",
+          "0.210748116404651"
+        ],
+        "variance_X": [
+          "0.200630608738138",
+          "0.200630608738139"
+        ],
+        "variance_X_squared": [
+          "0.170495475242014",
+          "0.170495475242015"
+        ]
+      },
+      "010": {
+        "mean_exact": "0",
+        "sector_weights_exact": [
+          "1/3",
+          "0",
+          "2/3"
+        ],
+        "second_moment": [
+          "0.299653199863086",
+          "0.299653199863087"
+        ],
+        "fourth_moment": [
+          "0.282374574556224",
+          "0.282374574556225"
+        ],
+        "variance_X": [
+          "0.299653199863086",
+          "0.299653199863087"
+        ],
+        "variance_X_squared": [
+          "0.192582534368038",
+          "0.192582534368039"
+        ]
+      }
+    }
+  },
   "effect_neighborhood": {
     "uniform_effect_operator_norm_radius": "0.00001",
     "requires": "SU(2) invariance, flux reflection, exact recalibration, complete POVM",
