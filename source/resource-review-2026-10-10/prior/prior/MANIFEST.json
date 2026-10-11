@@ -1,0 +1,42 @@
+{
+  "PILOT.md": {
+    "bytes": 18778,
+    "sha256": "833c557ec54eaf9699aae7d3ea5adc8291ad1c20de490ea9347ad4b59f4ea50c"
+  },
+  "README.md": {
+    "bytes": 999,
+    "sha256": "3c3e5de292d494fc9b67b4c35cb6cb8fd49d1eab088ce92b4c85eb17afd37b6a"
+  },
+  "RECORD.json": {
+    "bytes": 1240,
+    "sha256": "5485b487c152d67532b3cf477cbe7f60a2381d6f79d2b5c53b93406c820c9c30"
+  },
+  "check_pilot.py": {
+    "bytes": 14230,
+    "sha256": "a096ea1b0579078401a10f6625ea1d7d3c26b0d255de5ef1d6ceb92c792fb54c"
+  },
+  "development/explore.py": {
+    "bytes": 1186,
+    "sha256": "33686dd8338ee366f11485e13e5d96574dfafdc4766aa3aa552f96badf2a6385"
+  },
+  "development/finite_u_explore.py": {
+    "bytes": 1255,
+    "sha256": "0228992eecc7670dee6e1dca608430e8745570df375e5f0be4283268941b888f"
+  },
+  "evidence/first.json": {
+    "bytes": 12058,
+    "sha256": "23ad86e618f28b70b048eed0e0ea5a675fbe9fe947c250228bafaacbdaf63416"
+  },
+  "evidence/first.log": {
+    "bytes": 619,
+    "sha256": "99de918d8d204689c74b0b3de49c7a5b47cf294b5fdb9af8c187ec53ea6227b0"
+  },
+  "evidence/repeat.json": {
+    "bytes": 12058,
+    "sha256": "23ad86e618f28b70b048eed0e0ea5a675fbe9fe947c250228bafaacbdaf63416"
+  },
+  "evidence/repeat.log": {
+    "bytes": 619,
+    "sha256": "c8d22c3535f77aa2a2999a8e8ef224e002ff82aa7b31df7a9966ed7d542657f6"
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "status": "PASS",
+  "scientific_groups": 4,
+  "groups": {
+    "effects_and_reconstruction": {
+      "reflection_error": 1.3403527909882976e-14,
+      "decomposition_error": 8.790165048301107e-15,
+      "reconstruction_residual": 6.7287270058019226e-15
+    },
+    "symmetry_variance": {
+      "block_coefficients": [
+        0.20063060873814775,
+        0.3491644954255276,
+        0.3891562639101136
+      ],
+      "patterns": [
+        "0001",
+        "0010",
+        "0100",
+        "0111",
+        "1000",
+        "1011",
+        "1101",
+        "1110"
+      ],
+      "scores": [
+        0.7367140190128784,
+        0.25290061346376475,
+        2.336375499790797,
+        0.7306973350722676,
+        -0.660422527923992,
+        -0.2888744490555809,
+        -0.3059468821154177,
+        -0.5402400333306179
+      ],
+      "odd_coefficients": [
+        [
+          0.016861900419534993,
+          -0.001782419793015648,
+          0.00987673598559303,
+          0.8824953557007502,
+          -0.00798351746739029,
+          -0.16860769406429846,
+          -0.5493262030230234,
+          -0.18153415775815238
+        ],
+        [
+          -0.002471027799713265,
+          -0.0006954357892150108,
+          -0.0040040680885551185,
+          0.013294478223839048,
+          0.00015046967546960386,
+          -0.001134147296668059,
+          -0.005839470462483153,
+          0.0006992015373260035
+        ]
+      ],
+      "mixed_probabilities": [
+        0.01986555266708448,
+        0.008932723973642821,
+        0.00802294756052199,
+        0.27169237064500823,
+        0.004350448418462263,
+        0.1506647567247694,
+        0.43558985550345347,
+        0.10088134450705685
+      ],
+      "mixed_variance": 0.2848954942029842,
+      "worst_variance": 0.389156263910116,
+      "max_abs_score": 2.336375499790797,
+      "reconstruction_residual": 6.7287270058019226e-15,
+      "scope": "Floating-point diagnostics; see the separate exact certificate."
+    },
+    "separable_attainment": {
+      "six_Pauli_mixed_variance": 0.5625,
+      "fisher_at_origin": 1.777777777777776,
+      "benchmark": "Analytical separable lower bound is proved in SEPARABLE_BENCHMARK.md."
+    },
+    "noise_budget": {
+      "lambda_loss": 0.01,
+      "bit_flip": 0.003,
+      "number_probabilities": [
+        9.851242535689924e-07,
+        0.00029406205249687506,
+        0.02925941927474122,
+        0.9704455335485084
+      ],
+      "simple_bias_bound": 0.0014288705314760126,
+      "second_moment_bound": 0.40851779245249814,
+      "adversarial_examples_max_bias": 0.0006698465695855749,
+      "scope": "Probability-budget and detector-channel cross-checks, not a device fit."
+    }
+  }
+}

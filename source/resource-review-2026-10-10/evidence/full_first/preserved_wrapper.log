@@ -1,0 +1,8 @@
+{
+  "assertions_pass": true,
+  "source_unchanged": true,
+  "all_reports_byte_identical": true,
+  "total_scientific_groups": 11,
+  "incoming_files": 11,
+  "scope": "Author-side checks; not external proof, numerical interval, or device certification."
+}

@@ -1,0 +1,577 @@
+{
+  "archived_modules_imported": false,
+  "calibration": {
+    "rows": [
+      {
+        "coefficients": [
+          [
+            0.7997616951601847,
+            0.009621153760225544
+          ],
+          [
+            -0.2797838578916503,
+            -0.0030769140886034636
+          ]
+        ],
+        "determinant": 0.00023104548904089988,
+        "operator_residual": 1.9960368201940886e-13,
+        "random_state_error": 3.640837631380123e-14,
+        "scope": "Coefficients from complete finite matrices, not interval-certified values or device calibration.",
+        "times": [
+          3.141592653589793,
+          2.356194490192345
+        ],
+        "u": 8.0,
+        "variance_numerator": 3020.5101477222743,
+        "weights": [
+          -13.31735192656709,
+          -41.641816077709265
+        ]
+      },
+      {
+        "coefficients": [
+          [
+            1.7649907114015004,
+            0.026588956447678707
+          ],
+          [
+            -0.3915748604914307,
+            0.020164887919932494
+          ]
+        ],
+        "determinant": 0.04600240678674568,
+        "operator_residual": 7.245414793317294e-15,
+        "random_state_error": 8.881784197001252e-16,
+        "scope": "Coefficients from complete finite matrices, not interval-certified values or device calibration.",
+        "times": [
+          3.141592653589793,
+          2.356194490192345
+        ],
+        "u": 16.0,
+        "variance_numerator": 1.0329363137447671,
+        "weights": [
+          0.43834419388992596,
+          -0.577990551036551
+        ]
+      },
+      {
+        "coefficients": [
+          [
+            2.125302717682361,
+            0.011276263463857078
+          ],
+          [
+            -0.3964488688577575,
+            0.014245962410421581
+          ]
+        ],
+        "determinant": 0.03474744452205795,
+        "operator_residual": 7.31879811551052e-15,
+        "random_state_error": 1.3149203947904198e-15,
+        "scope": "Coefficients from complete finite matrices, not interval-certified values or device calibration.",
+        "times": [
+          3.141592653589793,
+          2.356194490192345
+        ],
+        "u": 32.0,
+        "variance_numerator": 0.5394998837063629,
+        "weights": [
+          0.4099859027439596,
+          -0.32452065522973406
+        ]
+      },
+      {
+        "coefficients": [
+          [
+            2.2155346926964246,
+            0.004858151960228416
+          ],
+          [
+            -0.39507729025686594,
+            0.007677416320979259
+          ]
+        ],
+        "determinant": 0.018928927721506412,
+        "operator_residual": 1.4088527988270763e-14,
+        "random_state_error": 1.3114509478384662e-15,
+        "scope": "Coefficients from complete finite matrices, not interval-certified values or device calibration.",
+        "times": [
+          3.141592653589793,
+          2.356194490192345
+        ],
+        "u": 64.0,
+        "variance_numerator": 0.43856707853544735,
+        "weights": [
+          0.4055917183442164,
+          -0.2566522537200428
+        ]
+      },
+      {
+        "coefficients": [
+          [
+            2.237702590589093,
+            0.002308803212036382
+          ],
+          [
+            -0.39456143786365877,
+            0.003908795427171295
+          ]
+        ],
+        "determinant": 0.009657686368549316,
+        "operator_residual": 4.1595375192135145e-14,
+        "random_state_error": 6.05765437811101e-15,
+        "scope": "Coefficients from complete finite matrices, not interval-certified values or device calibration.",
+        "times": [
+          3.141592653589793,
+          2.356194490192345
+        ],
+        "u": 128.0,
+        "variance_numerator": 0.41447579421035496,
+        "weights": [
+          0.40473414418389697,
+          -0.23906380099017316
+        ]
+      }
+    ],
+    "scope": "Exact identity conditional on nonzero determinant and calibrated coefficients. Numerical examples are not interval or device calibration certificates."
+  },
+  "finite_U_symmetry": {
+    "cases": [
+      {
+        "g": 0.1692996905199645,
+        "h": 3.758567531283082e-17,
+        "residual": 3.184608743745676e-16,
+        "tau": 0.57,
+        "u": 0.0
+      },
+      {
+        "g": -0.07224544266060079,
+        "h": -4.04768811061255e-18,
+        "residual": 6.440221265990591e-16,
+        "tau": 2.356194490192345,
+        "u": 0.0
+      },
+      {
+        "g": -1.578175035241539e-16,
+        "h": 3.23815048849004e-17,
+        "residual": 6.173556669759642e-16,
+        "tau": 3.141592653589793,
+        "u": 0.0
+      },
+      {
+        "g": -0.06419617042768296,
+        "h": -2.139492287038062e-16,
+        "residual": 1.0155984989732142e-15,
+        "tau": 4.1,
+        "u": 0.0
+      },
+      {
+        "g": -0.010778024161168576,
+        "h": 0.001864135227429245,
+        "residual": 1.7581888412407917e-15,
+        "tau": 0.57,
+        "u": 8.0
+      },
+      {
+        "g": -0.2797838578916503,
+        "h": -0.0030769140886034636,
+        "residual": 4.031569492341143e-15,
+        "tau": 2.356194490192345,
+        "u": 8.0
+      },
+      {
+        "g": 0.7997616951601847,
+        "h": 0.009621153760225544,
+        "residual": 3.9947877626473486e-15,
+        "tau": 3.141592653589793,
+        "u": 8.0
+      },
+      {
+        "g": 0.3831584194210471,
+        "h": 0.049667932217081885,
+        "residual": 7.070159002616546e-15,
+        "tau": 4.1,
+        "u": 8.0
+      },
+      {
+        "g": 0.02887867269542548,
+        "h": -0.000393791358894549,
+        "residual": 5.941441596645915e-15,
+        "tau": 0.57,
+        "u": 16.0
+      },
+      {
+        "g": -0.3915748604914307,
+        "h": 0.020164887919932494,
+        "residual": 9.663133276131659e-15,
+        "tau": 2.356194490192345,
+        "u": 16.0
+      },
+      {
+        "g": 1.7649907114015004,
+        "h": 0.026588956447678707,
+        "residual": 1.0260936257291664e-14,
+        "tau": 3.141592653589793,
+        "u": 16.0
+      },
+      {
+        "g": 0.34874779072857254,
+        "h": 0.007855910820840762,
+        "residual": 8.4777179768737e-15,
+        "tau": 4.1,
+        "u": 16.0
+      },
+      {
+        "g": 0.038777971210588034,
+        "h": -0.0002073562976158695,
+        "residual": 8.389144822680564e-15,
+        "tau": 0.57,
+        "u": 64.0
+      },
+      {
+        "g": -0.39507729025686594,
+        "h": 0.007677416320979259,
+        "residual": 4.178703240544663e-14,
+        "tau": 2.356194490192345,
+        "u": 64.0
+      },
+      {
+        "g": 2.2155346926964246,
+        "h": 0.004858151960228416,
+        "residual": 2.941526917149668e-14,
+        "tau": 3.141592653589793,
+        "u": 64.0
+      },
+      {
+        "g": 0.2541227819358283,
+        "h": -0.0011399281440881003,
+        "residual": 1.425662412766469e-14,
+        "tau": 4.1,
+        "u": 64.0
+      },
+      {
+        "g": 0.03985995911306304,
+        "h": -0.0001068827015354099,
+        "residual": 2.0221380373218692e-14,
+        "tau": 0.57,
+        "u": 128.0
+      },
+      {
+        "g": -0.39456143786365877,
+        "h": 0.003908795427171295,
+        "residual": 7.719687902722858e-14,
+        "tau": 2.356194490192345,
+        "u": 128.0
+      },
+      {
+        "g": 2.237702590589093,
+        "h": 0.002308803212036382,
+        "residual": 8.111757227414114e-14,
+        "tau": 3.141592653589793,
+        "u": 128.0
+      },
+      {
+        "g": 0.24746764695436416,
+        "h": -0.0006459109714729155,
+        "residual": 2.8788459662159086e-14,
+        "tau": 4.1,
+        "u": 128.0
+      }
+    ],
+    "leading_virtual_correction": [
+      {
+        "cases": [
+          {
+            "u": 128.0,
+            "u_squared_remainder": 132.21455608430534
+          },
+          {
+            "u": 256.0,
+            "u_squared_remainder": 132.2896516147676
+          },
+          {
+            "u": 512.0,
+            "u_squared_remainder": 132.3083828783035
+          },
+          {
+            "u": 1024.0,
+            "u_squared_remainder": 132.31306309267396
+          }
+        ],
+        "g1": 2.960594732333751e-15,
+        "h1": 0.5033240850149104,
+        "tau": 2.356194490192345
+      },
+      {
+        "cases": [
+          {
+            "u": 128.0,
+            "u_squared_remainder": 101.15272335779258
+          },
+          {
+            "u": 256.0,
+            "u_squared_remainder": 101.1938286366594
+          },
+          {
+            "u": 512.0,
+            "u_squared_remainder": 101.20406284935505
+          },
+          {
+            "u": 1024.0,
+            "u_squared_remainder": 101.20661876997946
+          }
+        ],
+        "g1": 2.9546735428690834e-13,
+        "h1": 0.29011347404003945,
+        "tau": 3.141592653589793
+      }
+    ],
+    "reflection_broken_residual": 0.07753464172854783,
+    "scope": "Two-observable finite-U calibration requires reflection plus spin-rotation symmetry; arbitrary hard-core disorder robustness does not transfer."
+  },
+  "independent_checks": {
+    "calibration_error_bound_example": 0.001454678938816403,
+    "evolutions": [
+      {
+        "Taylor_vs_spectral_norm": 4.2336834271655235e-14,
+        "exact_arithmetic_Taylor_tail": 1.8046766080302705e-32,
+        "sparse_vs_spectral_norm": 2.1304092876308572e-14,
+        "tau": 3.141592653589793
+      },
+      {
+        "Taylor_vs_spectral_norm": 2.4049124475209322e-14,
+        "exact_arithmetic_Taylor_tail": 1.1740567485674298e-28,
+        "sparse_vs_spectral_norm": 2.115598517579451e-14,
+        "tau": 2.356194490192345
+      }
+    ],
+    "full_sector_dimension": 120,
+    "optimized_shot_variance_numerator": 1.032936313744767,
+    "scope": "Taylor tail is an exact-arithmetic truncation bound; comparisons include floating-point roundoff and are not interval-certified."
+  },
+  "instrument_and_repetition": {
+    "analytical_sufficient_u2048": {
+      "chirality_lower_bound": 0.30005216704527016,
+      "epsilon": 0.053138653249049345,
+      "success_lower_bound": 0.2184087646149745
+    },
+    "cases": [
+      {
+        "chirality": 0.3621674880824497,
+        "return_operator_norm": 0.9779103384891524,
+        "rounds": 1,
+        "spectral_radius": 0.9777578026193106,
+        "target_weight": 0.8690365423535698,
+        "total_success": 0.27507594737129115,
+        "u": 32.0
+      },
+      {
+        "chirality": 0.4290081600384732,
+        "return_operator_norm": 0.9779103384891524,
+        "rounds": 2,
+        "spectral_radius": 0.9777578026193106,
+        "target_weight": 0.9922003189980011,
+        "total_success": 0.2303197148143249,
+        "u": 32.0
+      },
+      {
+        "chirality": 0.432951115761806,
+        "return_operator_norm": 0.9779103384891524,
+        "rounds": 4,
+        "spectral_radius": 0.9777578026193106,
+        "target_weight": 0.9999186419988775,
+        "total_success": 0.20887862525122675,
+        "u": 32.0
+      },
+      {
+        "chirality": 0.38667317534713574,
+        "return_operator_norm": 0.9986676563525563,
+        "rounds": 1,
+        "spectral_radius": 0.9986615953814443,
+        "target_weight": 0.9191376894717331,
+        "total_success": 0.2712686465506604,
+        "u": 128.0
+      },
+      {
+        "chirality": 0.43154670746158424,
+        "return_operator_norm": 0.9986676563525563,
+        "rounds": 2,
+        "spectral_radius": 0.9986615953814443,
+        "target_weight": 0.9974237987700199,
+        "total_success": 0.2493080920943166,
+        "u": 128.0
+      },
+      {
+        "chirality": 0.43300955888374626,
+        "return_operator_norm": 0.9986676563525563,
+        "rounds": 4,
+        "spectral_radius": 0.9986615953814443,
+        "target_weight": 0.9999955863035292,
+        "total_success": 0.24733838309098777,
+        "u": 128.0
+      },
+      {
+        "chirality": 0.3884622320827827,
+        "return_operator_norm": 0.9999948105423276,
+        "rounds": 1,
+        "spectral_radius": 0.9999947878008568,
+        "target_weight": 0.9228339560135903,
+        "total_success": 0.27090182342962466,
+        "u": 2048.0
+      },
+      {
+        "chirality": 0.431670284387606,
+        "return_operator_norm": 0.9999948105423276,
+        "rounds": 2,
+        "spectral_radius": 0.9999947878008568,
+        "target_weight": 0.9976747252562623,
+        "total_success": 0.2505774551325692,
+        "u": 2048.0
+      },
+      {
+        "chirality": 0.4330116496055987,
+        "return_operator_norm": 0.9999948105423276,
+        "rounds": 4,
+        "spectral_radius": 0.9999947878008568,
+        "target_weight": 0.9999981812097598,
+        "total_success": 0.2499900365527309,
+        "u": 2048.0
+      }
+    ],
+    "fixed_u16_long_sequence": [
+      {
+        "chirality": 0.30451329715491005,
+        "return_operator_norm": 0.9074959336935206,
+        "rounds": 1,
+        "spectral_radius": 0.906472582633598,
+        "target_weight": 0.7571463353132284,
+        "total_success": 0.2716923706450082,
+        "u": 16.0
+      },
+      {
+        "chirality": 0.4324656706687299,
+        "return_operator_norm": 0.9074959336935206,
+        "rounds": 4,
+        "spectral_radius": 0.906472582633598,
+        "target_weight": 0.9991250391377624,
+        "total_success": 0.11418653903825451,
+        "u": 16.0
+      },
+      {
+        "chirality": 0.43270330286995284,
+        "return_operator_norm": 0.9074959336935206,
+        "rounds": 16,
+        "spectral_radius": 0.906472582633598,
+        "target_weight": 0.9996427367824112,
+        "total_success": 0.010811841943738123,
+        "u": 16.0
+      },
+      {
+        "chirality": 0.43270330287029746,
+        "return_operator_norm": 0.9074959336935206,
+        "rounds": 64,
+        "spectral_radius": 0.906472582633598,
+        "target_weight": 0.9996427367828126,
+        "total_success": 8.708598798538309e-07,
+        "u": 16.0
+      }
+    ],
+    "reference_dimension": 3,
+    "scope": "Reference inputs test the proven uniform statements; long sequences are finite-matrix diagnostics, not an all-U spectral-radius theorem."
+  },
+  "status": "PASS",
+  "test_groups": 5,
+  "uniform_bound": {
+    "bosonic_dimension": 120,
+    "cases": [
+      {
+        "bound": 0.6711696879329399,
+        "leakage_norm": 0.3044838696312281,
+        "return_error": 0.16315708484112665,
+        "tau": 0.31,
+        "u": 16.0
+      },
+      {
+        "bound": 2.0,
+        "leakage_norm": 0.310561696201011,
+        "return_error": 0.0789765551191879,
+        "tau": 1.0,
+        "u": 16.0
+      },
+      {
+        "bound": 2.0,
+        "leakage_norm": 0.29210597147304573,
+        "return_error": 0.7128431003989251,
+        "tau": 3.141592653589793,
+        "u": 16.0
+      },
+      {
+        "bound": 2.0,
+        "leakage_norm": 0.34960002610373475,
+        "return_error": 0.43218883593902685,
+        "tau": 4.0,
+        "u": 16.0
+      },
+      {
+        "bound": 0.16779242198323496,
+        "leakage_norm": 0.06202880693096205,
+        "return_error": 0.033425807738180935,
+        "tau": 0.31,
+        "u": 64.0
+      },
+      {
+        "bound": 0.5412658773652741,
+        "leakage_norm": 0.08827638516273044,
+        "return_error": 0.020442683998087567,
+        "tau": 1.0,
+        "u": 64.0
+      },
+      {
+        "bound": 1.700436903969579,
+        "leakage_norm": 0.07755001537697631,
+        "return_error": 0.19506057038015745,
+        "tau": 3.141592653589793,
+        "u": 64.0
+      },
+      {
+        "bound": 2.0,
+        "leakage_norm": 0.09814770185957679,
+        "return_error": 0.12527418191705936,
+        "tau": 4.0,
+        "u": 64.0
+      },
+      {
+        "bound": 0.04194810549580874,
+        "leakage_norm": 0.022657070030688613,
+        "return_error": 0.008731493879603182,
+        "tau": 0.31,
+        "u": 256.0
+      },
+      {
+        "bound": 0.13531646934131852,
+        "leakage_norm": 0.021687108646254977,
+        "return_error": 0.005010508162123579,
+        "tau": 1.0,
+        "u": 256.0
+      },
+      {
+        "bound": 0.42510922599239476,
+        "leakage_norm": 0.019307047767031908,
+        "return_error": 0.04908107515377785,
+        "tau": 3.141592653589793,
+        "u": 256.0
+      },
+      {
+        "bound": 0.5412658773652741,
+        "leakage_norm": 0.023703005279420524,
+        "return_error": 0.0317741566096716,
+        "tau": 4.0,
+        "u": 256.0
+      }
+    ],
+    "exact_gram_row_sum": 12,
+    "first_quantized_dimension": 512,
+    "interaction_error": 8.881784197001252e-16,
+    "kinetic_error": 1.6392055010371542e-15
+  }
+}
