@@ -210,11 +210,177 @@ pointwise on every state.
 
 The comparison concerns unbiased estimation from an unknown input state. If
 the state is promised to be $I_8/8$, reporting zero without measuring solves
-a different task. Biased or prior-dependent estimators, collective quantum
-operations across distinct copies, and retained quantum memory between copies
-are outside this theorem. Known entangling measurements, including the
+a different task. Biased or prior-dependent estimators are outside the exact
+$9/16$ variance theorem; Section 6 gives a finite-sample mean-square-error
+bound that includes them. Collective quantum operations across distinct
+copies and retained quantum memory between copies remain outside the
+measurement class. Known entangling measurements, including the
 controlled-cycle Hadamard test, are also outside the separable-effects class.
 
 The result compares original input-copy counts under exact calibration and
 the declared detector model. Coherent hopping, calibration effort, apparatus
 complexity, and bias from model errors remain separate resource costs.
+
+## 6. Finite-sample bound allowing biased estimators
+
+Consider any estimator $\widehat\theta$, including a biased or nonlinear
+one, using $N$ independent unknown input copies with classically adaptive,
+fully separable measurements on each copy. If its mean-square error is
+uniformly at most $\varepsilon^2$ on every three-spin input, then
+
+$$
+\boxed{
+N\ge\left(\frac{3}{4\varepsilon}-\pi\right)^2,
+\qquad 0<\varepsilon<\frac1{16\pi}.
+}
+$$
+
+An integer copy count must satisfy the corresponding ceiling. This is a
+necessary bound, not a claim that the finite-$N$ minimax risk is exactly
+known. Uniform risk is essential: the conclusion does not follow from a
+risk requirement at just the maximally mixed state, nor does it apply to a
+smaller promised input family that excludes the states used below.
+
+### Fisher information away from the maximally mixed state
+
+Use the same submodel
+$\rho_\theta=I_8/8+(4/3)\theta\chi$ for
+$|\theta|<\sqrt3/8$. For a separable POVM write
+
+$$
+p_y(\theta)=q_y(1+\theta b_y),\qquad
+b_y=\frac{32}{3}a_y,\qquad
+|b_y|\le b_*:=\frac43,\qquad\sum_yq_yb_y=0.
+$$
+
+For fixed $\theta$, the function
+$f(b)=b^2/(1+\theta b)$ is convex on $[-b_*,b_*]$, since
+$f''(b)=2/(1+\theta b)^3>0$. It lies below the line joining its
+endpoint values. Averaging that line and using $\sum_yq_yb_y=0$ gives
+
+$$
+F(\theta)=\sum_y\frac{q_yb_y^2}{1+\theta b_y}
+\le\frac12\left(\frac{b_*^2}{1+\theta b_*}
+                 +\frac{b_*^2}{1-\theta b_*}\right)
+=\frac{b_*^2}{1-b_*^2\theta^2}.
+$$
+
+Condition on each preceding record in an adaptive protocol. The same
+per-copy inequality applies to its next POVM, and each conditional score
+has mean zero. The total Fisher information therefore obeys
+
+$$
+F_N(\theta)\le\frac{N b_*^2}{1-b_*^2\theta^2}.
+$$
+
+Known reference preparations carry no additional Fisher information about
+$\theta$: their conditional outcome distributions, given the preceding
+record and a fixed physical channel, do not depend on the unknown input
+state. They can select subsequent measurements or processing, but the
+bound already allows these choices. This includes classically adaptive
+reference choices. It assumes that the references do not encode prior
+information about $\theta$ and are not jointly measured with unknown
+copies to change the allowed measurement class.
+
+### A self-contained van Trees argument
+
+Choose $0<a<\sqrt3/8$ and the normalized auxiliary density
+
+$$
+\pi_a(\theta)=\frac1a\cos^2\left(\frac{\pi\theta}{2a}\right),
+\qquad -a\le\theta\le a.
+$$
+
+It vanishes at both endpoints and has prior Fisher information
+
+$$
+I(\pi_a)=\int_{-a}^a\frac{\pi_a'(\theta)^2}{\pi_a(\theta)}\,d\theta
+=\frac{\pi^2}{a^2}.
+$$
+
+This prior is a proof device: no prior on the user's unknown state is
+assumed. Let $Z$ denote the complete record and $p_\theta(z)$ its
+likelihood. Under the joint density $p_\theta(z)\pi_a(\theta)$, define
+
+$$
+S=\partial_\theta\log p_\theta(Z)
+  +\partial_\theta\log\pi_a(\theta).
+$$
+
+Integration by parts, with zero boundary terms, gives
+
+$$
+\mathbb E[(\widehat\theta(Z)-\theta)S]=1.
+$$
+
+No unbiasedness assumption is used. The conditional likelihood score has
+mean zero, so
+$\mathbb ES^2=\mathbb E_{\pi_a}F_N(\theta)+I(\pi_a)$.
+Cauchy–Schwarz yields
+
+$$
+\sup_{|\theta|\le a}\mathbb E_\theta
+[(\widehat\theta-\theta)^2]
+\ge
+\mathbb E_{\pi_a}\mathbb E_\theta
+[(\widehat\theta-\theta)^2]
+\ge
+\frac1{N b_*^2/(1-b_*^2a^2)+\pi^2/a^2}.
+$$
+
+The likelihood is a product of conditional factors affine in $\theta$
+and reference factors independent of $\theta$. On this closed interior
+interval the conditional likelihood scores are bounded; finite risk
+therefore suffices for the displayed differentiation and integration.
+Zero POVM effects may be omitted. Continuous outcomes are covered by the
+same dominated-integral argument.
+
+This is the scalar van Trees inequality, reproduced here to expose the
+assumptions. See R. D. Gill and B. Y. Levit,
+[*Applications of the van Trees Inequality: A Bayesian Cramér–Rao Bound*,
+Bernoulli **1** (1–2), 59–79 (1995)](https://doi.org/10.2307/3318681),
+Section 2, Eq. (3); an
+[author manuscript](https://dspace.library.uu.nl/bitstream/handle/1874/1190/van_trees.pdf?sequence=1)
+is deposited at Utrecht University. The statistical inequality is an
+established tool, applied here to the chirality-specific separable-effects
+information bound.
+
+If the risk is at most $\varepsilon^2$ uniformly, rearranging gives
+
+$$
+N\ge\left(\varepsilon^{-2}-\frac{\pi^2}{a^2}\right)
+       \frac{1-b_*^2a^2}{b_*^2}.
+$$
+
+The right side is maximized at $a^2=\pi\varepsilon/b_*$.
+This lies strictly inside the physical interval precisely when
+$\varepsilon<1/(16\pi)$. Substitution gives
+$N\ge(1/(b_*\varepsilon)-\pi)^2$, proving the boxed bound.
+
+### Comparing a finite calibration certificate fairly
+
+The [channel-calibration certificate](CHANNEL_CALIBRATION.md) can establish,
+with confidence $1-\delta$ over independent reference data, that a frozen
+native score has conditional risk at most $U_T/n+\beta^2$ for every input.
+On that confidence event, if $U_T/n+\beta^2\le\varepsilon^2$, its fixed
+procedure can be compared with the lower bound above. The separable bound
+also holds after conditioning on any fixed, input-independent calibration
+record: the remaining procedure still has fully separable per-copy effects.
+Thus the comparison permits residual bias while retaining its stated
+calibration confidence.
+
+This conditional statement is different from an unconditional guarantee for
+the entire random calibration-and-estimation procedure. For the latter,
+specify a protocol and output even when calibration fails. Clipping the
+final estimate to $[-\sqrt3/4,\sqrt3/4]$ never increases its error on a
+physical input and bounds squared error by $3/4$. If the good-event risk
+has a deterministic upper bound $R_{\rm good}$, an unconditional bound is
+therefore $R_{\rm good}+(3/4)\delta$. An observed, data-dependent
+$U_T/n+\beta^2$ alone is not such a deterministic bound.
+
+Reference and pilot preparations must be charged separately when comparing
+total preparation costs. They do not count as unknown input copies in the
+information inequality, and the ideal separable comparator is free to use
+its entire preparation budget on unknown inputs. Reusing one uniform
+operator certificate across several input states amortizes its preparation
+cost; it does not divide a shared calibration bias by the number of states.

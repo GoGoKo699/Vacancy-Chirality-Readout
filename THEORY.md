@@ -291,6 +291,15 @@ The separable benchmark is a lower bound for the whole declared measurement clas
 
 The certified complete-parity bound therefore proves a strict minimax sampling advantage over universally unbiased protocols using fully separable effects across the three spins of each copy. It also improves the mixed-input coefficient from $9/16$ to the certified interval above. This does not assert pointwise superiority on every state, superiority to the controlled-cycle test, or a bound on collective measurements across copies or estimators exploiting a state promise.
 
+For arbitrary biased estimators in the same per-copy measurement class, a uniform mean-square error at most $\varepsilon^2$ requires
+
+$$
+N\ge\left(\frac{3}{4\varepsilon}-\pi\right)^2,
+\qquad 0<\varepsilon<\frac1{16\pi}.
+$$
+
+The [finite-sample proof](research/SEPARABLE_BENCHMARK.md#6-finite-sample-bound-allowing-biased-estimators) combines the submodel's separable Fisher-information bound with the scalar van Trees inequality. This is a necessary count, not an attained finite-sample minimax formula. It provides a bias-aware comparison for a fixed validated native estimator; the confidence of calibration must still be distinguished from unconditional estimation risk. The [calibration-cost account](research/CALIBRATION_COST.md) charges pilot and reference preparations explicitly and finds no established one-use total-preparation advantage. Its reuse calculations distinguish finite confidence certificates from regular plug-in asymptotics.
+
 Signed internal-state information in spatial counts has optical antecedents [M17](REFERENCES.md). Fourier interferometry already reads cyclic observables with entangled inputs [N26](REFERENCES.md), and phase-sensitive scattering measurements isolate static Hubbard spin chirality [NGH25](REFERENCES.md). The implementation studied here combines interacting four-site vacancy dynamics, parity-only detection, and finite-repulsion calibration. Correlated inputs alone do not distinguish it from these general cycle-readout methods.
 
 For the four-setting finite-$u=16$ return-only allocation, the coefficient on input $I_8/8$ is $0.8759834953$. Retaining complete parity images reduces this coefficient to the certified interval near $0.2848954942$, with one evolution duration. Both methods count all original preparations. The original return-only derivations remain in [the matched resource comparison, Section 6](source/resource-review-2026-10-10/READOUT_AND_RESOURCES.md); the complete-image and separable-benchmark proofs above specify the stronger comparison.

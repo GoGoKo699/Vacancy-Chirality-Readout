@@ -532,6 +532,57 @@ def channel_recalibration_certificate(es, error, cs, ds, roots):
     }
 
 
+def calibration_moment_certificate(es, error, b, alpha, beta):
+    """Nominal product-probe variance profiles from exact score moments."""
+    scores = [Interval(v) for v in b]
+    scores[PIVOTS[0]] += alpha
+    scores[PIVOTS[1]] += beta
+    sectors = [[], [], []]
+    for e in es:
+        aa = F(e[0][0][0]+e[2][2][0], 2*SCALE)
+        bb = F(e[0][1][0]+e[2][1][0], 2*SCALE)
+        cc = F(e[0][2][0]+e[2][0][0], 2*SCALE)
+        for dest, value, multiple in zip(sectors, (aa+bb+cc, aa-cc, aa+cc-2*bb), (3, 2, 4)):
+            enclosed = Interval(value).centered_widen(multiple*error)
+            dest.append(Interval(max(F(0), enclosed.lo), min(F(1), enclosed.hi)))
+    second = [sum((w*v*v for w, v in zip(sector, scores)), Interval(0))
+              for sector in sectors]
+    fourth = [sum((w*v*v*v*v for w, v in zip(sector, scores)), Interval(0))
+              for sector in sectors]
+    specifications = {
+        'xyz': (F(1, 8), (F(1, 2), F(1, 4), F(1, 4))),
+        '001': (F(0), (F(1, 3), F(1, 2), F(1, 6))),
+        '000': (F(0), (F(1), F(0), F(0))),
+        '010': (F(0), (F(1, 3), F(0), F(2, 3))),
+    }
+    probes = {}
+    for name, (mean, weights) in specifications.items():
+        q = sum((w*v for w, v in zip(weights, second)), Interval(0))
+        fourth_moment = sum((w*v for w, v in zip(weights, fourth)), Interval(0))
+        variance = q-mean*mean
+        squared_score_variance = fourth_moment-q*q
+        assert variance.lo > 0 and squared_score_variance.lo > 0
+        probes[name] = {
+            'mean_exact': str(mean),
+            'sector_weights_exact': [str(w) for w in weights],
+            'second_moment': display(q),
+            'fourth_moment': display(fourth_moment),
+            'variance_X': display(variance),
+            'variance_X_squared': display(squared_score_variance),
+        }
+    return {
+        'scope': ('Exact nominal ideal-model planning profiles; not measured variances '
+                  'of an implemented channel or a pilot-fitted score.'),
+        'flux_allocation': 'independent equal-probability randomization',
+        'score_definition': 'nominal rational reference scores plus exact two-outcome correction',
+        'score_absolute_upper': decimal_bound(max(v.abs_upper() for v in scores), 15, True),
+        'sector_order': ['symmetric', 'reflection_odd', 'reflection_even_standard'],
+        'second_moment_eigenvalues': [display(v) for v in second],
+        'fourth_moment_eigenvalues': [display(v) for v in fourth],
+        'probes': probes,
+    }
+
+
 def run():
     if not __debug__:
         raise RuntimeError("Run the certificate without Python optimization.")
@@ -551,6 +602,7 @@ def run():
     noise_report = noise_certificate(b, alpha, beta, mixed, upper)
     strong_report = strong_neighborhood(es, effect_error, cs, ds, b, alpha, beta, pi, roots)
     channel_report = channel_recalibration_certificate(es, effect_error, cs, ds, roots)
+    moment_report = calibration_moment_certificate(es, effect_error, b, alpha, beta)
     # A finite open parameter box, all parameters varied while preserving the
     # uniform spin-independent ring and using recalibrated outcome scores.
     radius = F(1, 10**7)
@@ -596,6 +648,7 @@ def run():
         'noise_window': noise_report,
         'all_outcome_robustness': strong_report,
         'channel_recalibration': channel_report,
+        'calibration_moments': moment_report,
         'effect_neighborhood': {
             'uniform_effect_operator_norm_radius': '0.00001',
             'requires': 'SU(2) invariance, flux reflection, exact recalibration, complete POVM',

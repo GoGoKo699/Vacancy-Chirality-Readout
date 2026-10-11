@@ -274,6 +274,33 @@ Finally, the raw response matrix is $r$ times the normalized response matrix;
 its inverse absorbs $1/r$. Therefore an operational reconstruction using raw
 reference responses implements the same score without knowing $r$.
 
+## Nominal calibration-moment profiles
+
+For variance-sensitive planning, the checker also encloses the second and fourth
+moments of the exactly corrected nominal score on the product reference states.
+These are ideal-model profiles, not measured variances of an implemented channel
+or of a score fitted from pilot data. They use independent, equally randomized
+flux settings.
+
+| Reference | Exact mean | Certified upper bound on $\operatorname{Var}(X)$ | Certified upper bound on $\operatorname{Var}(X^2)$ |
+|---|---:|---:|---:|
+| $xyz$ | $1/8$ | 0.269271 | 0.255520 |
+| $001$ | 0 | 0.319650 | 0.324633 |
+| $000$ | 0 | 0.200631 | 0.170496 |
+| $010$ (optional) | 0 | 0.299654 | 0.192583 |
+
+The fourth-moment operator is $\sum_p b_p^4F_p$. It has the same three known
+symmetry sectors as the second-moment operator. Multiplying its certified sector
+eigenvalues by the product-probe weights in
+[CHANNEL_CALIBRATION.md](CHANNEL_CALIBRATION.md) gives $\mathbb E X^4$.
+The reported variance intervals then follow from
+$\operatorname{Var}(X)=\mathbb E X^2-(\mathbb E X)^2$ and
+$\operatorname{Var}(X^2)=\mathbb E X^4-(\mathbb E X^2)^2$.
+The `calibration_moments` report section supplies outward-rounded intervals for
+all these quantities and the score range, including the optional fourth probe.
+Actual calibration guarantees must use a justified variance bound or
+independently validated statistics for the score and channel being used.
+
 ## Arithmetic enclosure
 
 The computation uses the 40-state sector with two spin-up and one spin-down
