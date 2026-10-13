@@ -227,7 +227,7 @@ second-moment bound $U$. During use suppose
 $\|A'-A\|\le d_A$ and $\|T'-T\|\le d_T$. Then
 
 $$
-\operatorname{MSE}\le\frac{U+d_T}{n}+(\beta+d_A)^2.
+\mathrm{MSE}\le\frac{U+d_T}{n}+(\beta+d_A)^2.
 $$
 
 Writing $g=\varepsilon^2-U/n-\beta^2$, a sufficient remaining drift budget is
@@ -261,16 +261,16 @@ $$
 $$
 
 Indeed, for any input $\rho$ the outcome probability is
-$\sum_i p_i\operatorname{Tr}(E_{i,s,y}\rho)
-=\operatorname{Tr}(\overline E_{s,y}\rho)$.
+$\sum_i p_i\mathrm{Tr}(E_{i,s,y}\rho)
+=\mathrm{Tr}(\overline E_{s,y}\rho)$.
 Thus calibration of this mixture is valid for every input. Individual
 plaquettes need not be identical. The averaged effects must satisfy the
 spin-rotation and paired-reflection assumptions; a common distribution
 over individually symmetric paired channels is sufficient.
 
 This is not the replacement
-$\sum_i p_i\operatorname{Tr}(E_i\rho_i)
-\mapsto\operatorname{Tr}(\overline E\,\overline\rho)$ for arbitrary
+$\sum_i p_i\mathrm{Tr}(E_i\rho_i)
+\mapsto\mathrm{Tr}(\overline E\,\overline\rho)$ for arbitrary
 different states tied to different channels. If scan points occupy fixed
 plaquette subsets, they generally have different mixtures. Use matched
 randomized assignments, separate calibrations, or a mismatch bound.
@@ -279,11 +279,11 @@ randomized assignments, separate calibrations, or a mismatch bound.
 be its channel-specific mean and second-moment operators. They satisfy
 $-BI\le A_i\le BI$ and $0\le T_i\le B^2I$. If reference labels have
 weights $p$ and target labels have weights $q$, define
-$\operatorname{TV}(p,q)=\frac12\sum_i|p_i-q_i|$. Then
+$\mathrm{TV}(p,q)=\frac12\sum_i|p_i-q_i|$. Then
 
 $$
-\boxed{\|A_q-A_p\|\le2B\operatorname{TV}(p,q),\qquad
-\|T_q-T_p\|\le B^2\operatorname{TV}(p,q).}
+\boxed{\|A_q-A_p\|\le2B\mathrm{TV}(p,q),\qquad
+\|T_q-T_p\|\le B^2\mathrm{TV}(p,q).}
 $$
 
 For the first inequality use the triangle inequality and $\|A_i\|\le B$.
@@ -303,7 +303,7 @@ scores per frame, variance $\sigma^2$, pair correlation $r$, and $F$
 independent frames give
 
 $$
-\operatorname{Var}(\overline X)
+\mathrm{Var}(\overline X)
 =\frac{\sigma^2[1+(m-1)r]}{mF}.
 $$
 

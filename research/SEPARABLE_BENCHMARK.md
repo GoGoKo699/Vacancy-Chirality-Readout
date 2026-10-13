@@ -4,7 +4,7 @@ For $n$ independent copies of an unknown three-spin state, every universally
 unbiased estimator based on a fully separable POVM on each copy obeys
 
 $$
-n\operatorname{Var}_{I_8/8}(\widehat\chi)\ge\frac9{16}.
+n\mathrm{Var}_{I_8/8}(\widehat\chi)\ge\frac9{16}.
 $$
 
 The bound permits classical adaptation between copies, arbitrary processing of
@@ -24,7 +24,7 @@ state itself is unrestricted.
 For a product state with single-qubit Bloch vectors $\mathbf r_j$,
 
 $$
-\operatorname{Tr}\!\left[\chi(\rho_1\otimes\rho_2\otimes\rho_3)\right]
+\mathrm{Tr}\!\left[\chi(\rho_1\otimes\rho_2\otimes\rho_3)\right]
 =\frac18\mathbf r_1\cdot(\mathbf r_2\times\mathbf r_3).
 $$
 
@@ -33,14 +33,14 @@ unit Bloch vectors attain the bound. Convexity extends it to every fully
 separable state $\sigma$:
 
 $$
-|\operatorname{Tr}(\chi\sigma)|\le\frac18.
+|\mathrm{Tr}(\chi\sigma)|\le\frac18.
 $$
 
 In particular, for any nonzero fully separable positive effect $E_y$, define
 
 $$
-q_y=\frac{\operatorname{Tr}E_y}{8},\qquad
-a_y=\frac{\operatorname{Tr}(\chi E_y)}{\operatorname{Tr}E_y}.
+q_y=\frac{\mathrm{Tr}E_y}{8},\qquad
+a_y=\frac{\mathrm{Tr}(\chi E_y)}{\mathrm{Tr}E_y}.
 $$
 
 Then $|a_y|\le1/8$. For a POVM, $\sum_yq_y=1$. Zero-trace positive effects
@@ -61,12 +61,12 @@ $$
 \sum_yw_yE_y=\chi.
 $$
 
-The Pauli decomposition gives $\operatorname{Tr}\chi=0$ and
-$\operatorname{Tr}\chi^2=3/4$. Hence, on $I_8/8$,
+The Pauli decomposition gives $\mathrm{Tr}\chi=0$ and
+$\mathrm{Tr}\chi^2=3/4$. Hence, on $I_8/8$,
 
 $$
 \sum_yq_yw_y=0,\qquad
-\sum_yq_yw_ya_y=\frac{\operatorname{Tr}\chi^2}{8}=\frac3{32}.
+\sum_yq_yw_ya_y=\frac{\mathrm{Tr}\chi^2}{8}=\frac3{32}.
 $$
 
 Weighted Cauchy–Schwarz now gives
@@ -80,7 +80,7 @@ $$
 The score has zero mean at this input, so
 
 $$
-\boxed{\operatorname{Var}_{I_8/8}(w)\ge\frac9{16}.}
+\boxed{\mathrm{Var}_{I_8/8}(w)\ge\frac9{16}.}
 $$
 
 Random setting choices are included in $y$ and their probabilities in $E_y$.
@@ -89,8 +89,8 @@ observed record preserves its mean and can only reduce its variance.
 
 This is an elementary witness-bound-to-variance argument. More generally, for
 a traceless observable $A$ in dimension $d$, if every allowed normalized
-effect has $|\operatorname{Tr}(AE)/\operatorname{Tr}E|\le b$, the same proof
-gives $\operatorname{Var}_{I_d/d}(w)\ge[\operatorname{Tr}(A^2)/d]^2/b^2$.
+effect has $|\mathrm{Tr}(AE)/\mathrm{Tr}E|\le b$, the same proof
+gives $\mathrm{Var}_{I_d/d}(w)\ge[\mathrm{Tr}(A^2)/d]^2/b^2$.
 No new general statistical principle is claimed.
 
 ## 3. Adaptive measurements and arbitrary estimators
@@ -104,7 +104,7 @@ $$
 $$
 
 The eigenvalues of $\chi$ are $0,\pm\sqrt3/4$, so this interval gives
-strictly positive states, with $\operatorname{Tr}(\rho_\theta\chi)=\theta$.
+strictly positive states, with $\mathrm{Tr}(\rho_\theta\chi)=\theta$.
 For any allowed POVM,
 
 $$
@@ -141,11 +141,11 @@ $\left.\partial_\theta\mathbb E_\theta T\right|_0=1$. Differentiating the
 expectation yields $\mathbb E_0[TS]=1$. Cauchy–Schwarz proves
 
 $$
-1\le\operatorname{Var}_0(T)\,\mathbb E_0[S^2]
-\le\operatorname{Var}_0(T)\frac{16n}{9},
+1\le\mathrm{Var}_0(T)\,\mathbb E_0[S^2]
+\le\mathrm{Var}_0(T)\frac{16n}{9},
 $$
 
-and hence $n\operatorname{Var}_0(T)\ge9/16$. The conditional scores are
+and hence $n\mathrm{Var}_0(T)\ge9/16$. The conditional scores are
 bounded, so at fixed $n$ differentiation is justified for finite-variance
 estimators, including continuous outcomes. Universal unbiasedness implies
 the required local unbiasedness. No per-copy score representation for $T$
@@ -176,14 +176,14 @@ three corresponding local Pauli axes, and let $z=\pm1$ be the product of
 their outcomes. Assign the score $w=3\epsilon_kz/4$. Then for every state,
 
 $$
-\mathbb E_\rho w=\operatorname{Tr}(\rho\chi),\qquad
+\mathbb E_\rho w=\mathrm{Tr}(\rho\chi),\qquad
 \mathbb E_\rho w^2=\frac9{16}.
 $$
 
 The sample mean from $n$ independent trials is universally unbiased and obeys
 
 $$
-n\operatorname{Var}_\rho(\widehat\chi)
+n\mathrm{Var}_\rho(\widehat\chi)
 =\frac9{16}-\langle\chi\rangle_\rho^2\le\frac9{16}.
 $$
 
@@ -191,7 +191,7 @@ Combining this upper bound with the mixed-input lower bound gives
 
 $$
 \boxed{\inf_{\mathcal P}\sup_\rho
-n\operatorname{Var}_\rho(\widehat\chi_{\mathcal P})=\frac9{16},}
+n\mathrm{Var}_\rho(\widehat\chi_{\mathcal P})=\frac9{16},}
 $$
 
 where $\mathcal P$ ranges over fixed-$n$, universally unbiased protocols with

@@ -23,13 +23,13 @@ $\mathbf S=\boldsymbol\sigma/2$, and set
 $$
 h=\frac{\sqrt3}{4},\qquad
 \Pi_{\rm m}=\Pi_++\Pi_-,\qquad
-\operatorname{Tr}\chi^2=\frac34.
+\mathrm{Tr}\chi^2=\frac34.
 $$
 
 The principal four-mode conclusion is
 
 $$
-\boxed{\sup_\rho n\operatorname{Var}_\rho(\widehat\chi)
+\boxed{\sup_\rho n\mathrm{Var}_\rho(\widehat\chi)
 \ge\frac{13}{32}}
 $$
 
@@ -46,7 +46,7 @@ or calibration-cost comparisons.
 Let $U$ be the spatial unitary, $S$ a subset of output modes, and
 
 $$
-W_S=U^\dagger\operatorname{diag}\bigl((-1)^{1_{j\in S}}\bigr)U.
+W_S=U^\dagger\mathrm{diag}\bigl((-1)^{1_{j\in S}}\bigr)U.
 $$
 
 The product of the output parities in $S$ is the second quantization of
@@ -76,14 +76,14 @@ where $z=K_{12}K_{23}K_{31}$. Since
 $C-C^\dagger=4i\chi$, their chirality coefficient is
 
 $$
-c(B_S)=-4\operatorname{Im}(K_{12}K_{23}K_{31}).
+c(B_S)=-4\mathrm{Im}(K_{12}K_{23}K_{31}).
 \tag{2}
 $$
 
 Reversing the cycle convention reverses both signs and leaves all bounds
 unchanged. For three qubits,
 $C+C^\dagger=P_{12}+P_{23}+P_{13}-I$, so every $B_S$ belongs to
-$\operatorname{span}_{\mathbb R}\{I,P_{12},P_{23},P_{13},\chi\}$.
+$\mathrm{span}_{\mathbb R}\{I,P_{12},P_{23},P_{13},\chi\}$.
 
 ## 2. Three modes cannot identify chirality
 
@@ -95,7 +95,7 @@ negative of the complementary single-output parity. All parity effects
 therefore lie in
 
 $$
-\operatorname{span}_{\mathbb R}\{I,P_{12},P_{23},P_{13}\}.
+\mathrm{span}_{\mathbb R}\{I,P_{12},P_{23},P_{13}\}.
 \tag{3}
 $$
 
@@ -136,14 +136,14 @@ $+1$ and two eigenvalues $-1$. The three-dimensional occupied-input
 subspace intersects each of these two-dimensional eigenspaces. Its
 compression $K_S$ therefore has eigenvalues $1,t,-1$, with $|t|\le1$.
 
-For a Hermitian matrix $K=V\operatorname{diag}(\lambda_1,\lambda_2,
+For a Hermitian matrix $K=V\mathrm{diag}(\lambda_1,\lambda_2,
 \lambda_3)V^\dagger$,
 
 $$
-\left|\operatorname{Im}(K_{12}K_{23}K_{31})\right|
+\left|\mathrm{Im}(K_{12}K_{23}K_{31})\right|
 =|J(V)|\prod_{i<j}|\lambda_i-\lambda_j|,
 \quad
-J(V)=\operatorname{Im}(V_{11}V_{22}\bar V_{12}\bar V_{21}).
+J(V)=\mathrm{Im}(V_{11}V_{22}\bar V_{12}\bar V_{21}).
 \tag{4}
 $$
 
@@ -160,7 +160,7 @@ $\alpha x+\beta y$, where $x,y$ are a real orthonormal basis of its
 orthogonal plane and $|\alpha|^2+|\beta|^2=1$. Then
 
 $$
-|J(V)|=ab\,|\operatorname{Im}(\beta\bar\alpha)|
+|J(V)|=ab\,|\mathrm{Im}(\beta\bar\alpha)|
 \,|x_1y_2-x_2y_1|
 \le\frac{abc}{2}\le\frac1{6\sqrt3}.
 $$
@@ -201,7 +201,7 @@ For a product-unitary prerotation $L=L_1\otimes L_2\otimes L_3$,
 the rotated coefficients are $c'_z=g(L)c_z$, where
 
 $$
-g(L)=\frac43\operatorname{Tr}(\chi L^\dagger\chi L),
+g(L)=\frac43\mathrm{Tr}(\chi L^\dagger\chi L),
 \qquad |g(L)|\le1.
 $$
 
@@ -218,7 +218,7 @@ Use the valid submodel
 $$
 \rho_\theta=\frac{\Pi_{\rm m}}4+\frac43\theta\chi,
 \qquad |\theta|<h,\qquad
-\operatorname{Tr}(\rho_\theta\chi)=\theta.
+\mathrm{Tr}(\rho_\theta\chi)=\theta.
 $$
 
 For either unrotated or prerotated effects write
@@ -319,7 +319,7 @@ $\mathbb E_0[T\,\partial_\theta\log p_\theta]=1$.
 Cauchy–Schwarz yields
 
 $$
-\operatorname{Var}_{\rho_0}(T)\ge\frac1{F_n(0)}
+\mathrm{Var}_{\rho_0}(T)\ge\frac1{F_n(0)}
 \ge\frac{13}{32n}.
 $$
 
@@ -410,7 +410,7 @@ The extra vacuum mode makes chirality identifiable without interactions.
 For $0<x<1$, put $v=\sqrt x$ and $r=\sqrt{(1-x)/2}$, and use columns
 $(0,1,2,3)$ with column 0 vacuum:
 
-$$
+```math
 U(x)=\begin{pmatrix}
 v/\sqrt2&r/\sqrt2&1/\sqrt2&r/\sqrt2\\
 r&(-v+i)/2&0&(-v-i)/2\\
@@ -418,14 +418,14 @@ r&(-v-i)/2&0&(-v+i)/2\\
 v/\sqrt2&r/\sqrt2&-1/\sqrt2&r/\sqrt2
 \end{pmatrix}.
 \tag{12}
-$$
+```
 
 Its rows are orthonormal by direct multiplication. Equation (1) gives four
 nonzero chirality coefficients of magnitude $\sqrt x(1-x)/2$, in two
 complementary pairs. The two singleton outcomes have
 $q_{\rm m}=(1-x)(x+3)/16$; the two three-odd-site outcomes have
 $q_{\rm m}=(1-x)(3x+1)/16$, where
-$q_{\rm m}=\operatorname{Tr}(\Pi_{\rm m}E)/4$. Hence
+$q_{\rm m}=\mathrm{Tr}(\Pi_{\rm m}E)/4$. Hence
 
 $$
 F(x)=\sum_p\frac{c_p^2}{q_{{\rm m},p}}
@@ -514,7 +514,7 @@ The right side increases with $|\kappa|$ in the displayed range. Arbitrary
 adaptive choices of flux and duration therefore still obey
 
 $$
-\boxed{\sup_\rho n\operatorname{Var}_\rho(\widehat\chi)
+\boxed{\sup_\rho n\mathrm{Var}_\rho(\widehat\chi)
 \ge\frac{51}{80}}
 $$
 

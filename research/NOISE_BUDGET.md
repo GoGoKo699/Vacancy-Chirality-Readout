@@ -49,10 +49,10 @@ The ideal second-moment operator is
 $$
 T=\frac12\sum_{p\in\mathcal O}a_p^2
         (E_{+,p}+E_{-,r(p)}),\qquad
-Q_0(\rho)=\operatorname{Tr}(T\rho).
+Q_0(\rho)=\mathrm{Tr}(T\rho).
 $$
 
-Thus $n\operatorname{Var}(\widehat\chi)=Q_0(\rho)-\langle\chi\rangle^2$
+Thus $n\mathrm{Var}(\widehat\chi)=Q_0(\rho)-\langle\chi\rangle^2$
 for randomized flux and ideal calibration. Fixed equal allocations have no
 larger variance. Every operator bound below remains valid for inputs entangled
 with an external reference: tensoring an effect error with the reference
@@ -177,13 +177,13 @@ g(r)=\sum_{p\in\mathcal O}a_p^2K_q(p\mid r).
 $$
 
 For a real function $v$ on a finite set $S$, set
-$\operatorname{osc}_S(v)=(\max_S v-\min_S v)/2$. Use
+$\mathrm{osc}_S(v)=(\max_S v-\min_S v)/2$. Use
 $S_1=\{r:|r|=1\}$ and $S_2=\{r:|r|=0\text{ or }2\}$. Then
 
 $$
-k_3=\operatorname{osc}_{\mathcal O}(f-\alpha a),\qquad
-k_1=\operatorname{osc}_{S_1}(f),\qquad
-k_2=\operatorname{osc}_{S_2}(f)
+k_3=\mathrm{osc}_{\mathcal O}(f-\alpha a),\qquad
+k_1=\mathrm{osc}_{S_1}(f),\qquad
+k_2=\mathrm{osc}_{S_2}(f)
 $$
 
 give the tighter bound
@@ -252,7 +252,7 @@ coset; complementary characters become the same character up to sign.
 This exactly recovers the target score on every odd true pattern, so the
 three-particle detector bias vanishes and the one-particle alias bound is
 again $3C_1z^2$. The two-particle term remains, bounded by
-$3z\operatorname{osc}_{S_2}(K\widetilde a)$. The vacuum mean still cancels.
+$3z\mathrm{osc}_{S_2}(K\widetilde a)$. The vacuum mean still cancels.
 Second moments must be recomputed using $\widetilde a^2$, and diverging
 inverse weights near $q=1/2$ prevent a uniform sampling-cost claim.
 

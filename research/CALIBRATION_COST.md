@@ -46,7 +46,7 @@ preparation and drift allowances. On the validation confidence event,
 independent unknown preparations obey
 
 $$
-\operatorname{MSE}\le U/n+\beta^2.
+\mathrm{MSE}\le U/n+\beta^2.
 $$
 
 For a desired MSE $\varepsilon^2$ and $\beta<\varepsilon$, the sufficient
@@ -154,7 +154,7 @@ $[-\sqrt3/4,\sqrt3/4]$. If its accepted good-event MSE is at most
 $\varepsilon^2$, an unconditional bound is
 
 $$
-\operatorname{MSE}_{\rm total}
+\mathrm{MSE}_{\rm total}
 \le\varepsilon^2+\frac34\delta
 +\frac3{16}\Pr(\text{reject}).
 $$
@@ -215,7 +215,7 @@ Writing $D=wC/K$, direct minimization gives
 $$
 \boxed{b_*=
 \frac{\sqrt D}{\sqrt V+\sqrt D},\qquad
-\operatorname{cost}_{\min}\simeq
+\mathrm{cost}_{\min}\simeq
 \frac{(\sqrt V+\sqrt D)^2}{\varepsilon^2}.}
 $$
 
@@ -271,7 +271,7 @@ terms gives
 $$
 N_x:N_d=4v_x:v_d,\qquad
 C_R=12v_x+3v_d,\qquad
-\operatorname{MSE}\le\frac Vn+\frac{C_R}{M_{\rm mean}}
+\mathrm{MSE}\le\frac Vn+\frac{C_R}{M_{\rm mean}}
 +o(n^{-1}+M_{\rm mean}^{-1}).
 $$
 

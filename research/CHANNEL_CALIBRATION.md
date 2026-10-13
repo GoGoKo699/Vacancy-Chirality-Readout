@@ -50,7 +50,7 @@ rotations and reflection and has the three scalar blocks described below.
 **Proof.** Collective-spin invariance places every effect in the commutant
 spanned by $I,P_{12},P_{23},P_{13},\chi$. The first displayed combination is
 reflection-odd, whose Hermitian subspace is exactly
-$\operatorname{span}\{\chi,D\}$. The squared-score combination is
+$\mathrm{span}\{\chi,D\}$. The squared-score combination is
 reflection-even. This argument acts on the original input effects and does
 not require the final state to contain three particles.
 
@@ -95,12 +95,12 @@ coordinates. This is a sensitivity statement, not a minimum-shot theorem.
 For two simultaneously recorded signed features $Z=(Z_1,Z_2)^T$, let
 $M$ have rows $(c_j,d_j)$. Then
 
-$$
+```math
 \mathbb E_\rho Z=M
 \begin{pmatrix}\langle\chi\rangle_\rho\\\langle D\rangle_\rho\end{pmatrix},
 \qquad
 \boxed{M=\bigl[\,8\mathbb E_xZ\,,\,\mathbb E_dZ\,\bigr].}
-$$
+```
 
 If $\det M\ne0$, $w^T=(1,0)M^{-1}$ gives an exactly unbiased score
 $X=w^TZ$ for the complete noisy channel. No loss-rate or detector-error-rate
@@ -108,7 +108,7 @@ estimate enters this identity. The same two probe batches can calibrate any
 number of predetermined features extracted from each image.
 
 For exact $M$ and independent unknown inputs, the variance coefficient is
-$w^T\operatorname{Cov}_\rho(Z)w$. The features come from the same image:
+$w^T\mathrm{Cov}_\rho(Z)w$. The features come from the same image:
 their covariance must be retained rather than adding two independent-noise
 estimates. Two independent probe response vectors are sufficient and, for
 an unrestricted two-coordinate response, necessary. Preparing the product
@@ -247,7 +247,7 @@ $$
 
 and
 
-$$
+```math
 \begin{aligned}
 U_{\rm s}&=\widehat Q_0+\nu_0,\\
 U_{\rm o}&=3\widehat Q_d-2\widehat Q_x+3\nu_d+2\nu_x,\\
@@ -255,7 +255,7 @@ U_{\rm e}&=6\widehat Q_x-3\widehat Q_d-2\widehat Q_0
              +6\nu_x+3\nu_d+2\nu_0,\\
 U_T&=\min\{B^2,\max\{0,U_{\rm s},U_{\rm o},U_{\rm e}\}\}.
 \end{aligned}
-$$
+```
 
 Then the actual, fixed score obeys $\|A_f-\chi\|\le\beta$ and
 $\|T_f\|\le U_T$ for **every** input state. For the mean of $n$ independent
