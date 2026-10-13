@@ -612,7 +612,7 @@ eight modes are necessary to outperform the interacting score.
 the permutation formula with bosonic creation-operator amplitudes, checks
 three-mode blindness, the convex-bound arithmetic and local-rotation
 identity, the explicit four-mode score, the finite-risk constants, and the
-uniform-ring formula against the preserved full bosonic model. A fifth
+uniform-ring formula against the full bosonic model. A fifth
 group checks (14) for all four splitter constructions using independent
 creation-operator amplitudes in the complete spinful three-particle Fock
 space, together with exact rational coefficients. Its finite examples

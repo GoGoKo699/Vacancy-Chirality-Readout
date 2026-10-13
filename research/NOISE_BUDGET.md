@@ -80,7 +80,7 @@ The parity of the sum of reported ideal bits equals the parity of particle
 number. Consequently one and three losses have zero score. Two losses leave
 one particle, whose singleton parity can coincide with a three-particle
 collision outcome. The complete-image estimator therefore does not have the
-original return event's exact rejection of every loss.
+return event's exact rejection of every loss.
 
 For known $\lambda$, use $Y=X/s$. Then
 

@@ -1,14 +1,16 @@
-# Preserved research records
+# Bosonic models and foundational checks
 
-`resource-review-2026-10-10/` contains the complete incoming research package with its original paths and bytes. `IMPORT_MANIFEST.json` records all 79 files and the archive hash. The root verifier validates exact membership and content before running the original checks.
+These implementations support the complete-parity model and independently check the return instrument, finite-repulsion reconstruction, loss, and retained-state filtering.
 
-For the current scientific account, start with [THEORY.md](../THEORY.md). The records below supply detailed derivations, code, and original numerical evidence:
-
-| Record | Role |
+| File | Role |
 |---|---|
-| [Readout and resources](resource-review-2026-10-10/READOUT_AND_RESOURCES.md) | Exact parity event, detector back-action, noise diagnostics, and sampling comparisons |
-| [Finite-repulsion account](resource-review-2026-10-10/prior/FOLLOWUP.md) | Symmetry reduction, exact calibration, operation bounds, and short-time certificate |
-| [Hard-core construction](resource-review-2026-10-10/prior/prior/PILOT.md) | Return amplitude, spin-cycle filter, entanglement witness, and static scalar disorder |
-| [Source reading record](resource-review-2026-10-10/SOURCES.md) | Detailed attribution and limits of the original literature reading |
+| [finite_repulsion.py](finite_repulsion.py) | Full 120-state bosonic model, spin operators, return amplitudes, and calibration |
+| [readout.py](readout.py) | Parity effects, number-sector loss, and retained-state dephasing |
+| [check_hard_core.py](check_hard_core.py) | Five groups: cycle reduction, entanglement, repeated filtering, disorder, and finite-repulsion controls |
+| [check_finite_repulsion.py](check_finite_repulsion.py) | Five groups: independent model assembly, operation bounds, calibrated contrast, filtering, and perturbative diagnostics |
+| [exact_short_time.py](exact_short_time.py) | One group: integer/rational short-time coefficients |
+| [check_resources.py](check_resources.py) | Five groups: exact parity event, loss, dephasing, sampling, and detector errors |
 
-Dates, allocation reviews, handoff instructions, and statements about repository access inside this snapshot are historical records. The current repository instructions are [AGENTS.md](../AGENTS.md). The snapshot is retained as evidence; its exploratory scripts are not promoted to theorem statements.
+The mathematical accounts are [Hard-core filtering](../research/HARD_CORE_FILTER.md), [Finite repulsion](../research/FINITE_REPULSION.md), and [Readout resources](../research/READOUT_RESOURCES.md). Start with [Theory](../THEORY.md) for the complete result and [Reproduce](../REPRODUCE.md) to run all 39 groups.
+
+[MANIFEST.json](MANIFEST.json) records the six implementations. The verifier checks their membership and hashes and compares the four foundational output reports against [numerical reference reports](../verification/reference/).
