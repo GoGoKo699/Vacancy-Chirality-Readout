@@ -60,7 +60,7 @@ B_S=\sum_{\pi\in S_3}
 \qquad
 P_\pi|s_1s_2s_3\rangle
 =|s_{\pi(1)}s_{\pi(2)}s_{\pi(3)}\rangle.
-\tag{1}
+\qquad\text{(1)}
 $$
 
 To prove (1), expand the three transformed creation operators. A matrix
@@ -77,7 +77,7 @@ $C-C^\dagger=4i\chi$, their chirality coefficient is
 
 $$
 c(B_S)=-4\mathrm{Im}(K_{12}K_{23}K_{31}).
-\tag{2}
+\qquad\text{(2)}
 $$
 
 Reversing the cycle convention reverses both signs and leaves all bounds
@@ -96,7 +96,7 @@ therefore lie in
 
 $$
 \mathrm{span}_{\mathbb R}\{I,P_{12},P_{23},P_{13}\}.
-\tag{3}
+\qquad\text{(3)}
 $$
 
 Product-unitary prerotations do not remove this obstruction. An identity or
@@ -144,7 +144,7 @@ $$
 =|J(V)|\prod_{i<j}|\lambda_i-\lambda_j|,
 \quad
 J(V)=\mathrm{Im}(V_{11}V_{22}\bar V_{12}\bar V_{21}).
-\tag{4}
+\qquad\text{(4)}
 $$
 
 One direct proof expands the left side as a cubic in the eigenvalues. It
@@ -172,7 +172,7 @@ Equations (2) and (4) now imply
 $$
 |c(B_S)|\le8(1-t^2)|J(V)|
 \le B:=\frac4{3\sqrt3}.
-\tag{5}
+\qquad\text{(5)}
 $$
 
 Write an observed parity as signs $z_j=(-1)^{p_j}$, so
@@ -185,7 +185,7 @@ $$
 c_z=\frac18(r_1b_1+r_2b_2+r_3b_3),\qquad
 r_j=z_0z_j,\qquad r_1r_2r_3=-1,
 \quad b\in[-B,B]^3.
-\tag{6}
+\qquad\text{(6)}
 $$
 
 Each of the four possible $r$ occurs twice. Convexity in $b$ reduces the
@@ -194,7 +194,7 @@ magnitudes $3B/8$ twice and $B/8$ six times. Consequently
 
 $$
 h\sum_z|c_z|\le\frac12.
-\tag{7}
+\qquad\text{(7)}
 $$
 
 For a product-unitary prerotation $L=L_1\otimes L_2\otimes L_3$,
@@ -251,7 +251,7 @@ gives
 $$
 F(0)\le\frac83-\left(\frac29-\frac2{117}\right)
 =\boxed{\frac{32}{13}}.
-\tag{8}
+\qquad\text{(8)}
 $$
 
 Assigning it to a large-coefficient outcome gives only $32/15$.
@@ -273,7 +273,7 @@ small coefficient with the same sign as $\theta$. With $t=|\theta|/h$,
 $$
 \boxed{F(\theta)\le I(t):=
 \frac{16(6+t)}{3(1-t^2)(13+t)}}.
-\tag{9}
+\qquad\text{(9)}
 $$
 
 Indeed the minimum-probability sum is $8/[3(1-t^2)]$, and assigning the
@@ -350,7 +350,7 @@ score vanishes. Cauchy–Schwarz therefore gives, without unbiasedness,
 $$
 \boxed{\sup_\rho\mathbb E_\rho(T-\langle\chi\rangle)^2
 \ge\frac1{nI(a/h)+\pi^2/a^2}}.
-\tag{10}
+\qquad\text{(10)}
 $$
 
 This is the scalar van Trees argument, reproduced here; see [GL95] in
@@ -378,7 +378,7 @@ For any $0<t_0<1$, a uniform MSE requirement $\varepsilon^2$ implies
 
 $$
 n\ge\frac{\varepsilon^{-2}-16\pi^2/(3t_0^2)}{I(t_0)}
-\tag{11}
+\qquad\text{(11)}
 $$
 
 when the numerator is positive, followed by an integer ceiling. At
@@ -417,7 +417,7 @@ r&(-v+i)/2&0&(-v-i)/2\\
 r&(-v-i)/2&0&(-v+i)/2\\
 v/\sqrt2&r/\sqrt2&-1/\sqrt2&r/\sqrt2
 \end{pmatrix}.
-\tag{12}
+\qquad\text{(12)}
 ```
 
 Its rows are orthonormal by direct multiplication. Equation (1) gives four
@@ -484,7 +484,7 @@ Substitution into (1) yields
 $$
 c_p=(-1)^{p_0+p_2}\kappa,\qquad
 \kappa=\frac{\sin(2x)\sin(2y)[\cos(2x)-\cos(2y)]}{8}.
-\tag{13}
+\qquad\text{(13)}
 $$
 
 Equivalently, the only pair-parity chirality responses are $8\kappa$ for
@@ -582,7 +582,7 @@ are exactly
 $$
 A=\chi,\qquad
 T=\frac{\chi^2}{s}=\frac{h^2}{s}\Pi_{\rm m}.
-\tag{14}
+\qquad\text{(14)}
 $$
 
 These identities hold for arbitrary correlated spin inputs and remain
