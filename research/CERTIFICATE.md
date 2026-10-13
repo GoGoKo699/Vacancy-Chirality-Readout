@@ -25,6 +25,10 @@ score. The self-contained `passive_separation` report section and
 bounds, and sufficient neighborhoods are distinct; no mixed-input-score
 neighborhood is transferred to the primary score.
 
+The dependency-bound [parameter certificate](PARAMETER_ROBUSTNESS.md) starts
+from the primary and auxiliary moments certified here. It establishes the
+primary score's own parameter regions and fixed-score finite-MSE bounds.
+
 ## Estimator and exact calibration
 
 Let $E_p$ be the plus-flux effect for parity pattern $p$, and let
@@ -184,6 +188,25 @@ $$
 
 These verified constants supply the finite-calibration analysis; they do not
 replace the extra variance caused by randomly estimated response factors.
+The report also supplies their tighter outward-rounded values. The finite
+checker verifies and uses those values for the worked preparation counts in
+[FINITE_CALIBRATION.md](FINITE_CALIBRATION.md).
+
+### Parameter robustness and fixed nominal scores
+
+With ideal parity detection and known three-particle input, assume
+spin-independent, reflection-paired perturbations with a fixed response.
+Exact recalibration of the two features gives $\|T\|<0.394824826$ for measurement-isometry distance
+$\eta\le0.0025$, and $\|T\|<0.366080282$ for $\eta\le0.0015$.
+The [robustness proof](PARAMETER_ROBUSTNESS.md) maps a weighted neighborhood in
+$u,\tau,\Phi$ into these distances. Its separate exact-arithmetic checker
+binds the nominal moments to this report by hash.
+
+Retaining the nominal score under generic perturbations instead gives a
+possibly biased finite-sample estimator. Its MSE bound includes the squared
+mean error, with a distinct conditional bound for history-dependent channels.
+These are separate theorems from the modeled loss window and the finite
+random-calibration estimator; their allowances are not added implicitly.
 
 ### Known detector-only errors
 

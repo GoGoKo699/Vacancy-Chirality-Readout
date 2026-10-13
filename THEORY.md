@@ -138,6 +138,17 @@ This is a certified feasible score, without a claim of global optimality. The [p
 
 Exact recalibration of the modeled channel retains a worst-case coefficient below $0.366461$ for equal-rate loss $\gamma t\le0.01$ and independent bit errors $q\le0.003$. The [finite-calibration theorem](research/FINITE_CALIBRATION.md) replaces exact response coefficients by independent product-reference batches, with unconditional error and preparation-cost bounds, including explicit preparation and drift allowances.
 
+For ideal parity detection, the [primary-score robustness theorem](research/PARAMETER_ROBUSTNESS.md) gives a separate parameter guarantee. Define
+
+$$
+\Delta=1.643|u-16|+3.163|\tau-\pi|+4.086|\Phi_++2\pi/3|,
+\qquad \Phi_-=-\Phi_+.
+$$
+
+With the same $u,\tau$ at both fluxes and exact calibration of the actual two-feature mean response, $\Delta\le0.0025$ implies a worst-case coefficient below $0.394824826<13/32$. The smaller region $\Delta\le0.0015$ gives $0.366080282<0.367$ and beats all biased passive estimators in worst-case MSE for every $n\ge12{,}000$. A weighted measurement-isometry bound proves these results, using $\|HJ\|=\sqrt{10}$ for the singly occupied input embedding $J$. The same lemma supplies a distinct fixed-score MSE guarantee when perturbations break the symmetries. These parameter statements assume known three-particle input and ideal parity; they are separate from the loss and finite-reference guarantees above.
+
+The spatial-mode restriction is explicit. Three-mode Fourier mixing followed by balanced splitting into eight output arms gives a passive parity estimator with coefficient $27/88$, counting every input trial. The [extra-mode construction](research/PASSIVE_PARITY_BOUND.md) derives the six- through nine-mode values and explains why this lies outside the four-mode bound.
+
 A separate score minimizes the variance at the maximally mixed input. Its nearby exactly corrected version satisfies
 
 $$
@@ -145,7 +156,7 @@ $$
 0.284895494200<n\operatorname{Var}_{I_8/8}(\widehat\chi_{\rm mixed})<0.284895494206.
 $$
 
-For this mixed-input score, the certificate also proves $\|T\|<0.536350926403<9/16$ after all-outcome recalibration whenever each parity effect changes by operator norm at most $0.0015$, preserving the stated symmetries and completeness. In the uniform ring this includes the sufficient box $|u-16|,|\tau-\pi|,|\Phi_++2\pi/3|<0.00009$ with $\Phi_-=-\Phi_+$. These are sufficient mathematical neighborhoods, not measured control tolerances. They concern that score and the separable benchmark; they do not extend the passive separation to the same parameter box. The [noise budget](research/NOISE_BUDGET.md) treats loss aliases, detector errors, calibration, and normalization separately. The return-only existence theorem remains established for every fixed finite $u>0$.
+For this mixed-input score, the certificate also proves $\|T\|<0.536350926403<9/16$ after all-outcome recalibration whenever each parity effect changes by operator norm at most $0.0015$, preserving the stated symmetries and completeness. In the uniform ring this includes the sufficient box $|u-16|,|\tau-\pi|,|\Phi_++2\pi/3|<0.00009$ with $\Phi_-=-\Phi_+$. These sufficient mathematical neighborhoods concern the mixed-input score and the separable benchmark; the primary-score result follows from its own proof above. The [noise budget](research/NOISE_BUDGET.md) treats loss aliases, detector errors, calibration, and normalization separately. The return-only existence theorem remains established for every fixed finite $u>0$.
 
 ## 4. Hard-core return instrument and retained entanglement
 

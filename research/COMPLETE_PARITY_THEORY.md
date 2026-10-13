@@ -230,6 +230,9 @@ proves the lower bound $13/32$ for the declared four-mode passive class,
 and finite minimax inequalities that permit biased and adaptive estimators.
 This score and the following mixed-input score solve different design
 problems; their error budgets are tracked separately.
+Its [parameter-robustness proof](PARAMETER_ROBUSTNESS.md) supplies explicit
+primary-score neighborhoods under exact response calibration and a distinct
+finite-MSE bound for fixed nominal scores under symmetry-breaking errors.
 
 At $u=16,\tau=\pi$, [the finite-model implementation](complete_parity.py)
 gives mixed-input coefficient $0.28489549420$ and randomized worst-case

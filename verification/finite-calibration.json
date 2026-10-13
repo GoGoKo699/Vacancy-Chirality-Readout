@@ -31,66 +31,69 @@
         4
       ]
     },
-    "coarse_bounds_used": {
-      "response_residual_norm_upper": "21/200",
-      "first_response_residual_row_norm_upper": "11/250",
-      "response_norm_upper": "533/500",
-      "feature_second_moment_trace_upper": "2211/50"
+    "outward_bounds_used": {
+      "response_residual_norm_upper": "103947447477219/1000000000000000",
+      "first_response_residual_row_norm_upper": "43400571947183/1000000000000000",
+      "response_norm_upper": "53274744282267/50000000000000",
+      "feature_second_moment_trace_upper": "11054842242497541/250000000000000"
     },
     "mean_weight_second_moment_bounds_used": [
-      "69/200",
-      "99/250",
-      "371/1000",
-      "367/1000"
+      "34478430018569/100000000000000",
+      "197559761312891/500000000000000",
+      "370837757092059/1000000000000000",
+      "91729834671537/250000000000000"
     ]
   },
   "target_rmse": "0.001",
+  "passive_prior_radius_in_units_of_h": "3/40",
+  "passive_uniform_fisher_information_bound": "2073600/832093",
+  "passive_prior_information_pi_squared_factor": "25600/27",
   "passive_per_task_expected_count_necessary_interval": [
-    "396538.952467578231279",
-    "396538.952467578231280"
+    "397524.305991122246144",
+    "397524.305991122246145"
   ],
   "groups": [
     {
       "group": "unconditional_finite_calibration_and_reuse",
       "reference_stage_totals": [
-        2000000,
-        20000000,
-        200000000
+        1800000,
+        18000000,
+        180000000
       ],
       "reference_stage_allocations": [
         {
-          "x_probe": 1600000,
-          "d_probe": 400000
+          "x_probe": 1440000,
+          "d_probe": 360000
         },
         {
-          "x_probe": 16000000,
-          "d_probe": 4000000
+          "x_probe": 14400000,
+          "d_probe": 3600000
         },
         {
-          "x_probe": 160000000,
-          "d_probe": 40000000
+          "x_probe": 144000000,
+          "d_probe": 36000000
         }
       ],
       "weight_covariance_operator_norm_bounds": [
         "0.000000000000000000000000",
-        "0.000013800000000000000000",
-        "0.000001738585944000000000",
-        "0.000000167598662140777472"
+        "0.000015323746674919555556",
+        "0.000001924672534897178413",
+        "0.000000185650831623221564"
       ],
-      "deterministic_bias_upper": "221/10000000",
-      "squared_target_mean_norm_bound": "0.229",
-      "unconditional_mse_upper": "0.000000999620889004164390",
-      "unconditional_mse_less_than": "0.0000009996325",
+      "deterministic_bias_squared_upper": "0.000000000445528154214855",
+      "squared_target_mean_norm_bound": "0.212864878375570530672800",
+      "unconditional_mse_upper": "0.000000999979632101151495",
+      "unconditional_mse_less_than": "0.0000009999796322",
       "comparison": {
-        "tasks": 16000,
-        "target_preparations_per_task": 382000,
-        "reference_preparations": 222000000,
-        "interacting_total_preparations": 6334000000,
+        "tasks": 13100,
+        "target_preparations_per_task": 382210,
+        "reference_preparations": 199800000,
+        "interacting_total_preparations": 5206751000,
         "passive_expected_total_necessary_interval": [
-          "6344623239.481251700477",
-          "6344623239.481251700478"
+          "5207568408.483701424497",
+          "5207568408.483701424498"
         ],
-        "passive_fixed_integer_budget_necessary": 6344623240,
+        "passive_fixed_integer_budget_necessary": 5207568409,
         "scope": "The ceiling applies to fixed or almost-sure integer budgets; the unrounded interval applies to expected budgets."
       }
     },
@@ -107,42 +110,42 @@
       "mean_weight_deviation_bounds": [
         "0.000000000000000000000000",
         "0.000081000000000000000000",
-        "0.000093075561000000000000",
-        "0.000094718693025441000000"
+        "0.000092941750573376562000",
+        "0.000094549454018194962167"
       ],
       "mean_weight_second_moment_bounds": [
-        "0.345000000000000000000001",
-        "0.396678200027982014214341",
-        "0.371754366823860648480602",
-        "0.367763543536465657776876"
+        "0.344784300185690000000001",
+        "0.395796963756805240891183",
+        "0.371590868827163432409903",
+        "0.367681428090960296925013"
       ],
       "weight_covariance_operator_norm_bounds": [
         "0.000000000000000000000000",
-        "0.000013800000000000000001",
-        "0.000001741533572653728057",
-        "0.000000167962593526157321"
+        "0.000013791372007427600001",
+        "0.000001734876333476072606",
+        "0.000000167441722806224369"
       ],
-      "final_mean_weight_norm_upper": "1.049199818693025441000000",
-      "deterministic_bias_squared_upper": "0.000000004628557039098651",
-      "target_sampling_mse_upper": "0.000000958108549189148180",
-      "random_calibration_mse_upper": "0.000000035788586797721817",
-      "unconditional_mse_upper": "0.000000998525693025968646",
-      "unconditional_mse_less_than": "0.0000009985257",
+      "final_mean_weight_norm_upper": "1.048475446371819730894420",
+      "deterministic_bias_squared_upper": "0.000000004495800057494016",
+      "target_sampling_mse_upper": "0.000000959835857984514259",
+      "random_calibration_mse_upper": "0.000000035643800034945777",
+      "unconditional_mse_upper": "0.000000999975458076954051",
+      "unconditional_mse_less_than": "0.0000009999754581",
       "angular_preparation": {
         "pure_bloch_vector_angle_radians_upper": "1/200",
-        "response_error_norm_upper": "320333/4000000000",
+        "response_error_norm_upper": "32018121313642467/400000000000000000000",
         "requires": "Cyclic permutation of the same actual pure triad; second probe has identical first two Bloch vectors; errors remain within the same orbital embedding."
       },
       "comparison": {
-        "tasks": 20000,
-        "target_preparations_per_task": 385000,
+        "tasks": 16800,
+        "target_preparations_per_task": 384220,
         "reference_preparations": 222000000,
-        "interacting_total_preparations": 7922000000,
+        "interacting_total_preparations": 6676896000,
         "passive_expected_total_necessary_interval": [
-          "7930779049.351564625597",
-          "7930779049.351564625598"
+          "6678408340.650853735233",
+          "6678408340.650853735234"
         ],
-        "passive_fixed_integer_budget_necessary": 7930779050,
+        "passive_fixed_integer_budget_necessary": 6678408341,
         "scope": "The ceiling applies to fixed or almost-sure integer budgets; the unrounded interval applies to expected budgets."
       }
     }

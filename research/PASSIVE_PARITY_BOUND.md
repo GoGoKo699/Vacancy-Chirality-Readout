@@ -490,13 +490,97 @@ $\phi=\pm2\pi/3$, one has $y=\mp\pi$, so $\kappa=0$ exactly: that
 noninteracting setting is chirality-blind, including with the allowed
 prerotations.
 
+## 9. Extra vacuum modes change the comparison
+
+The four-mode restriction is essential. A passive construction with more
+vacuum inputs can recover part of the number-resolved Fourier statistic
+using only terminal total-site parity. The underlying Fourier spectral
+measurement is established in [N26](../REFERENCES.md), including arbitrary
+correlated internal states. The splitter construction below gives an
+explicit precision reference outside the four-mode class.
+
+Put $\omega=e^{2\pi i/3}$ and use the three-mode Fourier matrix
+$F_{jk}=\omega^{-jk}/\sqrt3$, with $j,k\in\{0,1,2\}$. For occupation
+$\mathbf n$ after this interferometer, let
+
+$$
+f(\mathbf n)=\sum_{j=0}^2 jn_j\pmod3,\qquad
+\lambda_f=\frac12\sin\!\left(\frac{2\pi f}{3}\right)
+\in\{0,h,-h\}.
+$$
+
+The count statistic is a spectral measurement of $C$ with eigenvalue
+$\omega^f$, and hence of $\chi$ with eigenvalue $\lambda_f$, in the
+repository's cycle convention. This follows directly by applying a cyclic
+input shift before $F$: it becomes the output phase $\omega^f$.
+Equivalently, if $E_{\mathbf n}$ is the spin effect for resolved counts,
+then $E_{\mathbf n}$ is supported on the corresponding cyclic eigenspace.
+This is an operator statement; it does not assume product spin inputs.
+
+Assign the three Fourier outputs uniformly at random to three balanced
+splitter groups with $L_0,L_1,L_2\ge1$ arms. Three cyclic assignments
+suffice. Each splitter has one populated input and vacuum in its other
+inputs, so the entire apparatus is a passive unitary on
+$M=L_0+L_1+L_2$ spatial modes with $M-3$ vacuum inputs. Record the assignment.
+
+Known particle number three makes **three odd output parities** an exact
+certificate of one particle in each of three distinct arms. On such an
+event, summing the odd bits within each group reconstructs the original
+Fourier occupation and its $f$. Nonzero $f$ occurs only for permutations
+of $(2,1,0)$. If the doubly occupied Fourier output enters an $L$-arm
+splitter, its particles reach distinct arms with probability $1-1/L$.
+This probability is independent of their internal spin state: both
+particles occupy the same input spatial orbital. Distinct group counts
+have disjoint output occupations, so there are no cross terms between
+different Fourier count sectors. Averaging the recorded random assignment
+therefore retains each informative count effect with the same factor
+
+$$
+s=1-\frac13\left(\frac1{L_0}+\frac1{L_1}+\frac1{L_2}\right).
+$$
+
+For $s>0$, report $\lambda_f/s$ on three-odd events and zero on every
+other event. Every trial counts; there is no conditioning of the sample
+size on a detection event. The averaged first and second score operators
+are exactly
+
+$$
+A=\chi,\qquad
+T=\frac{\chi^2}{s}=\frac{h^2}{s}\Pi_{\rm m}.
+\tag{14}
+$$
+
+These identities hold for arbitrary correlated spin inputs and remain
+valid after tensoring with an external reference. Since
+$\rho_0=\Pi_{\rm m}/4$ has zero chirality, it attains the upper bound on
+the single-copy variance. Thus the exact worst-case variance coefficient
+of this estimator is $h^2/s$.
+
+| Total modes | Splitter arms $(L_0,L_1,L_2)$ | Informative survival $s$ | Attained worst-case coefficient |
+|---:|---|---:|---:|
+| 6 | $(2,2,2)$ | $1/2$ | $3/8=0.375$ |
+| 7 | $(3,2,2)$ | $5/9$ | $27/80=0.3375$ |
+| 8 | $(3,3,2)$ | $11/18$ | $27/88\approx0.306818$ |
+| 9 | $(3,3,3)$ | $2/3$ | $9/32=0.28125$ |
+
+The eight-mode construction has a smaller coefficient than the present
+four-mode interacting score, approximately $0.328698$. It uses the same
+kind of terminal parity detector but twice as many spatial modes. This
+makes the resource boundary explicit: the interacting advantage established
+here is at fixed four-mode and detector resources. The table neither
+identifies the passive optimum at any listed mode count nor proves that
+eight modes are necessary to outperform the interacting score.
+
 ## Verification
 
 [check_passive_parity.py](check_passive_parity.py) independently compares
 the permutation formula with bosonic creation-operator amplitudes, checks
 three-mode blindness, the convex-bound arithmetic and local-rotation
 identity, the explicit four-mode score, the finite-risk constants, and the
-uniform-ring formula against the preserved full bosonic model. Its finite
-examples cross-check the analytical proofs; they do not prove a global
-optimum by numerical search. Reports are written only to new paths outside
-the repository.
+uniform-ring formula against the preserved full bosonic model. A fifth
+group checks (14) for all four splitter constructions using independent
+creation-operator amplitudes in the complete spinful three-particle Fock
+space, together with exact rational coefficients. Its finite examples
+cross-check the analytical proofs; they do not prove a global optimum by
+numerical search. Reports are written only to new paths outside the
+repository.

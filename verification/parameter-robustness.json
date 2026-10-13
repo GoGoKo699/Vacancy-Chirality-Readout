@@ -1,0 +1,116 @@
+{
+  "status": "PASS",
+  "scientific_groups": 3,
+  "arithmetic": "Exact fractions and enclosing integer square roots; no floating arithmetic.",
+  "dependency": {
+    "certificate_sha256": "9e9e75481981e659a5bbc48c74aafa031a0d578eff32d67454aadc71efe7d832",
+    "certificate_file": "complete-parity-certificate.json",
+    "source_objects": [
+      "passive_separation",
+      "channel_recalibration"
+    ],
+    "verified_nominal_inputs": {
+      "primary_second_moment_upper": "0.328697776904969",
+      "primary_score_absolute_upper": "1.622867200391236",
+      "auxiliary_second_moment_upper": "645.749436280796",
+      "auxiliary_score_absolute_upper": "193.245473666084"
+    },
+    "coarse_bounds_used": {
+      "v": "3287/10000",
+      "A": "1623/1000",
+      "v_D": "646",
+      "A_D": "194"
+    }
+  },
+  "groups": [
+    {
+      "group": "exact_response_recalibrated_bounds",
+      "profiles": [
+        {
+          "dilation_distance_upper": "1/400",
+          "primary_mean_error_upper": "0.002876761966644832528265",
+          "auxiliary_mean_error_upper": "0.128295150271388344224599",
+          "response_schur_lower": "0.992824937006944052100031",
+          "recalibrated_second_moment_upper": "0.394824825755972333672981",
+          "second_moment_less_than": "197412413/500000000"
+        },
+        {
+          "dilation_distance_upper": "3/2000",
+          "primary_mean_error_upper": "0.001723622679986899516959",
+          "auxiliary_mean_error_upper": "0.076686090162833006534760",
+          "response_schur_lower": "0.995835062420110498852779",
+          "recalibrated_second_moment_upper": "0.366080281353033027522929",
+          "second_moment_less_than": "183040141/500000000"
+        }
+      ],
+      "passive_unbiased_reference": "13/32",
+      "small_region_all_estimator_comparison": {
+        "passive_information_upper": "775/297",
+        "prior_information_strict_upper": "4000/3",
+        "conservative_interacting_coefficient": "367/1000",
+        "strict_sample_threshold_upper": "11557.216699801192842942345925",
+        "sufficient_integer_sample_size": 12000
+      }
+    },
+    {
+      "group": "physical_parameter_budget_arithmetic",
+      "weights": {
+        "abs_u_minus_16": "1643/1000",
+        "abs_tau_minus_pi": "3163/1000",
+        "abs_phi_plus_2pi_over_3": "2043/500"
+      },
+      "input_action_norm_squared_exact": 10,
+      "three_particle_hopping_norm_upper": "5197/1000",
+      "three_particle_flux_derivative_norm_upper": "13/10",
+      "repulsion_path_coefficient_upper": "1.642348150661689854088904",
+      "profiles": [
+        {
+          "weighted_budget_upper": "1/400",
+          "sufficient_equal_coordinate_radius": "7/25000",
+          "equal_box_weighted_budget": "0.002489760000000000000000"
+        },
+        {
+          "weighted_budget_upper": "3/2000",
+          "sufficient_equal_coordinate_radius": "1/6250",
+          "equal_box_weighted_budget": "0.001422720000000000000000"
+        }
+      ]
+    },
+    {
+      "group": "fixed_score_finite_risk",
+      "dilation_distance_upper": "1/10000",
+      "uniform_bias_upper": "57341/500000000",
+      "uniform_second_moment_upper": "328887/1000000",
+      "sample_size": 100000,
+      "independent_trial_mse_upper": "0.000003302021961124000000",
+      "history_conditional_mse_upper": "0.000003717979124216017830",
+      "passive_all_estimator_mse_lower": "0.000003903384438069952116",
+      "independent_trial_interval": {
+        "sample_size_inclusive": [
+          4000,
+          4000000
+        ],
+        "convex_comparison_polynomial_coefficients": [
+          "101927698711/2970000000000000000",
+          "-292412269606909/2062500000000000",
+          "109629/250"
+        ],
+        "endpoint_polynomial_upper": {
+          "4000": "-128.037478032464592592592592",
+          "4000000": "-17558.619878719138047138047138"
+        }
+      },
+      "history_scope": "Every conditional instrument must satisfy the same dilation bound. The sample-size interval above is only for independent trials."
+    }
+  ],
+  "assumptions": [
+    "Known three-particle input; ideal total-site parity detection.",
+    "The calibrated parameter region preserves spin and paired-reflection covariance.",
+    "The two flux settings use the same u and tau and opposite fluxes.",
+    "Recalibrated bounds use exact true response coefficients, not finite empirical estimates.",
+    "The characterized response remains fixed, or its exact coefficients are known per trial.",
+    "The fixed-score bounds allow symmetry breaking under the stated uniform dilation bound.",
+    "The region is separate from loss/bit-error windows and finite-reference calibration budgets.",
+    "Arithmetic verifies consequences of the documented operator and statistical proofs."
+  ]
+}

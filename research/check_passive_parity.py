@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Four cross-check groups for the analytical passive-parity bounds.
+"""Five cross-check groups for the analytical passive-parity bounds.
 
 Finite numerical examples check identities; they do not certify a global
 optimum. Rational arithmetic checks the Fisher and finite-risk constants.
@@ -114,6 +114,22 @@ def explicit_unitary(x):
                      [r, (-v+1j)/2, 0, (-v-1j)/2],
                      [r, (-v-1j)/2, 0, (-v+1j)/2],
                      [v/rt2, r/rt2, -1/rt2, r/rt2]])
+
+
+def split_fourier_unitary(arms, shift):
+    """Three Fourier outputs assigned cyclically to balanced splitter groups.
+
+    The last three input columns are occupied. Completing their isometry
+    only specifies how the remaining vacuum inputs enter the passive device.
+    """
+    groups = np.array([j for j, count in enumerate(arms) for _ in range(count)])
+    fourier_labels = (groups + shift) % 3
+    fourier = np.exp(-2j*np.pi*np.outer(np.arange(3), np.arange(3))/3)/math.sqrt(3)
+    occupied = fourier[fourier_labels] / np.sqrt(np.array(arms)[groups])[:, None]
+    basis, _ = np.linalg.qr(occupied, mode='complete')
+    u = np.column_stack((basis[:, 3:], occupied))
+    assert np.linalg.norm(u.conj().T @ u-np.eye(sum(arms)), 2) < 2e-13
+    return u, fourier_labels
 
 
 def pi_interval():
@@ -306,11 +322,64 @@ def run():
                   max_ring_vs_full_bosonic_model_error=max(ring_model_errors),
                   nominal_noninteracting_ring_is_blind=True,
                   scope='Rational finite-risk constants; ring formulas checked against the independent full bosonic implementation.')
-    return dict(status='PASS', scientific_groups=4,
+
+    mode_constructions = []
+    for arms, expected in (((2, 2, 2), F(3, 8)),
+                           ((3, 2, 2), F(27, 80)),
+                           ((3, 3, 2), F(27, 88)),
+                           ((3, 3, 3), F(9, 32))):
+        survival = 1-sum((F(1, count) for count in arms), F(0))/3
+        coefficient = F(3, 16)/survival
+        assert coefficient == expected
+        first, second = np.zeros((8, 8), complex), np.zeros((8, 8), complex)
+        informative_effect = np.zeros((8, 8), complex)
+        completeness_errors = []
+        for shift in range(3):
+            u, labels = split_fourier_unitary(arms, shift)
+            # Direct creation-operator amplitudes, without using the
+            # compressed-permutation formula or the spectral-readout theorem.
+            effects = fock_effects(u)
+            completeness_errors.append(float(np.linalg.norm(effects.sum(axis=0)-fr.I8, 2)))
+            assert completeness_errors[-1] < 2e-13
+            scores = []
+            for bits in patterns(sum(arms)):
+                phase = sum(int(label)*bit for label, bit in zip(labels, bits)) % 3
+                # Exactly three odd sites imply single occupation of each.
+                # Every other trial is retained with score zero.
+                scores.append((0, H, -H)[phase]/float(survival)
+                              if sum(bits) == 3 else 0.)
+            scores = np.array(scores)
+            first += np.einsum('p,pij->ij', scores, effects)/3
+            second += np.einsum('p,pij->ij', scores*scores, effects)/3
+            informative_effect += effects[scores != 0].sum(axis=0)/3
+        mean_error = float(np.linalg.norm(first-fr.CHI, 2))
+        moment_error = float(np.linalg.norm(second-float(coefficient)*PM, 2))
+        informative_error = float(np.linalg.norm(informative_effect-float(survival)*PM, 2))
+        assert max(mean_error, moment_error, informative_error) < 2e-13
+        assert abs(np.trace(second @ PM/4).real-float(coefficient)) < 2e-13
+        mode_constructions.append(dict(
+            total_spatial_modes=sum(arms), splitter_arms=list(arms),
+            randomized_cyclic_assignments=3,
+            full_spinful_fock_dimension=math.comb(2*sum(arms)+2, 3),
+            informative_survival_exact=str(survival),
+            worst_case_variance_coefficient_exact=str(coefficient),
+            max_completeness_error=max(completeness_errors),
+            first_moment_operator_error=mean_error,
+            second_moment_operator_error=moment_error,
+            informative_effect_operator_error=informative_error))
+    assert F(27, 88) < F(328697776904, 10**12)
+    group5 = dict(
+        constructions=mode_constructions,
+        scope=('Exact rational coefficients and full bosonic operator cross-checks; '
+               'all trials are counted, with zero scores on unresolved events. '
+               'Extra vacuum modes lie outside the four-mode lower-bound class. '
+               'No minimal-mode or global-optimality claim.'))
+    return dict(status='PASS', scientific_groups=5,
                 groups=dict(compression_and_three_modes=group1,
                             four_mode_information_and_prerotations=group2,
                             explicit_four_mode_construction=group3,
-                            finite_risk_and_uniform_ring=group4))
+                            finite_risk_and_uniform_ring=group4,
+                            extra_vacuum_mode_constructions=group5))
 
 
 def main():
@@ -331,7 +400,7 @@ def main():
     with target.open('x') as stream:
         json.dump(report, stream, indent=2)
         stream.write('\n')
-    print(f'PASS: four passive-parity cross-check groups. Report: {target}')
+    print(f'PASS: five passive-parity cross-check groups. Report: {target}')
 
 
 if __name__ == '__main__':

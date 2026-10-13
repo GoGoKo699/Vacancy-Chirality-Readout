@@ -16,6 +16,10 @@ The mixed-input score has a separate bound below $0.446$ in the same window.
 Both assume exact response coefficients. The [finite-calibration theorem](FINITE_CALIBRATION.md)
 accounts for finite reference data and preparation/drift errors. All generic
 budgets below must be evaluated with the particular score being implemented.
+The [parameter-robustness theorem](PARAMETER_ROBUSTNESS.md) separately treats
+ideal-parity Hamiltonian variation and generic fixed-score measurement errors.
+Its allowances are not combined with this loss window or the finite-reference
+budget without a joint error bound.
 
 ## 1. Score convention and input-trial accounting
 

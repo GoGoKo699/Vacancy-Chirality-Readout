@@ -43,21 +43,34 @@ bounds for these fixed features. Its report derives them from the certified
 finite-dimensional effects and the analytic noise inequalities.
 
 $$
-B=I-M,\qquad \|B\|\le b=0.105,\quad
-\|e_1^TB\|\le r=0.044,\quad \|M\|\le\mu=1.066,
+B=I-M,\qquad \|B\|\le b,\quad
+\|e_1^TB\|\le r,\quad \|M\|\le\mu,
 $$
 
 $$
-\sup_\rho\mathbb E_\rho\|Z\|^2\le H=44.22.
+\sup_\rho\mathbb E_\rho\|Z\|^2\le H.
 $$
+
+| Bound | Outward rational value |
+|---|---:|
+| $b$ | $0.103947447477219$ |
+| $r$ | $0.043400571947183$ |
+| $\mu$ | $1.065494885645340$ |
+| $H$ | $44.219368969990164$ |
 
 For the deterministic rows $s_1=e_1^T$, $s_{j+1}=e_1^T+s_jB$, the same
 certificate gives
 
 $$
-\sup_\rho\mathbb E_\rho(s_jZ)^2\le V_j,
-\qquad (V_1,V_2,V_3,V_4)=(0.345,0.396,0.371,0.367).
+\sup_\rho\mathbb E_\rho(s_jZ)^2\le V_j.
 $$
+
+| Row | Second-moment bound |
+|---|---:|
+| $V_1$ | $0.344784300185690$ |
+| $V_2$ | $0.395119522625782$ |
+| $V_3$ | $0.370837757092059$ |
+| $V_4$ | $0.366919338686148$ |
 
 These are second moments, so they also bound variances. The checker below
 requires the produced certificate and verifies all these dependencies; it does
@@ -88,7 +101,7 @@ $\mathbb Ew_j=s_j$ and
 $$
 s_4M=e_1^T(I-B^4),\qquad
 |\mathbb E\widehat\chi-\langle\chi\rangle|
-\le h r b^3<0.0000221.
+\le h r b^3.
 $$
 
 The identity follows by multiplying the degree-three geometric polynomial by
@@ -141,21 +154,20 @@ c_1=0,\qquad
 $$
 
 Indeed $\operatorname{Tr}(\Sigma Q_j)\le V_j+Hc_j$, using positivity and
-$\operatorname{Tr}\Sigma\le H$. Since $h^2\mu^2<0.229$, a convenient
-uniform risk enclosure is
+$\operatorname{Tr}\Sigma\le H$. The uniform risk enclosure is
 
 $$
-\boxed{R\le\frac{V_4+Hc_4}{n}+0.229c_4+(0.0000221)^2.}
+\boxed{R\le\frac{V_4+Hc_4}{n}+h^2\mu^2c_4+h^2r^2b^6.}
 $$
 
-For $N_1=2{,}000{,}000$, $N_2=20{,}000{,}000$,
-$N_3=200{,}000{,}000$ and $n=382{,}000$, exact rational arithmetic proves
+For $N_1=1{,}800{,}000$, $N_2=18{,}000{,}000$,
+$N_3=180{,}000{,}000$ and $n=382{,}210$, exact rational arithmetic proves
 
 $$
-R<9.996325\times10^{-7}<10^{-6}.
+R<9.999796322\times10^{-7}<10^{-6}.
 $$
 
-All 222 million references are counted. No pilot, validation rejection, or
+All 199.8 million references are counted. No pilot, validation rejection, or
 unrecorded failure is omitted: the fixed features come from the mathematical
 certificate and the polynomial estimator always returns a value. Additional
 experimental characterization or monitoring would carry additional cost.
@@ -170,15 +182,17 @@ $$
 F(\theta)\le I(t)=\frac{16(6+t)}{3(1-t^2)(13+t)},\qquad t=|\theta|/h.
 $$
 
-Use independent cosine-squared priors on $[-h/10,h/10]$ for $K$ distinct
-target parameters. Each prior contributes $1600\pi^2/3$ information, and
-$I(1/10)=97600/38907$. A policy may choose which task to sample and which
+Use independent cosine-squared priors on $[-3h/40,3h/40]$ for $K$ distinct
+target parameters. Each prior contributes $25600\pi^2/27$ information, and
+$I(3/40)=2073600/832093$. A policy may choose which task to sample and which
 allowed measurement to use from its whole preceding record. A conditional
 likelihood factor for task $k$ depends directly only on $\theta_k$; the
 policy itself is a fixed function of the observed history. The conditional
 score increments have zero mean and add in Fisher information. Thus the
 joint-prior Fisher contribution for $\theta_k$ is at most
-$I(1/10)\mathbb E N_k$. Known references add no parameter information.
+$I(3/40)\mathbb E N_k$. This uses the uniform pointwise information bound
+on the prior interval; a prior-averaged per-copy bound cannot be substituted
+under adaptive allocation. Known references add no parameter information.
 
 Applying the scalar integration-by-parts and Cauchy--Schwarz argument to
 coordinate $k$, with all other parameters and data included in the record,
@@ -186,7 +200,7 @@ gives
 
 $$
 \mathbb E(\widehat\theta_k-\theta_k)^2
-\ge\left[I(1/10)\mathbb E N_k+1600\pi^2/3\right]^{-1}.
+\ge\left[I(3/40)\mathbb E N_k+25600\pi^2/27\right]^{-1}.
 $$
 
 If each task has mean-square error at most $\varepsilon^2$ uniformly in all
@@ -194,8 +208,8 @@ target states, summing the necessary bounds yields
 
 $$
 \boxed{\mathbb E\sum_{k=1}^K N_k\ge K L_\varepsilon,\qquad
-L_\varepsilon=\frac{38907}{97600}
-\left(\varepsilon^{-2}-\frac{1600\pi^2}{3}\right).}
+L_\varepsilon=\frac{832093}{2073600}
+\left(\varepsilon^{-2}-\frac{25600\pi^2}{27}\right).}
 $$
 
 The statement covers randomized allocation and stopping with finite expected
@@ -207,10 +221,10 @@ almost-sure total budget, that integer budget
 is at least $\lceil K L_\varepsilon\rceil$. An expected budget alone need not
 be an integer and should not be rounded up.
 
-At $\varepsilon=10^{-3}$, $L_\varepsilon=396538.952467578\ldots$.
-For $K=16{,}000$ distinct tasks the native construction costs
-6,334,000,000 preparations, while the passive lower bound on any fixed total
-budget is 6,344,623,240. The comparison counts equal-cost preparations and
+At $\varepsilon=10^{-3}$, $L_\varepsilon=397524.305991122\ldots$.
+For $K=13{,}100$ distinct tasks the native construction costs
+5,206,751,000 preparations, while the passive lower bound on any fixed total
+budget is 5,207,568,409. The comparison counts equal-cost preparations and
 gives the comparator free reference calibration. It does not establish a
 wall-time advantage. The targets must be fixed independently of calibration
 randomness. Repeating one identical state is not an arbitrary number of
@@ -267,10 +281,11 @@ $$
 +h^2(\mu+d)^2c'_4+\beta_*^2.}
 $$
 
-With $e=0.000081$, $d=0.00002$, $t_*=0.001$, the same 222 million
-references and $n=385{,}000$ give $R<9.985257\times10^{-7}$.
-For $K=20{,}000$, the total is 7,922,000,000 preparations, below the fixed
-passive budget lower bound 7,930,779,050. The drift bounds are explicit
+With $e=0.000081$, $d=0.00002$, $t_*=0.001$, stages of 2 million,
+20 million, and 200 million references and $n=384{,}220$ give
+$R<9.999754581\times10^{-7}$.
+For $K=16{,}800$, the total is 6,676,896,000 preparations, below the fixed
+passive budget lower bound 6,678,408,341. The drift bounds are explicit
 instrument assumptions, not estimates obtained from the two references.
 Both channels must retain the stated two-coordinate structure; arbitrary
 symmetry-breaking errors require separate operator bounds.
@@ -303,8 +318,8 @@ $$
 \|E\|\le\mu(3\delta^2+\delta^3).
 $$
 
-At $\delta=0.005$ radians, about $0.286$ degrees, this is at most
-0.00008008325, within the robust profile's $e=0.000081$. It requires
+At $\delta=0.005$ radians, about $0.286$ degrees, this is less than
+0.000080045305, within the robust profile's $e=0.000081$. It requires
 permutation of the same actual triad or an equivalent site-matched
 preparation. Cycling programmed axis labels under unrelated site errors
 does not guarantee cancellation. Purity defects are not covered by this
