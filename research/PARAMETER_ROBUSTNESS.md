@@ -221,8 +221,7 @@ $$
 $$
 
 These are sufficient dimensionless parameter regions from a conservative
-operator bound. They are not measured apparatus tolerances. The older
-mixed-input-score neighborhoods in the nominal certificate remain distinct.
+operator bound. They are not measured apparatus tolerances. The mixed-input-score neighborhoods in the nominal certificate remain distinct.
 
 ## 4. Fixed-score errors without the symmetry assumption
 

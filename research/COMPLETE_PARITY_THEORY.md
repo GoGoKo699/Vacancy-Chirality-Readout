@@ -255,7 +255,7 @@ adaptation between copies. Thus the certified all-input coefficient gives a
 strict minimax sampling advantage within that comparison. It does not imply
 pointwise superiority on every input, an advantage over collective or entangling
 measurements, or equal apparatus cost. The controlled-cycle Hadamard-test
-bound is $1/4$. The earlier four-setting return estimator has mixed-input
+bound is $1/4$. The four-setting return estimator has mixed-input
 coefficient $0.8759834953$ at its stated parameter pair.
 
 Singleton parity patterns contain useful collision information, but a

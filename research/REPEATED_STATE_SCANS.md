@@ -6,7 +6,7 @@ three-spin state and then applies the same calibrated vacancy-hopping and
 parity measurement. This account states when calibration reuse yields a
 valid resource comparison; it does not establish a measured time advantage.
 
-The [finite polynomial calibration](FINITE_CALIBRATION.md) now supplies a
+The [finite polynomial calibration](FINITE_CALIBRATION.md) supplies a
 separate unconditional comparison with the passive four-mode class, including
 all reference copies and bounded preparation error and drift. The conditional
 validation method and separable-comparator examples below remain distinct:
@@ -162,7 +162,7 @@ reset, with matched success accounting. A simple spin state does not make
 these stages disappear. Different loading yields must be measured and
 included rather than absorbed into an assumed small reference weight.
 
-For the existing hypothetical RMSE-$0.01$ profile, $M=8{,}610{,}000$ and
+For the hypothetical RMSE-$0.01$ profile, $M=8{,}610{,}000$ and
 $n=4441$. If native and comparator target cycles cost the same, write
 $w=c_R/c_N$. The strict condition is $w<K(m-n)/M$:
 
@@ -237,7 +237,7 @@ $$
 $$
 
 Choosing the smallest integer $n$ allowed by a no-drift certificate leaves
-only its rounding slack $g$. The current finite forecast uses nearly all
+only its rounding slack $g$. The finite forecast uses nearly all
 of its accuracy budget this way. A practical design must reserve drift
 margin by tightening calibration, increasing $n$, or shortening the epoch;
 it cannot add a drift allowance without revising the count calculation.
@@ -325,6 +325,7 @@ The operator calibration certificate is uniform over inputs, but simultaneous
 target-statistics confidence and correlations from shared calibration still
 require their own treatment.
 
-The candidate scan is supported by the channel and estimation theorems.
-A target-matched full-cycle and stability advantage is not yet established;
-the measured inputs above determine whether the operational criterion holds.
+The channel and estimation theorems support this scan under the stated
+assumptions. A full-cycle time advantage follows when the measured cycle
+costs, calibration stability, and sampling design satisfy the operational
+criterion above.

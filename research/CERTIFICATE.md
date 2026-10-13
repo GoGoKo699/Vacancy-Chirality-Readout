@@ -19,7 +19,7 @@ Global optimality of either numerical score search is not asserted.
 | Primary minimax-oriented score | Passive-parity comparison and finite-channel calibration | $<0.3287<13/32$ |
 | Mixed-input-oriented score | Lower mixed-input variance and its own calibration-cost profiles | $<0.389156263913$ |
 
-The top-level legacy report fields and `SCORE_DECIMALS` describe the mixed-input
+The top-level report fields and `SCORE_DECIMALS` describe the mixed-input
 score. The self-contained `passive_separation` report section and
 `PASSIVE_SCORE_DECIMALS` describe the primary score. Their score moments, noise
 bounds, and sufficient neighborhoods are distinct; no mixed-input-score

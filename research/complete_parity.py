@@ -12,7 +12,7 @@ import sys
 import numpy as np
 
 sys.dont_write_bytecode = True
-SOURCE = Path(__file__).resolve().parents[1] / "source/resource-review-2026-10-10"
+SOURCE = Path(__file__).resolve().parents[1] / "source"
 sys.path.insert(0, str(SOURCE))
 import readout as rd
 

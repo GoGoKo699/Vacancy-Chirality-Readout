@@ -98,7 +98,7 @@ $$
 \Delta=5952\left(\frac{7u}{72}+\frac{u^3}{2520}\right)s^{13}+O_u(s^{15})>0
 $$
 
-for sufficiently small positive $s$. The coefficients are certified by exact integer/rational arithmetic in $\mathbb Q(\sqrt2,\sqrt3,i)[u]$ on the complete 40-state fixed-magnetization sector; see the [certificate](source/resource-review-2026-10-10/prior/exact_short_time.py) and [derivation, Section 4](source/resource-review-2026-10-10/prior/FOLLOWUP.md). This fixed-$u$ existence result does not imply efficient estimation at very short times or a uniform large-$u$ limit.
+for sufficiently small positive $s$. The coefficients are certified by exact integer/rational arithmetic in $\mathbb Q(\sqrt2,\sqrt3,i)[u]$ on the complete 40-state fixed-magnetization sector; see the [certificate](source/exact_short_time.py) and [derivation, Section 4](research/FINITE_REPULSION.md). This fixed-$u$ existence result does not imply efficient estimation at very short times or a uniform large-$u$ limit.
 
 An order-one numerical example uses $u=16$:
 
@@ -149,7 +149,7 @@ $$
 \qquad \Phi_-=-\Phi_+.
 $$
 
-With the same $u,\tau$ at both fluxes and exact calibration of the actual two-feature mean response, $\Delta\le0.0025$ implies a worst-case coefficient below $0.394824826<13/32$. The smaller region $\Delta\le0.0015$ gives $0.366080282<0.367$ and beats all biased passive estimators in worst-case MSE for every $n\ge12{,}000$. A weighted measurement-isometry bound proves these results, using $\|HJ\|=\sqrt{10}$ for the singly occupied input embedding $J$.
+With the same $u,\tau$ at both fluxes and exact calibration of the actual two-feature mean response, $\Delta\le0.0025$ implies a worst-case coefficient below $0.394824826<13/32$. The smaller region $\Delta\le0.0015$ gives $0.366080282<0.367$ and beats all biased passive estimators in worst-case MSE for every $n\ge12{,}000$. A weighted measurement-isometry bound proves these results, using $\|H V\|=\sqrt{10}$ for the singly occupied input embedding $V$ and dimensionless Hamiltonian $H$.
 
 The same proof combines with the uniform number-sector loss bounds. Jointly, $\Delta\le0.001$, $\gamma t\le0.01$, and $q\le0.003$ give a coefficient below $0.395873255$. Reducing the noise allowances to $\gamma t\le0.005$, $q\le0.0015$ gives $0.366684486<0.367$ and recovers the $n\ge12{,}000$ all-estimator comparison. The latter region also satisfies every moment input of the finite polynomial calibration, so its unconditional preparation-count guarantees hold there without exact operational response coefficients. Here $t$ is the actual duration; the base channel must retain spin and paired-reflection covariance and the stated stability assumptions.
 
@@ -201,7 +201,7 @@ K_{\infty,+}^m=\Pi_++a^m(I-\Pi_+),\qquad
 p_m=q+(1-q)r^m,\quad q=\operatorname{Tr}(\Pi_+\rho).
 $$
 
-For $I_8/8$, $p_m\to1/4$ and the conditional state tends to the mixed doublet $\Pi_+/2$. The probability counts the entire successful record per original preparation. Spin coherence and atom survival between rounds are necessary assumptions. The [hard-core derivation](source/resource-review-2026-10-10/prior/prior/PILOT.md) gives the cycle reduction, pair marginals, and static scalar-disorder extension in detail.
+For $I_8/8$, $p_m\to1/4$ and the conditional state tends to the mixed doublet $\Pi_+/2$. The probability counts the entire successful record per original preparation. Spin coherence and atom survival between rounds are necessary assumptions. The [hard-core derivation](research/HARD_CORE_FILTER.md) gives the cycle reduction, pair marginals, and static scalar-disorder extension in detail.
 
 ## 5. Uniform finite-$U$ operation bound
 
@@ -221,7 +221,7 @@ U\|Qe^{-itH}\psi\|\le U\|We^{-itH}\psi\|
 \le\|H\psi\|+\|T\|\le10J.
 $$
 
-Therefore $\|Qe^{-itH}P\|\le\min\{1,10J/U\}$. Duhamel's formula for the projected equation then bounds its deviation from $e^{-itA}P$ by $t\|B\|(10J/U)=20\sqrt3 J^2t/U$. Compression with $V$ proves the claim. The [full proof and path-count verification](source/resource-review-2026-10-10/prior/FOLLOWUP.md) distinguish leakage probability from coherent spin-operation error.
+Therefore $\|Qe^{-itH}P\|\le\min\{1,10J/U\}$. Duhamel's formula for the projected equation then bounds its deviation from $e^{-itA}P$ by $t\|B\|(10J/U)=20\sqrt3 J^2t/U$. Compression with $V$ proves the claim. The [full proof and path-count verification](research/FINITE_REPULSION.md) distinguish leakage probability from coherent spin-operation error.
 
 The success maps obey $\|\mathcal K_U-\mathcal K_\infty\|_\diamond\le2\epsilon_u$, including arbitrary external references. With a terminal failure flag and discarded failed spins, the complete flagged instruments differ by at most $\min\{2,4\epsilon_u\}$ in diamond norm.
 
@@ -247,7 +247,7 @@ $$
 
 Complete local dephasing produces a fully separable spin output with exactly the ideal success probabilities. Destructive terminal imaging can therefore serve expectation estimation without realizing the retained-state instrument.
 
-For the explicit diagnostic of independent phase damping with single-spin coherence factor $\eta$, $(\mathcal D_\eta^{\otimes3})^\dagger(\chi)=\eta^2\chi$. The one-round hard-core output remains certified by the chirality witness precisely when $\eta>0.8022166239\ldots$. This is a witness threshold for that channel. Under the same disturbance after every accepted round, the exact recurrence has spectral radius below one for every $\eta<1$, so total success tends to zero; see [the recurrence and proof, Section 3](source/resource-review-2026-10-10/READOUT_AND_RESOURCES.md).
+For the explicit diagnostic of independent phase damping with single-spin coherence factor $\eta$, $(\mathcal D_\eta^{\otimes3})^\dagger(\chi)=\eta^2\chi$. The one-round hard-core output remains certified by the chirality witness precisely when $\eta>0.8022166239\ldots$. This is a witness threshold for that channel. Under the same disturbance after every accepted round, the exact recurrence has spectral radius below one for every $\eta<1$, so total success tends to zero; see [the recurrence and proof, Section 3](research/READOUT_RESOURCES.md).
 
 For equal-rate Markovian loss $L_{j,\sigma}=\sqrt\gamma\,b_{j,\sigma}$ with no gains, every loss trajectory is rejected by the ideal **return parity event** $0111$. Since $\sum L^\dagger L=\gamma N$, the accepted return map is exactly
 
@@ -257,7 +257,7 @@ $$
 
 This particular loss model reduces success without changing the conditional state. Unequal rates need not have that property. The damping and loss channels are stated diagnostics, not fitted detector parameters.
 
-For the complete-image estimator, one loss changes the parity weight to even and receives zero score, while two losses can imitate a singleton collision pattern. If $\lambda=\gamma t$ and each parity bit independently flips with known probability $q$, dividing scores by $e^{-3\lambda}(1-q)^4$ leaves bounded contributions of orders $\lambda^2$, $q^2$, and $\lambda q$. For the exactly calibrated nominal score, the [certificate](research/CERTIFICATE.md) and [analytical noise budget](research/NOISE_BUDGET.md) give the uniform sufficient window
+For the complete-image estimator, one loss changes the parity weight to even and receives zero score, while two losses can imitate a singleton collision pattern. If $\lambda=\gamma t$ and each parity bit independently flips with known probability $q$, dividing scores by $e^{-3\lambda}(1-q)^4$ leaves bounded contributions of orders $\lambda^2$, $q^2$, and $\lambda q$. For the exactly calibrated nominal **mixed-input score**, the [certificate](research/CERTIFICATE.md) and [analytical noise budget](research/NOISE_BUDGET.md) give the uniform sufficient window
 
 $$
 0\le\lambda\le0.01,\quad0\le q\le0.003:
@@ -287,7 +287,7 @@ t_{\rm s}=Q_0,\qquad t_{\rm o}=3Q_d-2Q_x,\qquad
  t_{\rm e}=6Q_x-3Q_d-2Q_0.
 $$
 
-The same identities reconstruct every outcome effect within the five-dimensional symmetry class. They apply at arbitrary noise strength when the response remains informative; complete erasure cannot be inverted. At the nominal operating point, the [exact certificate](research/CERTIFICATE.md) constructs a second score for $D$ and proves that their full noisy response stays nonsingular throughout $0\le\gamma t\le0.01$, $0\le q\le0.003$ under the stated equal-loss and bit-error channels. Exact channel recalibration removes the mean bias and gives $\|T\|<0.444512137719<0.446<9/16$. The rates are used to establish this sufficient window; operational recalibration uses the raw reference responses, without those rates.
+The same identities reconstruct every outcome effect within the five-dimensional symmetry class. They apply at arbitrary noise strength when the response remains informative; complete erasure cannot be inverted. At the nominal operating point, the [exact certificate](research/CERTIFICATE.md) constructs a second score for $D$ and proves that their full noisy response stays nonsingular throughout $0\le\gamma t\le0.01$, $0\le q\le0.003$ under the stated equal-loss and bit-error channels. For the mixed-input score, exact channel recalibration removes the mean bias and gives $\|T\|<0.444512137719<0.446<9/16$. The primary score has the separate $0.366461$ guarantee stated in Section 3. The rates are used to establish this sufficient window; operational recalibration uses the raw reference responses, without those rates.
 
 With finite calibration data, freeze a score chosen from pilot data and use independent reference data to validate it. Its exact all-input bias is
 
@@ -301,21 +301,23 @@ The [channel-calibration proof](research/CHANNEL_CALIBRATION.md) converts the tw
 
 For $n$ independent input preparations and exact calibration, with ideal detection except in the stated noisy row, compare the same normalization of $\chi$. All failed return trials remain included in $n$.
 
-| Method | Primitive and allocation | Worst-case coefficient or upper bound on $n\operatorname{Var}(\widehat\chi)$ |
+| Method | Primitive and allocation | Worst-case variance coefficient: bound or attained value |
 |---|---|---:|
 | Optimal fully separable measurements per input copy | Classical adaptation allowed; six uniformly randomized Pauli settings attain the minimax value | $9/16=0.5625$ exactly |
 | Controlled-cycle Hadamard test | Ancilla quadrature after controlled cycle | $1/4=0.25$ |
 | Spectral chirality measurement | Outcomes $0,\pm\sqrt3/4$; Fourier/count implementation follows [N26](REFERENCES.md) | $3/16=0.1875$ |
 | Hard-core vacancy return | Two fluxes, equal allocation | $3/[16(1-r)^2]=0.1984038180\ldots$ |
-| Finite-$U$ complete parity, $u=16$, $\tau=\pi$ | One duration, two equally randomized fluxes; certified corrected score | $<0.389156263913$ |
-| Finite-$U$ channel-calibrated readout | Same nominal point; equal loss $\gamma t\le0.01$, independent bit errors $q\le0.003$ | $<0.444512137719$ |
-| Finite-$U$ return-only example above | Four settings, allocation proportional to $|w_i|$ per sign | $(|w_1|+|w_2|)^2=1.0329363137\ldots$ |
+| Any passive four-mode parity protocol | One vacuum input; local spin prerotations and adaptation across fresh copies allowed | $\ge13/32=0.40625$ for universally unbiased estimation |
+| Finite-$U$ complete parity, primary score | $u=16$, $\tau=\pi$; one duration, two equally randomized fluxes | $<0.328697776905$ |
+| Finite-$U$ full-channel calibration, primary score | Same nominal point; equal loss $\gamma t\le0.01$, independent bit errors $q\le0.003$ | $<0.366461$ |
+| Finite-$U$ complete parity, mixed-input score | Same ideal nominal measurement; score targets minimum mixed-input variance | $<0.389156263913$ |
+| Finite-$U$ return-only example above | Four settings, allocation proportional to $`\lvert w_i\rvert`$ per sign | $`(\lvert w_1\rvert+\lvert w_2\rvert)^2=1.0329363137\ldots`$ |
 
 The Pauli decomposition is $\chi=(XYZ+YZX+ZXY-XZY-YXZ-ZYX)/8$; it needs no entangling measurement gate. The Hadamard test uses $\operatorname{Im}\langle C\rangle=2\langle\chi\rangle$. These established alternatives and projective sector preparation are described in [R23](REFERENCES.md).
 
 The separable benchmark is a lower bound for the whole declared measurement class. A normalized fully separable effect has chirality expectation at most $1/8$ in absolute value. With $\operatorname{Tr}\chi^2=3/4$, Cauchy–Schwarz yields $n\operatorname{Var}_{I_8/8}(\widehat\chi)\ge9/16$ for unbiased scoring. A classical score/Fisher-information argument extends the bound to arbitrary estimators locally unbiased around that input, even with classical adaptation between copies. Randomized Pauli scores $\pm3/4$ attain worst-case coefficient $9/16$. The [self-contained proof](research/SEPARABLE_BENCHMARK.md) establishes the exact minimax value without claiming a new general statistical principle; LOCC measurements within one copy are included [CLMOW14](REFERENCES.md).
 
-The certified complete-parity bound therefore proves a strict minimax sampling advantage over universally unbiased protocols using fully separable effects across the three spins of each copy. It also improves the mixed-input coefficient from $9/16$ to the certified interval above. This does not assert pointwise superiority on every state, superiority to the controlled-cycle test, or a bound on collective measurements across copies or estimators exploiting a state promise.
+Both certified complete-parity scores therefore prove a strict minimax sampling advantage over universally unbiased protocols using fully separable effects across the three spins of each copy. The mixed-input score also improves the coefficient at $I_8/8$ from $9/16$ to the certified interval above. This does not assert pointwise superiority on every state, superiority to the controlled-cycle test, or a bound on collective measurements across copies or estimators exploiting a state promise.
 
 For arbitrary biased estimators in the same per-copy measurement class, a uniform mean-square error at most $\varepsilon^2$ requires
 
@@ -328,6 +330,6 @@ The [finite-sample proof](research/SEPARABLE_BENCHMARK.md#6-finite-sample-bound-
 
 Signed internal-state information in spatial counts has optical antecedents [M17](REFERENCES.md). Fourier interferometry already reads cyclic observables with entangled inputs [N26](REFERENCES.md), and phase-sensitive scattering measurements isolate static Hubbard spin chirality [NGH25](REFERENCES.md). The implementation studied here combines interacting four-site vacancy dynamics, parity-only detection, and finite-repulsion calibration. Correlated inputs alone do not distinguish it from these general cycle-readout methods.
 
-For the four-setting finite-$u=16$ return-only allocation, the coefficient on input $I_8/8$ is $0.8759834953$. Retaining complete parity images reduces this coefficient to the certified interval near $0.2848954942$, with one evolution duration. Both methods count all original preparations. The original return-only derivations remain in [the matched resource comparison, Section 6](source/resource-review-2026-10-10/READOUT_AND_RESOURCES.md); the complete-image and separable-benchmark proofs above specify the stronger comparison.
+For the four-setting finite-$u=16$ return-only allocation, the coefficient on input $I_8/8$ is $0.8759834953$. Retaining complete parity images reduces this coefficient to the certified interval near $0.2848954942$, with one evolution duration. Both methods count all original preparations. The [return-only resource derivation, Section 6](research/READOUT_RESOURCES.md) and the complete-image and separable-benchmark proofs give the respective comparisons.
 
 The vacancy implementation uses coherent spin-independent flux hopping, a localized motional ancilla, calibrated durations, and total site parity. Retained entanglement adds atom-preserving spin-coherent detection; repetition requires those properties after every cycle. Component experiments in [the references](REFERENCES.md) establish relevant imaging and flux capabilities separately. The mathematical result is the specified native instrument and its calibrated input readout, with these distinct operational requirements.
