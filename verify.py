@@ -144,8 +144,8 @@ def main():
             ("channel_calibration", "check_channel_calibration.py"),
             ("calibration_cost", "check_calibration_cost.py"),
             ("passive_parity", "check_passive_parity.py"),
-            ("finite_calibration", "check_finite_calibration.py"),
             ("parameter_robustness", "check_parameter_robustness.py"),
+            ("finite_calibration", "check_finite_calibration.py"),
         ):
             try:
                 report_path = output / receipt[f"{suite}_report"]
@@ -154,6 +154,9 @@ def main():
                 if suite in ("finite_calibration", "parameter_robustness"):
                     command.extend(["--certificate", str(
                         output / receipt["complete_parity_certificate_report"])])
+                if suite == "finite_calibration":
+                    command.extend(["--robustness-certificate", str(
+                        output / receipt["parameter_robustness_report"])])
                 with report_path.with_suffix(".log").open("xb") as log:
                     run = subprocess.run(
                         command,
@@ -175,7 +178,7 @@ def main():
                     receipt[f"{suite}_groups"] = groups
                     expected_groups = {
                         "passive_parity": 5, "finite_calibration": 2,
-                        "parameter_robustness": 3,
+                        "parameter_robustness": 5,
                     }[suite]
                     report_pass = report.get("status") == "PASS" and groups == expected_groups
                 else:
@@ -219,7 +222,7 @@ def main():
         "complete_parity_certificate_pass", "channel_calibration_pass",
         "calibration_cost_pass", "passive_parity_pass", "finite_calibration_pass",
         "parameter_robustness_pass",
-    )) and receipt["total_scientific_groups"] == 37
+    )) and receipt["total_scientific_groups"] == 39
     receipt["source_integrity_pass"] = all(checks.get(name) is True for name in (
         "before_matches_manifest", "after_matches_manifest", "manifest_unchanged",
         "snapshot_unchanged", "archived_source_unchanged",

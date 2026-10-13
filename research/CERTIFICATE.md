@@ -205,8 +205,14 @@ binds the nominal moments to this report by hash.
 Retaining the nominal score under generic perturbations instead gives a
 possibly biased finite-sample estimator. Its MSE bound includes the squared
 mean error, with a distinct conditional bound for history-dependent channels.
-These are separate theorems from the modeled loss window and the finite
-random-calibration estimator; their allowances are not added implicitly.
+The robustness proof also derives joint parameter/loss/detector bounds from
+the same nominal inputs. At $\Delta\le0.001$, $\lambda\le0.01$, and
+$q\le0.003$, exact-response recalibration gives $\|T\|<0.395873255$.
+With $\lambda\le0.005$ and $q\le0.0015$ instead, the bound is
+$0.366684486$ and all raw finite-calibration moment inputs are bounded by
+their existing certified values. The finite-reference checker verifies this
+second dependency before extending its unconditional budgets. Fixed-score
+symmetry-breaking and loading errors retain their separate MSE bounds.
 
 ### Known detector-only errors
 

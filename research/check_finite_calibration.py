@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Exact finite-calibration risk and total-preparation certificates.
 
-Consumes the integer/rational parity certificate; no floating arithmetic,
-empirical calibration record, or confidence-event substitution is used.
+Consumes the integer/rational parity and parameter-robustness certificates;
+no floating arithmetic, empirical calibration record, or confidence-event
+substitution is used.
 See FINITE_CALIBRATION.md for the matrix covariance and statistical proofs.
 """
 from __future__ import annotations
@@ -28,6 +29,11 @@ STABLE_STAGES = (1_800_000, 18_000_000, 180_000_000)
 ROBUST_STAGES = (2_000_000, 20_000_000, 200_000_000)
 H2 = F(3, 16)
 EPSILON_SQUARED = F(1, 1_000_000)
+JOINT_WINDOW = {
+    'dilation_distance_upper': '0.001',
+    'lambda': ['0', '0.005'],
+    'bit_error_q': ['0', '0.0015'],
+}
 
 
 def upper(value: F, places: int = 24) -> str:
@@ -64,6 +70,45 @@ def bind_inputs(path: Path):
         'verified_supplied_inputs': inputs,
         'outward_bounds_used': {key: str(value) for key, value in OUTWARD.items()},
         'mean_weight_second_moment_bounds_used': list(map(str, V)),
+    }
+
+
+def bind_joint_inputs(path: Path, nominal_sha256: str):
+    raw = path.read_bytes()
+    report = json.loads(raw)
+    assert report['status'] == 'PASS', 'The robustness dependency did not pass.'
+    assert report['scientific_groups'] == len(report['groups']) >= 4
+    assert report['dependency']['certificate_sha256'] == nominal_sha256, (
+        'The robustness and finite-calibration certificates use different nominal inputs.'
+    )
+    matching = [group for group in report['groups']
+                if group['group'] == 'joint_parameter_and_noise_bounds']
+    assert len(matching) == 1, 'The joint parameter-and-noise certificate is missing or ambiguous.'
+    source = matching[0]
+    assert source['finite_calibration_source_window'] == JOINT_WINDOW
+    inputs = source['finite_calibration_inputs']
+    assert inputs['polynomial_degrees'] == [1, 2, 3, 4]
+    assert inputs['feature_definition'] == (
+        'Raw Z=(X_primary,X_D/4), target x=(<chi>,<D>/4)'
+    )
+    for key, bound in OUTWARD.items():
+        supplied = F(inputs[key])
+        assert 0 <= supplied <= bound, (key, supplied, bound)
+    supplied_v = inputs['mean_weight_second_moment_upper']
+    assert len(supplied_v) == len(V)
+    for supplied, bound in zip(supplied_v, V):
+        assert 0 <= F(supplied) <= bound
+    return {
+        'certificate_sha256': hashlib.sha256(raw).hexdigest(),
+        'certificate_file': path.name,
+        'nominal_certificate_sha256': nominal_sha256,
+        'source_group': 'joint_parameter_and_noise_bounds',
+        'verified_source_window': JOINT_WINDOW,
+        'verified_supplied_inputs': inputs,
+        'consequence': (
+            'All joint-window inputs are dominated by the same OUTWARD and V bounds; '
+            'both existing finite-calibration budgets therefore apply unchanged.'
+        ),
     }
 
 
@@ -204,8 +249,11 @@ def robust_profile(per_task):
     }
 
 
-def run(certificate: Path):
+def run(certificate: Path, robustness_certificate: Path):
     dependency = bind_inputs(certificate)
+    joint_dependency = bind_joint_inputs(
+        robustness_certificate, dependency['certificate_sha256']
+    )
     pi, _, _ = pc.constants()
     per_task = passive_lower(pi)
     assert pc.ceil_fraction(per_task.lo) == pc.ceil_fraction(per_task.hi) == 397_525
@@ -215,6 +263,7 @@ def run(certificate: Path):
         'scientific_groups': len(groups),
         'arithmetic': 'Exact fractions and outward rational intervals; no floating arithmetic.',
         'dependency': dependency,
+        'joint_robustness_dependency': joint_dependency,
         'target_rmse': '0.001',
         'passive_prior_radius_in_units_of_h': '3/40',
         'passive_uniform_fisher_information_bound': '2073600/832093',
@@ -228,6 +277,7 @@ def run(certificate: Path):
             'Separate arbitrary-state tasks; no promised common target model.',
             'Equal preparation costs for the total-count comparison.',
             'Noise, preparation, and drift windows are model assumptions, not apparatus data.',
+            'The same budgets cover the separately certified joint parameter-and-noise window.',
         ],
     }
 
@@ -237,10 +287,12 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--certificate', type=Path, required=True,
                         help='Produced exact complete-parity certificate JSON.')
+    parser.add_argument('--robustness-certificate', type=Path, required=True,
+                        help='Produced parameter-robustness certificate with the matching nominal dependency.')
     parser.add_argument('--output', type=Path,
                         help='Optional new JSON report outside the repository.')
     args = parser.parse_args()
-    report = run(args.certificate.resolve())
+    report = run(args.certificate.resolve(), args.robustness_certificate.resolve())
     text = json.dumps(report, indent=2)+'\n'
     if args.output:
         repo = Path(__file__).resolve().parents[1]

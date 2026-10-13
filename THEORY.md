@@ -13,6 +13,8 @@ $$
 
 Indices are modulo four and $n_j$ counts both spin components. The four bonds are equal; interactions are independent of spin. Write $u=U/J$ and $\tau=Jt$. The fixed-three-particle Hilbert space has dimension 120. The no-double-occupancy projector $P$ has rank 32.
 
+The four spatial modes are four accessible orbitals, normally one motional orbital per site. Coherently occupied higher bands or other resolved or unresolved orbital ancillas change the mode resource. In the two-level spin encoding, the stated model requires identical hopping matrices for both spin components and equal on-site pair interactions $U_{\uparrow\uparrow}=U_{\downarrow\downarrow}=U_{\uparrow\downarrow}$, with no unaccounted leakage to other internal levels. The [physical resource account](research/REPEATED_STATE_SCANS.md) separates these conditions from demonstrated component capabilities. Bounded departures from spin independence and from the intended loading are covered by the fixed-score perturbation theorem below.
+
 Let $V$ embed the eight spin states into occupancy $(0,1,1,1)$ and $S=VV^\dagger$. The return operator and effect are
 
 $$
@@ -145,7 +147,11 @@ $$
 \qquad \Phi_-=-\Phi_+.
 $$
 
-With the same $u,\tau$ at both fluxes and exact calibration of the actual two-feature mean response, $\Delta\le0.0025$ implies a worst-case coefficient below $0.394824826<13/32$. The smaller region $\Delta\le0.0015$ gives $0.366080282<0.367$ and beats all biased passive estimators in worst-case MSE for every $n\ge12{,}000$. A weighted measurement-isometry bound proves these results, using $\|HJ\|=\sqrt{10}$ for the singly occupied input embedding $J$. The same lemma supplies a distinct fixed-score MSE guarantee when perturbations break the symmetries. These parameter statements assume known three-particle input and ideal parity; they are separate from the loss and finite-reference guarantees above.
+With the same $u,\tau$ at both fluxes and exact calibration of the actual two-feature mean response, $\Delta\le0.0025$ implies a worst-case coefficient below $0.394824826<13/32$. The smaller region $\Delta\le0.0015$ gives $0.366080282<0.367$ and beats all biased passive estimators in worst-case MSE for every $n\ge12{,}000$. A weighted measurement-isometry bound proves these results, using $\|HJ\|=\sqrt{10}$ for the singly occupied input embedding $J$.
+
+The same proof combines with the uniform number-sector loss bounds. Jointly, $\Delta\le0.001$, $\gamma t\le0.01$, and $q\le0.003$ give a coefficient below $0.395873255$. Reducing the noise allowances to $\gamma t\le0.005$, $q\le0.0015$ gives $0.366684486<0.367$ and recovers the $n\ge12{,}000$ all-estimator comparison. The latter region also satisfies every moment input of the finite polynomial calibration, so its unconditional preparation-count guarantees hold there without exact operational response coefficients. Here $t$ is the actual duration; the base channel must retain spin and paired-reflection covariance and the stated stability assumptions.
+
+For generic spin-dependent dynamics and loading errors, the [fixed-score theorem](research/PARAMETER_ROBUSTNESS.md) instead retains the nominal score and includes its squared bias in finite MSE. It connects microscopic one-particle and on-site interaction errors to dilation distance, and loading errors to trace distance. This separate guarantee requires neither spin covariance nor exact response inversion.
 
 The spatial-mode restriction is explicit. Three-mode Fourier mixing followed by balanced splitting into eight output arms gives a passive parity estimator with coefficient $27/88$, counting every input trial. The [extra-mode construction](research/PASSIVE_PARITY_BOUND.md) derives the six- through nine-mode values and explains why this lies outside the four-mode bound.
 

@@ -76,6 +76,41 @@ These are second moments, so they also bound variances. The checker below
 requires the produced certificate and verifies all these dependencies; it does
 not treat the decimal constants as independent assumptions about the model.
 
+### Simultaneous parameter and noise uncertainty
+
+The same tables also hold throughout the smaller joint region proved in
+[the parameter-robustness account](PARAMETER_ROBUSTNESS.md):
+
+$$
+\eta\le0.001,\qquad 0\le\gamma t\le0.005,\qquad 0\le q\le0.0015.
+$$
+
+Here $\eta$ bounds the lossless measurement-dilation distance from the
+nominal instrument. A sufficient physical parameter condition is
+
+$$
+1.643|u-16|+3.163|\tau-\pi|
++4.086|\Phi_++2\pi/3|\le0.001,
+$$
+
+with the same $u,\tau$ at both opposite fluxes. Spin and paired-reflection
+covariance remain required. The joint certificate derives the raw response
+and feature moments after combining parameter variation with the specified
+loss and bit errors. Each of its bounds for $b,r,\mu,H,V_1,\ldots,V_4$
+is at most the corresponding table entry above.
+
+Every scalar recurrence and risk bound below is nondecreasing in these
+nonnegative inputs. Consequently **both finite preparation budgets below
+apply unchanged in this joint region**, including the additional preparation
+and drift allowances of Section 4. This conclusion uses the joint moment
+certificate, rather than combining independently stated tolerances. The
+stable example uses one fixed instrument across reference and target trials;
+Section 4 accounts separately for bounded differences between them.
+
+The checker verifies the joint certificate's source window and input
+dominance, and requires its nominal-certificate hash to match the parity
+certificate supplied to the same run.
+
 ## 2. Independent polynomial calibration
 
 In stage $j$, collect independent reference batches of sizes $N_{x,j}$ and
@@ -213,13 +248,39 @@ L_\varepsilon=\frac{832093}{2073600}
 $$
 
 The statement covers randomized allocation and stopping with finite expected
-sample count under the joint prior. The bounded score increments on the
-interior prior interval give a square-integrable stopped score. Truncation
-and bounded finite-record approximations to the finite-risk estimator justify
-the integration-by-parts identity in the limit. For a deterministic or
-almost-sure total budget, that integer budget
-is at least $\lceil K L_\varepsilon\rceil$. An expected budget alone need not
-be an integer and should not be rounded up.
+sample count under the joint prior. Here every expectation in the
+expected-count lower bound averages over both the product prior and the
+measurement record. It therefore bounds the worst-case expected total count
+from below, without asserting a pointwise count bound at every target tuple.
+For a deterministic or almost-sure total budget, that integer budget is at
+least $\lceil K L_\varepsilon\rceil$. A worst-case expected budget alone need
+not be an integer and should not be rounded up.
+
+For completeness, let $N_{k,m}$ count task-$k$ samples among the first $m$
+preparations, and let $S_{k,m}$ be their likelihood score sum, with zero
+increments after stopping. Conditional on the parameter vector, these
+scores are martingales. Their increments are bounded on the prior interval
+by $1/(h-3h/40)$, because $q_z\ge h|c_z|$. Orthogonality and the uniform
+information bound give an $L^2$ limit $S_k$ with
+
+$$
+\mathbb E|S_k-S_{k,m}|^2
+\le I(3/40)\,\mathbb E(N_k-N_{k,m})\longrightarrow0.
+$$
+
+Clip each estimator to $[-h,h]$, which cannot increase its squared error.
+Its conditional expectations given the first $m$ observed records, taken
+under the fixed joint prior, are bounded functions of those records and
+converge in $L^2$ to the clipped estimator. They are parameter-independent
+functions, so finite-record integration by parts applies to each one.
+Passing to the limit by Cauchy--Schwarz gives
+$\mathbb E[(\widehat\theta_k-\theta_k)
+(S_k+\partial_{\theta_k}\log\pi_a(\theta_k))]=1$.
+Here $a=3h/40$. The prior score has variance $25600\pi^2/27$ and zero cross
+term with $S_k$;
+this proves the stated bound for arbitrary finite-risk estimators and
+finite-expected-count stopping rules. Removing the clipping only increases
+the risk.
 
 At $\varepsilon=10^{-3}$, $L_\varepsilon=397524.305991122\ldots$.
 For $K=13{,}100$ distinct tasks the native construction costs
@@ -367,15 +428,16 @@ an experimental economy claim.
 
 ## 6. Reproduction
 
-After producing the exact parity certificate, run
+After producing the exact parity and parameter-robustness certificates, run
 
 ```bash
 python research/check_finite_calibration.py \
   --certificate /absolute/output/complete-parity-certificate.json \
+  --robustness-certificate /absolute/output/parameter-robustness.json \
   --output /absolute/output/finite-calibration.json
 ```
 
 The standard-library checker uses rational arithmetic, rational enclosures
-for square roots and $\pi$, verifies its certificate dependencies, and records
-the source certificate hash. Generated reports must remain outside the
-repository. The root verifier runs this dependency in sequence.
+for square roots and $\pi$, verifies both certificate dependencies, and
+records their hashes. Generated reports must remain outside the repository.
+The root verifier runs these dependencies in sequence.

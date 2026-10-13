@@ -44,6 +44,49 @@
       "91729834671537/250000000000000"
     ]
   },
+  "joint_robustness_dependency": {
+    "certificate_sha256": "f1aaca09663169e9e4e43f4892061e7588194b5150583ed5ef27859fe0359f4f",
+    "certificate_file": "parameter-robustness.json",
+    "nominal_certificate_sha256": "9e9e75481981e659a5bbc48c74aafa031a0d578eff32d67454aadc71efe7d832",
+    "source_group": "joint_parameter_and_noise_bounds",
+    "verified_source_window": {
+      "dilation_distance_upper": "0.001",
+      "lambda": [
+        "0",
+        "0.005"
+      ],
+      "bit_error_q": [
+        "0",
+        "0.0015"
+      ]
+    },
+    "verified_supplied_inputs": {
+      "feature_definition": "Raw Z=(X_primary,X_D/4), target x=(<chi>,<D>/4)",
+      "raw_clean_factor_lower": "0.979214553682604871405261",
+      "normalized_response_row_error_upper": [
+        "0.003236745203800797029676",
+        "0.045754681778975855427108"
+      ],
+      "normalized_response_error_norm_upper": "0.045869024670355403289857",
+      "response_residual_norm_upper": "0.065701062837833586864944",
+      "first_response_residual_row_norm_upper": "0.023954914327519238002809",
+      "response_norm_upper": "1.045869024670355403289857",
+      "feature_second_moment_trace_upper": "42.632586752575790037664149",
+      "mean_weight_second_moment_upper": [
+        "0.338062671759969661263754",
+        "0.379960845522264797298211",
+        "0.367560194372653442798170",
+        "0.366741988495766978127952"
+      ],
+      "polynomial_degrees": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "consequence": "All joint-window inputs are dominated by the same OUTWARD and V bounds; both existing finite-calibration budgets therefore apply unchanged."
+  },
   "target_rmse": "0.001",
   "passive_prior_radius_in_units_of_h": "3/40",
   "passive_uniform_fisher_information_bound": "2073600/832093",
@@ -156,6 +199,7 @@
     "Targets are fixed independently of the shared calibration randomness.",
     "Separate arbitrary-state tasks; no promised common target model.",
     "Equal preparation costs for the total-count comparison.",
-    "Noise, preparation, and drift windows are model assumptions, not apparatus data."
+    "Noise, preparation, and drift windows are model assumptions, not apparatus data.",
+    "The same budgets cover the separately certified joint parameter-and-noise window."
   ]
 }
