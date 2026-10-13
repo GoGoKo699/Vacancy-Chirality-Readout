@@ -143,7 +143,7 @@ For an arbitrary initial state with q=Tr(Π+ρ), the probability of the entire s
 $$
 p_m=\frac{1+3r^m}{4},\qquad
 \rho_m=\frac{\Pi_++r^m(I-\Pi_+)}{2+6r^m},\qquad
-\operatorname{Tr}(\Pi_+\rho_m)=\frac1{1+3r^m}. \tag{11}
+\mathrm{Tr}(\Pi_+\rho_m)=\frac1{1+3r^m}. \tag{11}
 $$
 
 | Successful rounds | Total evolution Jt | Total success per original trial | Selected-sector weight |

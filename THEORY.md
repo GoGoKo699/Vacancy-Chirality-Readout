@@ -24,7 +24,7 @@ K_{U,\Phi}(t)=V^\dagger e^{-itH_{U,\Phi}}V,
 \qquad E_{U,\Phi}(t)=K_{U,\Phi}(t)^\dagger K_{U,\Phi}(t).
 $$
 
-The probability is $\operatorname{Tr}(E\rho)$. An ideal spin-preserving accepted instrument produces the unnormalized state $K\rho K^\dagger$. Other outcomes terminate the trial. At finite $U$, detecting only that site 0 is empty does not identify the return event.
+The probability is $\mathrm{Tr}(E\rho)$. An ideal spin-preserving accepted instrument produces the unnormalized state $K\rho K^\dagger$. Other outcomes terminate the trial. At finite $U$, detecting only that site 0 is empty does not identify the return event.
 
 Define the cyclic spin permutation and scalar chirality by
 
@@ -73,9 +73,9 @@ Reciprocity also gives $K_-=K_+^T$ in the real occupation basis, but it does not
 
 Measure independent input copies at durations $t_1,t_2$ and both flux signs. Let $d_i=p_{i,+}-p_{i,-}$ and
 
-$$
+```math
 M=\begin{pmatrix}g_1&h_1\\g_2&h_2\end{pmatrix},\qquad \Delta=g_1h_2-g_2h_1.
-$$
+```
 
 Whenever $\Delta\ne0$,
 
@@ -126,8 +126,8 @@ $$
 is exactly the condition for an unbiased chirality estimate on every input. Rank two of the matrix with columns $(c_p,d_p)^T$ suffices. All original preparations count, and even-weight parity strings receive score zero. With $F_p=(E_p+RE_pR)/2$ and $T=\sum_pa_p^2F_p$, the randomized sample mean obeys
 
 $$
-n\operatorname{Var}_\rho(\widehat\chi)=\operatorname{Tr}(T\rho)-\langle\chi\rangle_\rho^2,
-\qquad \sup_\rho n\operatorname{Var}_\rho(\widehat\chi)=\|T\|.
+n\mathrm{Var}_\rho(\widehat\chi)=\mathrm{Tr}(T\rho)-\langle\chi\rangle_\rho^2,
+\qquad \sup_\rho n\mathrm{Var}_\rho(\widehat\chi)=\|T\|.
 $$
 
 The last equality follows because $T$ has three scalar total-spin/reflection blocks, and a state in its largest-eigenvalue block has zero chirality. Fixed equal allocations between fluxes have no larger variance. The [complete proof](research/COMPLETE_PARITY_THEORY.md) also derives the weighted Gram formula for the minimum mixed-input variance.
@@ -135,7 +135,7 @@ The last equality follows because $T$ has three scalar total-spin/reflection blo
 At $u=16$, $\tau=\pi$, an [integer/rational certificate](research/CERTIFICATE.md) proves a nonzero calibration minor and constructs exactly feasible scores by correcting two rational reference coordinates. The score designed for worst-case precision satisfies
 
 $$
-\boxed{\sup_\rho n\operatorname{Var}_\rho(\widehat\chi)<0.328697776905<13/32.}
+\boxed{\sup_\rho n\mathrm{Var}_\rho(\widehat\chi)<0.328697776905<13/32.}
 $$
 
 This is a certified feasible score, without a claim of global optimality. The [passive theorem](research/PASSIVE_PARITY_BOUND.md) derives $13/32$ as a lower bound for arbitrary spin-independent passive $U(4)$ followed by complete site parity, including product spin unitaries before mixing. It also proves three-mode impossibility, gives an explicit passive four-mode reconstruction, and extends the comparison to biased estimators through a finite minimax risk bound. Number resolution, extra spatial modes, intermediate detection, and spin controls interleaved with spatial mixing are different measurement resources.
@@ -161,7 +161,7 @@ A separate score minimizes the variance at the maximally mixed input. Its nearby
 
 $$
 \|T_{\rm mixed}\|<0.389156263913,\qquad
-0.284895494200<n\operatorname{Var}_{I_8/8}(\widehat\chi_{\rm mixed})<0.284895494206.
+0.284895494200<n\mathrm{Var}_{I_8/8}(\widehat\chi_{\rm mixed})<0.284895494206.
 $$
 
 For this mixed-input score, the certificate also proves $\|T\|<0.536350926403<9/16$ after all-outcome recalibration whenever each parity effect changes by operator norm at most $0.0015$, preserving the stated symmetries and completeness. In the uniform ring this includes the sufficient box $|u-16|,|\tau-\pi|,|\Phi_++2\pi/3|<0.00009$ with $\Phi_-=-\Phi_+$. These sufficient mathematical neighborhoods concern the mixed-input score and the separable benchmark; the primary-score result follows from its own proof above. The [noise budget](research/NOISE_BUDGET.md) treats loss aliases, detector errors, calibration, and normalization separately. The return-only existence theorem remains established for every fixed finite $u>0$.
@@ -198,7 +198,7 @@ With ideal coherent readout after every accepted round,
 
 $$
 K_{\infty,+}^m=\Pi_++a^m(I-\Pi_+),\qquad
-p_m=q+(1-q)r^m,\quad q=\operatorname{Tr}(\Pi_+\rho).
+p_m=q+(1-q)r^m,\quad q=\mathrm{Tr}(\Pi_+\rho).
 $$
 
 For $I_8/8$, $p_m\to1/4$ and the conditional state tends to the mixed doublet $\Pi_+/2$. The probability counts the entire successful record per original preparation. Spin coherence and atom survival between rounds are necessary assumptions. The [hard-core derivation](research/HARD_CORE_FILTER.md) gives the cycle reduction, pair marginals, and static scalar-disorder extension in detail.
@@ -242,7 +242,7 @@ Correct return probabilities do not fix the retained state. A trace-preserving s
 
 $$
 \mathcal S_{\mathcal N}(\rho)=\mathcal N(K\rho K^\dagger),\qquad
-\operatorname{Tr}\mathcal S_{\mathcal N}(\rho)=\operatorname{Tr}(K\rho K^\dagger).
+\mathrm{Tr}\mathcal S_{\mathcal N}(\rho)=\mathrm{Tr}(K\rho K^\dagger).
 $$
 
 Complete local dephasing produces a fully separable spin output with exactly the ideal success probabilities. Destructive terminal imaging can therefore serve expectation estimation without realizing the retained-state instrument.
@@ -261,7 +261,7 @@ For the complete-image estimator, one loss changes the parity weight to even and
 
 $$
 0\le\lambda\le0.01,\quad0\le q\le0.003:
-\qquad |\operatorname{bias}|<0.001430,\qquad \mathbb EY^2<0.411.
+\qquad |\mathrm{bias}|<0.001430,\qquad \mathbb EY^2<0.411.
 $$
 
 On the maximally mixed input the second-moment bound is $0.302$. Thus the mean-square error is bounded by $0.411/n+(0.001430)^2$ for arbitrary input, before adding calibration and rate uncertainty. These guarantees concern the stated loss and detector channels, and the residual bias must be included when comparing total estimation error.
@@ -313,9 +313,9 @@ For $n$ independent input preparations and exact calibration, with ideal detecti
 | Finite-$U$ complete parity, mixed-input score | Same ideal nominal measurement; score targets minimum mixed-input variance | $<0.389156263913$ |
 | Finite-$U$ return-only example above | Four settings, allocation proportional to $`\lvert w_i\rvert`$ per sign | $`(\lvert w_1\rvert+\lvert w_2\rvert)^2=1.0329363137\ldots`$ |
 
-The Pauli decomposition is $\chi=(XYZ+YZX+ZXY-XZY-YXZ-ZYX)/8$; it needs no entangling measurement gate. The Hadamard test uses $\operatorname{Im}\langle C\rangle=2\langle\chi\rangle$. These established alternatives and projective sector preparation are described in [R23](REFERENCES.md).
+The Pauli decomposition is $\chi=(XYZ+YZX+ZXY-XZY-YXZ-ZYX)/8$; it needs no entangling measurement gate. The Hadamard test uses $\mathrm{Im}\langle C\rangle=2\langle\chi\rangle$. These established alternatives and projective sector preparation are described in [R23](REFERENCES.md).
 
-The separable benchmark is a lower bound for the whole declared measurement class. A normalized fully separable effect has chirality expectation at most $1/8$ in absolute value. With $\operatorname{Tr}\chi^2=3/4$, Cauchy–Schwarz yields $n\operatorname{Var}_{I_8/8}(\widehat\chi)\ge9/16$ for unbiased scoring. A classical score/Fisher-information argument extends the bound to arbitrary estimators locally unbiased around that input, even with classical adaptation between copies. Randomized Pauli scores $\pm3/4$ attain worst-case coefficient $9/16$. The [self-contained proof](research/SEPARABLE_BENCHMARK.md) establishes the exact minimax value without claiming a new general statistical principle; LOCC measurements within one copy are included [CLMOW14](REFERENCES.md).
+The separable benchmark is a lower bound for the whole declared measurement class. A normalized fully separable effect has chirality expectation at most $1/8$ in absolute value. With $\mathrm{Tr}\chi^2=3/4$, Cauchy–Schwarz yields $n\mathrm{Var}_{I_8/8}(\widehat\chi)\ge9/16$ for unbiased scoring. A classical score/Fisher-information argument extends the bound to arbitrary estimators locally unbiased around that input, even with classical adaptation between copies. Randomized Pauli scores $\pm3/4$ attain worst-case coefficient $9/16$. The [self-contained proof](research/SEPARABLE_BENCHMARK.md) establishes the exact minimax value without claiming a new general statistical principle; LOCC measurements within one copy are included [CLMOW14](REFERENCES.md).
 
 Both certified complete-parity scores therefore prove a strict minimax sampling advantage over universally unbiased protocols using fully separable effects across the three spins of each copy. The mixed-input score also improves the coefficient at $I_8/8$ from $9/16$ to the certified interval above. This does not assert pointwise superiority on every state, superiority to the controlled-cycle test, or a bound on collective measurements across copies or estimators exploiting a state promise.
 

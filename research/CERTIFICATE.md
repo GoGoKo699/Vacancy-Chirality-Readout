@@ -50,8 +50,8 @@ $$
 T=\sum_p b_p^2F_p.
 $$
 
-For randomized fluxes, $n\operatorname{Var}(\widehat\chi)
-=\operatorname{Tr}(\rho T)-\operatorname{Tr}(\rho\chi)^2\le\|T\|$.
+For randomized fluxes, $n\mathrm{Var}(\widehat\chi)
+=\mathrm{Tr}(\rho T)-\mathrm{Tr}(\rho\chi)^2\le\|T\|$.
 Fixed equal flux allocations have variance no larger than this expression.
 
 The following finite decimals define the two exact rational reference vectors.
@@ -157,14 +157,14 @@ $\|E_{1,:}\|_2\le\epsilon_a/h$ and
 $\|E_{2,:}\|_2\le\epsilon_D/(4h)$. With their Euclidean combination
 $\eta$ and $r_{\min}=e^{-0.03}(0.997)^4$, the checker proves
 
-$$
+```math
 \begin{aligned}
 \|B\|&\le1-r_{\min}+r_{\min}\eta<0.105,\\
 \|e_1^TB\|_2&\le1-r_{\min}+r_{\min}\epsilon_a/h<0.044,\\
 \|M\|&\le1+\eta<1.066,\qquad
 \sup_\rho\mathbb E_\rho\|Z\|_2^2<44.22.
 \end{aligned}
-$$
+```
 
 The last bound uses $V_a+V_D/16$, and raw moments are no larger than the
 proof-normalized moments because $r\le1$. The primary normalized response-row
@@ -241,7 +241,7 @@ $$
 \widetilde a=u a+vCa+w\mathbf1,\quad
 u=\frac{\lambda_+^{-1}+\lambda_-^{-1}}2,\quad
 v=\frac{\lambda_+^{-1}-\lambda_-^{-1}}2\ge0,\quad
-w=(\lambda_0^{-1}-\lambda_+^{-1})\operatorname{mean}(a).
+w=(\lambda_0^{-1}-\lambda_+^{-1})\mathrm{mean}(a).
 $$
 
 The exact noisy second moment is
@@ -261,7 +261,7 @@ $$
 \frac{(1+t)^6}{16t^3(1+t^2)^2}
 \left[\sqrt{\|T_a\|}
 +\left(\frac q{1-q}\right)^2A_a
-+\frac{8q^2(1+t^2)}{1+t^4}|\operatorname{mean}(a)|\right]^2.
++\frac{8q^2(1+t^2)}{1+t^4}|\mathrm{mean}(a)|\right]^2.
 $$
 
 Every displayed factor increases with $q$ on this interval. For the prefactor,
@@ -283,7 +283,7 @@ $$
 For the maximally mixed input, the randomized-flux variance coefficient obeys
 
 $$
-0.284895494200<n\operatorname{Var}(\widehat\chi)
+0.284895494200<n\mathrm{Var}(\widehat\chi)
 <0.284895494206.
 $$
 
@@ -391,7 +391,7 @@ their actual two-dimensional mean response gives an exactly unbiased chirality
 score with
 
 $$
-\boxed{n\operatorname{Var}(\widehat\chi)
+\boxed{n\mathrm{Var}(\widehat\chi)
 \le\|T_{\rm calibrated}\|
 <0.444512137719<0.446<9/16.}
 $$
@@ -472,7 +472,7 @@ These are ideal-model profiles, not measured variances of an implemented channel
 or of a score fitted from pilot data. They use independent, equally randomized
 flux settings.
 
-| Reference | Exact mean | Certified upper bound on $\operatorname{Var}(X)$ | Certified upper bound on $\operatorname{Var}(X^2)$ |
+| Reference | Exact mean | Certified upper bound on $\mathrm{Var}(X)$ | Certified upper bound on $\mathrm{Var}(X^2)$ |
 |---|---:|---:|---:|
 | $xyz$ | $1/8$ | 0.269271 | 0.255520 |
 | $001$ | 0 | 0.319650 | 0.324633 |
@@ -484,8 +484,8 @@ symmetry sectors as the second-moment operator. Multiplying its certified sector
 eigenvalues by the product-probe weights in
 [CHANNEL_CALIBRATION.md](CHANNEL_CALIBRATION.md) gives $\mathbb E X^4$.
 The reported variance intervals then follow from
-$\operatorname{Var}(X)=\mathbb E X^2-(\mathbb E X)^2$ and
-$\operatorname{Var}(X^2)=\mathbb E X^4-(\mathbb E X^2)^2$.
+$\mathrm{Var}(X)=\mathbb E X^2-(\mathbb E X)^2$ and
+$\mathrm{Var}(X^2)=\mathbb E X^4-(\mathbb E X^2)^2$.
 The `calibration_moments` report section supplies outward-rounded intervals for
 all these quantities and the score range, including the optional fourth probe.
 Actual calibration guarantees must use a justified variance bound or
@@ -514,7 +514,7 @@ $e^{-i\pi/6}=(\sqrt3-i)/2$, so no trigonometric evaluation is needed.
 
 Let $A=-i\pi H$, and let $\widetilde A$ be its complex fixed-point midpoint
 matrix. In the submultiplicative row norm using entry magnitude
-$|\operatorname{Re}z|+|\operatorname{Im}z|$, the checker verifies
+$|\mathrm{Re}z|+|\mathrm{Im}z|$, the checker verifies
 
 $$
 \|A\|_\infty,\|\widetilde A\|_\infty\le B=256,
@@ -547,8 +547,8 @@ $$
 $$
 
 The coefficient formulas on the three-input sector are
-$c_p=\operatorname{Tr}(\chi E_p)/(3/8)$ and
-$d_p=\operatorname{Tr}(DE_p)/6$. Their elementary entrywise enclosures have
+$c_p=\mathrm{Tr}(\chi E_p)/(3/8)$ and
+$d_p=\mathrm{Tr}(DE_p)/6$. Their elementary entrywise enclosures have
 radii $4\eta$ and $\eta$, respectively. Rational interval arithmetic then
 certifies the determinant and exact score-correction bounds above.
 
@@ -649,13 +649,13 @@ $$
 
 The nominal effects at the corrected score have sector second moment
 $t_j+2\ell_j^Tz+z^TK_jz$. Since $K_j$ is positive semidefinite,
-$\|K_j\|\le\operatorname{Tr}K_j$. Changing each effect by at most
+$\|K_j\|\le\mathrm{Tr}K_j$. Changing each effect by at most
 $\epsilon$ adds at most $\epsilon\|b+Bz\|_2^2$. Consequently,
 
 $$
 \lambda_j(T')\le
  t_j+2\zeta\|\ell_j\|_2
- +\zeta^2\operatorname{Tr}K_j
+ +\zeta^2\mathrm{Tr}K_j
  +\epsilon(\|b\|_2+\|B\|_F\zeta)^2.
 $$
 

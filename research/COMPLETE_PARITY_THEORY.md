@@ -51,8 +51,8 @@ $\mathbf S=\boldsymbol\sigma/2$, and $D=P_{12}-P_{23}$. Then
 
 $$
 O_p=c_p\chi+d_pD,\qquad
-c_p=\frac{\operatorname{Tr}(\chi O_p)}{3/4},\quad
-d_p=\frac{\operatorname{Tr}(D O_p)}{12}.
+c_p=\frac{\mathrm{Tr}(\chi O_p)}{3/4},\quad
+d_p=\frac{\mathrm{Tr}(D O_p)}{12}.
 $$
 
 **Proof.** Spin-independent evolution and each spin-blind parity projector
@@ -60,7 +60,7 @@ commute with collective spin rotations. Their compressed effects belong to
 the three-qubit collective-spin commutant, whose Hermitian span is
 $I,P_{12},P_{23},P_{13},\chi$. Conjugation by $R$ exchanges $P_{12}$ and
 $P_{23}$ and changes the sign of $\chi$. Its odd part is consequently
-$\operatorname{span}\{\chi,D\}$. These two operators are Hilbert–Schmidt
+$\mathrm{span}\{\chi,D\}$. These two operators are Hilbert–Schmidt
 orthogonal, with squared norms $3/4$ and $12$, giving the formulas.
 
 Let $A$ be the $2\times8$ matrix with columns $(c_p,d_p)^T$ and let
@@ -74,7 +74,7 @@ Indeed, its first-moment operator is
 $\sum_pa_pO_p=(Aa)_1\chi+(Aa)_2D$.
 The equality is an operator identity and remains valid when the input is
 entangled with a reference. The necessary and sufficient condition for an
-unbiased score is $e\in\operatorname{range}A$; rank two is a convenient
+unbiased score is $e\in\mathrm{range}A$; rank two is a convenient
 sufficient condition. Rank one can also suffice when the nuisance vanishes.
 
 Completeness gives $A\mathbf1=0$. Adding any constant to all eight scores
@@ -83,7 +83,7 @@ reduction and does not discard any outcomes.
 
 ## 3. Minimum variance at the maximally mixed input
 
-Let $q_p=\operatorname{Tr}(E_p)/8$ and $Q=\operatorname{diag}(q_p)$.
+Let $q_p=\mathrm{Tr}(E_p)/8$ and $Q=\mathrm{diag}(q_p)$.
 Remove any zero-probability outcome: positivity then implies $E_p=0$,
 so that outcome contains no reconstruction information. Assume $A$ has rank
 two on the remaining support and define $G=AQ^{-1}A^T$. The unique
@@ -91,7 +91,7 @@ minimum-second-moment score is
 
 $$
 \boxed{a_*=Q^{-1}A^TG^{-1}e,\qquad
-n\operatorname{Var}_{I_8/8}(\widehat\chi)=e^TG^{-1}e.}
+n\mathrm{Var}_{I_8/8}(\widehat\chi)=e^TG^{-1}e.}
 $$
 
 **Proof.** At this input, the mean is zero and the second moment is
@@ -114,20 +114,20 @@ to each flux, using one half of the difference of the two sample means.
 For general inputs fixed equal allocation has variance coefficient
 
 $$
-\operatorname{Tr}(T\rho)-\langle\chi\rangle_\rho^2
+\mathrm{Tr}(T\rho)-\langle\chi\rangle_\rho^2
 -\left\langle\sum_pa_pB_p\right\rangle_\rho^2,
 \qquad T=\sum_pa_p^2B_p.
 $$
 
 The randomized protocol instead has coefficient
-$\operatorname{Tr}(T\rho)-\langle\chi\rangle_\rho^2$.
+$\mathrm{Tr}(T\rho)-\langle\chi\rangle_\rho^2$.
 
 ## 4. Exact worst-case variance from three scalar blocks
 
 For the randomized protocol and any unbiased score,
 
 $$
-\boxed{\sup_\rho n\operatorname{Var}_\rho(\widehat\chi)=\|T\|.}
+\boxed{\sup_\rho n\mathrm{Var}_\rho(\widehat\chi)=\|T\|.}
 $$
 
 This is an equality, not only a second-moment upper bound.
@@ -153,7 +153,7 @@ as an upper bound, but need not attain it because of its extra subtraction.
 
 The mixed-input optimum need not minimize $\|T\|$. If worst-case variance
 is the design objective, minimize the maximum of the three positive
-quadratic forms $t_j=\sum_pa_p^2\operatorname{Tr}(\Pi_jB_p)/\operatorname{rank}\Pi_j$
+quadratic forms $t_j=\sum_pa_p^2\mathrm{Tr}(\Pi_jB_p)/\mathrm{rank}\Pi_j$
 subject to $Aa=e$. The [certificate](CERTIFICATE.md) supplies a feasible
 score designed for this objective, separately from the mixed-input score;
 it does not assert global minimax optimality of the numerical design.
@@ -171,7 +171,7 @@ An enclosure of the minor certifies a whole finite neighborhood. Suppose
 $|\delta c_j|\le\epsilon_{c,j}$ and
 $|\delta d_j|\le\epsilon_{d,j}$ for $j=p,q$. Then
 
-$$
+```math
 \begin{aligned}
 |\delta\Delta_{pq}|\le{}&
 |d_q|\epsilon_{c,p}+|c_p|\epsilon_{d,q}
@@ -179,7 +179,7 @@ $$
 &+\epsilon_{c,p}\epsilon_{d,q}
 +\epsilon_{c,q}\epsilon_{d,p}.
 \end{aligned}
-$$
+```
 
 If this upper bound is smaller than a certified lower bound on
 $|\Delta_{pq}|$, the rank condition persists throughout that neighborhood.

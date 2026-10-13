@@ -25,7 +25,7 @@ The observable and its normalization are
 At $`U/J=16`$, duration $`Jt=\pi`$, and fluxes $`\Phi=\pm2\pi/3`$, a calibrated score for the complete parity record estimates the chirality of **any input spin state**. An integer/rational certificate proves
 
 ```math
-\boxed{\sup_\rho n\operatorname{Var}_\rho(\widehat\chi)
+\boxed{\sup_\rho n\mathrm{Var}_\rho(\widehat\chi)
 <0.328697776905<\frac{13}{32}=0.40625.}
 ```
 

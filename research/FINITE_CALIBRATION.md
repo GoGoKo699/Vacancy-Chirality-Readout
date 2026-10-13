@@ -144,18 +144,18 @@ $I-B$. It is an exact expectation statement for finite reference batches.
 
 ### Exact covariance recursion
 
-Write $K_j=\operatorname{Cov}(w_j)$, interpreting row covariance as a
+Write $K_j=\mathrm{Cov}(w_j)$, interpreting row covariance as a
 $2\times2$ matrix, $Q_j=K_j+s_j^Ts_j$, and
-$\Sigma_x=\operatorname{Cov}_xZ$, $\Sigma_d=\operatorname{Cov}_dZ$.
+$\Sigma_x=\mathrm{Cov}_xZ$, $\Sigma_d=\mathrm{Cov}_dZ$.
 The two columns of $\widehat M_j-M$ are independent and centered. Conditional
 on $w_j$, their covariance contribution is diagonal. Consequently
 
 $$
 \boxed{
 K_{j+1}=B^TK_jB+
-\operatorname{diag}\!\left(
-\frac{64}{N_{x,j}}\operatorname{Tr}(\Sigma_xQ_j),
-\frac{16}{N_{d,j}}\operatorname{Tr}(\Sigma_dQ_j)
+\mathrm{diag}\!\left(
+\frac{64}{N_{x,j}}\mathrm{Tr}(\Sigma_xQ_j),
+\frac{16}{N_{d,j}}\mathrm{Tr}(\Sigma_dQ_j)
 \right),\quad K_1=0.
 }
 $$
@@ -169,7 +169,7 @@ $w_4$ gives the exact decomposition
 
 $$
 \mathbb E(\widehat\chi-\langle\chi\rangle)^2
-=\frac{\operatorname{Tr}(\Sigma_\rho Q_4)}n
+=\frac{\mathrm{Tr}(\Sigma_\rho Q_4)}n
 +m_\rho^TK_4m_\rho
 +(s_4m_\rho-\langle\chi\rangle)^2.
 $$
@@ -188,8 +188,8 @@ c_1=0,\qquad
 \boxed{c_{j+1}=b^2c_j+\frac{80}{N_j}(V_j+Hc_j).}
 $$
 
-Indeed $\operatorname{Tr}(\Sigma Q_j)\le V_j+Hc_j$, using positivity and
-$\operatorname{Tr}\Sigma\le H$. The uniform risk enclosure is
+Indeed $\mathrm{Tr}(\Sigma Q_j)\le V_j+Hc_j$, using positivity and
+$\mathrm{Tr}\Sigma\le H$. The uniform risk enclosure is
 
 $$
 \boxed{R\le\frac{V_4+Hc_4}{n}+h^2\mu^2c_4+h^2r^2b^6.}
@@ -334,7 +334,7 @@ $$
 \mathbb E_{\rho,\mathrm{cal}}ZZ^T\right\|\le t_*.
 $$
 
-The exact risk decomposition and $\operatorname{Tr}K'_4\le2c'_4$ give
+The exact risk decomposition and $\mathrm{Tr}K'_4\le2c'_4$ give
 
 $$
 \boxed{R\le
@@ -373,7 +373,7 @@ $\cos\delta\ge1-\delta^2/2$ in the small-angle range used here.
 Prepare the second probe as $(a_d,a_d,c_d)$ with $c_d$ within angle $\delta$
 of $-a_d$. Its chirality is exactly zero and its $D$ gain is
 $u=(1-a_d\cdot c_d)/2\ge1-\delta^2/4$. Thus the reference coordinate map is
-$P=\operatorname{diag}(t_x,u)$ and $E=M(P-I)$ obeys
+$P=\mathrm{diag}(t_x,u)$ and $E=M(P-I)$ obeys
 
 $$
 \|E\|\le\mu(3\delta^2+\delta^3).

@@ -58,7 +58,7 @@ matrix for both spin components. Matching three input positions to three
 output positions produces permutations of the spin labels. For a product
 spin vector $`|\psi_1\psi_2\psi_3\rangle`$, their expectations are products
 of overlaps. For an arbitrary correlated input, the quantity to retain is
-instead $`\operatorname{Tr}(\rho P_\pi)`$, where
+instead $`\mathrm{Tr}(\rho P_\pi)`$, where
 
 ```math
 P_\pi|s_1s_2s_3\rangle
@@ -70,7 +70,7 @@ back to the occupied input modes gives
 
 ```math
 \begin{aligned}
-W_{\mathcal S}&=U^\dagger\operatorname{diag}
+W_{\mathcal S}&=U^\dagger\mathrm{diag}
 \bigl((-1)^{1_{j\in\mathcal S}}\bigr)U,\\
 B_{\mathcal S}&=\sum_{\pi\in S_3}
 \left[\prod_{i=1}^3(K_{\mathcal S})_{i,\pi(i)}\right]P_\pi,
@@ -97,7 +97,7 @@ C-C^\dagger=4i\chi.
 ```
 
 Thus the two cycle terms in $`B_{\mathcal S}`$ contribute a chirality
-coefficient $`-4\operatorname{Im}(K_{12}K_{23}K_{31})`$. Pair exchanges alone
+coefficient $`-4\mathrm{Im}(K_{12}K_{23}K_{31})`$. Pair exchanges alone
 cannot supply this orientation-sensitive component. The sign of the
 chirality coefficient depends on the stated cycle convention; $`\chi`$ has
 eigenvalues $`0,\pm\sqrt3/4`$.
@@ -152,8 +152,8 @@ count, including zero-score outcomes.
 With $`F_p=(E_p+RE_pR)/2`$ and $`T=\sum_pa_p^2F_p`$, the sample mean obeys
 
 ```math
-n\operatorname{Var}_\rho(\widehat\chi)
-=\operatorname{Tr}(T\rho)-\langle\chi\rangle_\rho^2.
+n\mathrm{Var}_\rho(\widehat\chi)
+=\mathrm{Tr}(T\rho)-\langle\chi\rangle_\rho^2.
 ```
 
 The [complete-parity proof](research/COMPLETE_PARITY_THEORY.md) shows that

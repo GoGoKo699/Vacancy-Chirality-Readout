@@ -86,14 +86,14 @@ Keep the ideal hard-core K=Pi_+ +a(I-Pi_+), r=a²=0.02786714004..., and apply D_
 
 In each three-dimensional one-up or two-up magnetization block, cyclic symmetry leaves an unnormalized target-cycle weight x_m and equal weights y_m on each of the other two cycle eigenstates. Initially x_0=y_0=1/8. Off-diagonal computational-basis entries within a block differ on two spins, so D_eta is multiplication by lambda=eta² on those entries. It follows exactly that
 
-$$
+```math
 \begin{pmatrix}x_{m+1}\\y_{m+1}\end{pmatrix}
 =\begin{pmatrix}
 (1+2\lambda)/3&2r(1-\lambda)/3\\
 (1-\lambda)/3&r(2+\lambda)/3
 \end{pmatrix}
 \begin{pmatrix}x_m\\y_m\end{pmatrix}.
-$$
+```
 
 The two fully polarized states contribute r^m/4 in total. Hence
 
@@ -169,7 +169,7 @@ For the hard-core protocol set c=sqrt3/[4(1-r)]. Equal halves of the trials on e
 For the finite-U protocol, allocate n_(i,+)=n_(i,-)=n |w_i|/[2W], W=|w1|+|w2|. Then
 
 $$
-n\operatorname{Var}(\widehat\chi)=2W\sum_i|w_i|[p_{i,+}(1-p_{i,+})+p_{i,-}(1-p_{i,-})]\le W^2.
+n\mathrm{Var}(\widehat\chi)=2W\sum_i|w_i|[p_{i,+}(1-p_{i,+})+p_{i,-}(1-p_{i,-})]\le W^2.
 $$
 
 This last upper bound alone would not prove poorer performance. On the explicit input I8/8, however, the full finite-U16 matrices give p_(1,+)=p_(1,-)=.271692370645... and p_(2,+)=p_(2,-)=.334877621834.... The actual variance coefficient for this allocation is .875983495266..., larger than .5625 for direct Pauli products and .25 for the Hadamard test on the same input. Thus this finite-U parameter/estimator choice has no sample advantage in that matched example. No optimality claim across all vacancy times, fluxes, full-image statistics, or adaptive designs is made.

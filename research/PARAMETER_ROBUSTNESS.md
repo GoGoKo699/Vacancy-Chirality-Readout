@@ -211,14 +211,14 @@ $|\phi-\phi_0|<0.001$ already follow from (8)'s positive coefficients.
 Thus $\Delta\le0.0025$ gives the first row of the table, and
 $\Delta\le0.0015$ gives the second. Sufficient equal-coordinate boxes are
 
-$$
+```math
 \begin{array}{c|c|c}
 \max(|u-16|,|\tau-\pi|,|\phi-\phi_0|)&\Delta\text{ upper bound}&
 \|T_{\rm corrected}\|\text{ upper bound}\\ \hline
 0.00028&0.00248976&0.394824826\\
 0.00016&0.00142272&0.366080282
 \end{array}
-$$
+```
 
 These are sufficient dimensionless parameter regions from a conservative
 operator bound. They are not measured apparatus tolerances. The mixed-input-score neighborhoods in the nominal certificate remain distinct.

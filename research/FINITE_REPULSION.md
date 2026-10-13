@@ -121,8 +121,10 @@ Equation (8) needs reflection symmetry as well as spin-independent dynamics. Ref
 
 For two durations t1,t2 on independent preparations, let
 
-$$d_i=p(-2\pi/3,t_i)-p(+2\pi/3,t_i),\quad
-M=\begin{pmatrix}g_1&h_1\\g_2&h_2\end{pmatrix}.$$
+```math
+d_i=p(-2\pi/3,t_i)-p(+2\pi/3,t_i),\quad
+M=\begin{pmatrix}g_1&h_1\\g_2&h_2\end{pmatrix}.
+```
 
 Whenever DetM=g1 h2−g2 h1 is nonzero, the exact identity is
 
@@ -174,7 +176,7 @@ The unrounded coefficients are defined by the exact finite-matrix functions in (
 
 For n independent input trials divided among the four settings, use counts in proportions |w_i| for each sign of time i. The Bernoulli variance bound yields
 
-$$\operatorname{Var}(\widehat\chi)\le (|w_1|+|w_2|)^2/n.$$
+$$\mathrm{Var}(\widehat\chi)\le (|w_1|+|w_2|)^2/n.$$
 
 The numerical u=16 example gives a numerator 1.0329363…. This is a worst-case bound and an allocation statement, not a measured variance or a sample-complexity advantage over the circuit predecessor. The ideal hard-core two-setting numerator would be [sqrt3/(4(1−r))]^2≈0.1984; the four-setting calibration has a statistical cost.
 
