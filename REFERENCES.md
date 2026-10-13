@@ -2,6 +2,11 @@
 
 The results specify a vacancy-return instrument, finite-repulsion chirality reconstruction, and a certified precision separation from arbitrary passive four-mode interferometers with terminal total-site-parity detection. The spin-cycle mechanism, chirality observables, interaction-assisted readout, and permutation measurement have established antecedents. The contribution is the quantitative bound for the declared measurement class and its interacting violation, not the first cyclic or interaction-assisted parity measurement.
 
+## Single tutorial anchor
+
+**[W19]** Mattia Walschaers, *Signatures of Many-Particle Interference*, [arXiv:1908.08370v1](https://arxiv.org/abs/1908.08370v1) (2019). The single external tutorial anchor; its section-level route is mapped in the [learning guide](LEARNING_GUIDE.md). The repository supplies the correlated-spin parity formulation, precision comparison, and calibration guarantees. The guide distinguishes these results from the tutorial's product-internal-state calculation.
+
+
 ## Mathematical and measurement predecessors
 
 **[K22]** K. K. Kesharpu and E. A. Kochetov, *Spin-flip-induced superfluidity in a ring of spinful hard-core bosons*, Physical Review A **106**, 033323 (2022). [arXiv:2209.06149](https://arxiv.org/abs/2209.06149). The cyclic spin permutation on the closing link and the resulting spin-sector boundary flux underlie the hard-core reduction. The repository specializes this mechanism to an explicit vacancy-return measurement.

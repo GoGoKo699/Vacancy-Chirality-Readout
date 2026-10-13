@@ -1,5 +1,7 @@
 # Vacancy chirality readout: model, results, and proofs
 
+For a guided route from many-particle interference to these results, start with the [single-source tutorial bridge](LEARNING_GUIDE.md).
+
 A localized vacancy in a four-site ring converts three-spin chirality into position statistics. Complete parity images permit exact reconstruction at one duration and two opposite fluxes. A certified interacting readout beats a universal precision bound for passive four-mode interferometers with the same terminal parity detector. The passive comparison permits arbitrary estimators and adaptation across fresh copies; its finite-risk formulation is given in the [passive theorem](research/PASSIVE_PARITY_BOUND.md). The separate separable-effects comparison, return-only reconstruction, and retained-state filter are complementary results. For a known total particle number at most three, total site parity recognizes the return event exactly. Retaining an entangled output additionally requires spin-coherent measurement back-action.
 
 ## 1. Model and measurement
