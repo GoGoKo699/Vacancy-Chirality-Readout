@@ -3,9 +3,9 @@
 The standard-library checker [`parity_certificate.py`](parity_certificate.py)
 certifies two feasible, exactly calibrated complete-parity scores at
 
-$$
+```math
 u=16,\qquad \tau=\pi,\qquad \Phi_+=-2\pi/3,\qquad \Phi_-=-\Phi_+.
-$$
+```
 
 All enclosures use integer or rational arithmetic. The certificate includes the
 transcendental constants, propagator truncation, arithmetic rounding, calibration
@@ -38,17 +38,17 @@ $p$, report $-b_{\bar p}$, where
 $\bar p=(p_0,p_3,p_2,p_1)$. Randomize the flux with equal probabilities, or use
 equal independent sample allocations. Write
 
-$$
+```math
 O_p=\frac{E_p-RE_pR}{2}=c_p\chi+d_pD,
 \qquad F_p=\frac{E_p+RE_pR}{2}.
-$$
+```
 
 The $F_p$ form a POVM. Exact unbiasedness for every input state is equivalent to
 $\sum_p b_pc_p=1$ and $\sum_p b_pd_p=0$. Its second-moment operator is
 
-$$
+```math
 T=\sum_p b_p^2F_p.
-$$
+```
 
 For randomized fluxes, $n\mathrm{Var}(\widehat\chi)
 =\mathrm{Tr}(\rho T)-\mathrm{Tr}(\rho\chi)^2\le\|T\|$.
@@ -71,29 +71,29 @@ The calibration formulas below apply to either vector:
 They are not themselves asserted to be exactly unbiased. Let $p=0111$,
 $q=0100$, and define
 
-$$
+```math
 \Delta=c_pd_q-c_qd_p,\qquad
 r_c=1-\sum_j b_j^0c_j,\qquad r_d=-\sum_j b_j^0d_j.
-$$
+```
 
 Writing either reference vector as $b^0$, the exact scores are $b_p=b_p^0+\alpha$, $b_q=b_q^0+\beta$, and
 $b_j=b_j^0$ otherwise, where
 
-$$
+```math
 \alpha=\frac{r_cd_q-c_qr_d}{\Delta},\qquad
 \beta=\frac{c_pr_d-r_cd_p}{\Delta}.
-$$
+```
 
 Here the coefficients denote exact finite-model quantities. The checker encloses
 
-$$
+```math
 -0.003664877543543<\Delta<-0.003664877543542,
-$$
+```
 
-$$
+```math
 \text{Mixed-input score:}\quad 3.76658\times10^{-13}<\alpha<3.76659\times10^{-13},\qquad
 -4.83984\times10^{-13}<\beta<-4.83983\times10^{-13}.
-$$
+```
 
 Consequently the two-row calibration has rank two and these corrected scores
 exist. The rounded coefficients in a report are not substitutes for exact
@@ -107,9 +107,9 @@ $-6.91\times10^{-14}$ and $2.35\times10^{-13}$; the report supplies enclosing
 intervals and the exact definition above supplies unbiasedness. The corrected
 second moment obeys
 
-$$
+```math
 \boxed{\|T_a\|<0.3287<13/32.}
-$$
+```
 
 Here $13/32$ is the declared passive-parity reference constant; the corresponding
 comparison proof and measurement-class assumptions are separate from this
@@ -122,19 +122,19 @@ not the mixed-input profiles at the top level of the report.
 
 The corrected primary score satisfies
 
-$$
+```math
 A_a<1.623,\qquad C_{1,a}<1.123,\qquad \|T_a\|<0.3287.
-$$
+```
 
 The independently certified auxiliary $D$-score below is unchanged, with
 $A_D<194$, $C_{1,D}<107$, and $\|T_D\|<646$. Applying the analytical noise
 budgets and Schur-complement inverse to these two features proves, uniformly for
 $0\le\lambda\le0.01$ and $0\le q\le0.003$,
 
-$$
+```math
 \|T_{a,\mathrm{channel}}\|<0.366461<13/32,
 \qquad |X_{a,\mathrm{channel}}|<1.824413.
-$$
+```
 
 Before full-channel recalibration, the proof-only normalization by
 $r=e^{-3\lambda}(1-q)^4$ gives primary mean-error bound below
@@ -175,16 +175,16 @@ $w_\ell^T=e_1^T\sum_{j=0}^{\ell-1}B^j$, the report certifies second-moment
 bounds $(0.345,0.396,0.371,0.367)$ for degrees $\ell=1,2,3,4$.
 Degree two uses
 
-$$
+```math
 V_2\le(1.044\sqrt{V_a}+0.00235\sqrt{V_D/16})^2<0.396.
-$$
+```
 
 For degrees three and four, comparison with the exact inverse gives
 
-$$
+```math
 V_\ell\le\left(\sqrt{0.366461}
 +\sqrt{44.22}\,\frac{0.044(0.105)^{\ell-1}}{1-0.105}\right)^2.
-$$
+```
 
 These verified constants supply the finite-calibration analysis; they do not
 replace the extra variance caused by randomly estimated response factors.
@@ -219,9 +219,9 @@ symmetry-breaking and loading errors retain their separate MSE bounds.
 With no atom loss and known independent symmetric bit-flip rate
 $0\le q\le0.03$, exact inversion of the odd-to-odd detector block yields
 
-$$
+```math
 \boxed{\|T_{a,q}\|<0.382273<13/32.}
-$$
+```
 
 Even observed patterns still receive zero score and every input trial is
 counted. Let $C$ complement all four parity bits and let $J$ be the all-ones
@@ -229,40 +229,40 @@ matrix on the eight odd patterns. Set
 $\alpha=(1-q)^4$, $\beta=q^2(1-q)^2$, $\gamma=q^4$, and $t=1-2q$.
 The retained detector kernel is
 
-$$
+```math
 K=(\alpha-\beta)I+(\gamma-\beta)C+\beta J.
-$$
+```
 
 Its three positive eigenvalues are
 $\lambda_0=(1+t^4)/2$, $\lambda_+=t^2$, and
 $\lambda_-=t(1+t^2)/2$. Hence the corrected score is
 
-$$
+```math
 \widetilde a=u a+vCa+w\mathbf1,\quad
 u=\frac{\lambda_+^{-1}+\lambda_-^{-1}}2,\quad
 v=\frac{\lambda_+^{-1}-\lambda_-^{-1}}2\ge0,\quad
 w=(\lambda_0^{-1}-\lambda_+^{-1})\mathrm{mean}(a).
-$$
+```
 
 The exact noisy second moment is
 $(\alpha-\beta)T[\widetilde a]+(\gamma-\beta)T[C\widetilde a]
 +\beta\|\widetilde a\|_2^2 I$.
 Dropping the negative middle term and using the score triangle inequality gives
 
-$$
+```math
 \|T_{a,q}\|\le
 (\alpha-\beta)(u\sqrt{\|T_a\|}+vA_a+|w|)^2
 +\frac{\beta\|a\|_2^2}{t^4}.
-$$
+```
 
 The final term uses $\|K^{-1}\|=t^{-2}$. For uniformity, the first term equals
 
-$$
+```math
 \frac{(1+t)^6}{16t^3(1+t^2)^2}
 \left[\sqrt{\|T_a\|}
 +\left(\frac q{1-q}\right)^2A_a
 +\frac{8q^2(1+t^2)}{1+t^4}|\mathrm{mean}(a)|\right]^2.
-$$
+```
 
 Every displayed factor increases with $q$ on this interval. For the prefactor,
 its logarithmic derivative in $t$ has numerator
@@ -276,16 +276,16 @@ or unknown detector-rate correction.
 
 The full three-spin operator obeys
 
-$$
+```math
 \boxed{\|T\|<0.389156263913<0.4.}
-$$
+```
 
 For the maximally mixed input, the randomized-flux variance coefficient obeys
 
-$$
+```math
 0.284895494200<n\mathrm{Var}(\widehat\chi)
 <0.284895494206.
-$$
+```
 
 These bounds include the exact score correction. They assume three input
 particles, ideal total parity readout, and the calibrated uniform model.
@@ -315,18 +315,18 @@ $\|E'_p-E_p\|\le0.0015$, and the perturbed effects remain a complete
 spin-rotation-invariant POVM with reflection-related opposite fluxes, there are
 exactly unbiased recalibrated scores satisfying
 
-$$
+```math
 \boxed{\|T'\|<0.536350926403<0.54<9/16.}
-$$
+```
 
 This is a statement about existence and construction of calibrated scores;
 using nominal scores without recalibration is not covered. In the uniform ring,
 it applies throughout the sufficient box
 
-$$
+```math
 |u-16|,\ |\tau-\pi|,\ |\Phi_++2\pi/3|<0.00009,
 \qquad \Phi_-=-\Phi_+,
-$$
+```
 
 because the effect-norm bound is less than $0.001388254316470$ there. This
 sufficient box is a mathematical continuity guarantee, not an experimentally
@@ -337,10 +337,10 @@ all reflection-even effects to avoid a loose maximum-score-square estimate.
 
 The same rational score corrections certify
 
-$$
+```math
 A<2.337,\qquad C_1<1.499,\qquad
 Q_0(I_8/8)<0.285,\qquad \|T\|<0.390,
-$$
+```
 
 where $A$ is the maximum absolute score and $C_1$ is half the range of
 singleton-parity scores. Thus the sufficient window in
@@ -348,10 +348,10 @@ singleton-parity scores. Thus the sufficient window in
 For every $0\le\lambda\le0.01$ and $0\le q\le0.003$, known
 survival-and-no-flip correction gives
 
-$$
+```math
 |\mathbb EY-\langle\chi\rangle|<0.001430,\qquad
 \mathbb EY^2<0.411.
-$$
+```
 
 For maximally mixed input the second-moment bound improves to $0.302$.
 These statements assume equal spin-independent loss and independent symmetric
@@ -365,9 +365,9 @@ bounds $e^{0.01}$ and $e^{0.03}$ without floating arithmetic: for a positive
 argument $x$, the Taylor sum through order 20 is a lower bound, and the
 remaining positive tail is at most
 
-$$
+```math
 \frac{x^{21}}{21!}\frac{1}{1-x/22}.
-$$
+```
 
 The error and second-moment budgets increase throughout the displayed
 rectangle, as proved in the noise analysis. Exact rational interval arithmetic
@@ -381,20 +381,20 @@ the ideal nominal model. The checker starts from four times
 `RIGHT_INVERSE_SECOND` and applies the same two-outcome correction, now with
 target coefficients $(0,1)$. It certifies
 
-$$
+```math
 \max_p|v_p|<194,\qquad C_{1,v}<107,\qquad \|T_v\|<646.
-$$
+```
 
 For the full channel with $0\le\lambda\le0.01$ and $0\le q\le0.003$, extract
 both signed features from every image, including zero-score events. Calibrating
 their actual two-dimensional mean response gives an exactly unbiased chirality
 score with
 
-$$
+```math
 \boxed{n\mathrm{Var}(\widehat\chi)
 \le\|T_{\rm calibrated}\|
 <0.444512137719<0.446<9/16.}
-$$
+```
 
 The final per-trial score has absolute value less than $2.625215826513$.
 This theorem assumes the exact full-channel response coefficients. It requires
@@ -409,55 +409,55 @@ Hamiltonian perturbation box.
 **Certificate.** For the proof only, divide both raw features by the common
 factor $r=e^{-3\lambda}(1-q)^4$. Let their normalized mean responses be
 
-$$
+```math
 A_a=(1+x)\chi+yD,\qquad A_v=z\chi+(1+w)D.
-$$
+```
 
 The same analytical noise budget, now also applied to the certified auxiliary
 score, gives
 
-$$
+```math
 \|A_a-\chi\|<0.001429313207303=:\epsilon_a,\qquad
 \|A_v-D\|<0.113367439057571=:\epsilon_v,
-$$
+```
 
 with normalized second moments bounded by
 $V_a<0.410838798136739$ and $V_v<701.993354716872$.
 For coefficient bounds set
 
-$$
+```math
 X=4\epsilon_a/\sqrt3,\quad Y=\epsilon_a/\sqrt3,
 \quad Z=4\epsilon_v/\sqrt3,\quad W=\epsilon_v/\sqrt3.
-$$
+```
 
 Anticommutation of $\chi$ and $D$ implies
 $|x|\le X$, $|y|\le Y$, $|z|\le Z$, and $|w|\le W$.
 The checker evaluates the unrounded rational error bounds and encloses the
 Schur complement using
 
-$$
+```math
 \kappa=1-X-\frac{YZ}{1-W}>0.
-$$
+```
 
 The normalized response determinant is at least $(1-W)\kappa$, certified
 larger than $0.931246421082804$. The unnormalized, directly measured response
 has determinant larger than $0.856186181626231$, so it too is invertible.
 For the first row $(w_a,w_v)$ of the normalized inverse,
 
-$$
+```math
 |w_a|\le\kappa^{-1}<1.003544558545665,\qquad
 |w_v|\le\frac{Y}{(1-W)\kappa}<0.000886139636417.
-$$
+```
 
 Keeping the Schur complement before bounding avoids an unnecessarily loose
 ratio of independent numerator and determinant bounds. Cauchy–Schwarz then
 gives the uniform second-moment bound
 
-$$
+```math
 \mathbb E(w_aY_a+w_vY_v)^2
 \le(|w_a|\sqrt{V_a}+|w_v|\sqrt{V_v})^2
 <0.444512137719.
-$$
+```
 
 The two features share an image, and this inequality includes their covariance.
 Finally, the raw response matrix is $r$ times the normalized response matrix;
@@ -503,9 +503,9 @@ Set $s=2^{1024}$. Integer square roots enclose each needed $\sqrt m$ between
 $\lfloor s\sqrt m\rfloor/s$ and that rational plus $1/s$.
 Machin's identity
 
-$$
+```math
 \pi=16\arctan(1/5)-4\arctan(1/239)
-$$
+```
 
 is enclosed using alternating rational series. Each fixed-point division has
 error less than $1/s$; the first omitted term bounds the remaining series.
@@ -516,22 +516,22 @@ Let $A=-i\pi H$, and let $\widetilde A$ be its complex fixed-point midpoint
 matrix. In the submultiplicative row norm using entry magnitude
 $|\mathrm{Re}z|+|\mathrm{Im}z|$, the checker verifies
 
-$$
+```math
 \|A\|_\infty,\|\widetilde A\|_\infty\le B=256,
 \qquad
 \|A-\widetilde A\|_\infty\le206388/s.
-$$
+```
 
 It computes the Taylor action through order 1280 on each input column (1281 terms including the constant term). Each real and
 imaginary component is divided with integer floor rounding, giving complex
 rounding error at most $2/s$ per component and recurrence step. With
 $N=1280$, the uniform entry error of the final propagated columns is at most
 
-$$
+```math
 \varepsilon=
 3^B\left[\frac{206388+2N}{s}
 +\frac{B^{N+1}}{(N+1)!}\right]<10^{-170}.
-$$
+```
 
 The first term combines the exponential's perturbation bound with all recurrence
 rounding; the second bounds the exponential-series tail. The inequality
@@ -542,9 +542,9 @@ Integer summation itself introduces no error.
 True propagated amplitudes have modulus at most one. Each effect matrix entry is
 a sum of at most 40 amplitude products, so its error is at most
 
-$$
+```math
 \eta=40(2\varepsilon+\varepsilon^2)+2/s.
-$$
+```
 
 The coefficient formulas on the three-input sector are
 $c_p=\mathrm{Tr}(\chi E_p)/(3/8)$ and
@@ -558,9 +558,9 @@ For any spin-rotation-invariant, reflection-even Hermitian operator on the
 three-input sector, write its first row as $(a,b,c)$. Commutation with reflection
 and with the symmetric-spin projector fixes the orthogonal eigenvectors to
 
-$$
+```math
 (1,1,1),\quad(1,0,-1),\quad(1,-2,1),
-$$
+```
 
 with eigenvalues $a+b+c$, $a-c$, and $a+c-2b$. In particular, $b,c$ are
 real. The checker bounds these linear expressions directly. No computed
@@ -576,20 +576,20 @@ $2|b_p^0|\,|\delta b_p|+|\delta b_p|^2$ for the two corrected outcomes.
 For an effect perturbation bounded by $b_{\ast}$, duality between trace norm and
 operator norm gives
 
-$$
+```math
 |\delta c_p|\le4b_{\ast}/\sqrt3,\qquad
 |\delta d_p|\le b_{\ast}/\sqrt3.
-$$
+```
 
 The reference-score second moment changes by at most
 $b_{\ast}\sum_p(b_p^0)^2$. Applying the same interval determinant and correction
 formulas proves the effect-neighborhood result. For uniform-ring parameter
 changes, the sufficient effect bound used in the parameter box is
 
-$$
+```math
 b_{\ast}\le6|\delta\tau|
 +\frac32\tau_{\max}(|\delta u|+|\delta\Phi|).
-$$
+```
 
 Here $\|T_{\rm hop}\|\le6$, $\|W-3I/2\|=3/2$, and
 $\|\partial_\Phi T_{\rm hop}\|\le3/2$. The commutator of a Hermitian operator
@@ -603,17 +603,17 @@ resulting $2\times8$ matrix. On the total-spin-1/2 multiplicity space,
 $\chi$ and $D/4$ are anticommuting Pauli directions with common norm
 $\sqrt3/4$. Thus an effect perturbation of norm at most $\epsilon$ implies
 
-$$
+```math
 \|\delta g_p\|_2\le r:=4\epsilon/\sqrt3.
-$$
+```
 
 Let $b$ be the exactly calibrated nominal score above. Define a rational
 $8\times2$ matrix $B_0$: its first column is $b^0$, and its second column is
 the eight exact finite decimals in `RIGHT_INVERSE_SECOND` in the checker. Set
 
-$$
+```math
 B=B_0(GB_0)^{-1},\qquad GB=I_2.
-$$
+```
 
 The checker encloses the determinant of $GB_0$ between
 $0.999999999999640$ and $0.999999999999641$, so this definition is nonsingular.
@@ -622,17 +622,17 @@ $2\times2$ inverse. No floating-point inverse supplies a certified value.
 
 For a perturbed calibration $G'=G+\delta G$, choose
 
-$$
+```math
 b'=b+Bz,\qquad
 z=-(I_2+\delta GB)^{-1}\delta Gb.
-$$
+```
 
 This satisfies $G'b'=(1,0)^T$ exactly. Write $B_{p,:}$ for its rows and
 $L=\sum_p\|B_{p,:}\|_2$. If $rL<1$, the Neumann bound gives
 
-$$
+```math
 \|z\|_2\le\zeta:=\frac{r\|b\|_1}{1-rL}.
-$$
+```
 
 At $\epsilon=0.0015$, the checker proves
 $rL<0.270626586743$ and $\zeta<0.027794427232$.
@@ -641,23 +641,23 @@ Let $f_{pj}$ be the eigenvalue of the nominal $F_p$ in one of the three
 common sectors $j$. They are nonnegative and obey $\sum_p f_{pj}=1$.
 Define
 
-$$
+```math
 t_j=\sum_p f_{pj}b_p^2,\qquad
 \ell_j=\sum_p f_{pj}b_p B_{p,:}^{T},\qquad
 K_j=\sum_p f_{pj}B_{p,:}^{T}B_{p,:}.
-$$
+```
 
 The nominal effects at the corrected score have sector second moment
 $t_j+2\ell_j^Tz+z^TK_jz$. Since $K_j$ is positive semidefinite,
 $\|K_j\|\le\mathrm{Tr}K_j$. Changing each effect by at most
 $\epsilon$ adds at most $\epsilon\|b+Bz\|_2^2$. Consequently,
 
-$$
+```math
 \lambda_j(T')\le
  t_j+2\zeta\|\ell_j\|_2
  +\zeta^2\mathrm{Tr}K_j
  +\epsilon(\|b\|_2+\|B\|_F\zeta)^2.
-$$
+```
 
 Every constant on the right is enclosed from the original rational effect
 certificate, using integer square roots for the Euclidean and Frobenius norms.

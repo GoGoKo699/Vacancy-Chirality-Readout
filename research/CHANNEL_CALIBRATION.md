@@ -23,10 +23,10 @@ $-2\pi/3$, and $s=-$ denotes its reflected partner. For the sixteen observed
 parity strings, write $r(y_0,y_1,y_2,y_3)=(y_0,y_3,y_2,y_1)$.
 Assume
 
-$$
+```math
 [E_{s,y},U^{\otimes3}]=0\quad\text{for every spin rotation }U,
 \qquad E_{-,r(y)}=R E_{+,y}R,\quad R=P_{13}.
-$$
+```
 
 The effects sum to the identity at each setting. If an acquisition can fail
 to return an image, add a separate reflection-invariant failure label, normally
@@ -38,11 +38,11 @@ linear measurement model.
 fluxes equally and assign $X=f(y)$ at the first flux and
 $X=-f(r(y))$ at the second. Its mean operator and second-moment operator obey
 
-$$
+```math
 A_f=\frac12\sum_y f(y)(E_{+,y}-R E_{+,y}R)=c\chi+dD,
 \qquad
 T_f=\frac12\sum_y f(y)^2(E_{+,y}+R E_{+,y}R),
-$$
+```
 
 where $D=P_{12}-P_{23}$. In particular, $T_f$ commutes with collective
 rotations and reflection and has the three scalar blocks described below.
@@ -67,22 +67,22 @@ response. Complete erasure of input information cannot be calibrated away.
 Use the same orbital loading, dynamics, and detector as for the unknown input,
 changing only the prepared spin state. Define
 
-$$
+```math
 \rho_x=|{+x},{+y},{+z}\rangle\langle{+x},{+y},{+z}|,
 \quad
 \rho_d=|{+z},{+z},{-z}\rangle\langle{+z},{+z},{-z}|,
 \quad
 \rho_0=|{+z},{+z},{+z}\rangle\langle{+z},{+z},{+z}|.
-$$
+```
 
 Here $|{+a}\rangle$ is the positive eigenstate of Pauli axis $a$.
 The first two probes obey
 
-$$
+```math
 (\langle\chi\rangle_x,\langle D\rangle_x)=(1/8,0),
 \qquad
 (\langle\chi\rangle_d,\langle D\rangle_d)=(0,1).
-$$
+```
 
 Indeed a product state with Bloch vectors $\mathbf r_j$ has
 $\langle\chi\rangle=\mathbf r_1\cdot(\mathbf r_2\times\mathbf r_3)/8$
@@ -140,9 +140,9 @@ is uniform over the entire score-selection procedure.
 For the fixed score define $m_j=\mathbb E_jX$ and $Q_j=\mathbb E_jX^2$.
 The exact first-moment coefficients are simply
 
-$$
+```math
 c=8m_x,\qquad d=m_d.
-$$
+```
 
 Let $\Pi_{\rm s}$ be the symmetric spin-$3/2$ projector and
 $\Pi_{\rm e},\Pi_{\rm o}$ the mixed-spin doublet projectors with reflection
@@ -157,11 +157,11 @@ eigenvalues $+1,-1$. The three probe weights in these blocks are
 Since $T_f=t_{\rm s}\Pi_{\rm s}+t_{\rm e}\Pi_{\rm e}+t_{\rm o}\Pi_{\rm o}$,
 these three second moments determine it exactly:
 
-$$
+```math
 \boxed{t_{\rm s}=Q_0,\qquad
 t_{\rm o}=3Q_d-2Q_x,\qquad
 t_{\rm e}=6Q_x-3Q_d-2Q_0.}
-$$
+```
 
 Thus three product probes suffice for both response and variance; three
 independent second-moment equations are necessary to reconstruct an
@@ -180,11 +180,11 @@ There is also an exact all-input bias formula. The identities
 $\{\chi,D\}=0$, $\chi^2=3(I-\Pi_{\rm s})/16$, and
 $D^2=3(I-\Pi_{\rm s})$ imply
 
-$$
+```math
 \boxed{\sup_\rho|\mathbb E_\rho X-\langle\chi\rangle_\rho|
 =\|A_f-\chi\|
 =\sqrt{\frac3{16}(c-1)^2+3d^2}.}
-$$
+```
 
 The randomized worst-case variance still equals $\|T_f\|$ even if the mean
 is slightly miscalibrated: a state in the largest reflection block has zero
@@ -198,20 +198,20 @@ $\widehat m_x,\widehat m_d$ be the sample means and
 $\widehat Q_x,\widehat Q_d,\widehat Q_0$ the sample second moments. The
 default variance-sensitive certificate also uses the unbiased sample variances
 
-$$
+```math
 \widehat v_j=\frac1{N_j-1}\sum_i(X_{j,i}-\widehat m_j)^2,\qquad
 \widehat w_j=\frac1{N_j-1}\sum_i(X_{j,i}^2-\widehat Q_j)^2.
-$$
+```
 
 For a failure probability $0<\delta<1$, take $L_E=\log(20/\delta)$ and
 
-$$
+```math
 \boxed{\epsilon_j=
 \sqrt{\frac{2\widehat v_jL_E}{N_j}}
 +\frac{14BL_E}{3(N_j-1)},\qquad
 \nu_j=\sqrt{\frac{2\widehat w_jL_E}{N_j}}
 +\frac{7B^2L_E}{3(N_j-1)}.}
-$$
+```
 
 These are affine rescalings of
 [Maurer and Pontil (2009), Theorem 4](https://arxiv.org/abs/0907.3740),
@@ -228,22 +228,22 @@ looks or a valid confidence sequence.
 
 The simpler range-only alternative remains
 
-$$
+```math
 L_H=\log(10/\delta),\qquad
 \epsilon_j=B\sqrt{2L_H/N_j},\qquad
 \nu_j=B^2\sqrt{L_H/(2N_j)}.
-$$
+```
 
 It follows from Hoeffding's inequality. Choose the method before inspecting
 validation results, or divide the failure budget between the two methods
 before intersecting their confidence intervals. Either set of radii can be
 inserted into the same operator certificate. On its confidence event define
 
-$$
+```math
 b_c=|8\widehat m_x-1|+8\epsilon_x,\qquad
 b_d=|\widehat m_d|+\epsilon_d,\qquad
 \beta=\sqrt{3b_c^2/16+3b_d^2},
-$$
+```
 
 and
 
@@ -261,11 +261,11 @@ Then the actual, fixed score obeys $\|A_f-\chi\|\le\beta$ and
 $\|T_f\|\le U_T$ for **every** input state. For the mean of $n$ independent
 unknown-input scores this gives the conditional mean-square-error guarantee
 
-$$
+```math
 \boxed{\mathbb E_\rho[(\widehat\chi-\langle\chi\rangle_\rho)^2
 \mid\text{fixed pilot and validation data}]
 \le U_T/n+\beta^2.}
-$$
+```
 
 The inequality holds for all validation data in the stated confidence event;
 it is not an unconditional assertion that the random calibration is exact.
@@ -292,9 +292,9 @@ counts and the number of uses needed to amortize them are treated in
 Let $r_\beta=\sqrt{12\epsilon_x^2+3\epsilon_d^2}$. For the Hoeffding
 radii its squared value is
 
-$$
+```math
 r_\beta^2=B^2L_H\left(\frac{24}{N_x}+\frac6{N_d}\right).
-$$
+```
 
 At fixed $N_x+N_d=N_{\rm mean}$, this sufficient bound is minimized by
 $N_x:N_d=2:1$, giving $54B^2L_H/N_{\rm mean}$. This allocation optimizes
@@ -308,9 +308,9 @@ expectations is not a guarantee that a validation batch will pass. On the
 confidence event, if the actual fixed score has bias norm $\beta_{\rm true}$,
 the reported bound satisfies
 
-$$
+```math
 \beta_{\rm true}\le\beta\le\beta_{\rm true}+2r_\beta.
-$$
+```
 
 The second inequality follows by applying the triangle inequality to the two
 weighted mean errors. Similarly, writing
@@ -328,10 +328,10 @@ The three-probe second-moment inversion is economical in preparation types
 but can amplify statistical errors. An optional fourth probe
 $\rho_v=|{+z},{-z},{+z}\rangle\langle{+z},{-z},{+z}|$ gives
 
-$$
+```math
 t_{\rm e}=(3Q_v-Q_0)/2,\qquad
 t_{\rm o}=2Q_d-(Q_0+Q_v)/2.
-$$
+```
 
 For equal second-moment error radii $\nu$, this bounds the largest eigenvalue
 with additive uncertainty at most $3\nu$, instead of $11\nu$ in the
@@ -376,21 +376,21 @@ Let $\beta_{\rm stat},U_{\rm stat}$ denote the full observed certificate
 above, including the observed mean residuals but before preparation and
 drift corrections. Set
 
-$$
+```math
 \kappa_A=\sqrt{48\eta_x^2+12\eta_d^2},\qquad
 \kappa_T=\max\{\eta_0,3\eta_d+2\eta_x,
                          6\eta_x+3\eta_d+2\eta_0\}.
-$$
+```
 
 If both are less than one, a sufficient corrected certificate is
 
-$$
+```math
 \boxed{\beta_{\rm use}\le
 \frac{\beta_{\rm stat}+\kappa_A\sqrt3/4}{1-\kappa_A}+d_A,
 \qquad
 U_{\rm use}\le
 \min\left\{B^2,\frac{U_{\rm stat}}{1-\kappa_T}\right\}+d_T.}
-$$
+```
 
 Here $d_A$ and $d_T$ bound the operator-norm drift of the mean and
 second-moment operators between validation and use. To prove the preparation

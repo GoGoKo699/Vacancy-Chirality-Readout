@@ -29,17 +29,17 @@ The results specify a vacancy-return instrument, finite-repulsion chirality reco
 
 **[M17]** A. J. Menssen and collaborators, *Distinguishability and many-particle interference*, Physical Review Letters **118**, 153603 (2017). [Article](https://doi.org/10.1103/PhysRevLett.118.153603) · [arXiv:1609.09804](https://arxiv.org/abs/1609.09804). Independently prepared photons in a tritter exhibit spatial-count sensitivity to a collective internal-state triad phase. Their supplementary Eqs. (20)–(21), with $R=r_{12}r_{23}r_{31}$, give
 
-$$
+```math
 P_{120}=\frac{1-2R\cos(\varphi+\pi/3)}9,
 \qquad
 P_{021}=\frac{1-2R\cos(\varphi-\pi/3)}9.
-$$
+```
 
 Subtracting these expressions yields
 
-$$
+```math
 P_{120}-P_{021}=\frac{2\sqrt3}{9}R\sin\varphi.
-$$
+```
 
 This algebraic consequence explicitly credits a precedent for **signed** internal-state information in spatial interference. The broad conversion of internal-state information into spatial counts is established prior art.
 

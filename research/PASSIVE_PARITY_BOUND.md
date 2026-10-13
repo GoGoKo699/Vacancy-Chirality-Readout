@@ -20,18 +20,18 @@ Use the [repository convention](../THEORY.md)
 $\chi=\mathbf S_1\cdot(\mathbf S_2\times\mathbf S_3)$, with
 $\mathbf S=\boldsymbol\sigma/2$, and set
 
-$$
+```math
 h=\frac{\sqrt3}{4},\qquad
 \Pi_{\rm m}=\Pi_++\Pi_-,\qquad
 \mathrm{Tr}\chi^2=\frac34.
-$$
+```
 
 The principal four-mode conclusion is
 
-$$
+```math
 \boxed{\sup_\rho n\mathrm{Var}_\rho(\widehat\chi)
 \ge\frac{13}{32}}
-$$
+```
 
 for every fixed-$n$, universally unbiased estimator in the declared class.
 This is a lower bound, not the exact passive optimum. Section 6 gives a
@@ -45,23 +45,23 @@ or calibration-cost comparisons.
 
 Let $U$ be the spatial unitary, $S$ a subset of output modes, and
 
-$$
+```math
 W_S=U^\dagger\mathrm{diag}\bigl((-1)^{1_{j\in S}}\bigr)U.
-$$
+```
 
 The product of the output parities in $S$ is the second quantization of
 $W_S$. Compress it to one particle in each of the three occupied input
 modes, and let $K_S$ be the corresponding $3\times3$ principal submatrix.
 The resulting spin observable is
 
-$$
+```math
 B_S=\sum_{\pi\in S_3}
 \left(\prod_{i=1}^3(K_S)_{i,\pi(i)}\right)P_\pi,
 \qquad
 P_\pi|s_1s_2s_3\rangle
 =|s_{\pi(1)}s_{\pi(2)}s_{\pi(3)}\rangle.
 \qquad\text{(1)}
-$$
+```
 
 To prove (1), expand the three transformed creation operators. A matrix
 element between singly occupied input states must match the three outgoing
@@ -75,10 +75,10 @@ coefficients are real. The two cycle coefficients are $z$ and $\bar z$,
 where $z=K_{12}K_{23}K_{31}$. Since
 $C-C^\dagger=4i\chi$, their chirality coefficient is
 
-$$
+```math
 c(B_S)=-4\mathrm{Im}(K_{12}K_{23}K_{31}).
 \qquad\text{(2)}
-$$
+```
 
 Reversing the cycle convention reverses both signs and leaves all bounds
 unchanged. For three qubits,
@@ -94,10 +94,10 @@ the product of all three parities is $-1$. A two-output parity is the
 negative of the complementary single-output parity. All parity effects
 therefore lie in
 
-$$
+```math
 \mathrm{span}_{\mathbb R}\{I,P_{12},P_{23},P_{13}\}.
 \qquad\text{(3)}
-$$
+```
 
 Product-unitary prerotations do not remove this obstruction. An identity or
 swap has Pauli weight at most two, whereas $\chi$ has Pauli weight three;
@@ -109,10 +109,10 @@ outcome laws for every such setting. Their complete adaptive data laws
 are also identical, by conditioning successively on the preceding record.
 For any estimator $T$, including biased and nonlinear estimators,
 
-$$
+```math
 \max\{\mathbb E_+(T-h)^2,\mathbb E_-(T+h)^2\}
 \ge\mathbb ET^2+h^2\ge\frac3{16}.
-$$
+```
 
 Reporting zero has error at most $h^2$ on every input. Hence the exact
 three-mode minimax mean-square error is $3/16$, independently of the number
@@ -122,10 +122,10 @@ particle-number-resolved Fourier readout discussed in
 
 For example, the balanced three-mode Fourier device has
 
-$$
+```math
 E_{111}=\frac13\Pi_{\rm s},\qquad
 E_{100}=E_{010}=E_{001}=\frac13I-\frac19\Pi_{\rm s}.
-$$
+```
 
 Both chiral sectors consequently give probabilities $(0,1/3,1/3,1/3)$.
 
@@ -139,13 +139,13 @@ compression $K_S$ therefore has eigenvalues $1,t,-1$, with $|t|\le1$.
 For a Hermitian matrix $K=V\mathrm{diag}(\lambda_1,\lambda_2,
 \lambda_3)V^\dagger$,
 
-$$
+```math
 \left|\mathrm{Im}(K_{12}K_{23}K_{31})\right|
 =|J(V)|\prod_{i<j}|\lambda_i-\lambda_j|,
 \quad
 J(V)=\mathrm{Im}(V_{11}V_{22}\bar V_{12}\bar V_{21}).
 \qquad\text{(4)}
-$$
+```
 
 One direct proof expands the left side as a cubic in the eigenvalues. It
 vanishes whenever two eigenvalues coincide, because the remaining matrix
@@ -159,21 +159,21 @@ first row $(a,b,c)$ real and nonnegative. Write the second row as
 $\alpha x+\beta y$, where $x,y$ are a real orthonormal basis of its
 orthogonal plane and $|\alpha|^2+|\beta|^2=1$. Then
 
-$$
+```math
 |J(V)|=ab\,|\mathrm{Im}(\beta\bar\alpha)|
 \,|x_1y_2-x_2y_1|
 \le\frac{abc}{2}\le\frac1{6\sqrt3}.
-$$
+```
 
 Here $|x_1y_2-x_2y_1|=c$ follows from $x\times y=\pm(a,b,c)$;
 the last step is arithmetic–geometric mean with $a^2+b^2+c^2=1$.
 Equations (2) and (4) now imply
 
-$$
+```math
 |c(B_S)|\le8(1-t^2)|J(V)|
 \le B:=\frac4{3\sqrt3}.
 \qquad\text{(5)}
-$$
+```
 
 Write an observed parity as signs $z_j=(-1)^{p_j}$, so
 $\prod_{j=0}^3z_j=-1$. Fourier inversion on these eight outcomes uses
@@ -181,29 +181,29 @@ the identity, four single-output parities, and three pair parities
 $B_{01},B_{02},B_{03}$. Let their chirality coefficients be $b_1,b_2,b_3$.
 Single-output coefficients vanish, and therefore
 
-$$
+```math
 c_z=\frac18(r_1b_1+r_2b_2+r_3b_3),\qquad
 r_j=z_0z_j,\qquad r_1r_2r_3=-1,
 \quad b\in[-B,B]^3.
 \qquad\text{(6)}
-$$
+```
 
 Each of the four possible $r$ occurs twice. Convexity in $b$ reduces the
 maximum of $\sum_z|c_z|$ to cube vertices. There its eight terms have
 magnitudes $3B/8$ twice and $B/8$ six times. Consequently
 
-$$
+```math
 h\sum_z|c_z|\le\frac12.
 \qquad\text{(7)}
-$$
+```
 
 For a product-unitary prerotation $L=L_1\otimes L_2\otimes L_3$,
 the rotated coefficients are $c'_z=g(L)c_z$, where
 
-$$
+```math
 g(L)=\frac43\mathrm{Tr}(\chi L^\dagger\chi L),
 \qquad |g(L)|\le1.
-$$
+```
 
 The identity and swap terms contribute zero by their Pauli support;
 Hilbert–Schmidt Cauchy–Schwarz proves the bound on $g$. Thus the rotated
@@ -215,11 +215,11 @@ does not assume that they do.
 
 Use the valid submodel
 
-$$
+```math
 \rho_\theta=\frac{\Pi_{\rm m}}4+\frac43\theta\chi,
 \qquad |\theta|<h,\qquad
 \mathrm{Tr}(\rho_\theta\chi)=\theta.
-$$
+```
 
 For either unrotated or prerotated effects write
 $p_z(\theta)=q_z+\theta c_z$. Positivity at the endpoints gives
@@ -232,11 +232,11 @@ constraints $q_z\ge h|c_z|$ and $\sum q_z=1$ therefore assigns every
 probability its minimum, except one outcome $j$ receiving the entire
 remainder. The resulting value is
 
-$$
+```math
 G_j(b)=\frac{A_j(b)}h+
 \frac{c_j(b)^2}{1-hA_j(b)},\qquad
 A_j(b)=\sum_{i\ne j}|c_i(b)|.
-$$
+```
 
 The function $H(A,x)=A/h+x^2/(1-hA)$ is jointly convex, by the
 quadratic-over-linear perspective, and increasing in $A$.
@@ -248,11 +248,11 @@ At a vertex the minimum probabilities are $1/8$ twice and $1/24$ six
 times, leaving remainder $1/2$. Assigning it to a small-coefficient outcome
 gives
 
-$$
+```math
 F(0)\le\frac83-\left(\frac29-\frac2{117}\right)
 =\boxed{\frac{32}{13}}.
 \qquad\text{(8)}
-$$
+```
 
 Assigning it to a large-coefficient outcome gives only $32/15$.
 The cube and positivity constraints are relaxations of physical devices;
@@ -261,20 +261,20 @@ The cube and positivity constraints are relaxations of physical devices;
 The same argument gives a useful pointwise bound. At nonzero $\theta$,
 the extreme-probability value is
 
-$$
+```math
 H_\theta(A,x)=\frac{hA+\theta x}{h^2-\theta^2}
 +\frac{x^2}{1-hA+\theta x}.
-$$
+```
 
 It remains jointly convex and increasing in $A$, with positive denominator.
 At cube vertices, the largest value places the extra probability on a
 small coefficient with the same sign as $\theta$. With $t=|\theta|/h$,
 
-$$
+```math
 \boxed{F(\theta)\le I(t):=
 \frac{16(6+t)}{3(1-t^2)(13+t)}}.
 \qquad\text{(9)}
-$$
+```
 
 Indeed the minimum-probability sum is $8/[3(1-t^2)]$, and assigning the
 remainder subtracts $8/[3(1+t)(13+t)]$. This also proves (9) at zero.
@@ -288,10 +288,10 @@ product prerotation define an allowed measurement, so (8)–(9) still apply.
 Conditional likelihood scores have conditional mean zero. Their cross
 terms vanish in the total Fisher information, giving
 
-$$
+```math
 F_n(0)\le\frac{32n}{13},\qquad
 F_n(\theta)\le nI(|\theta|/h).
-$$
+```
 
 The likelihood argument remains regular for arbitrary adaptive setting
 kernels. At each fixed preceding record, setting selection is independent
@@ -299,11 +299,11 @@ of the unknown parameter, and a measurement factor is $q_z+\theta c_z$.
 If $q_z=0$, then $c_z=0$ and that outcome vanishes throughout the submodel.
 Otherwise, on any compact interval $|\theta|\le a<h$,
 
-$$
+```math
 \left|\partial_\theta\log(q_z+\theta c_z)\right|
 =\frac{|c_z|}{q_z+\theta c_z}
 \le\frac1{h-a}.
-$$
+```
 
 Thus the full fixed-$n$ score is bounded by $n/(h-a)$, and likelihood
 ratios between two parameters in this interval are bounded by
@@ -318,10 +318,10 @@ $\mathbb E_\theta T=\theta$ on this submodel. At zero,
 $\mathbb E_0[T\,\partial_\theta\log p_\theta]=1$.
 Cauchy–Schwarz yields
 
-$$
+```math
 \mathrm{Var}_{\rho_0}(T)\ge\frac1{F_n(0)}
 \ge\frac{13}{32n}.
-$$
+```
 
 This covers arbitrary unbiased processing, not merely a sample mean or a
 fixed score. The lower-bound state is $\rho_0=\Pi_{\rm m}/4$, not a
@@ -336,10 +336,10 @@ arbitrary stopping rules.
 
 For $0<a<h$, introduce the normalized auxiliary prior
 
-$$
+```math
 \pi_a(\theta)=\frac1a\cos^2\!\left(\frac{\pi\theta}{2a}\right),
 \qquad -a\le\theta\le a.
-$$
+```
 
 It vanishes at the endpoints and has Fisher information $\pi^2/a^2$.
 For the joint density of parameter and data, integration by parts gives
@@ -347,11 +347,11 @@ $\mathbb E[(T-\theta)\partial_\theta\log(p_\theta\pi_a)]=1$.
 The data score has conditional mean zero, so its cross term with the prior
 score vanishes. Cauchy–Schwarz therefore gives, without unbiasedness,
 
-$$
+```math
 \boxed{\sup_\rho\mathbb E_\rho(T-\langle\chi\rangle)^2
 \ge\frac1{nI(a/h)+\pi^2/a^2}}.
 \qquad\text{(10)}
-$$
+```
 
 This is the scalar van Trees argument, reproduced here; see [GL95] in
 [References](../REFERENCES.md). It requires uniform risk over arbitrary
@@ -363,12 +363,12 @@ In particular, let $R_n$ be the infimum of this worst-case MSE over all
 allowed fixed-$n$ protocols and estimators, including biased estimators and
 adaptive settings. For $n>1$, choose $a_n=h n^{-1/4}$ in (10). Then
 
-$$
+```math
 nR_n\ge
 \left[I(n^{-1/4})+\frac{\pi^2}{h^2\sqrt n}\right]^{-1},
 \qquad
 \boxed{\liminf_{n\to\infty}nR_n\ge\frac{13}{32}}.
-$$
+```
 
 Here the prior shrinks slowly enough that its information is $o(n)$,
 while $I(n^{-1/4})\to I(0)=32/13$. This establishes the asymptotic
@@ -376,10 +376,10 @@ minimax lower bound without an unbiasedness or attainability assumption.
 
 For any $0<t_0<1$, a uniform MSE requirement $\varepsilon^2$ implies
 
-$$
+```math
 n\ge\frac{\varepsilon^{-2}-16\pi^2/(3t_0^2)}{I(t_0)}
 \qquad\text{(11)}
-$$
+```
 
 when the numerator is positive, followed by an integer ceiling. At
 $\varepsilon=0.001$ and $t_0=1/10$,
@@ -391,10 +391,10 @@ Then $I(t_0)=775/297$ and the prior information is $400\pi^2/3$.
 An exactly calibrated native estimator with coefficient below $0.367$
 has smaller worst-case MSE than the lower bound (10) whenever
 
-$$
+```math
 n>\frac{0.367(4000/3)}{1-0.367(775/297)}
 =\frac{5813280}{503}<12000,
-$$
+```
 
 where $\pi^2<10$ was used conservatively. Thus **every integer
 $n\ge12000$** gives a strict comparison even against biased passive
@@ -427,10 +427,10 @@ $q_{\rm m}=(1-x)(x+3)/16$; the two three-odd-site outcomes have
 $q_{\rm m}=(1-x)(3x+1)/16$, where
 $q_{\rm m}=\mathrm{Tr}(\Pi_{\rm m}E)/4$. Hence
 
-$$
+```math
 F(x)=\sum_p\frac{c_p^2}{q_{{\rm m},p}}
 =\frac{32x(1-x^2)}{(x+3)(3x+1)}.
-$$
+```
 
 Choose $a_p=c_p/[q_{{\rm m},p}F(x)]$. Uniformly permute the three occupied
 input modes before the device, and multiply the reported score by the
@@ -438,11 +438,11 @@ permutation sign. The signed permutation average of its mean operator
 retains only $\chi$, with coefficient $\sum_pa_pc_p=1$. The ordinary
 permutation average of the squared-score operator is
 
-$$
+```math
 T=t_{\rm s}\Pi_{\rm s}+t_{\rm m}\Pi_{\rm m},\quad
 t_{\rm m}=\frac{(x+3)(3x+1)}{32x(1-x)(x+1)},\quad
 t_{\rm s}=\frac{(3x+1)^2}{16(1-x)(x+1)^2}.
-$$
+```
 
 These formulas follow by substituting the four coefficients into (1);
 the singleton symmetric-sector probabilities are $x(1-x)/2$, and the two
@@ -459,10 +459,10 @@ derivative for $x>0$. Its coefficient is approximately
 $0.69513538981$. Thus a proved, non-tight bracket for the full passive
 unbiased minimax coefficient is
 
-$$
+```math
 \frac{13}{32}\le V_{\rm passive}
 \le\frac{935}{1344}.
-$$
+```
 
 The improved decimal comes from the explicitly stated one-parameter family;
 it is not a global optimality or interval-certification claim.
@@ -473,30 +473,30 @@ For $u=0$, let $x=2\tau\cos(\phi/4)$ and
 $y=-2\tau\sin(\phi/4)$. Fourier diagonalization gives the circulant
 single-particle propagator with first row
 
-$$
+```math
 \left(a,\frac{iX+Y}{2},d,\frac{iX-Y}{2}\right),\quad
 a=\frac{\cos x+\cos y}{2},\quad d=\frac{\cos x-\cos y}{2},
 \quad X=\sin x,\quad Y=\sin y.
-$$
+```
 
 Substitution into (1) yields
 
-$$
+```math
 c_p=(-1)^{p_0+p_2}\kappa,\qquad
 \kappa=\frac{\sin(2x)\sin(2y)[\cos(2x)-\cos(2y)]}{8}.
 \qquad\text{(13)}
-$$
+```
 
 Equivalently, the only pair-parity chirality responses are $8\kappa$ for
 $\{0,2\}$ and $-8\kappa$ for its complement. To bound (13), put
 $m=[\cos(2x)+\cos(2y)]/2$ and
 $d_0=|\cos(2x)-\cos(2y)|/2$. Then
 
-$$
+```math
 8|\kappa|=2d_0
 \sqrt{[1-(m+d_0)^2][1-(m-d_0)^2]}
 \le2d_0(1-d_0^2)\le\frac4{3\sqrt3}.
-$$
+```
 
 The first inequality follows by expanding the squared radicand as
 $(1-d_0^2)^2-2m^2(1+d_0^2)+m^4$ and using
@@ -504,19 +504,19 @@ $|m|\le1-d_0$. Thus $|\kappa|\le1/(6\sqrt3)$.
 Product prerotations multiply all eight coefficients by the same factor
 of magnitude at most one. Normalization and $q_p\ge h|c_p|$ then imply
 
-$$
+```math
 F(0)\le\frac{7|\kappa|}{h}
 +\frac{\kappa^2}{1-7h|\kappa|}
 \le\frac{80}{51}.
-$$
+```
 
 The right side increases with $|\kappa|$ in the displayed range. Arbitrary
 adaptive choices of flux and duration therefore still obey
 
-$$
+```math
 \boxed{\sup_\rho n\mathrm{Var}_\rho(\widehat\chi)
 \ge\frac{51}{80}}
-$$
+```
 
 for universally unbiased estimation in this uniform noninteracting-ring
 class. This is a lower bound, not a claimed attained ring optimum. At the
@@ -538,11 +538,11 @@ Put $\omega=e^{2\pi i/3}$ and use the three-mode Fourier matrix
 $F_{jk}=\omega^{-jk}/\sqrt3$, with $j,k\in\{0,1,2\}$. For occupation
 $\mathbf n$ after this interferometer, let
 
-$$
+```math
 f(\mathbf n)=\sum_{j=0}^2 jn_j\pmod3,\qquad
 \lambda_f=\frac12\sin\!\left(\frac{2\pi f}{3}\right)
 \in\{0,h,-h\}.
-$$
+```
 
 The count statistic is a spectral measurement of $C$ with eigenvalue
 $\omega^f$, and hence of $\chi$ with eigenvalue $\lambda_f$, in the
@@ -570,20 +570,20 @@ have disjoint output occupations, so there are no cross terms between
 different Fourier count sectors. Averaging the recorded random assignment
 therefore retains each informative count effect with the same factor
 
-$$
+```math
 s=1-\frac13\left(\frac1{L_0}+\frac1{L_1}+\frac1{L_2}\right).
-$$
+```
 
 For $s>0$, report $\lambda_f/s$ on three-odd events and zero on every
 other event. Every trial counts; there is no conditioning of the sample
 size on a detection event. The averaged first and second score operators
 are exactly
 
-$$
+```math
 A=\chi,\qquad
 T=\frac{\chi^2}{s}=\frac{h^2}{s}\Pi_{\rm m}.
 \qquad\text{(14)}
-$$
+```
 
 These identities hold for arbitrary correlated spin inputs and remain
 valid after tensoring with an external reference. Since
