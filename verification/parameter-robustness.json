@@ -1,7 +1,7 @@
 {
   "status": "PASS",
-  "scientific_groups": 3,
-  "arithmetic": "Exact fractions and enclosing integer square roots; no floating arithmetic.",
+  "scientific_groups": 5,
+  "arithmetic": "Exact fractions, enclosing integer square roots, and positive Taylor exponential tails; no floating arithmetic.",
   "dependency": {
     "certificate_sha256": "9e9e75481981e659a5bbc48c74aafa031a0d578eff32d67454aadc71efe7d832",
     "certificate_file": "complete-parity-certificate.json",
@@ -13,13 +13,42 @@
       "primary_second_moment_upper": "0.328697776904969",
       "primary_score_absolute_upper": "1.622867200391236",
       "auxiliary_second_moment_upper": "645.749436280796",
-      "auxiliary_score_absolute_upper": "193.245473666084"
+      "auxiliary_score_absolute_upper": "193.245473666084",
+      "primary_singleton_half_range_upper": "1.122353834439618",
+      "auxiliary_singleton_half_range_upper": "106.799805558886"
     },
     "coarse_bounds_used": {
       "v": "3287/10000",
       "A": "1623/1000",
+      "C1": "1123/1000",
       "v_D": "646",
-      "A_D": "194"
+      "A_D": "194",
+      "C1_D": "107"
+    },
+    "nominal_finite_calibration_inputs": {
+      "feature_definition": "Raw Z=(X_primary,X_D/4), target x=(<chi>,<D>/4)",
+      "raw_clean_factor_lower": "0.958852486475226",
+      "normalized_response_row_error_upper": [
+        "0.002349744568835",
+        "0.065452721457227"
+      ],
+      "normalized_response_error_norm_upper": "0.065494885645340",
+      "response_residual_norm_upper": "0.103947447477219",
+      "first_response_residual_row_norm_upper": "0.043400571947183",
+      "response_norm_upper": "1.065494885645340",
+      "feature_second_moment_trace_upper": "44.219368969990164",
+      "mean_weight_second_moment_upper": [
+        "0.344784300185690",
+        "0.395119522625782",
+        "0.370837757092059",
+        "0.366919338686148"
+      ],
+      "polynomial_degrees": [
+        1,
+        2,
+        3,
+        4
+      ]
     }
   },
   "groups": [
@@ -101,16 +130,124 @@
         }
       },
       "history_scope": "Every conditional instrument must satisfy the same dilation bound. The sample-size interval above is only for independent trials."
+    },
+    {
+      "group": "joint_parameter_and_noise_bounds",
+      "profiles": [
+        {
+          "dilation_distance_upper": "0.001000000000000000000000",
+          "uniform_window": {
+            "lambda": [
+              "0",
+              "0.010000000000000000000000"
+            ],
+            "bit_error_q": [
+              "0",
+              "0.003000000000000000000000"
+            ]
+          },
+          "normalized_chi_mean_error_upper": "0.002165739531165476249411",
+          "normalized_D_mean_error_upper": "0.164394499166125616219895",
+          "normalized_chi_second_moment_upper": "0.346727917896998008446356",
+          "normalized_D_second_moment_upper": "712.317413736053685889864052",
+          "response_schur_lower": "0.994473942994884899050248",
+          "channel_recalibrated_second_moment_upper": "0.395873254004798266438584",
+          "second_moment_less_than": "0.395873255000000000000000",
+          "operational_rates_required": false
+        },
+        {
+          "dilation_distance_upper": "0.001000000000000000000000",
+          "uniform_window": {
+            "lambda": [
+              "0",
+              "0.005000000000000000000000"
+            ],
+            "bit_error_q": [
+              "0",
+              "0.001500000000000000000000"
+            ]
+          },
+          "normalized_chi_mean_error_upper": "0.001401551786034465203468",
+          "normalized_D_mean_error_upper": "0.079249433525332125562671",
+          "normalized_chi_second_moment_upper": "0.338062671759969661263754",
+          "normalized_D_second_moment_upper": "676.712385293053126022406315",
+          "response_schur_lower": "0.996608057548728684618033",
+          "channel_recalibrated_second_moment_upper": "0.366684485551299245501046",
+          "second_moment_less_than": "0.366684486000000000000000",
+          "operational_rates_required": false
+        }
+      ],
+      "sufficient_equal_coordinate_radius": "11/100000",
+      "equal_coordinate_weighted_budget_upper": "0.000978120000000000000000",
+      "small_window_all_estimator_sample_size_sufficient": 12000,
+      "small_window_all_estimator_strict_sample_threshold_upper": "11557.216699801192842942345925",
+      "finite_calibration_source_window": {
+        "dilation_distance_upper": "0.001",
+        "lambda": [
+          "0",
+          "0.005"
+        ],
+        "bit_error_q": [
+          "0",
+          "0.0015"
+        ]
+      },
+      "finite_calibration_inputs": {
+        "feature_definition": "Raw Z=(X_primary,X_D/4), target x=(<chi>,<D>/4)",
+        "raw_clean_factor_lower": "0.979214553682604871405261",
+        "normalized_response_row_error_upper": [
+          "0.003236745203800797029676",
+          "0.045754681778975855427108"
+        ],
+        "normalized_response_error_norm_upper": "0.045869024670355403289857",
+        "response_residual_norm_upper": "0.065701062837833586864944",
+        "first_response_residual_row_norm_upper": "0.023954914327519238002809",
+        "response_norm_upper": "1.045869024670355403289857",
+        "feature_second_moment_trace_upper": "42.632586752575790037664149",
+        "mean_weight_second_moment_upper": [
+          "0.338062671759969661263754",
+          "0.379960845522264797298211",
+          "0.367560194372653442798170",
+          "0.366741988495766978127952"
+        ],
+        "polynomial_degrees": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "finite_calibration_domination": "All four norm bounds and four polynomial moment bounds are strictly below the dependency certificate finite_calibration_inputs. The existing finite risk profiles apply with their original reference, task, and drift assumptions.",
+      "requires": "Spin and paired-reflection covariance; equal spin-independent Markov loss; independent identical parity-bit errors. Lambda uses the actual duration. Exact response coefficients are needed for the unbiased coefficient only; finite-reference polynomial calibration has its separate unconditional risk."
+    },
+    {
+      "group": "microscopic_control_and_loading_bounds",
+      "one_body_integrated_weight_upper": "9.428571428571428571428572",
+      "onsite_pair_integrated_weight_upper": "1.641834480564734345328457",
+      "sufficient_uniform_weights": {
+        "one_body": "9.429",
+        "onsite_pair": "1.643"
+      },
+      "dilation_distance_upper": "1/10000",
+      "input_half_trace_distance_upper": "1/10000",
+      "sample_size": 100000,
+      "combined_bias_upper": "0.000439282000000000000000",
+      "combined_second_moment_upper": "0.329150412900000000000000",
+      "independent_trial_mse_upper": "0.000003484472804524000000",
+      "history_conditional_mse_upper": "0.000005078407799754241175",
+      "passive_all_estimator_mse_lower": "0.000003903384438069952116",
+      "scope": "Microscopic dynamics stay in four orbitals and two internal levels; pair perturbations preserve occupation blocks. Loading distance is a uniform half-trace-distance assumption, not a leakage probability. All parity patterns are scored without postselection. The displayed passive separation is for independent trials only."
     }
   ],
   "assumptions": [
-    "Known three-particle input; ideal total-site parity detection.",
+    "Known three-particle input except for the explicit loading-distance allowance; ideal detection except in the explicit joint-noise group.",
     "The calibrated parameter region preserves spin and paired-reflection covariance.",
     "The two flux settings use the same u and tau and opposite fluxes.",
     "Recalibrated bounds use exact true response coefficients, not finite empirical estimates.",
     "The characterized response remains fixed, or its exact coefficients are known per trial.",
     "The fixed-score bounds allow symmetry breaking under the stated uniform dilation bound.",
-    "The region is separate from loss/bit-error windows and finite-reference calibration budgets.",
+    "Only the explicit joint group combines parameter variation with loss and bit errors.",
+    "The smaller joint window supplies finite-reference inputs dominated by the nominal bounds.",
     "Arithmetic verifies consequences of the documented operator and statistical proofs."
   ]
 }

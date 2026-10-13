@@ -293,6 +293,26 @@ F_n(0)\le\frac{32n}{13},\qquad
 F_n(\theta)\le nI(|\theta|/h).
 $$
 
+The likelihood argument remains regular for arbitrary adaptive setting
+kernels. At each fixed preceding record, setting selection is independent
+of the unknown parameter, and a measurement factor is $q_z+\theta c_z$.
+If $q_z=0$, then $c_z=0$ and that outcome vanishes throughout the submodel.
+Otherwise, on any compact interval $|\theta|\le a<h$,
+
+$$
+\left|\partial_\theta\log(q_z+\theta c_z)\right|
+=\frac{|c_z|}{q_z+\theta c_z}
+\le\frac1{h-a}.
+$$
+
+Thus the full fixed-$n$ score is bounded by $n/(h-a)$, and likelihood
+ratios between two parameters in this interval are bounded by
+$\exp(n|\theta-\theta_0|/(h-a))$. These bounds justify differentiating
+estimator expectations whenever their second moment is finite; an infinite
+variance already satisfies the lower bound. Randomized settings may have
+continuous distributions: their parameter-independent conditional kernels
+add no score, and the same bounds apply to the joint observed record.
+
 Any universally unbiased estimator $T$ satisfies
 $\mathbb E_\theta T=\theta$ on this submodel. At zero,
 $\mathbb E_0[T\,\partial_\theta\log p_\theta]=1$.
@@ -335,9 +355,24 @@ $$
 
 This is the scalar van Trees argument, reproduced here; see [GL95] in
 [References](../REFERENCES.md). It requires uniform risk over arbitrary
-inputs, not risk at one known state. Likelihoods are products of conditional
-factors affine in $\theta$; the interior interval and bounded slopes justify
-the differentiation for finite-risk estimators.
+inputs, not risk at one known state. The fixed-sample likelihood bounds
+above and the finite prior information justify the differentiation and
+integration by parts for uniformly finite-risk estimators.
+
+In particular, let $R_n$ be the infimum of this worst-case MSE over all
+allowed fixed-$n$ protocols and estimators, including biased estimators and
+adaptive settings. For $n>1$, choose $a_n=h n^{-1/4}$ in (10). Then
+
+$$
+nR_n\ge
+\left[I(n^{-1/4})+\frac{\pi^2}{h^2\sqrt n}\right]^{-1},
+\qquad
+\boxed{\liminf_{n\to\infty}nR_n\ge\frac{13}{32}}.
+$$
+
+Here the prior shrinks slowly enough that its information is $o(n)$,
+while $I(n^{-1/4})\to I(0)=32/13$. This establishes the asymptotic
+minimax lower bound without an unbiasedness or attainability assumption.
 
 For any $0<t_0<1$, a uniform MSE requirement $\varepsilon^2$ implies
 

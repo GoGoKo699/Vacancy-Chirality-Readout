@@ -24,7 +24,7 @@ $$
 
 The [passive-measurement theorem](research/PASSIVE_PARITY_BOUND.md) proves the lower bound $13/32=0.40625$ for **every spin-independent passive four-mode interferometer followed by complete total-site parity detection**. It permits independent local spin rotations before mixing, randomized and adaptive settings across fresh copies, and all universally unbiased estimators. The native upper bound is about 19.1% below this lower bound. The passive bound is not claimed to be tight. Extra spatial modes, intermediate measurements, interleaved spin controls, and stronger detectors define different resource classes.
 
-The same proof gives finite worst-case mean-square-error bounds for **arbitrary, possibly biased estimators**. With exact channel calibration, the interacting readout beats the passive minimax risk for every $n\ge12{,}000$, even throughout the modeled equal-loss and independent bit-error window below.
+The same proof gives finite worst-case mean-square-error bounds for **arbitrary, possibly biased estimators**. With exact channel calibration and nominal control parameters, the interacting readout beats the passive minimax risk for every $n\ge12{,}000$ throughout the modeled window $\gamma t\le0.01$, $q\le0.003$.
 
 | Interacting readout | Certified worst-case variance coefficient |
 |---|---:|
@@ -33,6 +33,8 @@ The same proof gives finite worst-case mean-square-error bounds for **arbitrary,
 | Parameter budget $\Delta\le0.0015$, ideal parity, exact response calibration | $<0.366081$ |
 | Independent bit errors $q\le0.03$, no loss, known $q$ | $<0.382273$ |
 | Equal-rate loss $\gamma t\le0.01$, independent bit errors $q\le0.003$, exact full-channel calibration | $<0.366461$ |
+| Joint $\Delta\le0.001$, $\gamma t\le0.01$, $q\le0.003$, exact response calibration | $<0.395874$ |
+| Joint $\Delta\le0.001$, $\gamma t\le0.005$, $q\le0.0015$, exact response calibration | $<0.366685$ |
 
 The [parameter-robustness theorem](research/PARAMETER_ROBUSTNESS.md) uses
 
@@ -41,11 +43,11 @@ $$
 \qquad \Phi_-=-\Phi_+.
 $$
 
-Both flux settings use the same $u$ and $\tau$. The smaller region also beats the passive minimax risk for every $n\ge12{,}000$, allowing biased passive estimators. Each table row is a separate guarantee; parameter variation is not combined with the loss window or finite-reference calibration budget. The theorem also bounds the finite MSE of the fixed nominal score under generic symmetry-breaking perturbations.
+Both flux settings use the same $u$ and $\tau$. The ideal-parity region $\Delta\le0.0015$ and the smaller joint region in the final row both beat the passive minimax risk for every $n\ge12{,}000$, allowing biased passive estimators. The joint rows include parameter variation and the stated loss and detector errors simultaneously; $t$ is the actual evolution duration. The theorem also bounds fixed-score finite MSE under generic spin-dependent perturbations and imperfect loading.
 
 These control and noise bounds are analytical assumptions, not measured apparatus performance. Full-channel calibration uses two known product preparations to determine the mean response, without separately known noise rates. A third preparation determines its second moment within the spin and reflection symmetry class; see [direct channel calibration](research/CHANNEL_CALIBRATION.md).
 
-The [finite-calibration theorem](research/FINITE_CALIBRATION.md) includes reference randomness and preparation costs in an unconditional risk bound. Its independent-stage polynomial correction has a concrete total-preparation advantage after sufficient reuse, with extensions to bounded preparation error and drift. The sufficient reference and reuse counts are large. A [repeated chirality scan](research/REPEATED_STATE_SCANS.md) specifies the stability, cycle-cost, and parallel-channel assumptions needed to interpret such reuse physically.
+The [finite-calibration theorem](research/FINITE_CALIBRATION.md) includes reference randomness and preparation costs in an unconditional risk bound. Its independent-stage polynomial correction has a concrete total-preparation advantage after sufficient reuse, with extensions to bounded preparation error and drift. A fresh moment certificate extends both finite budgets to the final joint region above without exact operational response coefficients. The sufficient reference and reuse counts remain large. A [repeated chirality scan](research/REPEATED_STATE_SCANS.md) specifies the single-orbital mode resource, stability, cycle-cost, and parallel-channel assumptions needed to interpret such reuse physically.
 
 The mode restriction has an operational meaning: three-mode passive parity measurements cannot identify chirality at all, while one extra vacuum mode makes passive identification possible. Interactions improve precision within that four-mode setting. With **eight spatial modes**, a [passive Fourier-and-splitter construction](research/PASSIVE_PARITY_BOUND.md) attains coefficient $27/88\simeq0.306818$, below the current interacting score, using the same type of parity detector on more outputs. This locates the resource boundary; it does not prove that eight modes are necessary. The separate [separable-effects benchmark](research/SEPARABLE_BENCHMARK.md) has tight unbiased coefficient $9/16$. Established cyclic-readout and interaction-enabled parity precedents are credited in [References](REFERENCES.md).
 

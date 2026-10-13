@@ -14,12 +14,35 @@ their numerical budgets must not be transferred between scores or methods.
 
 ## 1. What must remain fixed across the scan
 
+The four-mode resource counts accessible spatial orbitals, with one motional
+orbital at each site in the stated Bose–Hubbard model. Four imaged positions
+alone do not enforce this restriction: additional coherently accessible
+motional modes can enlarge the passive measurement class. The comparison
+holds the input particle count, spatial-mode count, and terminal parity
+detector fixed while allowing the passive device arbitrary $U(4)$ control.
+It therefore isolates the precision gained from interacting dynamics without
+assuming equal control durations or apparatus costs.
+
 At the start of readout every target must have the orbital embedding
 $(0,1,1,1)$ used in [the model](../THEORY.md). The preparation parameter may
 change the spin density operator, including its entanglement with an
 unmeasured reference. It must not leave additional charge sectors or
 spin–motion correlations outside that embedding. The readout dynamics must
 also be decoupled from any unmeasured reference as assumed by the model.
+With input embedding $V$ and reference $R$, the allowed joint input is
+$(V\otimes I_R)\rho_{\mathrm{spin},R}(V^\dagger\otimes I_R)$.
+Arbitrary spin–reference correlations are compatible with this condition;
+arbitrary spin–motion correlations are a different preparation model.
+
+Spin-independent dynamics require the same hopping matrix for both internal
+levels and equal pair interactions
+$U_{\uparrow\uparrow}=U_{\downarrow\downarrow}=U_{\uparrow\downarrow}$,
+with no unaccounted leakage into other internal states. The reported parity
+must count both components with the stated detector response. A flux scheme
+that does not rely on atomic internal structure establishes an orbital-control
+ingredient, not these interaction, preparation, and detection conditions.
+Departures require explicit error bounds, such as the fixed-score treatment
+in [parameter robustness](PARAMETER_ROBUSTNESS.md).
 
 The scan can be implemented conceptually by preparing spins while their
 occupancies are pinned, ending the preparation dynamics, and applying a
@@ -101,13 +124,24 @@ Copy counts alone do not establish a bound on every apparatus's wall time.
 
 For the passive four-mode class, the [product-prior argument](FINITE_CALIBRATION.md)
 allows adaptive allocation across independently specified target tasks and
-gives a necessary expected total of
-$K(38907/97600)(\varepsilon^{-2}-1600\pi^2/3)$ copies when this is positive.
-At RMSE $0.001$, the per-task real bound is greater than $396538.952$.
-Round the total once for a fixed integer budget; rounding each task separately
-would not be justified for random adaptive allocations. The unconditional
-native examples count all three reference stages, but still require enough
-distinct tasks within one epoch satisfying the specified stability bounds.
+uses cosine-squared priors of radius $3h/40$, where $h=\sqrt3/4$. It gives
+a necessary joint-prior-averaged expected total of
+$K L_\varepsilon$ copies when positive, with
+
+$$
+L_\varepsilon=\frac{832093}{2073600}
+\left(\varepsilon^{-2}-\frac{25600\pi^2}{27}\right).
+$$
+
+The expectation includes the product prior and measurement record. Thus it
+also lower-bounds the worst-case expected total count, but need not hold
+pointwise at every tuple of target states. At RMSE $0.001$,
+$L_\varepsilon=397524.305991122\ldots$. For a fixed integer budget, round
+the total once to $\lceil K L_\varepsilon\rceil$; an expected budget alone
+need not be an integer, and rounding each task separately is not justified
+for random adaptive allocations. The unconditional native examples count
+all three reference stages, but still require enough distinct tasks within
+one epoch satisfying the specified stability bounds.
 
 For the conditional validation method below, beating a valid separable-class
 cost lower bound is sufficient on the calibration confidence event; failing
