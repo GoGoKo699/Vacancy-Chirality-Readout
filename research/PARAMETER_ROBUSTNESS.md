@@ -262,11 +262,11 @@ $$
 The passive lower bound uses $I(1/10)=97600/38907$ and prior information
 $1600\pi^2/3<16000/3$. An independent-trial separation also holds for
 every integer $4000\le n\le4000000$. To check this whole interval, put
-$b=0.000114682$, $v_*=0.328887$, $I_*=775/297$, and $J_*=4000/3$.
+$b=0.000114682$, $v_{\ast}=0.328887$, $I_{\ast}=775/297$, and $J_{\ast}=4000/3$.
 The desired strict inequality follows from negativity of
 
 $$
-q(n)=b^2I_*n^2+(b^2J_*+v_*I_*-1)n+v_*J_*.
+q(n)=b^2I_{\ast}n^2+(b^2J_{\ast}+v_{\ast}I_{\ast}-1)n+v_{\ast}J_{\ast}.
 $$
 
 This quadratic is convex. The exact checker proves $q(4000)<-128$ and
@@ -417,12 +417,12 @@ $$
 For $s_2=e_1^T(I+B)$, the first entry has absolute value at most $1+r$.
 Its second entry obeys $|B_{12}|=r_0|E_{12}|\le\ell_1$; applying the
 classical $L^2$ triangle inequality proves (16) with the feature covariance
-retained. The exact inverse row $w_*=e_1^TM^{-1}$ has second moment at most
+retained. The exact inverse row $w_{\ast}=e_1^TM^{-1}$ has second moment at most
 the joint bound $T_{\rm joint}$. Since
-$s_j-w_*=-e_1^TB^j(I-B)^{-1}$ and $b<1$,
+$s_j-w_{\ast}=-e_1^TB^j(I-B)^{-1}$ and $b<1$,
 
 $$
-\|s_j-w_*\|\le\frac{rb^{j-1}}{1-b},\qquad
+\|s_j-w_{\ast}\|\le\frac{rb^{j-1}}{1-b},\qquad
 V_j=\left[\sqrt{T_{\rm joint}}
 +\sqrt H\frac{rb^{j-1}}{1-b}\right]^2\quad(j=3,4)
 \qquad\text{(17)}

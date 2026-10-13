@@ -250,19 +250,19 @@ $|\theta|<\sqrt3/8$. For a separable POVM write
 $$
 p_y(\theta)=q_y(1+\theta b_y),\qquad
 b_y=\frac{32}{3}a_y,\qquad
-|b_y|\le b_*:=\frac43,\qquad\sum_yq_yb_y=0.
+|b_y|\le b_{\ast}:=\frac43,\qquad\sum_yq_yb_y=0.
 $$
 
 For fixed $\theta$, the function
-$f(b)=b^2/(1+\theta b)$ is convex on $[-b_*,b_*]$, since
+$f(b)=b^2/(1+\theta b)$ is convex on $[-b_{\ast},b_{\ast}]$, since
 $f''(b)=2/(1+\theta b)^3>0$. It lies below the line joining its
 endpoint values. Averaging that line and using $\sum_yq_yb_y=0$ gives
 
 $$
 F(\theta)=\sum_y\frac{q_yb_y^2}{1+\theta b_y}
-\le\frac12\left(\frac{b_*^2}{1+\theta b_*}
-                 +\frac{b_*^2}{1-\theta b_*}\right)
-=\frac{b_*^2}{1-b_*^2\theta^2}.
+\le\frac12\left(\frac{b_{\ast}^2}{1+\theta b_{\ast}}
+                 +\frac{b_{\ast}^2}{1-\theta b_{\ast}}\right)
+=\frac{b_{\ast}^2}{1-b_{\ast}^2\theta^2}.
 $$
 
 Condition on each preceding record in an adaptive protocol. The same
@@ -270,7 +270,7 @@ per-copy inequality applies to its next POVM, and each conditional score
 has mean zero. The total Fisher information therefore obeys
 
 $$
-F_N(\theta)\le\frac{N b_*^2}{1-b_*^2\theta^2}.
+F_N(\theta)\le\frac{N b_{\ast}^2}{1-b_{\ast}^2\theta^2}.
 $$
 
 Known reference preparations carry no additional Fisher information about
@@ -325,7 +325,7 @@ $$
 \mathbb E_{\pi_a}\mathbb E_\theta
 [(\widehat\theta-\theta)^2]
 \ge
-\frac1{N b_*^2/(1-b_*^2a^2)+\pi^2/a^2}.
+\frac1{N b_{\ast}^2/(1-b_{\ast}^2a^2)+\pi^2/a^2}.
 $$
 
 The likelihood is a product of conditional factors affine in $\theta$
@@ -349,13 +349,13 @@ If the risk is at most $\varepsilon^2$ uniformly, rearranging gives
 
 $$
 N\ge\left(\varepsilon^{-2}-\frac{\pi^2}{a^2}\right)
-       \frac{1-b_*^2a^2}{b_*^2}.
+       \frac{1-b_{\ast}^2a^2}{b_{\ast}^2}.
 $$
 
-The right side is maximized at $a^2=\pi\varepsilon/b_*$.
+The right side is maximized at $a^2=\pi\varepsilon/b_{\ast}$.
 This lies strictly inside the physical interval precisely when
 $\varepsilon<1/(16\pi)$. Substitution gives
-$N\ge(1/(b_*\varepsilon)-\pi)^2$, proving the boxed bound.
+$N\ge(1/(b_{\ast}\varepsilon)-\pi)^2$, proving the boxed bound.
 
 ### Comparing a finite calibration certificate fairly
 

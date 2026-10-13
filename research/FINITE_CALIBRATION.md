@@ -296,7 +296,7 @@ distinct tasks, and a promised common dynamical model changes the comparison.
 Suppose the reference means instead estimate $\widetilde M=M+E$, while the
 target channel has $M_t=M+F$, with $\|E\|\le e$, $\|F\|\le d$. Reference
 preparation errors are fixed across the three independent stages and lie in
-the same three-spin orbital embedding. Set $C=B-E$, $q_*=b+e$. The expected
+the same three-spin orbital embedding. Set $C=B-E$, $q_{\ast}=b+e$. The expected
 weights are now $s'_4=e_1^T(I+C+C^2+C^3)$, and
 
 $$
@@ -306,21 +306,21 @@ $$
 Define
 
 $$
-S'_4=1+(r+e)(1+q_*+q_*^2),\qquad
-\beta_*=h\left[(r+e)q_*^3+S'_4(e+d)\right].
+S'_4=1+(r+e)(1+q_{\ast}+q_{\ast}^2),\qquad
+\beta_{\ast}=h\left[(r+e)q_{\ast}^3+S'_4(e+d)\right].
 $$
 
-Then $\|s'_4\|\le S'_4$ and the bias is at most $\beta_*$.
+Then $\|s'_4\|\le S'_4$ and the bias is at most $\beta_{\ast}$.
 To propagate moment bounds, use
 
 $$
 S_1^0=1,\quad S_j^0=1+r\sum_{k=0}^{j-2}b^k\ (j\ge2),\qquad
-\delta_1=0,\quad \delta_{j+1}=q_*\delta_j+eS_j^0,
+\delta_1=0,\quad \delta_{j+1}=q_{\ast}\delta_j+eS_j^0,
 $$
 
 $$
 V'_j=(\sqrt{V_j}+\sqrt H\,\delta_j)^2,\qquad
-c'_1=0,\quad c'_{j+1}=q_*^2c'_j+\frac{80}{N_j}(V'_j+Hc'_j).
+c'_1=0,\quad c'_{j+1}=q_{\ast}^2c'_j+\frac{80}{N_j}(V'_j+Hc'_j).
 $$
 
 Here $\|s'_j-s_j\|\le\delta_j$ follows by induction; the $L^2$ triangle
@@ -331,18 +331,18 @@ Mean-response drift alone does not control second moments. Also assume
 
 $$
 \sup_\rho\left\|\mathbb E_{\rho,t}ZZ^T-
-\mathbb E_{\rho,\mathrm{cal}}ZZ^T\right\|\le t_*.
+\mathbb E_{\rho,\mathrm{cal}}ZZ^T\right\|\le t_{\ast}.
 $$
 
 The exact risk decomposition and $\mathrm{Tr}K'_4\le2c'_4$ give
 
 $$
 \boxed{R\le
-\frac{V'_4+Hc'_4+t_*[(S'_4)^2+2c'_4]}n
-+h^2(\mu+d)^2c'_4+\beta_*^2.}
+\frac{V'_4+Hc'_4+t_{\ast}[(S'_4)^2+2c'_4]}n
++h^2(\mu+d)^2c'_4+\beta_{\ast}^2.}
 $$
 
-With $e=0.000081$, $d=0.00002$, $t_*=0.001$, stages of 2 million,
+With $e=0.000081$, $d=0.00002$, $t_{\ast}=0.001$, stages of 2 million,
 20 million, and 200 million references and $n=384{,}220$ give
 $R<9.999754581\times10^{-7}$.
 For $K=16{,}800$, the total is 6,676,896,000 preparations, below the fixed

@@ -213,7 +213,7 @@ $$
 Writing $D=wC/K$, direct minimization gives
 
 $$
-\boxed{b_*=
+\boxed{b_{\ast}=
 \frac{\sqrt D}{\sqrt V+\sqrt D},\qquad
 \mathrm{cost}_{\min}\simeq
 \frac{(\sqrt V+\sqrt D)^2}{\varepsilon^2}.}
