@@ -12,7 +12,7 @@ $$
 
 The two spin components have identical hopping and interactions. All four bonds are equal, and there is no spin-dependent potential. The full fixed-three-particle space has dimension 120; W has eigenvalues 0,1,3. Let P project onto all 32 no-double-occupancy configurations. Let V embed the eight spin states into the particular occupancy pattern (0,1,1,1), and S=VV†. The accepted Kraus operator is
 
-$$K_{U,\Phi}(t)=V^\dagger e^{-itH_U}V. \tag{1}$$
+$$K_{U,\Phi}(t)=V^\dagger e^{-itH_U}V. \qquad\text{(1)}$$
 
 This definition presumes an ideal spin-preserving projection onto that occupancy pattern. Checking only that site 0 is empty is insufficient at finite U. The returned spins remain at sites 1,2,3. All other outcomes terminate the trial; no state-preservation claim is made for rejected configurations. An unread detector channel that resolves or dephases internal spins would change (1).
 
@@ -26,7 +26,7 @@ Write tau=Jt and u=U/J. Let K∞ denote the hard-core return operator at the sam
 
 $$
 \boxed{\|K_{U,\Phi}(t)-K_{\infty,\Phi}(t)\|\le
-\epsilon_u(\tau):=\min\{2,20\sqrt3\,\tau/u\}.} \tag{2}
+\epsilon_u(\tau):=\min\{2,20\sqrt3\,\tau/u\}.} \qquad\text{(2)}
 $$
 
 This deliberately conservative estimate is uniform over input spin states, including arbitrary external reference systems. It holds at every time, though it becomes uninformative when tau/u is large. It is not an optimal required U/J.
@@ -35,7 +35,7 @@ This deliberately conservative estimate is uniform over input spin states, inclu
 
 On the full three-boson space, ||T||<=6J: the one-body four-ring hopping has norm at most 2J, and there are three bosons. In P the vacancy graph has weighted degree two, so ||PTP||<=2J. Put B=QTP, Q=I−P. Direct counting of the two-hop paths gives
 
-$$\|B\|^2\le12J^2,\qquad \|TP\|^2=\|(PTP)^2+B^\dagger B\|\le16J^2. \tag{3}$$
+$$\|B\|^2\le12J^2,\qquad \|TP\|^2=\|(PTP)^2+B^\dagger B\|\le16J^2. \qquad\text{(3)}$$
 
 For clarity, the counting bound can be established at zero flux. The nonnegative matrix B†B/J² has row sum exactly 12 for every hard-core basis configuration. For spins around the three occupied sites, the diagonal contribution is 8 for three equal spins, 6 for an equal neighboring pair and an opposite third spin, and 4 for alternating spins along the occupied segment. The off-diagonal contributions are respectively 4,6,8. A flux can only reduce the absolute value of each entry relative to its zero-flux path sum. The maximum absolute row sum is consequently at most 12. The [finite-repulsion checker](../source/check_finite_repulsion.py) reproduces this with exact integer products of the squared one-hop occupation factors; no numerical spectral maximum is needed for (3).
 
@@ -50,7 +50,7 @@ $$U\|Qe^{-itH_U}\psi\|\le U\|We^{-itH_U}\psi\|
 
 This yields the all-time leakage bound
 
-$$\boxed{\|Qe^{-itH_U}P\|\le\min\{1,10J/U\}.} \tag{4}$$
+$$\boxed{\|Qe^{-itH_U}P\|\le\min\{1,10J/U\}.} \qquad\text{(4)}$$
 
 The low-space equation differs from evolution under A=PTP by the forcing B†Qe^{-itH_U}P. Duhamel and (3)–(4) give
 
@@ -63,11 +63,11 @@ Compressing further with V proves (2). All spaces are finite, so no domain or pa
 
 Define the trace-nonincreasing success map Kcal_U(rho)=K_U rho K_U†. Then
 
-$$\boxed{\|\mathcal K_U-\mathcal K_\infty\|_\diamond\le2\epsilon_u.} \tag{5}$$
+$$\boxed{\|\mathcal K_U-\mathcal K_\infty\|_\diamond\le2\epsilon_u.} \qquad\text{(5)}$$
 
 This follows by adding and subtracting K∞rho K_U† and using that both Kraus operators are contractions, also after tensoring an identity reference map. If failure is represented by a terminal classical flag and its spin state is discarded, the complete trace-preserving flagged instrument satisfies
 
-$$\boxed{\|\mathfrak I_U-\mathfrak I_\infty\|_\diamond\le\min\{2,4\epsilon_u\}.} \tag{6}$$
+$$\boxed{\|\mathfrak I_U-\mathfrak I_\infty\|_\diamond\le\min\{2,4\epsilon_u\}.} \qquad\text{(6)}$$
 
 The failure functional's difference is bounded by ||K_U†K_U−K∞†K∞||<=2epsilon_u. Equation (6) does not compare the unretained physical states of failed bosons.
 
@@ -75,7 +75,7 @@ For any specified possibly reference-entangled input, let p0 and pU be its ideal
 
 $$|\sqrt{p_U}-\sqrt{p_0}|\le\epsilon_u,\qquad
 \boxed{D(\rho_U^{\mathrm{succ}},\rho_0^{\mathrm{succ}})
-\le\min\{1,\epsilon_u/\sqrt{p_0}\}.} \tag{7}$$
+\le\min\{1,\epsilon_u/\sqrt{p_0}\}.} \qquad\text{(7)}$$
 
 The conditional statement requires pU>0. In particular epsilon_u<sqrt(p0) guarantees that. To prove the sharper distance bound, the distance from x to the complex line spanned by y is at most ||x−y||. Dividing by ||x|| bounds the sine of the pure-state angle by epsilon_u/sqrt(p0); tracing the purification cannot increase trace distance. This avoids treating a normalized conditional map as a linear channel or silently assuming a favorable acceptance probability.
 
@@ -101,7 +101,7 @@ The swap convention makes ||D||=sqrt3 and ||chi||=sqrt3/4. D is an imbalance of 
 
 For one fixed time, define positive-chirality-labeled K+=K_{U,−2pi/3} and K−=K_{U,+2pi/3}, E±=K±†K±. At **every U and time** in the declared uniform model,
 
-$$\boxed{E_+(t)-E_-(t)=g_U(t)\chi+h_U(t)D.} \tag{8}$$
+$$\boxed{E_+(t)-E_-(t)=g_U(t)\chi+h_U(t)D.} \qquad\text{(8)}$$
 
 No other spin operator can occur in this difference. The real coefficients are exactly defined by the Hilbert–Schmidt projections onto chi and D, which are orthogonal.
 
@@ -129,7 +129,7 @@ M=\begin{pmatrix}g_1&h_1\\g_2&h_2\end{pmatrix}.
 Whenever DetM=g1 h2−g2 h1 is nonzero, the exact identity is
 
 $$\boxed{\langle\chi\rangle=
-\frac{h_2d_1-h_1d_2}{g_1h_2-g_2h_1}=w_1d_1+w_2d_2.} \tag{9}$$
+\frac{h_2d_1-h_1d_2}{g_1h_2-g_2h_1}=w_1d_1+w_2d_2.} \qquad\text{(9)}$$
 
 It holds for every unknown spin state, including a subsystem of a larger entangled state. It uses two times times two flux signs—four occupancy measurement configurations. No measurement of D, spin rotation, or controlled-SWAP is needed during these runs. One observes frequencies on independent copies; this is not a single-shot chirality assignment.
 
@@ -139,7 +139,7 @@ The nonsingularity condition is not only a numerical possibility. At the fixed f
 
 $$
 g_u(\tau)=4\sqrt3\,\tau^4+O_u(\tau^6),\qquad
-h_u(\tau)=\sqrt3\left(\frac{7u}{72}+\frac{u^3}{2520}\right)\tau^9+O_u(\tau^{11}). \tag{11}
+h_u(\tau)=\sqrt3\left(\frac{7u}{72}+\frac{u^3}{2520}\right)\tau^9+O_u(\tau^{11}). \qquad\text{(11)}
 $$
 
 Here g and h are functions of dimensionless time tau=Jt. Reciprocity implies g is even and h is odd in time. The displayed coefficients are exact finite path sums, not floating-point fits. For two durations tau=s and tau=2s, the determinant in (9) consequently obeys
@@ -182,7 +182,7 @@ The numerical u=16 example gives a numerator 1.0329363…. This is a worst-case 
 
 Calibration is not assumed cost-free. If the implemented contrasts have operator errors ||Delta E_i−(g_i chi+h_i D)||<=b_i, then the reconstructed expectation has systematic error at most
 
-$$\boxed{|w_1|b_1+|w_2|b_2.} \tag{10}$$
+$$\boxed{|w_1|b_1+|w_2|b_2.} \qquad\text{(10)}$$
 
 Parameter uncertainty, asymmetric bonds, or imperfect readout must be included in those budgets. Knowing that a device is SU(2)-invariant is insufficient to know g_i,h_i. The finite Hamiltonian, timing, and measurement must be known or independently characterized; no hidden spin-resolved calibration apparatus is granted here. If g_i,h_i estimates have errors, an additional budget |Delta g_i|sqrt3/4+|Delta h_i|sqrt3 can be used in (10).
 

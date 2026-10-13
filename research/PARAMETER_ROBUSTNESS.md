@@ -22,7 +22,7 @@ integer/rational certificate supplies
 $$
 \|T_a\|<v=0.3287,\quad |X_a|<A=1.623,\qquad
 \|T_D\|<v_D=646,\quad |X_D|<A_D=194.
-\tag{1}
+\qquad\text{(1)}
 $$
 
 Neither score is asserted to be globally optimal. Their exact definitions,
@@ -56,7 +56,7 @@ $\|S\mathcal V'\|\le\sqrt v+A\eta$. Consequently
 $$
 \boxed{\epsilon_a(\eta)=2\sqrt v\,\eta+A\eta^2,\qquad
 Q_a(\eta)=(\sqrt v+A\eta)^2,}
-\tag{2}
+\qquad\text{(2)}
 $$
 
 where the first quantity bounds the first-moment operator error and the
@@ -96,7 +96,7 @@ $$
 X_{\rm corrected}=
 \frac{X_a-\dfrac{y}{1+w}X_D}
 {1+x-\dfrac{yz}{1+w}}.
-\tag{3}
+\qquad\text{(3)}
 $$
 
 Its first moment is exactly $\chi$. For every input state, the classical
@@ -107,7 +107,7 @@ $$
 \boxed{\|T_{\rm corrected}\|\le
 \left[\frac{\sqrt{Q_a}+\dfrac{Y}{1-W}\sqrt{Q_D}}
 {\kappa}\right]^2.}
-\tag{4}
+\qquad\text{(4)}
 $$
 
 The [exact-arithmetic checker](check_parameter_robustness.py) encloses all
@@ -145,7 +145,7 @@ paths returning to the occupied-input subspace give
 $$
 J^\dagger H^2J=J^\dagger T_\phi^2J
 =6I+2(P_{12}+P_{23}),\qquad \|HJ\|=\sqrt{10}.
-\tag{5}
+\qquad\text{(5)}
 $$
 
 The six directed occupied-input hops contribute the identity terms; the
@@ -158,7 +158,7 @@ the derivative of $e^{-itH}J$ therefore gives
 $$
 \|[e^{-i(\tau+\delta\tau)H}-e^{-i\tau H}]J\|
 \le\sqrt{10}|\delta\tau|.
-\tag{6}
+\qquad\text{(6)}
 $$
 
 For $u>0$, energy conservation on the same embedded input gives
@@ -174,7 +174,7 @@ repulsion path at duration $\pi$, consequently yields
 $$
 \|[e^{-i\pi H_{u,\phi}}-e^{-i\pi H_{16,\phi}}]J\|
 \le\pi(\sqrt{10}+\|T_\phi\|)|\log(u/16)|.
-\tag{7}
+\qquad\text{(7)}
 $$
 
 The four-mode single-particle hopping eigenvalues are
@@ -199,7 +199,7 @@ $$
 \boxed{\|\mathcal V'-\mathcal V\|\le\Delta
 =1.643|u-16|+3.163|\tau-\pi|
 +4.086|\phi+2\pi/3|.}
-\tag{8}
+\qquad\text{(8)}
 $$
 
 The ideal parity measurement is the same in both dilations, and appending
@@ -245,7 +245,7 @@ $$
 \boxed{\sup_\rho\mathbb E_\rho
 (\widehat\chi-\langle\chi\rangle_\rho)^2
 \le\frac{v_\eta}{n}+\beta_\eta^2.}
-\tag{9}
+\qquad\text{(9)}
 $$
 
 Indeed each score variance is at most $v_\eta$, the variances add, and
@@ -256,7 +256,7 @@ $\beta_\eta<0.000114682$. For $n=100000$ this gives
 $$
 R_{\rm fixed}<3.302022\times10^{-6},\qquad
 R_{\rm passive}>3.903384\times10^{-6}.
-\tag{10}
+\qquad\text{(10)}
 $$
 
 The passive lower bound uses $I(1/10)=97600/38907$ and prior information
@@ -283,7 +283,7 @@ has absolute value at most $\beta_\eta$. The $L^2$ triangle inequality gives
 $$
 R_{\rm history}\le
 \left(\sqrt{v_\eta/n}+\beta_\eta\right)^2.
-\tag{11}
+\qquad\text{(11)}
 $$
 
 At the same $\eta=10^{-4}$ and $n=100000$, this is below
@@ -330,14 +330,14 @@ respectively, and their all-input second moments satisfy
 
 $$
 e_i=\epsilon_i+3C_i z^2+A_iR_b(1+3z^2)+3A_iR_cz,
-\tag{12}
+\qquad\text{(12)}
 $$
 
 $$
 N_i=\frac{e^{3\lambda}}\alpha
 \left[Q_i+R_bA_i^2+3z^2(1+R_b)A_i^2
 +(3z+z^3)R_cA_i^2\right].
-\tag{13}
+\qquad\text{(13)}
 $$
 
 Indeed the noise mean error is measured relative to the perturbed clean
@@ -391,13 +391,13 @@ For $B=I-M$, triangle inequalities give
 $$
 \|B\|\le b=1-r_{\min}+r_{\min}c,\qquad
 \|e_1^TB\|\le r=1-r_{\min}+r_{\min}\ell_1,
-\tag{14}
+\qquad\text{(14)}
 $$
 
 $$
 \|M\|\le\mu=1+c,\qquad
 \sup_\rho\mathbb E_\rho\|Z\|^2\le H=N_a+N_D/16.
-\tag{15}
+\qquad\text{(15)}
 $$
 
 The first two bounds use the maximum of $1-r_0+r_0c$ and
@@ -411,7 +411,7 @@ Their first two second-moment bounds are
 $$
 V_1=N_a,\qquad
 V_2=\left[(1+r)\sqrt{N_a}+\ell_1\sqrt{N_D/16}\right]^2.
-\tag{16}
+\qquad\text{(16)}
 $$
 
 For $s_2=e_1^T(I+B)$, the first entry has absolute value at most $1+r$.
@@ -425,7 +425,7 @@ $$
 \|s_j-w_*\|\le\frac{rb^{j-1}}{1-b},\qquad
 V_j=\left[\sqrt{T_{\rm joint}}
 +\sqrt H\frac{rb^{j-1}}{1-b}\right]^2\quad(j=3,4)
-\tag{17}
+\qquad\text{(17)}
 $$
 
 bounds the remaining moments. The inverse row is used only to prove these
@@ -489,7 +489,7 @@ $$
 \eta\le\int_0^\pi
 \left[3\|\delta h(s)\|+
 \frac{\sqrt{10}+3\sqrt3}{16}\varepsilon(s)\right]ds.
-\tag{18}
+\qquad\text{(18)}
 $$
 
 For uniform bounds $\|\delta h(s)\|\le d$ and
@@ -497,7 +497,7 @@ $\varepsilon(s)\le e$, this gives the sufficient budget
 
 $$
 \boxed{\eta\le9.429d+1.643e.}
-\tag{19}
+\qquad\text{(19)}
 $$
 
 Both flux branches must obey the bound. Equations (18)–(19) feed the
@@ -510,7 +510,7 @@ any trial. Suppose the actual input $\sigma$ obeys
 
 $$
 \tfrac12\|\sigma-J\rho J^\dagger\|_1\le\delta
-\tag{20}
+\qquad\text{(20)}
 $$
 
 uniformly over the intended unknown spin state $\rho$. The common input
@@ -531,7 +531,7 @@ independent preparations and trials,
 $$
 \boxed{R_n\le\frac{v_\eta+A^2\delta}{n}
 +(\beta_\eta+2A\delta)^2.}
-\tag{21}
+\qquad\text{(21)}
 $$
 
 For $\eta=\delta=10^{-4}$ and $n=100000$, exact arithmetic verifies
@@ -539,7 +539,7 @@ For $\eta=\delta=10^{-4}$ and $n=100000$, exact arithmetic verifies
 $$
 R_n<3.484473\times10^{-6}
 <3.903384\times10^{-6}<R_{\rm passive}.
-\tag{22}
+\qquad\text{(22)}
 $$
 
 This is a worst-case finite-MSE comparison with the same passive lower bound
@@ -549,7 +549,7 @@ conditional on every preceding history. The martingale argument instead gives
 $$
 R_n\le\left[\sqrt{\frac{v_\eta+A^2\delta}{n}}
 +\beta_\eta+2A\delta\right]^2.
-\tag{23}
+\qquad\text{(23)}
 $$
 
 The numerical separation in (22) is asserted only for independent trials.
