@@ -65,6 +65,8 @@ def main():
         "complete_parity_certificate_pass": False,
         "channel_calibration_pass": False,
         "calibration_cost_pass": False,
+        "passive_parity_pass": False,
+        "finite_calibration_pass": False,
         "canonical_reports_byte_identical": False,
         "source_integrity_pass": False,
         "research_inputs_unchanged": False,
@@ -74,16 +76,22 @@ def main():
         "complete_parity_certificate_groups": 0,
         "channel_calibration_groups": 0,
         "calibration_cost_groups": 0,
+        "passive_parity_groups": 0,
+        "finite_calibration_groups": 0,
         "source_verifier_returncode": None,
         "complete_parity_diagnostics_returncode": None,
         "complete_parity_certificate_returncode": None,
         "channel_calibration_returncode": None,
         "calibration_cost_returncode": None,
+        "passive_parity_returncode": None,
+        "finite_calibration_returncode": None,
         "source_receipt": "source-run/RECEIPT.json",
         "complete_parity_diagnostics_report": "complete-parity-diagnostics.json",
         "complete_parity_certificate_report": "complete-parity-certificate.json",
         "channel_calibration_report": "channel-calibration.json",
         "calibration_cost_report": "calibration-cost.json",
+        "passive_parity_report": "passive-parity.json",
+        "finite_calibration_report": "finite-calibration.json",
         "source_checks": {},
         "errors": [],
     }
@@ -131,13 +139,19 @@ def main():
             ("complete_parity_certificate", "parity_certificate.py"),
             ("channel_calibration", "check_channel_calibration.py"),
             ("calibration_cost", "check_calibration_cost.py"),
+            ("passive_parity", "check_passive_parity.py"),
+            ("finite_calibration", "check_finite_calibration.py"),
         ):
             try:
                 report_path = output / receipt[f"{suite}_report"]
+                command = [sys.executable, "-B", str(ROOT / "research" / script),
+                           "--output", str(report_path)]
+                if suite == "finite_calibration":
+                    command.extend(["--certificate", str(
+                        output / receipt["complete_parity_certificate_report"])])
                 with report_path.with_suffix(".log").open("xb") as log:
                     run = subprocess.run(
-                        [sys.executable, "-B", str(ROOT / "research" / script),
-                         "--output", str(report_path)],
+                        command,
                         cwd=ROOT, env=env, stdout=log, stderr=subprocess.STDOUT,
                         timeout=600,
                     )
@@ -151,6 +165,11 @@ def main():
                     groups = report.get("scientific_groups", 0)
                     receipt[f"{suite}_groups"] = groups
                     report_pass = report.get("status") == "PASS" and groups == 3
+                elif suite in ("passive_parity", "finite_calibration"):
+                    groups = report.get("scientific_groups", 0)
+                    receipt[f"{suite}_groups"] = groups
+                    expected_groups = 4 if suite == "passive_parity" else 2
+                    report_pass = report.get("status") == "PASS" and groups == expected_groups
                 else:
                     report_pass = report.get("certificate") == (
                         "PASS: exact integer and rational enclosures; no floating arithmetic"
@@ -184,13 +203,13 @@ def main():
     receipt["total_scientific_groups"] = sum(receipt[name] for name in (
         "preserved_scientific_groups", "complete_parity_diagnostic_groups",
         "complete_parity_certificate_groups", "channel_calibration_groups",
-        "calibration_cost_groups",
+        "calibration_cost_groups", "passive_parity_groups", "finite_calibration_groups",
     ))
     receipt["scientific_assertions_pass"] = all(receipt[name] for name in (
         "preserved_assertions_pass", "complete_parity_diagnostics_pass",
         "complete_parity_certificate_pass", "channel_calibration_pass",
-        "calibration_cost_pass",
-    )) and receipt["total_scientific_groups"] == 27
+        "calibration_cost_pass", "passive_parity_pass", "finite_calibration_pass",
+    )) and receipt["total_scientific_groups"] == 33
     receipt["source_integrity_pass"] = all(checks.get(name) is True for name in (
         "before_matches_manifest", "after_matches_manifest", "manifest_unchanged",
         "snapshot_unchanged", "archived_source_unchanged",

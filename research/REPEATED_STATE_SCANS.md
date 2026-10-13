@@ -6,6 +6,12 @@ three-spin state and then applies the same calibrated vacancy-hopping and
 parity measurement. This account states when calibration reuse yields a
 valid resource comparison; it does not establish a measured time advantage.
 
+The [finite polynomial calibration](FINITE_CALIBRATION.md) now supplies a
+separate unconditional comparison with the passive four-mode class, including
+all reference copies and bounded preparation error and drift. The conditional
+validation method and separable-comparator examples below remain distinct:
+their numerical budgets must not be transferred between scores or methods.
+
 ## 1. What must remain fixed across the scan
 
 At the start of readout every target must have the orbital embedding
@@ -92,9 +98,22 @@ It is not an attained implementation. Turning that count into a cost bound
 for the entire separable class requires either equal costs for all target
 copies or an independently justified lower bound $c_S$ on their cost.
 Copy counts alone do not establish a bound on every apparatus's wall time.
-Beating a valid class cost lower bound is sufficient for the stated
-comparison on the calibration confidence event; failing to beat that bound
-does not establish that every actual separable implementation is faster.
+
+For the passive four-mode class, the [product-prior argument](FINITE_CALIBRATION.md)
+allows adaptive allocation across independently specified target tasks and
+gives a necessary expected total of
+$K(38907/97600)(\varepsilon^{-2}-1600\pi^2/3)$ copies when this is positive.
+At RMSE $0.001$, the per-task real bound is greater than $396538.952$.
+Round the total once for a fixed integer budget; rounding each task separately
+would not be justified for random adaptive allocations. The unconditional
+native examples count all three reference stages, but still require enough
+distinct tasks within one epoch satisfying the specified stability bounds.
+
+For the conditional validation method below, beating a valid separable-class
+cost lower bound is sufficient on the calibration confidence event; failing
+to beat that bound does not establish that every actual separable
+implementation is faster. The polynomial method instead uses unconditional
+risk and the passive-class comparison just described.
 
 Product references share much of the native experimental cycle. If
 

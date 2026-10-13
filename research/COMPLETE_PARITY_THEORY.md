@@ -154,8 +154,9 @@ as an upper bound, but need not attain it because of its extra subtraction.
 The mixed-input optimum need not minimize $\|T\|$. If worst-case variance
 is the design objective, minimize the maximum of the three positive
 quadratic forms $t_j=\sum_pa_p^2\operatorname{Tr}(\Pi_jB_p)/\operatorname{rank}\Pi_j$
-subject to $Aa=e$. No such further optimization is needed for the stated
-score or its bound.
+subject to $Aa=e$. The [certificate](CERTIFICATE.md) supplies a feasible
+score designed for this objective, separately from the mixed-input score;
+it does not assert global minimax optimality of the numerical design.
 
 ## 5. Two-outcome rank certificate and deterministic stability
 
@@ -221,12 +222,21 @@ residual budget, not a claim that the two-observable identity still holds.
 
 ## 6. Numerical example and physical scope
 
+At $u=16,\tau=\pi$, the [integer/rational certificate](CERTIFICATE.md)
+constructs a worst-case-oriented score with $\|T\|<0.328697776905$.
+Its defining rational coordinates and exact two-coordinate correction are
+recorded in the certificate. The [passive parity theorem](PASSIVE_PARITY_BOUND.md)
+proves the lower bound $13/32$ for the declared four-mode passive class,
+and finite minimax inequalities that permit biased and adaptive estimators.
+This score and the following mixed-input score solve different design
+problems; their error budgets are tracked separately.
+
 At $u=16,\tau=\pi$, [the finite-model implementation](complete_parity.py)
 gives mixed-input coefficient $0.28489549420$ and randomized worst-case
 coefficient $0.38915626391$ for the mixed-input optimal score. Those decimals
 are floating-point diagnostics.
 
-The independent [integer/rational certificate](CERTIFICATE.md) instead starts
+For the mixed-input objective, the independent certificate starts
 from exact rational reference scores and applies an exact two-outcome
 calibration correction. This feasible score is certified to satisfy
 $\|T\|<0.389156263913$, with mixed-input coefficient in
@@ -253,7 +263,7 @@ singleton scores. The [noise budget](NOISE_BUDGET.md) treats this distinction,
 survival normalization, parity-bit confusion, and calibration errors.
 No successful-trial postselection is used in the estimator or variance.
 
-For a stable spin-invariant, reflection-related noisy instrument, [direct channel calibration](CHANNEL_CALIBRATION.md) reconstructs its complete response from three product references. This route includes lower-particle-number aliases and detector confusion in the calibrated effect itself. Exact coefficients give exact unbiasedness; independent validation controls finite-calibration error.
+For a stable spin-invariant, reflection-related noisy instrument, [direct channel calibration](CHANNEL_CALIBRATION.md) reconstructs its complete response from three product references. This route includes lower-particle-number aliases and detector confusion in the calibrated effect itself. Exact coefficients give exact unbiasedness; independent validation controls finite-calibration error. The worst-case-oriented score retains $\|T\|<0.366461$ under exact full-channel recalibration throughout the specified noise window. A separate [finite polynomial calibration](FINITE_CALIBRATION.md), using the analytical window as prior information, supplies an unconditional risk and total-preparation comparison from two product-reference types.
 
 This result changes the terminal use of recorded parity images. The
 return event's retained-state operation and its coherence requirements
