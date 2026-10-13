@@ -90,14 +90,14 @@ two on the remaining support and define $G=AQ^{-1}A^T$. The unique
 minimum-second-moment score is
 
 $$
-\boxed{a_*=Q^{-1}A^TG^{-1}e,\qquad
+\boxed{a_{\ast}=Q^{-1}A^TG^{-1}e,\qquad
 n\mathrm{Var}_{I_8/8}(\widehat\chi)=e^TG^{-1}e.}
 $$
 
 **Proof.** At this input, the mean is zero and the second moment is
 $a^TQa$. Lagrange multipliers for $Aa=e$ give $Qa=A^T\lambda$ and
 $G\lambda=e$. Positivity of $Q$ proves strict convexity and uniqueness.
-For any feasible $a_*+z$, $Az=0$, and the excess cost is exactly $z^TQz$.
+For any feasible $a_{\ast}+z$, $Az=0$, and the excess cost is exactly $z^TQz$.
 
 This also optimizes over arbitrary real scores on the same equally
 randomized two-flux measurement, not just scores initially constrained to be
@@ -108,7 +108,7 @@ $\sum_pq_p(s_p^2+a_p^2)$. Setting $s=0$ preserves feasibility and removes
 a nonnegative cost. This statement concerns calibrated unbiased linear
 estimators for this fixed measurement, not arbitrary physical measurements.
 
-Moreover $q^Ta_*=\mathbf1^TA^TG^{-1}e=0$. Consequently the displayed
+Moreover $q^Ta_{\ast}=\mathbf1^TA^TG^{-1}e=0$. Consequently the displayed
 mixed-input variance is unchanged if exactly $n/2$ trials are allocated
 to each flux, using one half of the difference of the two sample means.
 For general inputs fixed equal allocation has variance coefficient

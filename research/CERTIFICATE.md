@@ -573,21 +573,21 @@ Since the $F_p$ form a POVM, changing scores changes the second-moment operator
 by at most $\max_p|b_p^2-(b_p^0)^2|$. The checker adds the bound
 $2|b_p^0|\,|\delta b_p|+|\delta b_p|^2$ for the two corrected outcomes.
 
-For an effect perturbation bounded by $b_*$, duality between trace norm and
+For an effect perturbation bounded by $b_{\ast}$, duality between trace norm and
 operator norm gives
 
 $$
-|\delta c_p|\le4b_*/\sqrt3,\qquad
-|\delta d_p|\le b_*/\sqrt3.
+|\delta c_p|\le4b_{\ast}/\sqrt3,\qquad
+|\delta d_p|\le b_{\ast}/\sqrt3.
 $$
 
 The reference-score second moment changes by at most
-$b_*\sum_p(b_p^0)^2$. Applying the same interval determinant and correction
+$b_{\ast}\sum_p(b_p^0)^2$. Applying the same interval determinant and correction
 formulas proves the effect-neighborhood result. For uniform-ring parameter
 changes, the sufficient effect bound used in the parameter box is
 
 $$
-b_*\le6|\delta\tau|
+b_{\ast}\le6|\delta\tau|
 +\frac32\tau_{\max}(|\delta u|+|\delta\Phi|).
 $$
 

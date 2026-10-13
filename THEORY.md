@@ -69,7 +69,7 @@ The real coefficients are the Hilbert–Schmidt projections onto the orthogonal 
 
 **Proof.** Collective spin rotations commute with the dynamics and occupancy projection. Their three-qubit commutant is the five-dimensional span of $I,P_{12},P_{23},P_{13},\chi$ [EW01](REFERENCES.md). Spatial reflection fixes the vacancy and return pattern, exchanges sites 1 and 3, and reverses the flux. Hence $K_-=RK_+R$, and the effect difference is odd under $R$. The odd Hermitian subspace is precisely the span of $\chi$ and $D$.
 
-Reciprocity also gives $K_-=K_+^T$ in the real occupation basis, but it does not imply $E_-=E_+^*$ for a nonnormal return operator. The $D$ term generally survives. Reflection-symmetric scalar imperfections preserve the symmetry argument with recalibrated coefficients; arbitrary finite-$U$ scalar disorder need not do so.
+Reciprocity also gives $K_-=K_+^T$ in the real occupation basis, but it does not imply $E_-=E_+^{\ast}$ for a nonnormal return operator. The $D$ term generally survives. Reflection-symmetric scalar imperfections preserve the symmetry argument with recalibrated coefficients; arbitrary finite-$U$ scalar disorder need not do so.
 
 Measure independent input copies at durations $t_1,t_2$ and both flux signs. Let $d_i=p_{i,+}-p_{i,-}$ and
 
