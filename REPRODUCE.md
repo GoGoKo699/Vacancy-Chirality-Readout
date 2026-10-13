@@ -1,6 +1,6 @@
 # Reproduce the results
 
-The root verifier runs all 16 preserved scientific groups, four complete-parity numerical cross-checks, one independent integer/rational certificate, three channel-calibration cross-checks, three calibration-cost cross-checks, four passive-parity cross-checks, and two finite-calibration checks. It verifies the bytes and membership of the preserved research package before and after execution, and records hashes of the current verification code.
+The root verifier runs all 16 preserved scientific groups, four complete-parity numerical cross-checks, one independent integer/rational certificate, three channel-calibration cross-checks, three calibration-cost cross-checks, five passive-parity cross-checks, two finite-calibration checks, and three parameter-robustness checks. It verifies the bytes and membership of the preserved research package before and after execution, and records hashes of the current verification code.
 
 ## Run
 
@@ -19,12 +19,13 @@ The new exact certificate can also run independently using only the Python stand
 python research/parity_certificate.py --output ../parity-certificate/certificate.json
 ```
 
-## Thirty-three scientific check groups
+## Thirty-seven scientific check groups
 
 | Groups | Implementation | Coverage |
 |---:|---|---|
-| 4 | [Passive-parity cross-checks](research/check_passive_parity.py) | Three-mode blindness; four-mode Fisher information and local prerotations; constructive identifiability; finite-risk constants and the matched passive ring |
+| 5 | [Passive-parity cross-checks](research/check_passive_parity.py) | Three-mode blindness; four-mode Fisher information and local prerotations; constructive identifiability; finite-risk constants and the matched passive ring; six- through nine-mode Fourier-and-splitter construction |
 | 2 | [Finite-calibration checks](research/check_finite_calibration.py) | Exact dependency-bound unconditional risk and total counts; preparation and drift extension |
+| 3 | [Parameter-robustness checks](research/check_parameter_robustness.py) | Exact-response correction; physical parameter budgets; fixed-score finite MSE, with nominal-certificate dependency checks |
 | 3 | [Calibration-cost cross-checks](research/check_calibration_cost.py) | Exact moments against the numerical model; confidence-box propagation; biased separable information/prior bound; finite counts, full-cycle cost, stability, and matched-channel pooling |
 | 3 | [Channel-calibration cross-checks](research/check_channel_calibration.py) | Product-reference identities; full noisy-effect reconstruction; calibrated mean and variance; a symmetry-breaking counterexample |
 | 4 | [Complete-parity cross-checks](research/check_complete_parity.py) | Physical opposite-flux effects, exact reconstruction identities checked numerically, symmetry-block variance, separable benchmark attainment, and loss/detector probability budgets |
@@ -55,16 +56,24 @@ The underlying statistical and direct-sum statements are proved in that
 document. To run this checker separately, supply both `--certificate` and
 `--output` with the corresponding absolute report paths.
 
+The [parameter-robustness checker](research/check_parameter_robustness.py) also
+reads the nominal exact certificate from the same run and records its hash.
+Rational arithmetic verifies the moment inputs, recalibration bounds, weighted
+parameter constants, and finite-risk comparisons. The operator perturbation
+and statistical proofs are in [PARAMETER_ROBUSTNESS.md](research/PARAMETER_ROBUSTNESS.md).
+Its three groups remain distinct from the loss and finite-reference checks;
+passing them does not combine their separate perturbation allowances.
+
 ## Read the output
 
-The root `RECEIPT.json` separates scientific assertions, new certificate completion, preserved-report byte identity, and input integrity. Overall `status: PASS` requires all 33 groups to succeed, the preserved reports to remain byte-identical, and both preserved-source and current-code integrity checks to pass.
+The root `RECEIPT.json` separates scientific assertions, certificate completion, preserved-report byte identity, and input integrity. Overall `status: PASS` requires all 37 groups to succeed, the preserved reports to remain byte-identical, and both preserved-source and current-code integrity checks to pass.
 
-The old numerical evidence remains under `source-run/`, with wrapper output in `source-verifier.log`. Diagnostic, channel-calibration, calibration-cost, exact-certificate, passive-parity, and finite-calibration reports and logs are written alongside it. The receipt gives their paths, return codes, and current-code hashes.
+The preserved numerical evidence is written under `source-run/`, with wrapper output in `source-verifier.log`. Diagnostic, channel-calibration, calibration-cost, exact-certificate, passive-parity, finite-calibration, and parameter-robustness reports and logs are written alongside it. The receipt gives their paths, return codes, and current-code hashes.
 
 A different numerical-library environment can change floating-point report bytes while leaving scientific assertions true. Inspect the separate fields and recorded differences in that case; preserve the original evidence. Floating-point agreement supplements the proofs. Only the specifically enclosed quantities in the exact certificates have validated numerical intervals. No verifier certifies laboratory parameters.
 
 ## Recorded verification
 
-The [passive-separation integration receipt](verification/PASSIVE_SEPARATION_RECEIPT.json) records **PASS** for all 33 groups. The [exact-certificate report](verification/complete-parity-certificate.json) retains the mixed-input results and adds the improved score, noise windows, and finite-calibration inputs. The [numerical cross-check report](verification/complete-parity-diagnostics.json) checks both scores independently in the full 120-state model. The [passive-parity report](verification/passive-parity.json) and [finite-calibration report](verification/finite-calibration.json) record the new theorem cross-checks and unconditional finite examples. The [channel-calibration report](verification/channel-calibration.json) and [calibration-cost report](verification/calibration-cost.json) retain the distinct three-reference and conditional-validation checks. These reports were copied from the same completed external verification run; the receipt records its code hashes and the finite report binds its exact-certificate dependency by hash.
+The [fixed-resource verification receipt](verification/FIXED_RESOURCE_RECEIPT.json) records **PASS** for all 37 groups. The [exact-certificate report](verification/complete-parity-certificate.json) supplies both scores, noise windows, and finite-calibration inputs. The [numerical cross-check report](verification/complete-parity-diagnostics.json) checks both scores independently in the full 120-state model. The [passive-parity report](verification/passive-parity.json), [finite-calibration report](verification/finite-calibration.json), and [parameter-robustness report](verification/parameter-robustness.json) record the measurement-class comparisons and their distinct finite guarantees. The [channel-calibration report](verification/channel-calibration.json) and [calibration-cost report](verification/calibration-cost.json) cover the three-reference and conditional-validation methods. These reports come from the same completed external verification run; the receipt records code hashes, and both dependent exact checkers bind their nominal certificate by hash.
 
-The earlier [27-group receipt](verification/COMPLETE_PARITY_RECEIPT.json) and [16-group receipt](verification/RECEIPT.json) remain historical evidence for their recorded code versions. The imported scientific reports remain byte-identical under Python **3.12.14**, NumPy **2.3.5**, and SciPy **1.17.0**. The [import manifest](source/IMPORT_MANIFEST.json) still covers all 79 incoming files, including the original root manifest. No preserved report or source file is regenerated in place.
+The [33-group](verification/PASSIVE_SEPARATION_RECEIPT.json), [27-group](verification/COMPLETE_PARITY_RECEIPT.json), and [16-group](verification/RECEIPT.json) receipts retain evidence for their recorded code versions. The imported scientific reports remain byte-identical under Python **3.12.14**, NumPy **2.3.5**, and SciPy **1.17.0**. The [import manifest](source/IMPORT_MANIFEST.json) covers all 79 incoming files, including the original root manifest. No preserved report or source file is regenerated in place.

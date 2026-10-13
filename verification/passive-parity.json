@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "scientific_groups": 4,
+  "scientific_groups": 5,
   "groups": {
     "compression_and_three_modes": {
       "max_permutation_vs_fock_error": 3.971877329048234e-16,
@@ -47,6 +47,75 @@
       "max_ring_vs_full_bosonic_model_error": 2.8600156080155335e-15,
       "nominal_noninteracting_ring_is_blind": true,
       "scope": "Rational finite-risk constants; ring formulas checked against the independent full bosonic implementation."
+    },
+    "extra_vacuum_mode_constructions": {
+      "constructions": [
+        {
+          "total_spatial_modes": 6,
+          "splitter_arms": [
+            2,
+            2,
+            2
+          ],
+          "randomized_cyclic_assignments": 3,
+          "full_spinful_fock_dimension": 364,
+          "informative_survival_exact": "1/2",
+          "worst_case_variance_coefficient_exact": "3/8",
+          "max_completeness_error": 3.6815604378883737e-16,
+          "first_moment_operator_error": 6.119571420875471e-17,
+          "second_moment_operator_error": 1.7462434672615005e-16,
+          "informative_effect_operator_error": 2.4271575332514284e-16
+        },
+        {
+          "total_spatial_modes": 7,
+          "splitter_arms": [
+            3,
+            2,
+            2
+          ],
+          "randomized_cyclic_assignments": 3,
+          "full_spinful_fock_dimension": 560,
+          "informative_survival_exact": "5/9",
+          "worst_case_variance_coefficient_exact": "27/80",
+          "max_completeness_error": 1.4070721026941876e-15,
+          "first_moment_operator_error": 9.655216083619263e-18,
+          "second_moment_operator_error": 1.8910364186617547e-16,
+          "informative_effect_operator_error": 2.8565008773758696e-16
+        },
+        {
+          "total_spatial_modes": 8,
+          "splitter_arms": [
+            3,
+            3,
+            2
+          ],
+          "randomized_cyclic_assignments": 3,
+          "full_spinful_fock_dimension": 816,
+          "informative_survival_exact": "11/18",
+          "worst_case_variance_coefficient_exact": "27/88",
+          "max_completeness_error": 7.64548443127398e-16,
+          "first_moment_operator_error": 3.916986048068169e-16,
+          "second_moment_operator_error": 4.979920388377329e-16,
+          "informative_effect_operator_error": 7.979769487686356e-16
+        },
+        {
+          "total_spatial_modes": 9,
+          "splitter_arms": [
+            3,
+            3,
+            3
+          ],
+          "randomized_cyclic_assignments": 3,
+          "full_spinful_fock_dimension": 1140,
+          "informative_survival_exact": "2/3",
+          "worst_case_variance_coefficient_exact": "9/32",
+          "max_completeness_error": 2.4424906541753444e-15,
+          "first_moment_operator_error": 1.1706272150509036e-15,
+          "second_moment_operator_error": 6.614461887275795e-16,
+          "informative_effect_operator_error": 1.5561225989446728e-15
+        }
+      ],
+      "scope": "Exact rational coefficients and full bosonic operator cross-checks; all trials are counted, with zero scores on unresolved events. Extra vacuum modes lie outside the four-mode lower-bound class. No minimal-mode or global-optimality claim."
     }
   }
 }

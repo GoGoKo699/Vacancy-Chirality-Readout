@@ -1,6 +1,6 @@
 # Vacancy Chirality Readout
 
-**An interacting chirality readout that beats passive four-mode parity measurements.**
+**Interactions improve chirality-readout precision at fixed spatial and detector resources.**
 
 Three spin-½ bosons occupy three sites of a four-site ring. Spin-independent hopping and interactions in an imposed flux convert their scalar spin chirality into site-parity statistics. At $U/J=16$, one duration $Jt=\pi$ and two opposite fluxes reconstruct the chirality of an arbitrary input spin state. A universal bound on passive four-mode interferometers, followed by the same detector, makes the improvement from this interacting readout quantitative. Every prepared copy contributes to the estimate.
 
@@ -22,23 +22,34 @@ $$
 \boxed{\sup_\rho n\operatorname{Var}(\widehat\chi)<0.328697776905<\frac{13}{32}.}
 $$
 
-The [passive-measurement theorem](research/PASSIVE_PARITY_BOUND.md) proves the lower bound $13/32=0.40625$ for **every spin-independent passive four-mode interferometer followed by complete total-site parity detection**. It permits independent local spin rotations before mixing, randomized and adaptive settings across fresh copies, and all universally unbiased estimators. The native upper bound is over 19.1% below this lower bound. The passive bound is not claimed to be tight. Extra spatial modes, intermediate measurements, interleaved spin controls, and stronger detectors define different resource classes.
+The [passive-measurement theorem](research/PASSIVE_PARITY_BOUND.md) proves the lower bound $13/32=0.40625$ for **every spin-independent passive four-mode interferometer followed by complete total-site parity detection**. It permits independent local spin rotations before mixing, randomized and adaptive settings across fresh copies, and all universally unbiased estimators. The native upper bound is about 19.1% below this lower bound. The passive bound is not claimed to be tight. Extra spatial modes, intermediate measurements, interleaved spin controls, and stronger detectors define different resource classes.
 
 The same proof gives finite worst-case mean-square-error bounds for **arbitrary, possibly biased estimators**. With exact channel calibration, the interacting readout beats the passive minimax risk for every $n\ge12{,}000$, even throughout the modeled equal-loss and independent bit-error window below.
 
 | Interacting readout | Certified worst-case variance coefficient |
 |---|---:|
 | Ideal model, exactly calibrated score | $<0.328698$ |
+| Parameter budget $\Delta\le0.0025$, ideal parity, exact response calibration | $<0.394825$ |
+| Parameter budget $\Delta\le0.0015$, ideal parity, exact response calibration | $<0.366081$ |
 | Independent bit errors $q\le0.03$, no loss, known $q$ | $<0.382273$ |
 | Equal-rate loss $\gamma t\le0.01$, independent bit errors $q\le0.003$, exact full-channel calibration | $<0.366461$ |
 
-The loss and detector rates specify analytical models, not measured apparatus performance. Full-channel calibration uses two known product preparations to determine the mean response, without separately known noise rates. A third preparation determines its second moment within the spin and reflection symmetry class; see [direct channel calibration](research/CHANNEL_CALIBRATION.md).
+The [parameter-robustness theorem](research/PARAMETER_ROBUSTNESS.md) uses
+
+$$
+\Delta=1.643|u-16|+3.163|\tau-\pi|+4.086|\Phi_++2\pi/3|,
+\qquad \Phi_-=-\Phi_+.
+$$
+
+Both flux settings use the same $u$ and $\tau$. The smaller region also beats the passive minimax risk for every $n\ge12{,}000$, allowing biased passive estimators. Each table row is a separate guarantee; parameter variation is not combined with the loss window or finite-reference calibration budget. The theorem also bounds the finite MSE of the fixed nominal score under generic symmetry-breaking perturbations.
+
+These control and noise bounds are analytical assumptions, not measured apparatus performance. Full-channel calibration uses two known product preparations to determine the mean response, without separately known noise rates. A third preparation determines its second moment within the spin and reflection symmetry class; see [direct channel calibration](research/CHANNEL_CALIBRATION.md).
 
 The [finite-calibration theorem](research/FINITE_CALIBRATION.md) includes reference randomness and preparation costs in an unconditional risk bound. Its independent-stage polynomial correction has a concrete total-preparation advantage after sufficient reuse, with extensions to bounded preparation error and drift. The sufficient reference and reuse counts are large. A [repeated chirality scan](research/REPEATED_STATE_SCANS.md) specifies the stability, cycle-cost, and parallel-channel assumptions needed to interpret such reuse physically.
 
-The mode restriction has an operational meaning: three-mode passive parity measurements cannot identify chirality at all, while one extra vacuum mode makes passive identification possible. Interactions improve precision within that four-mode setting. The separate [separable-effects benchmark](research/SEPARABLE_BENCHMARK.md) has tight unbiased coefficient $9/16$. Number-resolved Fourier readout and ancilla-controlled circuits provide stronger measurement resources; their established results and the interaction-enabled cyclic-parity precedent are credited in [References](REFERENCES.md).
+The mode restriction has an operational meaning: three-mode passive parity measurements cannot identify chirality at all, while one extra vacuum mode makes passive identification possible. Interactions improve precision within that four-mode setting. With **eight spatial modes**, a [passive Fourier-and-splitter construction](research/PASSIVE_PARITY_BOUND.md) attains coefficient $27/88\simeq0.306818$, below the current interacting score, using the same type of parity detector on more outputs. This locates the resource boundary; it does not prove that eight modes are necessary. The separate [separable-effects benchmark](research/SEPARABLE_BENCHMARK.md) has tight unbiased coefficient $9/16$. Established cyclic-readout and interaction-enabled parity precedents are credited in [References](REFERENCES.md).
 
-A complementary [return-only reconstruction](THEORY.md#3-exact-finite-repulsion-reconstruction), using two durations and two fluxes, has a general existence proof for every fixed finite $U/J>0$. The two-setting passive separation is certified at the stated Hamiltonian point. Separate parameter neighborhoods are certified for the mixed-input score's comparison with $9/16$; they do not establish passive separation throughout those neighborhoods.
+A complementary [return-only reconstruction](THEORY.md#3-exact-finite-repulsion-reconstruction), using two durations and two fluxes, has a general existence proof for every fixed finite $U/J>0$. A separate mixed-input score and its own neighborhoods address the $9/16$ comparison. The primary score's passive-separation region is the $\Delta$ region above.
 
 ## What the detector must do
 
@@ -60,6 +71,7 @@ For known particle number at most three, parity pattern $0111$ is exactly occupa
 | [Passive parity bound](research/PASSIVE_PARITY_BOUND.md) | Three-mode impossibility, four-mode Fisher bound, constructions, and finite risk with arbitrary estimators |
 | [Separable measurement benchmark](research/SEPARABLE_BENCHMARK.md) | Tight lower bound, adaptive measurements, and scope |
 | [Exact certificate](research/CERTIFICATE.md) | Validated finite-repulsion performance and sufficient neighborhoods |
+| [Parameter robustness](research/PARAMETER_ROBUSTNESS.md) | Primary-score parameter regions, exact recalibration, and fixed-score finite MSE |
 | [Direct channel calibration](research/CHANNEL_CALIBRATION.md) | Three product references, unknown noise rates, and finite-sample validation |
 | [Calibration cost and reuse](research/CALIBRATION_COST.md) | Reference counts, finite biased-estimator comparison, confidence, and amortization |
 | [Finite calibration theorem](research/FINITE_CALIBRATION.md) | Independent-stage correction, unconditional risk, total preparation counts, and preparation/drift tolerances |
