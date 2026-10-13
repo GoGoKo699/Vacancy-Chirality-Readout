@@ -19,11 +19,11 @@ primary score and $X_D$ the exactly corrected auxiliary score for
 $D=P_{12}-P_{23}$. Their nominal first moments are $\chi$ and $D$, and the
 integer/rational certificate supplies
 
-$$
+```math
 \|T_a\|<v=0.3287,\quad |X_a|<A=1.623,\qquad
 \|T_D\|<v_D=646,\quad |X_D|<A_D=194.
 \qquad\text{(1)}
-$$
+```
 
 Neither score is asserted to be globally optimal. Their exact definitions,
 rather than the displayed rounded score decimals, determine the identities.
@@ -35,29 +35,29 @@ equal-probability flux register, and let $S$ be its fixed Hermitian score
 operator. Thus the first moment is $\mathcal V^\dagger S\mathcal V$ and
 the second moment is $\mathcal V^\dagger S^2\mathcal V$. Suppose
 
-$$
+```math
 \|S\|\le A,\qquad \|S\mathcal V\|\le\sqrt v,
 \qquad \|\mathcal V'-\mathcal V\|\le\eta.
-$$
+```
 
 The two isometries must use a common output space and the same score
 operator; this is an explicit dilation-distance assumption. Write
 $E=\mathcal V'-\mathcal V$. Expanding the first moment gives
 
-$$
+```math
 \mathcal V'^\dagger S\mathcal V'-\mathcal V^\dagger S\mathcal V
 =E^\dagger S\mathcal V+\mathcal V^\dagger SE+E^\dagger SE.
-$$
+```
 
 The first two terms each have norm at most $\eta\sqrt v$ and the third
 at most $A\eta^2$. The triangle inequality also gives
 $\|S\mathcal V'\|\le\sqrt v+A\eta$. Consequently
 
-$$
+```math
 \boxed{\epsilon_a(\eta)=2\sqrt v\,\eta+A\eta^2,\qquad
 Q_a(\eta)=(\sqrt v+A\eta)^2,}
 \qquad\text{(2)}
-$$
+```
 
 where the first quantity bounds the first-moment operator error and the
 second bounds the perturbed second-moment norm. Substituting $(v_D,A_D)$
@@ -70,45 +70,45 @@ Assume the perturbed measurement remains spin independent and that its two
 settings are exact spatial reflections. As in the complete-parity theory,
 the odd first moments then have the form
 
-$$
+```math
 A_a'=(1+x)\chi+yD,\qquad A_D'=z\chi+(1+w)D.
-$$
+```
 
 For $h=\sqrt3/4$, the identities
 $\chi^2=h^2\Pi_{\rm m}$, $D^2=16h^2\Pi_{\rm m}$, and
 $\{\chi,D\}=0$ imply
 $\|r\chi+sD\|=h\sqrt{r^2+16s^2}$. Equation (2) therefore implies
 
-$$
+```math
 |x|\le X=\epsilon_a/h,\quad |y|\le Y=\epsilon_a/(4h),\quad
 |z|\le Z=\epsilon_D/h,\quad |w|\le W=\epsilon_D/(4h).
-$$
+```
 
 If $W<1$ and
 
-$$
+```math
 \kappa=1-X-\frac{YZ}{1-W}>0,
-$$
+```
 
 the response matrix is invertible. Using its exact true coefficients, report
 
-$$
+```math
 X_{\rm corrected}=
 \frac{X_a-\dfrac{y}{1+w}X_D}
 {1+x-\dfrac{yz}{1+w}}.
 \qquad\text{(3)}
-$$
+```
 
 Its first moment is exactly $\chi$. For every input state, the classical
 $L^2$ triangle inequality bounds the second moment of its numerator;
 the denominator has absolute value at least $\kappa$. Thus
 
-$$
+```math
 \boxed{\|T_{\rm corrected}\|\le
 \left[\frac{\sqrt{Q_a}+\dfrac{Y}{1-W}\sqrt{Q_D}}
 {\kappa}\right]^2.}
 \qquad\text{(4)}
-$$
+```
 
 The [exact-arithmetic checker](check_parameter_robustness.py) encloses all
 square roots and verifies these consequences of (1)–(4):
@@ -142,11 +142,11 @@ $\phi=\Phi_+$ and $\phi_0=-2\pi/3$.
 There is no double occupancy initially, so $WJ=0$. The two-step hopping
 paths returning to the occupied-input subspace give
 
-$$
+```math
 J^\dagger H^2J=J^\dagger T_\phi^2J
 =6I+2(P_{12}+P_{23}),\qquad \|HJ\|=\sqrt{10}.
 \qquad\text{(5)}
-$$
+```
 
 The six directed occupied-input hops contribute the identity terms; the
 two occupied nearest-neighbor bonds each supply the two exchange paths.
@@ -155,37 +155,37 @@ most two and equals two on the symmetric spin subspace, establishing the
 last equality. For a duration change at fixed Hamiltonian, integrating
 the derivative of $e^{-itH}J$ therefore gives
 
-$$
+```math
 \|[e^{-i(\tau+\delta\tau)H}-e^{-i\tau H}]J\|
 \le\sqrt{10}|\delta\tau|.
 \qquad\text{(6)}
-$$
+```
 
 For $u>0$, energy conservation on the same embedded input gives
 
-$$
+```math
 \|W e^{-isH_{u,\phi}}J\|
 \le\frac{\sqrt{10}+\|T_\phi\|}{u}.
-$$
+```
 
 Duhamel's formula for the derivative in $u$, integrated along the
 repulsion path at duration $\pi$, consequently yields
 
-$$
+```math
 \|[e^{-i\pi H_{u,\phi}}-e^{-i\pi H_{16,\phi}}]J\|
 \le\pi(\sqrt{10}+\|T_\phi\|)|\log(u/16)|.
 \qquad\text{(7)}
-$$
+```
 
 The four-mode single-particle hopping eigenvalues are
 $-2\cos(k+\phi/4)$, $k\in\{0,\pi/2,\pi,3\pi/2\}$.
 On the three-boson space their sums give
 
-$$
+```math
 \|T_\phi\|=6\max(|\cos(\phi/4)|,|\sin(\phi/4)|),\quad
 \|\partial_\phi T_\phi\|=
 \frac32\max(|\cos(\phi/4)|,|\sin(\phi/4)|).
-$$
+```
 
 When $|\phi-\phi_0|\le0.001$, the maximum is at most
 $\sqrt3/2+1/8000$: concavity bounds the cosine, while the sine is at
@@ -195,12 +195,12 @@ For $|u-16|\le0.002$, the logarithm in (7) is at most
 $|u-16|/15.998$. Equations (6)–(7), the flux derivative bound, and
 $\pi<22/7$, $\sqrt{10}<3.163$ prove
 
-$$
+```math
 \boxed{\|\mathcal V'-\mathcal V\|\le\Delta
 =1.643|u-16|+3.163|\tau-\pi|
 +4.086|\phi+2\pi/3|.}
 \qquad\text{(8)}
-$$
+```
 
 The ideal parity measurement is the same in both dilations, and appending
 its outcome register preserves the bound. The two randomized flux branches
@@ -233,31 +233,31 @@ dilation-distance bound. For a common input embedding and parity detector,
 a sufficient Hamiltonian condition at fixed duration is
 $\int\|H'(t)-H(t)\|\,dt\le\eta$, by Duhamel's formula. Define
 
-$$
+```math
 \beta_\eta=2\sqrt{0.3287}\,\eta+1.623\eta^2,\qquad
 v_\eta=(\sqrt{0.3287}+1.623\eta)^2.
-$$
+```
 
 For independent trials, including a deterministic variation of the
 instrument between trials, the sample mean obeys
 
-$$
+```math
 \boxed{\sup_\rho\mathbb E_\rho
 (\widehat\chi-\langle\chi\rangle_\rho)^2
 \le\frac{v_\eta}{n}+\beta_\eta^2.}
 \qquad\text{(9)}
-$$
+```
 
 Indeed each score variance is at most $v_\eta$, the variances add, and
 the average bias has absolute value at most $\beta_\eta$. At
 $\eta=10^{-4}$, one has $v_\eta<0.328887$ and
 $\beta_\eta<0.000114682$. For $n=100000$ this gives
 
-$$
+```math
 R_{\rm fixed}<3.302022\times10^{-6},\qquad
 R_{\rm passive}>3.903384\times10^{-6}.
 \qquad\text{(10)}
-$$
+```
 
 The passive lower bound uses $I(1/10)=97600/38907$ and prior information
 $1600\pi^2/3<16000/3$. An independent-trial separation also holds for
@@ -265,9 +265,9 @@ every integer $4000\le n\le4000000$. To check this whole interval, put
 $b=0.000114682$, $v_{\ast}=0.328887$, $I_{\ast}=775/297$, and $J_{\ast}=4000/3$.
 The desired strict inequality follows from negativity of
 
-$$
+```math
 q(n)=b^2I_{\ast}n^2+(b^2J_{\ast}+v_{\ast}I_{\ast}-1)n+v_{\ast}J_{\ast}.
-$$
+```
 
 This quadratic is convex. The exact checker proves $q(4000)<-128$ and
 $q(4000000)<-17558$, so convexity makes it negative throughout the interval.
@@ -280,11 +280,11 @@ centered score differences as martingale differences. Their average has
 $L^2$ norm at most $\sqrt{v_\eta/n}$, while the average conditional bias
 has absolute value at most $\beta_\eta$. The $L^2$ triangle inequality gives
 
-$$
+```math
 R_{\rm history}\le
 \left(\sqrt{v_\eta/n}+\beta_\eta\right)^2.
 \qquad\text{(11)}
-$$
+```
 
 At the same $\eta=10^{-4}$ and $n=100000$, this is below
 $3.717980\times10^{-6}$ and still below the passive lower bound in (10).
@@ -317,10 +317,10 @@ one- or two-particle dynamics.
 
 Set
 
-$$
+```math
 z=e^\lambda-1,\quad \alpha=(1-q)^4,\quad r_q=\frac q{1-q},\qquad
 R_b=6r_q^2+r_q^4,\quad R_c=4r_q+4r_q^3.
-$$
+```
 
 For $i=a,D$, let $\epsilon_i,Q_i$ be the clean perturbation bounds in (2)
 and use the nominal singleton half-ranges $C_a<1.123$, $C_D<107$ from
@@ -328,17 +328,17 @@ the exact score certificate. Analyze the normalized features
 $Y_i=X_i/(s\alpha)$. Their operator mean errors relative to $\chi,D$,
 respectively, and their all-input second moments satisfy
 
-$$
+```math
 e_i=\epsilon_i+3C_i z^2+A_iR_b(1+3z^2)+3A_iR_cz,
 \qquad\text{(12)}
-$$
+```
 
-$$
+```math
 N_i=\frac{e^{3\lambda}}\alpha
 \left[Q_i+R_bA_i^2+3z^2(1+R_b)A_i^2
 +(3z+z^3)R_cA_i^2\right].
 \qquad\text{(13)}
-$$
+```
 
 Indeed the noise mean error is measured relative to the perturbed clean
 first moment; the triangle inequality adds $\epsilon_i$ to it. The clean
@@ -379,26 +379,26 @@ $x=(\langle\chi\rangle,\langle D\rangle/4)^T$, write
 $\mathbb EZ=Mx$ and $M=r_0(I+E)$, with $r_0=s\alpha$.
 The mean-error norm identity in Section 2 bounds the two rows of $E$ by
 
-$$
+```math
 \ell_1=e_a/h,\qquad \ell_2=e_D/(4h),\qquad
 \|E\|\le c=\sqrt{\ell_1^2+\ell_2^2}.
-$$
+```
 
 Let $r_{\min}=e^{-3\lambda_{\max}}(1-q_{\max})^4$.
 Throughout the smaller joint box $r_0\in[r_{\min},1]$ and $c,\ell_1<1$.
 For $B=I-M$, triangle inequalities give
 
-$$
+```math
 \|B\|\le b=1-r_{\min}+r_{\min}c,\qquad
 \|e_1^TB\|\le r=1-r_{\min}+r_{\min}\ell_1,
 \qquad\text{(14)}
-$$
+```
 
-$$
+```math
 \|M\|\le\mu=1+c,\qquad
 \sup_\rho\mathbb E_\rho\|Z\|^2\le H=N_a+N_D/16.
 \qquad\text{(15)}
-$$
+```
 
 The first two bounds use the maximum of $1-r_0+r_0c$ and
 $1-r_0+r_0\ell_1$ over the interval for $r_0$; the raw second moments
@@ -408,11 +408,11 @@ Define the deterministic polynomial rows
 $s_j=e_1^T\sum_{k=0}^{j-1}B^k$ as in the finite-calibration theorem.
 Their first two second-moment bounds are
 
-$$
+```math
 V_1=N_a,\qquad
 V_2=\left[(1+r)\sqrt{N_a}+\ell_1\sqrt{N_D/16}\right]^2.
 \qquad\text{(16)}
-$$
+```
 
 For $s_2=e_1^T(I+B)$, the first entry has absolute value at most $1+r$.
 Its second entry obeys $|B_{12}|=r_0|E_{12}|\le\ell_1$; applying the
@@ -421,12 +421,12 @@ retained. The exact inverse row $w_{\ast}=e_1^TM^{-1}$ has second moment at most
 the joint bound $T_{\rm joint}$. Since
 $s_j-w_{\ast}=-e_1^TB^j(I-B)^{-1}$ and $b<1$,
 
-$$
+```math
 \|s_j-w_{\ast}\|\le\frac{rb^{j-1}}{1-b},\qquad
 V_j=\left[\sqrt{T_{\rm joint}}
 +\sqrt H\frac{rb^{j-1}}{1-b}\right]^2\quad(j=3,4)
 \qquad\text{(17)}
-$$
+```
 
 bounds the remaining moments. The inverse row is used only to prove these
 deterministic bounds; the finite-reference estimator uses independent
@@ -460,9 +460,9 @@ perturbations, without spin or reflection symmetry of the actual instrument.
 Keep the closed four-orbital, two-internal-level model and duration $\pi$.
 For either nominal flux branch, write
 
-$$
+```math
 H'(s)=H_0+d\Gamma(\delta h(s))+R(s),\qquad H_0=T+16W.
-$$
+```
 
 Here $\delta h(s)$ is a Hermitian one-particle perturbation, including
 spin-dependent hopping or local fields. The second-quantized operator has
@@ -478,27 +478,27 @@ that move a pair between occupation blocks.
 Equation (5), energy conservation, and $\|T\|=3\sqrt3$ at the nominal
 flux give
 
-$$
+```math
 \|W e^{-isH_0}J\|\le\frac{\sqrt{10}+3\sqrt3}{16}.
-$$
+```
 
 In Duhamel's formula, the perturbation acts on this nominal propagation
 and the remaining perturbed propagator is unitary. Consequently
 
-$$
+```math
 \eta\le\int_0^\pi
 \left[3\|\delta h(s)\|+
 \frac{\sqrt{10}+3\sqrt3}{16}\varepsilon(s)\right]ds.
 \qquad\text{(18)}
-$$
+```
 
 For uniform bounds $\|\delta h(s)\|\le d$ and
 $\varepsilon(s)\le e$, this gives the sufficient budget
 
-$$
+```math
 \boxed{\eta\le9.429d+1.643e.}
 \qquad\text{(19)}
-$$
+```
 
 Both flux branches must obey the bound. Equations (18)–(19) feed the
 fixed-nominal-score risks (9) and (11); they do not justify two-feature
@@ -508,10 +508,10 @@ bound dynamical escape into additional orbitals or internal levels.
 Independently, a preparation error can be quantified without discarding
 any trial. Suppose the actual input $\sigma$ obeys
 
-$$
+```math
 \tfrac12\|\sigma-J\rho J^\dagger\|_1\le\delta
 \qquad\text{(20)}
-$$
+```
 
 uniformly over the intended unknown spin state $\rho$. The common input
 space may include additional particle-number sectors; the actual measurement
@@ -528,29 +528,29 @@ $[-A,A]$ and $[0,A^2]$.
 Combining this with the dilation bound on the intended input gives, for
 independent preparations and trials,
 
-$$
+```math
 \boxed{R_n\le\frac{v_\eta+A^2\delta}{n}
 +(\beta_\eta+2A\delta)^2.}
 \qquad\text{(21)}
-$$
+```
 
 For $\eta=\delta=10^{-4}$ and $n=100000$, exact arithmetic verifies
 
-$$
+```math
 R_n<3.484473\times10^{-6}
 <3.903384\times10^{-6}<R_{\rm passive}.
 \qquad\text{(22)}
-$$
+```
 
 This is a worst-case finite-MSE comparison with the same passive lower bound
 as (10). Under history dependence, require both (20) and the dilation bound
 conditional on every preceding history. The martingale argument instead gives
 
-$$
+```math
 R_n\le\left[\sqrt{\frac{v_\eta+A^2\delta}{n}}
 +\beta_\eta+2A\delta\right]^2.
 \qquad\text{(23)}
-$$
+```
 
 The numerical separation in (22) is asserted only for independent trials.
 The metric assumption (20) is not implied by a loading success probability

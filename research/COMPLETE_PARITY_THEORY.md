@@ -19,9 +19,9 @@ Write $u=U/J$, $\tau=Jt$, and fix the first flux at $\Phi=-2\pi/3$.
 Let $Q_p$ be the total-site-parity projector for the four-bit string $p$, and
 define
 
-$$
+```math
 E_p=V^\dagger e^{i\tau H_{u,\Phi}}Q_p e^{-i\tau H_{u,\Phi}}V.
-$$
+```
 
 Here $H$ is dimensionless and $V$ embeds the three input spins at sites
 $1,2,3$, with site $0$ empty. At exactly three particles, the possible parity
@@ -34,9 +34,9 @@ Reflection reverses the flux, so the effect at flux $+2\pi/3$ for the
 comparing the same unreflected bit string generally gives a different effect.
 Define
 
-$$
+```math
 O_p=\frac{E_p-RE_pR}{2},\qquad B_p=\frac{E_p+RE_pR}{2}.
-$$
+```
 
 On every independent preparation, choose either flux with probability $1/2$.
 At flux $-2\pi/3$, report $X=a_p$ on physical pattern $p$; at flux
@@ -49,11 +49,11 @@ three-particle model. The estimator is $\widehat\chi=n^{-1}\sum_{k=1}^nX_k$.
 Set $\chi=\mathbf S_1\cdot(\mathbf S_2\times\mathbf S_3)$,
 $\mathbf S=\boldsymbol\sigma/2$, and $D=P_{12}-P_{23}$. Then
 
-$$
+```math
 O_p=c_p\chi+d_pD,\qquad
 c_p=\frac{\mathrm{Tr}(\chi O_p)}{3/4},\quad
 d_p=\frac{\mathrm{Tr}(D O_p)}{12}.
-$$
+```
 
 **Proof.** Spin-independent evolution and each spin-blind parity projector
 commute with collective spin rotations. Their compressed effects belong to
@@ -66,9 +66,9 @@ orthogonal, with squared norms $3/4$ and $12$, giving the formulas.
 Let $A$ be the $2\times8$ matrix with columns $(c_p,d_p)^T$ and let
 $e=(1,0)^T$. The score is unbiased for every input state if and only if
 
-$$
+```math
 Aa=e.
-$$
+```
 
 Indeed, its first-moment operator is
 $\sum_pa_pO_p=(Aa)_1\chi+(Aa)_2D$.
@@ -89,10 +89,10 @@ so that outcome contains no reconstruction information. Assume $A$ has rank
 two on the remaining support and define $G=AQ^{-1}A^T$. The unique
 minimum-second-moment score is
 
-$$
+```math
 \boxed{a_{\ast}=Q^{-1}A^TG^{-1}e,\qquad
 n\mathrm{Var}_{I_8/8}(\widehat\chi)=e^TG^{-1}e.}
-$$
+```
 
 **Proof.** At this input, the mean is zero and the second moment is
 $a^TQa$. Lagrange multipliers for $Aa=e$ give $Qa=A^T\lambda$ and
@@ -113,11 +113,11 @@ mixed-input variance is unchanged if exactly $n/2$ trials are allocated
 to each flux, using one half of the difference of the two sample means.
 For general inputs fixed equal allocation has variance coefficient
 
-$$
+```math
 \mathrm{Tr}(T\rho)-\langle\chi\rangle_\rho^2
 -\left\langle\sum_pa_pB_p\right\rangle_\rho^2,
 \qquad T=\sum_pa_p^2B_p.
-$$
+```
 
 The randomized protocol instead has coefficient
 $\mathrm{Tr}(T\rho)-\langle\chi\rangle_\rho^2$.
@@ -126,19 +126,19 @@ $\mathrm{Tr}(T\rho)-\langle\chi\rangle_\rho^2$.
 
 For the randomized protocol and any unbiased score,
 
-$$
+```math
 \boxed{\sup_\rho n\mathrm{Var}_\rho(\widehat\chi)=\|T\|.}
-$$
+```
 
 This is an equality, not only a second-moment upper bound.
 Each $B_p$ commutes with collective rotations and $R$. The input space
 decomposes into the spin-$3/2$ symmetric quartet and two spin-$1/2$
 doublets distinguished by the reflection eigenvalue. With
 
-$$
+```math
 \Pi_{\rm s}=\frac{P_{12}+P_{23}+P_{13}}3,\qquad
 \Pi_{{\rm m},\pm}=(I-\Pi_{\rm s})\frac{I\pm R}{2},
-$$
+```
 
 the positive second-moment operator is
 $T=t_{\rm s}\Pi_{\rm s}+t_+\Pi_{{\rm m},+}+t_-\Pi_{{\rm m},-}$.
@@ -187,11 +187,11 @@ $|\Delta_{pq}|$, the rank condition persists throughout that neighborhood.
 For uniform-ring parameter changes, each parity effect obeys the useful
 operator-norm envelope
 
-$$
+```math
 \|\delta E_p\|\le b,
 \quad b=6|\delta\tau|+\frac32\tau_{\max}
 \bigl(|\delta u|+|\delta\Phi|\bigr).
-$$
+```
 
 **Proof.** Write $H=T+uW$. The hopping bound is $\|T\|\le6$,
 $\|\partial_\Phi T\|\le3/2$, and $W$ has spectrum $0,1,3$.
@@ -206,10 +206,10 @@ Integrating along a parameter path proves the envelope.
 When the paired fluxes continue to obey reflection symmetry, the same
 $b$ bounds $\|\delta O_p\|$. Trace duality gives
 
-$$
+```math
 |\delta c_p|\le\frac4{\sqrt3}b,\qquad
 |\delta d_p|\le\frac1{\sqrt3}b.
-$$
+```
 
 Here $\|\chi\|_1=\sqrt3$ and $\|D\|_1=4\sqrt3$.
 These bounds establish deterministic local stability; their conservative

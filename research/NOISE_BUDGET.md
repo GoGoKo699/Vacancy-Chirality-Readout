@@ -30,27 +30,27 @@ At flux $-2\pi/3$, report score $a_p$. At flux $+2\pi/3$, reflect the
 reported string, $r(p)=(p_0,p_3,p_2,p_1)$, and report $-a_{r(p)}$.
 Every reported even-weight string has score zero. The ideal calibration is
 
-$$
+```math
 \frac12\sum_{p\in\mathcal O}a_p
    (E_{+,p}-E_{-,r(p)})=\chi.
-$$
+```
 
 Write $X$ for the resulting per-trial score. All preparations, including
 zero-score trials, count toward the sample size $n$. Define
 
-$$
+```math
 A=\max_{p\in\mathcal O}|a_p|,\qquad
 A_1=\max_{|p|=1}|a_p|,\qquad
 C_1=\frac{\max_{|p|=1}a_p-\min_{|p|=1}a_p}{2}.
-$$
+```
 
 The ideal second-moment operator is
 
-$$
+```math
 T=\frac12\sum_{p\in\mathcal O}a_p^2
         (E_{+,p}+E_{-,r(p)}),\qquad
 Q_0(\rho)=\mathrm{Tr}(T\rho).
-$$
+```
 
 Thus $n\mathrm{Var}(\widehat\chi)=Q_0(\rho)-\langle\chi\rangle^2$
 for randomized flux and ideal calibration. Fixed equal allocations have no
@@ -64,10 +64,10 @@ Assume independent Markovian loss operators
 $L_{j\sigma}=\sqrt\gamma\,b_{j\sigma}$, the same rate for all eight modes,
 no gains, and a number-conserving Hamiltonian. Set
 
-$$
+```math
 \lambda=\gamma t,\quad \eta=e^{-\lambda},\quad
 p_k={3\choose k}\eta^k(1-\eta)^{3-k},\quad s=p_3=\eta^3.
-$$
+```
 
 These number probabilities are independent of the spin input and flux.
 Indeed, taking the trace in each number block of the Lindblad equation gives
@@ -84,11 +84,11 @@ return event's exact rejection of every loss.
 
 For known $\lambda$, use $Y=X/s$. Then
 
-$$
+```math
 \boxed{\left|\mathbb E Y-\langle\chi\rangle\right|
  \le \frac{p_1}{s}C_1
  =3C_1(e^\lambda-1)^2.}
-$$
+```
 
 **Proof.** The three-particle contribution is exactly
 $s\langle\chi\rangle$. For either flux the one-particle sector has trace
@@ -103,10 +103,10 @@ property. Taking $C_1\le A_1\le A$ gives simpler, weaker bounds.
 
 The second moment satisfies
 
-$$
+```math
 \boxed{\mathbb E Y^2\le
 \frac{Q_0(\rho)+3A_1^2(e^\lambda-1)^2}{s}.}
-$$
+```
 
 This follows by bounding the one-particle squared score by $A_1^2$.
 The upper bound divided by $n$ also bounds the variance of the empirical
@@ -120,17 +120,17 @@ classical channel acts on the total site-parity bits at the end of evolution.
 It is invariant under the reflection used to relabel the second flux.
 For strings $p,r$, write
 
-$$
+```math
 K_q(p\mid r)=q^{d(p,r)}(1-q)^{4-d(p,r)},
-$$
+```
 
 where $d$ is Hamming distance. Useful probabilities are
 
-$$
+```math
 \alpha=(1-q)^4,\qquad
 b=6q^2(1-q)^2+q^4,\qquad
 c=4q(1-q)^3+4q^3(1-q).
-$$
+```
 
 Here $\alpha$ is the no-flip probability, $b$ the probability of two or
 four flips, and $c$ the probability of an odd number of flips. Odd true
@@ -140,9 +140,9 @@ $c$.
 
 Use the simple survival-and-no-flip corrected score
 
-$$
+```math
 Y=\frac{X}{s\alpha}.
-$$
+```
 
 The no-flip correction is necessary for the stated quadratic dependence on
 $q$: rejecting a single flipped bit otherwise attenuates the clean signal
@@ -150,13 +150,13 @@ at first order. This correction does not remove every detector error.
 
 Let $z=e^\lambda-1$. A bound valid for every input is
 
-$$
+```math
 \boxed{B_{\rm noise}:=
 3C_1z^2+\frac{Ab}{\alpha}(1+3z^2)
  +\frac{3Ac}{\alpha}z,
 \qquad
 |\mathbb EY-\langle\chi\rangle|\le B_{\rm noise}.}
-$$
+```
 
 Its terms are, respectively, two-loss aliases, wrong odd-to-odd parity labels,
 and one-loss events that an odd number of detector errors makes look odd.
@@ -171,27 +171,27 @@ for both settings. Vacuum events still contribute to the second moment.
 
 Define two explicit functions on the sixteen strings,
 
-$$
+```math
 f(r)=\sum_{p\in\mathcal O}a_pK_q(p\mid r),\qquad
 g(r)=\sum_{p\in\mathcal O}a_p^2K_q(p\mid r).
-$$
+```
 
 For a real function $v$ on a finite set $S$, set
 $\mathrm{osc}_S(v)=(\max_S v-\min_S v)/2$. Use
 $S_1=\{r:|r|=1\}$ and $S_2=\{r:|r|=0\text{ or }2\}$. Then
 
-$$
+```math
 k_3=\mathrm{osc}_{\mathcal O}(f-\alpha a),\qquad
 k_1=\mathrm{osc}_{S_1}(f),\qquad
 k_2=\mathrm{osc}_{S_2}(f)
-$$
+```
 
 give the tighter bound
 
-$$
+```math
 \boxed{|\mathbb EY-\langle\chi\rangle|
 \le\frac{k_3+3z^2k_1+3zk_2}{\alpha}.}
-$$
+```
 
 **Proof.** Condition on particle number. Both fluxes have the same sector
 trace $p_k$. The difference of their conditional expectations of any
@@ -212,32 +212,32 @@ states; the actual loss trajectory need not be reconstructed.
 Set $G_1=\max_{S_1}g$, $G_2=\max_{S_2}g$, and
 $G_0=g(0000)$. A usable second-moment bound is
 
-$$
+```math
 \boxed{\mathbb EY^2\le
 \frac{\alpha Q_0(\rho)+bA^2+3z^2G_1+3zG_2+z^3G_0}
      {s\alpha^2}=:V_{\rm budget}(\rho).}
-$$
+```
 
 For the three-particle term use
 $g(r)\le\alpha a_r^2+bA^2$; use the displayed maxima for the other
 number blocks. Replacing $Q_0(\rho)$ by $\|T\|$ gives an all-input
 bound. If the bias is bounded by $B$, then
 
-$$
+```math
 \mathbb E[(\widehat\chi-\langle\chi\rangle)^2]
 \le V_{\rm budget}(\rho)/n+B^2.
-$$
+```
 
 Thus a small variance alone does not prove lower estimation error at
 arbitrarily large $n$: an unknown systematic bias sets an error floor.
 Independence of the preparations also gives the distribution-free statement
 
-$$
+```math
 \Pr\!\left[
 |\widehat\chi-\langle\chi\rangle|
 >B+\frac{A}{s\alpha}\sqrt{\frac{2\log(2/\delta)}n}
 \right]\le\delta.
-$$
+```
 
 ### Optional exact detector recalibration
 
@@ -263,44 +263,44 @@ norm bound. Work in dimensionless units with
 $H(u,\phi)=T_{\rm hop}(\phi)+uW$ on the complete three-particle sector.
 Here $0\le W\le3I$, $\|T_{\rm hop}\|\le6$, and
 
-$$
+```math
 \|T_{\rm hop}(\phi')-T_{\rm hop}(\phi)\|
 \le12\left|\sin\frac{\phi'-\phi}{8}\right|
 \le\frac32|\phi'-\phi|.
-$$
+```
 
 The hopping estimate follows first on the single-particle ring and then by
 second quantization to three bosons. Subtracting the physically irrelevant
 scalar $3uI/2$ centers the interaction spectrum. Duhamel's formula then
 gives, up to a scalar phase,
 
-$$
+```math
 \|U'-U\|\le\epsilon:=
 \frac32|\tau'u'-\tau u|+6|\tau'-\tau|
  +12|\tau'|\left|\sin\frac{\phi'-\phi}{8}\right|.
-$$
+```
 
 Let $C=(\max_{\mathcal O}a-\min_{\mathcal O}a)/2$. Centering the
 three-particle score observable gives, for potentially different errors in
 the two flux settings,
 
-$$
+```math
 \boxed{B_H\le
 C\,[\min\{1,\epsilon_+\}+\min\{1,\epsilon_-\}].}
-$$
+```
 
 Indeed each setting's score observable has centered norm $C$, its
 conjugation changes by at most $2C\min\{1,\epsilon_\pm\}$, and each
 setting enters with coefficient $1/2$. For common error bounds and
 $u=16,\tau=\pi$, its small-error form is
 
-$$
+```math
 B_H\le2C\left[
 \frac{3\pi}{2}|\delta u|+30|\delta\tau|
 +\frac{3\pi}{2}|\delta\phi|
 +\frac32|\delta\tau|(|\delta u|+|\delta\phi|)
 \right].
-$$
+```
 
 This is a conservative sufficient budget, not a measured apparatus
 sensitivity. All angles are in radians.
@@ -323,20 +323,20 @@ Finally, suppose the implemented normalization is
 $\widehat r=e^{-3\widehat\lambda}(1-\widehat q)^4$, while the true
 clean-event factor is $r=e^{-3\lambda}(1-q)^4$. Then
 
-$$
+```math
 |\mathbb E(X/\widehat r)-\langle\chi\rangle|
 \le |r/\widehat r-1|\,\frac{\sqrt3}{4}
  +(r/\widehat r)(B_{\rm noise}+B_H+\beta_{\rm rec}).
-$$
+```
 
 If $|\lambda-\widehat\lambda|\le d_\lambda$,
 $|q-\widehat q|\le d_q$, and both bit-error rates are at most
 $q_{\max}<1$, one may bound
 
-$$
+```math
 |r/\widehat r-1|\le
 \exp\!\left(3d_\lambda+\frac{4d_q}{1-q_{\max}}\right)-1.
-$$
+```
 
 These formulas require equal, spin-independent loss and the stated bit-error
 channel. Unequal loss, particle gains, correlated readout errors, and a
@@ -349,10 +349,10 @@ For the worst-case-oriented score at $u=16$, $\tau=\pi$, the
 $\|T\|<0.3287$. The formulas above give, uniformly over
 $0\le\lambda\le0.01$, $0\le q\le0.003$,
 
-$$
+```math
 |\mathbb EY-\langle\chi\rangle|<0.001018,\qquad
 \mathbb EY^2<0.344785.
-$$
+```
 
 These are bounds for survival-and-no-flip correction; the bias remains.
 The two-feature full-channel inverse removes that bias under exact
@@ -369,10 +369,10 @@ proves $A<2.337$, $C_1<1.499$, and $\|T\|<0.390$.
 For every $0\le\lambda\le0.01$, $0\le q\le0.003$, and every input,
 known survival-and-no-flip correction then gives
 
-$$
+```math
 |\mathbb EY-\langle\chi\rangle|<0.001430,
 \qquad \mathbb EY^2<0.411.
-$$
+```
 
 These are certified guarantees for the stated equal-loss and independent
 bit-error channels with known rates. To verify uniformity, use

@@ -10,11 +10,11 @@ Label the ring clockwise by j = 0,1,2,3. At a site the hard-core basis is |0>, |
 
 For clarity define the phase for **vacancy** motion, which is opposite to the corresponding atom-motion flux:
 
-$$
+```math
 H_\Phi=-J\sum_{j=0}^3\sum_{\sigma=\uparrow,\downarrow}
 \left[e^{i\Phi/4}|\sigma_j,0_{j+1}\rangle\langle0_j,\sigma_{j+1}|+\mathrm{h.c.}\right].
 \qquad\text{(1)}
-$$
+```
 
 The omitted sites are unchanged, and indices are modulo four. The motion does not rotate or resolve the spin. There is no separate spin-exchange term, particle loss, feedback during evolution, or Hamiltonian chirality term. This is the strict hard-core, exchange-frozen model, not an exact finite-repulsion Hubbard model. Uniform hopping defines the explicit calibrated example; Section 6 permits static spin-blind scalar disorder.
 
@@ -24,23 +24,23 @@ The measurement asks whether the original occupancy pattern has returned. In the
 
 Write
 
-$$
+```math
 C|s_1s_2s_3\rangle=|s_2s_3s_1\rangle,
 \qquad \chi=\mathbf S_1\cdot(\mathbf S_2\times\mathbf S_3),
 \qquad \mathbf S=\boldsymbol\sigma/2.
-$$
+```
 
 A clockwise vacancy circuit makes exactly this cyclic spin permutation. It follows either by tracking the four allowed vacancy hops or by multiplying the corresponding swaps. Since C = P23 P12,
 
-$$
+```math
 C-C^\dagger=4i\chi,\qquad C^3=I. \qquad\text{(2)}
-$$
+```
 
 The phases θ = 0,+2π/3,−2π/3 of C have projectors
 
-$$
+```math
 \Pi_\theta=\tfrac13[I+e^{-i\theta}C+e^{-2i\theta}C^2], \qquad\text{(3)}
-$$
+```
 
 of ranks 4,2,2. The scalar chirality eigenvalues are respectively 0,+√3/4,−√3/4. Denote the latter two projectors Π+,Π−. The θ=0 subspace is the symmetric total-spin-3/2 subspace. The two nonzero chirality sectors each retain a spin-1/2 doublet; selecting one chirality does not prepare a particular spin orientation or a pure W state.
 
@@ -52,42 +52,42 @@ Transport the spin labels along the vacancy's tree path 0→1→2→3. In this b
 
 For uniform hopping, its return amplitude is
 
-$$
+```math
 A(t;f)=\frac14\sum_{n=0}^3
 \exp\!\left[2iJt\cos\frac{2\pi n+f}{4}\right]
 =\frac12\left[\cos\!\left(2Jt\cos\frac f4\right)+
 \cos\!\left(2Jt\sin\frac f4\right)\right]. \qquad\text{(4)}
-$$
+```
 
 This amplitude is real, even in f, and 2π periodic. Therefore the full spin return Kraus operator is
 
-$$
+```math
 K_\Phi(t)=\langle0_{\rm hole}|e^{-itH_\Phi}|0_{\rm hole}\rangle
 =\sum_\theta A(t;\Phi+\theta)\Pi_\theta. \qquad\text{(5)}
-$$
+```
 
 This is an identity for all initial spin states, including mixed states and states entangled with an external spectator. It is not obtained by evaluating a single chosen input.
 
 At τ=Jt=π,
 
-$$
+```math
 A(t;0)=1,\qquad A(t;\pm2\pi/3)=a:=\frac{\cos(\sqrt3\pi)-1}{2}.
-$$
+```
 
 Consequently the two flux settings give
 
-$$
+```math
 K_\pm:=K_{\mp2\pi/3}(\pi/J)=\Pi_\pm+a(I-\Pi_\pm),\qquad
 E_\pm=K_\pm^\dagger K_\pm=rI+(1-r)\Pi_\pm,
 \quad r=a^2. \qquad\text{(6)}
-$$
+```
 
 The plus/minus label denotes **selected chirality**, not flux. Numerically,
 
-$$
+```math
 a=-0.166934538198736\ldots,
 \qquad r=0.0278671400436253\ldots.
-$$
+```
 
 The desired sector returns with probability one. Its internal spin-1/2 state is unchanged. The other sectors return with probability r, not zero: a single return is a filter, **not an exact projective measurement of chirality**. A unitary-evolution-and-position-readout implementation remains quantum coherent; no individual hopping history has been measured.
 
@@ -95,10 +95,10 @@ The desired sector returns with probability one. Its internal spin-1/2 state is 
 
 Let p± be the return frequencies obtained on independently prepared copies using the two flux signs. Then
 
-$$
+```math
 \boxed{\langle\chi\rangle_\rho
 =\frac{\sqrt3}{4(1-r)}(p_+-p_-).} \qquad\text{(7)}
-$$
+```
 
 No two-spin correlator or local magnetization appears in this expression. The distinction between the measurement of an unknown input and heralded state generation matters: Equation (7) concerns ensemble frequencies on copies; it does not assign an exact chirality to every one-shot return.
 
@@ -106,27 +106,27 @@ No two-spin correlator or local magnetization appears in this expression. The di
 
 For input I8/8 and selected positive chirality, the unnormalized output is E+/8. Its success probability and normalized state are
 
-$$
+```math
 p_1=\frac{1+3r}{4},\qquad
 \rho_1=\frac{\Pi_++r(I-\Pi_+)}{2+6r}. \qquad\text{(8)}
-$$
+```
 
 The numerical values are p1=0.270900355032719… and
 
-$$
+```math
 \langle\chi\rangle_{\rho_1}
 =\frac{\sqrt3}{4}\frac{1-r}{1+3r}
 =0.388469291814954\ldots. \qquad\text{(9)}
-$$
+```
 
 **Every biseparable three-qubit state obeys |<χ>|≤1/4.** To prove this, take a product state across 1|23. Rotational invariance allows the first spin's spin-expectation vector to lie along z with length at most 1/2. The two-spin operator S2x S3y−S2y S3x has norm 1/2, giving the bound 1/4. The same holds for either other cut; convexity gives the bound for arbitrary mixtures over cuts. A polarized first spin times (|↑↓>+i|↓↑>)/√2 saturates it. Thus (9) establishes genuine tripartite entanglement, not merely entanglement across one bipartition. The witness and its normalized equivalent in [R23](../REFERENCES.md) are inherited, not a new criterion.
 
 Interestingly, all individual spin marginals are I2/2 and every two-spin marginal is separable. Indeed,
 
-$$
+```math
 \rho_1=w\,\Pi_+/2+(1-w)I_8/8,\qquad
 w=\frac{1-r}{1+3r}.
-$$
+```
 
 SU(2) and cyclic symmetry imply that a pair marginal is the two-qubit Werner state with singlet-mixture parameter w/3≤1/3. Its partial transpose is positive, and it is separable. Thus the generated state has genuine three-spin entanglement even though neither an individual polarization nor pairwise entanglement detects it. This statement concerns this explicit hard-core output, not arbitrary finite-U outputs.
 
@@ -134,17 +134,17 @@ SU(2) and cyclic symmetry imply that a pair marginal is the two-qubit Werner sta
 
 After a successful return, apply the same evolution again and again, retaining a trial only while every readout reports the original vacancy position. Nothing is reinitialized within a surviving trial. With m successful rounds,
 
-$$
+```math
 K_+^m=\Pi_++a^m(I-\Pi_+). \qquad\text{(10)}
-$$
+```
 
 For an arbitrary initial state with q=Tr(Π+ρ), the probability of the entire successful record is q+(1−q)r^m and its target-sector weight is q/[q+(1−q)r^m]. The measurement cannot create target-sector weight from q=0. For I8/8,
 
-$$
+```math
 p_m=\frac{1+3r^m}{4},\qquad
 \rho_m=\frac{\Pi_++r^m(I-\Pi_+)}{2+6r^m},\qquad
 \mathrm{Tr}(\Pi_+\rho_m)=\frac1{1+3r^m}. \qquad\text{(11)}
-$$
+```
 
 | Successful rounds | Total evolution Jt | Total success per original trial | Selected-sector weight |
 |---|---:|---:|---:|
@@ -158,29 +158,29 @@ The success rate tends to 1/4, not to (1/4)^m, because later outcomes act on an 
 
 There is a useful structural control that does not require equal bond magnitudes. Give the four bonds arbitrary fixed real magnitudes Jj and the vacancy arbitrary real onsite potentials vj. Keep a single ring, no particle crossings, no spin dynamics, and a known total vacancy flux Φ. The tree-basis reduction still gives
 
-$$
+```math
 K_\Phi(t)=\sum_\theta A(t;\Phi+\theta)\Pi_\theta,
-$$
+```
 
 where A is now the return amplitude of the corresponding disordered scalar four-site ring. Reciprocity yields Hcharge(−f)=Hcharge(f)^T after a gauge choice, and hence
 
-$$
+```math
 A(t;-f)=A(t;f).
-$$
+```
 
 At Φ=∓2π/3 one therefore still has exactly
 
-$$
+```math
 K_\pm(t)=A(t;0)\Pi_\pm+A(t;2\pi/3)(I-\Pi_\pm). \qquad\text{(12)}
-$$
+```
 
 The return contrast is
 
-$$
+```math
 p_+-p_-=
 \frac4{\sqrt3}\left(|A(t;0)|^2-|A(t;2\pi/3)|^2\right)\langle\chi\rangle.
 \qquad\text{(13)}
-$$
+```
 
 More generally arbitrary opposite nonzero flux settings also isolate χ, with their explicitly calibrated scalar difference. Static spin-blind bond or onsite disorder therefore changes the calibration and filter selectivity, but introduces **no other spin observable** into that flux-reversed difference. This is not a disorder-independent contrast or a topological protection result. The contrast may be small or zero; timing or parameter errors can destroy useful filtering. Time-dependent noncommuting controls do not automatically inherit the transpose argument.
 
@@ -190,11 +190,11 @@ Removing one ring bond is a decisive control: all fluxes become gauge-removable 
 
 To test the assumption carrying the interpretation, separately assemble the finite-U spinful Bose-Hubbard Hamiltonian
 
-$$
+```math
 H_U=-J\sum_{j,\sigma}
 [e^{i\Phi/4}b^\dagger_{j\sigma}b_{j+1,\sigma}+\mathrm{h.c.}]
 +\frac U2\sum_j n_j(n_j-1). \qquad\text{(14)}
-$$
+```
 
 There are three particles in eight spin-orbital modes (four spatial sites and two spin states): its full Hilbert space has dimension C(10,3)=120. The matrix calculation uses that whole sector, with no occupation truncation inside it. In this control the accepted readout is explicitly **(0,1,1,1)**; allowing a doublon and simply calling site 0 vacant would change the measurement. Evolve for π/J with flux +2π/3 and the same maximally mixed spin preparation.
 

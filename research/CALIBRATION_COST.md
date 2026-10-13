@@ -31,9 +31,9 @@ an unstable fitted inverse.
 Let $P$ count pilot reference preparations and let $N_x,N_d,N_0$ count the
 three held-out validation batches. The reference cost is
 
-$$
+```math
 M=P+N_x+N_d+N_0.
-$$
+```
 
 Add any optional fourth-probe batch and all preparations from earlier failed
 attempts. Counting a failed image as a measurement outcome does not remove
@@ -45,16 +45,16 @@ $\beta$ and its final second-moment bound as $U$. These include justified
 preparation and drift allowances. On the validation confidence event,
 independent unknown preparations obey
 
-$$
+```math
 \mathrm{MSE}\le U/n+\beta^2.
-$$
+```
 
 For a desired MSE $\varepsilon^2$ and $\beta<\varepsilon$, the sufficient
 integer target-copy budget is
 
-$$
+```math
 \boxed{n=\left\lceil\frac{U}{\varepsilon^2-\beta^2}\right\rceil.}
-$$
+```
 
 If $\beta\ge\varepsilon$, collecting more target copies does not make this
 certificate meet the requested accuracy. Improve the calibration or its
@@ -66,9 +66,9 @@ If one reference preparation costs $w$ times one target preparation and the
 same valid calibration is used for $K$ target batches, the total weighted
 preparation cost is
 
-$$
+```math
 K n+wM.
-$$
+```
 
 Each batch is a separate estimation task on an arbitrary unknown state,
 with the same per-batch accuracy requirement and no promised relation
@@ -85,18 +85,18 @@ cost is amortized.
 The ideal uniformly randomized six-Pauli estimator is unbiased and has
 worst-case MSE $9/(16n)$. Its sufficient and attained worst-case budget is
 
-$$
+```math
 n_0=\left\lceil\frac9{16\varepsilon^2}\right\rceil.
-$$
+```
 
 For a fixed accepted calibration record, the exact preparation-count
 comparison is $Kn+wM<Kn_0$. If $\Delta_0=n_0-n>0$, its smallest strict
 integer reuse threshold is
 
-$$
+```math
 \boxed{K_{\min,0}=
 \left\lfloor\frac{wM}{\Delta_0}\right\rfloor+1.}
-$$
+```
 
 If $\Delta_0\le0$, that record has no strict advantage under this accounting,
 regardless of reuse. This calculation compares the native certificate with
@@ -107,23 +107,23 @@ The [separable benchmark](SEPARABLE_BENCHMARK.md) also gives a distinct
 necessary target-copy count for arbitrary estimators, including biased ones,
 whose worst-case **unconditional** MSE is at most $\varepsilon^2$:
 
-$$
+```math
 N_{\min}=\left\lceil
 \left(\frac3{4\varepsilon}-\pi\right)^2
 \right\rceil,
 \qquad 0<\varepsilon<\frac1{16\pi}.
-$$
+```
 
 The measurement restriction remains fully separable effects within each
 three-spin copy, with classical adaptation allowed. This lower bound need
 not be attained at finite sample size. Replacing $n_0$ by $N_{\min}$ in
 the preceding integer comparison gives the stricter count condition
 
-$$
+```math
 K_{\min,\mathrm{lb}}=
 \left\lfloor\frac{wM}{N_{\min}-n}\right\rfloor+1,
 \qquad N_{\min}>n.
-$$
+```
 
 Such a count inequality alone does not establish an unconditional
 finite-calibration advantage: the validation confidence and rejection
@@ -139,9 +139,9 @@ certificate is at most $\delta$.
 This is not coverage $1-\delta$ conditional on passing an acceptance gate
 $A$. In general,
 
-$$
+```math
 \Pr(G^c\mid A)\le\frac{\delta}{\Pr(A)},
-$$
+```
 
 which can be much larger when passing is rare. Rejecting a failed validation
 and returning no estimate is abstention; it is not an unconditional estimator
@@ -153,11 +153,11 @@ clips every accepted target estimate to the physical chirality interval
 $[-\sqrt3/4,\sqrt3/4]$. If its accepted good-event MSE is at most
 $\varepsilon^2$, an unconditional bound is
 
-$$
+```math
 \mathrm{MSE}_{\rm total}
 \le\varepsilon^2+\frac34\delta
 +\frac3{16}\Pr(\text{reject}).
-$$
+```
 
 Clipping does not increase squared error for a physical chirality value.
 The additional terms must be budgeted or improved before comparing this
@@ -171,18 +171,18 @@ Let $v_x,v_d$ be the variances of the fixed signed score on the two mean
 reference states and set $L=\log(20/\delta)$. Ignoring only the lower-order
 finite-$N$ terms for planning, the statistical squared bias radius is
 
-$$
+```math
 r_\beta^2\simeq
 \frac{24v_xL}{N_x}+\frac{6v_dL}{N_d}.
-$$
+```
 
 For $M_{\rm mean}=N_x+N_d$, this expression is minimized by
 
-$$
+```math
 N_x:N_d=2\sqrt{v_x}:\sqrt{v_d},\qquad
 r_\beta^2\simeq\frac{C_E}{M_{\rm mean}},\qquad
 C_E=6L(2\sqrt{v_x}+\sqrt{v_d})^2.
-$$
+```
 
 This is an allocation for a confidence radius. Observed residuals, the
 empirical Bernstein finite-$N$ terms, the second-moment certificate, pilot
@@ -192,9 +192,9 @@ large as $\beta_{\rm true}+2r_\beta$, where $\beta_{\rm true}$ is the
 fixed score's actual bias norm. A prospective passing guarantee with a known
 margin requires
 
-$$
+```math
 r_\beta\le(\beta_{\rm target}-\beta_{\rm true})/2.
-$$
+```
 
 Similarly, the reported second-moment upper bound can exceed the true value
 by twice its linear confidence radius. Assuming zero observed residuals
@@ -205,25 +205,25 @@ Suppose the reference budget contributing to the bias allowance is modeled
 as $C/\beta^2$, and set $\beta^2=b\varepsilon^2$. With variance coefficient
 $V$, the leading per-batch weighted cost is
 
-$$
+```math
 \frac1{\varepsilon^2}
 \left[\frac{V}{1-b}+\frac{wC}{Kb}\right].
-$$
+```
 
 Writing $D=wC/K$, direct minimization gives
 
-$$
+```math
 \boxed{b_{\ast}=
 \frac{\sqrt D}{\sqrt V+\sqrt D},\qquad
 \mathrm{cost}_{\min}\simeq
 \frac{(\sqrt V+\sqrt D)^2}{\varepsilon^2}.}
-$$
+```
 
 Consequently its strict leading break-even condition relative to $9/16$ is
 
-$$
+```math
 \boxed{K>\frac{wC}{(3/4-\sqrt V)^2},\qquad V<9/16.}
-$$
+```
 
 Use $C=C_E$ only with the confidence-planning qualifications above.
 Reference-only overhead not included in $C/\beta^2$ must be added. With a
@@ -243,37 +243,37 @@ $\widehat M=[8\overline Z_x,\overline Z_d]$.
 For the plug-in estimate $e_1^T\widehat M^{-1}\overline Z$, differentiating
 the inverse gives the leading fluctuation
 
-$$
+```math
 w^T(\overline Z-\mathbb E_\rho Z)
 -8\theta w^T(\overline Z_x-\mathbb E_xZ)
 -\zeta w^T(\overline Z_d-\mathbb E_dZ).
-$$
+```
 
 Thus independent reference mean errors give the first-order calibration
 contribution on a target state $\rho$,
 
-$$
+```math
 64\langle\chi\rangle_\rho^2\frac{v_x}{N_x}
 +\langle D\rangle_\rho^2\frac{v_d}{N_d}.
-$$
+```
 
 The anticommuting observables satisfy
 $16\langle\chi\rangle_\rho^2+\langle D\rangle_\rho^2\le3$.
 The worst value of this contribution is therefore
 
-$$
+```math
 \max\left\{\frac{12v_x}{N_x},\frac{3v_d}{N_d}\right\}.
-$$
+```
 
 For the actual two-probe total $M_{\rm mean}=N_x+N_d$, equalizing the two
 terms gives
 
-$$
+```math
 N_x:N_d=4v_x:v_d,\qquad
 C_R=12v_x+3v_d,\qquad
 \mathrm{MSE}\le\frac Vn+\frac{C_R}{M_{\rm mean}}
 +o(n^{-1}+M_{\rm mean}^{-1}).
-$$
+```
 
 This expansion requires a stable inverse-response matrix, independently
 prepared reference and target batches, a fixed channel, controlled reference

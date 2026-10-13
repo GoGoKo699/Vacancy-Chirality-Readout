@@ -96,9 +96,9 @@ types have different costs, use $M c_R=\sum_j M_j c_{R,j}$.
 For $K$ separate target tasks and comparator count budget $m$, the native
 budget is strictly smaller precisely when
 
-$$
+```math
 \boxed{M c_R<K(m c_S-n c_N).}
-$$
+```
 
 Unshared setup or switching costs must also be charged on the appropriate
 side. The displayed criterion already gives the comparator free calibration;
@@ -106,9 +106,9 @@ an actual comparator's measured overhead can instead be included explicitly.
 If $m c_S\le n c_N$, reuse cannot make this budget comparison favorable. Otherwise
 the smallest strict integer threshold is
 
-$$
+```math
 K_{\min}=\left\lfloor\frac{M c_R}{m c_S-n c_N}\right\rfloor+1.
-$$
+```
 
 For the ideal six-Pauli implementation,
 $m=\lceil9/(16\varepsilon^2)\rceil$ is an attained worst-case copy count.
@@ -128,10 +128,10 @@ uses cosine-squared priors of radius $3h/40$, where $h=\sqrt3/4$. It gives
 a necessary joint-prior-averaged expected total of
 $K L_\varepsilon$ copies when positive, with
 
-$$
+```math
 L_\varepsilon=\frac{832093}{2073600}
 \left(\varepsilon^{-2}-\frac{25600\pi^2}{27}\right).
-$$
+```
 
 The expectation includes the product prior and measurement record. Thus it
 also lower-bounds the worst-case expected total count, but need not hold
@@ -151,10 +151,10 @@ risk and the passive-class comparison just described.
 
 Product references share much of the native experimental cycle. If
 
-$$
+```math
 c_R=c_{\rm shared}+c_{\rm ref\,prep},\qquad
 c_N=c_{\rm shared}+c_{\rm target\,prep},
-$$
+```
 
 then $c_R/c_N\ge c_{\rm shared}/(c_{\rm shared}+c_{\rm target\,prep})$.
 This common cost includes the same loading, native readout, imaging, and
@@ -200,11 +200,11 @@ setup time, $t_{\rm setup}$ be setup time per target task, and $R_R,R_N$
 be justified sample throughputs. For sequential calibration followed by the
 target scan, the maximum number of complete target batches that fit is
 
-$$
+```math
 K_{\max}=\max\left\{0,
 \left\lfloor\frac{H-S-M_{\rm epoch}/R_R}
 {n/R_N+t_{\rm setup}}\right\rfloor\right\}.
-$$
+```
 
 Set $M_{\rm epoch}=M$ unless an earlier independent pilot can legitimately
 sit outside this epoch; its cost still belongs in $M c_R$. Serial cycle
@@ -226,15 +226,15 @@ mean operator $A$, second-moment operator $T$, bias bound $\beta$, and
 second-moment bound $U$. During use suppose
 $\|A'-A\|\le d_A$ and $\|T'-T\|\le d_T$. Then
 
-$$
+```math
 \mathrm{MSE}\le\frac{U+d_T}{n}+(\beta+d_A)^2.
-$$
+```
 
 Writing $g=\varepsilon^2-U/n-\beta^2$, a sufficient remaining drift budget is
 
-$$
+```math
 \boxed{\frac{d_T}{n}+2\beta d_A+d_A^2\le g.}
-$$
+```
 
 Choosing the smallest integer $n$ allowed by a no-drift certificate leaves
 only its rounding slack $g$. The finite forecast uses nearly all
@@ -256,9 +256,9 @@ plaquette or channel label $i$, flux $s$, and reported outcome $y$. Suppose
 each reference and target trial draws its label independently of the spin
 state from the same known distribution $p_i$. The resulting measurement is
 
-$$
+```math
 \overline E_{s,y}=\sum_i p_i E_{i,s,y}.
-$$
+```
 
 Indeed, for any input $\rho$ the outcome probability is
 $\sum_i p_i\mathrm{Tr}(E_{i,s,y}\rho)
@@ -281,10 +281,10 @@ $-BI\le A_i\le BI$ and $0\le T_i\le B^2I$. If reference labels have
 weights $p$ and target labels have weights $q$, define
 $\mathrm{TV}(p,q)=\frac12\sum_i|p_i-q_i|$. Then
 
-$$
+```math
 \boxed{\|A_q-A_p\|\le2B\mathrm{TV}(p,q),\qquad
 \|T_q-T_p\|\le B^2\mathrm{TV}(p,q).}
-$$
+```
 
 For the first inequality use the triangle inequality and $\|A_i\|\le B$.
 For the second, $\sum_i(q_i-p_i)=0$ allows replacing each $T_i$ by
@@ -302,10 +302,10 @@ independent-sample confidence calculation. For example, $m$ equal-variance
 scores per frame, variance $\sigma^2$, pair correlation $r$, and $F$
 independent frames give
 
-$$
+```math
 \mathrm{Var}(\overline X)
 =\frac{\sigma^2[1+(m-1)r]}{mF}.
-$$
+```
 
 Justify independence or analyze independent frame blocks with their measured
 covariance and bounded scores. Parallelization can reduce elapsed time,

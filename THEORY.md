@@ -8,10 +8,10 @@ A localized vacancy in a four-site ring converts three-spin chirality into posit
 
 Three spin-½ bosons initially occupy sites 1, 2, 3; site 0 is empty. Their input spin state $\rho$ is arbitrary and may be entangled with an external reference. With $\hbar=1$, the spin-independent Hamiltonian is
 
-$$
+```math
 H_{U,\Phi}=-J\sum_{j,\sigma}\left(e^{i\Phi/4}b^\dagger_{j\sigma}b_{j+1,\sigma}+\mathrm{h.c.}\right)+UW,
 \qquad W=\frac12\sum_j n_j(n_j-1).
-$$
+```
 
 Indices are modulo four and $n_j$ counts both spin components. The four bonds are equal; interactions are independent of spin. Write $u=U/J$ and $\tau=Jt$. The fixed-three-particle Hilbert space has dimension 120. The no-double-occupancy projector $P$ has rank 32.
 
@@ -19,19 +19,19 @@ The four spatial modes are four accessible orbitals, normally one motional orbit
 
 Let $V$ embed the eight spin states into occupancy $(0,1,1,1)$ and $S=VV^\dagger$. The return operator and effect are
 
-$$
+```math
 K_{U,\Phi}(t)=V^\dagger e^{-itH_{U,\Phi}}V,
 \qquad E_{U,\Phi}(t)=K_{U,\Phi}(t)^\dagger K_{U,\Phi}(t).
-$$
+```
 
 The probability is $\mathrm{Tr}(E\rho)$. An ideal spin-preserving accepted instrument produces the unnormalized state $K\rho K^\dagger$. Other outcomes terminate the trial. At finite $U$, detecting only that site 0 is empty does not identify the return event.
 
 Define the cyclic spin permutation and scalar chirality by
 
-$$
+```math
 C|s_1s_2s_3\rangle=|s_2s_3s_1\rangle,
 \qquad \chi=\mathbf S_1\cdot(\mathbf S_2\times\mathbf S_3),\qquad \mathbf S=\boldsymbol\sigma/2.
-$$
+```
 
 With this convention $C-C^\dagger=4i\chi$. The eigenvalues of $\chi$ are $0,\pm\sqrt3/4$, with projectors $\Pi_0,\Pi_+,\Pi_-$ of ranks 4, 2, 2. For the displayed hopping convention, flux $-2\pi/3$ selects positive chirality in the hard-core filter below. Labels $+$ and $-$ refer to selected chirality, not the sign of the flux.
 
@@ -39,17 +39,17 @@ With this convention $C-C^\dagger=4i\chi$. The eigenvalues of $\chi$ are $0,\pm\
 
 For $s=(0,1,1,1)$ define the projector onto total site parity $s$:
 
-$$
+```math
 Q_s=\prod_{j=0}^3\frac{I+(-1)^{s_j}(-1)^{n_j}}2.
-$$
+```
 
 **Parity identity.** On the entire particle-number subspace $N\le3$, $Q_s=S$, extending $S$ by zero on $N<3$.
 
 **Proof.** Odd occupation at each of sites 1, 2, 3 requires at least three particles. With at most three particles, each occupation is exactly one and site 0 is empty. The converse is immediate. This proves a projector equality, including coherent superpositions and reference-entangled inputs. Consequently,
 
-$$
+```math
 V^\dagger e^{itH}Q_s e^{-itH}V=K^\dagger K.
-$$
+```
 
 Ideal total-parity images therefore implement the required effect even when intermediate doublon and triplon amplitudes are appreciable. Hopping must be stopped during the modeled readout, and the reported bits must represent the pre-imaging total site parities. Additional particles invalidate the identity: $(0,3,1,1)$ has the same parity at $N=5$. Loss alone cannot produce three odd occupied sites from fewer than three particles.
 
@@ -61,9 +61,9 @@ Set $R=P_{13}$ and $D=P_{12}-P_{23}$, where $P_{jk}$ swaps spins. Then $\|D\|=\s
 
 **Contrast theorem.** For every $U$ and time in the uniform model,
 
-$$
+```math
 E_+(t)-E_-(t)=g_u(\tau)\chi+h_u(\tau)D.
-$$
+```
 
 The real coefficients are the Hilbert–Schmidt projections onto the orthogonal operators $\chi$ and $D$.
 
@@ -79,24 +79,24 @@ M=\begin{pmatrix}g_1&h_1\\g_2&h_2\end{pmatrix},\qquad \Delta=g_1h_2-g_2h_1.
 
 Whenever $\Delta\ne0$,
 
-$$
+```math
 \boxed{\langle\chi\rangle=\frac{h_2d_1-h_1d_2}{\Delta}=w_1d_1+w_2d_2.}
-$$
+```
 
 This is an arbitrary-input expectation identity. It neither assigns a chirality eigenvalue to a single return nor corrects the accepted state's back-action.
 
 **Existence of suitable durations.** At every fixed finite $u>0$, exact short-time coefficients give
 
-$$
+```math
 g_u(\tau)=4\sqrt3\,\tau^4+O_u(\tau^6),\qquad
 h_u(\tau)=\sqrt3\left(\frac{7u}{72}+\frac{u^3}{2520}\right)\tau^9+O_u(\tau^{11}).
-$$
+```
 
 Reciprocity makes $g$ even and $h$ odd in time. Taking $\tau_1=s$, $\tau_2=2s$ yields
 
-$$
+```math
 \Delta=5952\left(\frac{7u}{72}+\frac{u^3}{2520}\right)s^{13}+O_u(s^{15})>0
-$$
+```
 
 for sufficiently small positive $s$. The coefficients are certified by exact integer/rational arithmetic in $\mathbb Q(\sqrt2,\sqrt3,i)[u]$ on the complete 40-state fixed-magnetization sector; see the [certificate](source/exact_short_time.py) and [derivation, Section 4](research/FINITE_REPULSION.md). This fixed-$u$ existence result does not imply efficient estimation at very short times or a uniform large-$u$ limit.
 
@@ -113,30 +113,30 @@ Here $\Delta\simeq0.04600240679$ and $\langle\chi\rangle\simeq0.43834419389d_1-0
 
 At exactly three particles, the eight possible parity strings have odd Hamming weight. Let $E_p$ be the effect for pattern $p$ at flux $-2\pi/3$, and let $r(p_0,p_1,p_2,p_3)=(p_0,p_3,p_2,p_1)$. At the opposite flux, the **reflected physical pattern** $r(p)$ has effect $RE_pR$. Each contrast obeys
 
-$$
+```math
 O_p=\frac{E_p-RE_pR}{2}=c_p\chi+d_pD.
-$$
+```
 
 This follows from the same collective-spin and reflection symmetries as the return contrast. Choose either flux independently with probability $1/2$. Assign score $a_p$ to pattern $p$ at the first flux and $-a_p$ to pattern $r(p)$ at the second. Then
 
-$$
+```math
 \boxed{\sum_pc_pa_p=1,\qquad\sum_pd_pa_p=0}
-$$
+```
 
 is exactly the condition for an unbiased chirality estimate on every input. Rank two of the matrix with columns $(c_p,d_p)^T$ suffices. All original preparations count, and even-weight parity strings receive score zero. With $F_p=(E_p+RE_pR)/2$ and $T=\sum_pa_p^2F_p$, the randomized sample mean obeys
 
-$$
+```math
 n\mathrm{Var}_\rho(\widehat\chi)=\mathrm{Tr}(T\rho)-\langle\chi\rangle_\rho^2,
 \qquad \sup_\rho n\mathrm{Var}_\rho(\widehat\chi)=\|T\|.
-$$
+```
 
 The last equality follows because $T$ has three scalar total-spin/reflection blocks, and a state in its largest-eigenvalue block has zero chirality. Fixed equal allocations between fluxes have no larger variance. The [complete proof](research/COMPLETE_PARITY_THEORY.md) also derives the weighted Gram formula for the minimum mixed-input variance.
 
 At $u=16$, $\tau=\pi$, an [integer/rational certificate](research/CERTIFICATE.md) proves a nonzero calibration minor and constructs exactly feasible scores by correcting two rational reference coordinates. The score designed for worst-case precision satisfies
 
-$$
+```math
 \boxed{\sup_\rho n\mathrm{Var}_\rho(\widehat\chi)<0.328697776905<13/32.}
-$$
+```
 
 This is a certified feasible score, without a claim of global optimality. The [passive theorem](research/PASSIVE_PARITY_BOUND.md) derives $13/32$ as a lower bound for arbitrary spin-independent passive $U(4)$ followed by complete site parity, including product spin unitaries before mixing. It also proves three-mode impossibility, gives an explicit passive four-mode reconstruction, and extends the comparison to biased estimators through a finite minimax risk bound. Number resolution, extra spatial modes, intermediate detection, and spin controls interleaved with spatial mixing are different measurement resources.
 
@@ -144,10 +144,10 @@ Exact recalibration of the modeled channel retains a worst-case coefficient belo
 
 For ideal parity detection, the [primary-score robustness theorem](research/PARAMETER_ROBUSTNESS.md) gives a separate parameter guarantee. Define
 
-$$
+```math
 \Delta=1.643|u-16|+3.163|\tau-\pi|+4.086|\Phi_++2\pi/3|,
 \qquad \Phi_-=-\Phi_+.
-$$
+```
 
 With the same $u,\tau$ at both fluxes and exact calibration of the actual two-feature mean response, $\Delta\le0.0025$ implies a worst-case coefficient below $0.394824826<13/32$. The smaller region $\Delta\le0.0015$ gives $0.366080282<0.367$ and beats all biased passive estimators in worst-case MSE for every $n\ge12{,}000$. A weighted measurement-isometry bound proves these results, using $\|H V\|=\sqrt{10}$ for the singly occupied input embedding $V$ and dimensionless Hamiltonian $H$.
 
@@ -159,10 +159,10 @@ The spatial-mode restriction is explicit. Three-mode Fourier mixing followed by 
 
 A separate score minimizes the variance at the maximally mixed input. Its nearby exactly corrected version satisfies
 
-$$
+```math
 \|T_{\rm mixed}\|<0.389156263913,\qquad
 0.284895494200<n\mathrm{Var}_{I_8/8}(\widehat\chi_{\rm mixed})<0.284895494206.
-$$
+```
 
 For this mixed-input score, the certificate also proves $\|T\|<0.536350926403<9/16$ after all-outcome recalibration whenever each parity effect changes by operator norm at most $0.0015$, preserving the stated symmetries and completeness. In the uniform ring this includes the sufficient box $|u-16|,|\tau-\pi|,|\Phi_++2\pi/3|<0.00009$ with $\Phi_-=-\Phi_+$. These sufficient mathematical neighborhoods concern the mixed-input score and the separable benchmark; the primary-score result follows from its own proof above. The [noise budget](research/NOISE_BUDGET.md) treats loss aliases, detector errors, calibration, and normalization separately. The return-only existence theorem remains established for every fixed finite $u>0$.
 
@@ -170,36 +170,36 @@ For this mixed-input score, the certificate also proves $\|T\|<0.536350926403<9/
 
 In the strict hard-core limit, transporting spin labels with the vacancy reduces each cycle eigenspace $C=e^{i\theta}$ to a scalar four-site ring with flux $\Phi+\theta$ [K22](REFERENCES.md). Its return amplitude is
 
-$$
+```math
 A(\tau;f)=\frac12\left[\cos\left(2\tau\cos\frac f4\right)+\cos\left(2\tau\sin\frac f4\right)\right],
 \qquad K_{\infty,\Phi}=\sum_{\theta=0,\pm2\pi/3}A(\tau;\Phi+\theta)\Pi_\theta.
-$$
+```
 
 At $\tau=\pi$ and flux $\mp2\pi/3$,
 
-$$
+```math
 K_{\infty,\pm}=\Pi_\pm+a(I-\Pi_\pm),\quad
 a=\frac{\cos(\sqrt3\pi)-1}{2},\quad r=a^2=0.02786714004\ldots.
-$$
+```
 
 Thus $E_{\infty,\pm}=rI+(1-r)\Pi_\pm$ and $\langle\chi\rangle=\sqrt3(p_+-p_-)/[4(1-r)]$. A single accepted return is a coherent filter, with nonzero acceptance outside the selected sector.
 
 From input $I_8/8$, the positive filter yields
 
-$$
+```math
 p_1=\frac{1+3r}{4}=0.2709003550\ldots,\qquad
 \rho_1=\frac{\Pi_++r(I-\Pi_+)}{2+6r},\qquad
 \langle\chi\rangle_{\rho_1}=\frac{\sqrt3}{4}\frac{1-r}{1+3r}=0.3884692918\ldots.
-$$
+```
 
 Every biseparable three-qubit state obeys $|\langle\chi\rangle|\le1/4$ [R23](REFERENCES.md). For a state product across $1|23$, rotate the first spin's polarization to $z$: its magnitude is at most $1/2$, while $\|S_{2x}S_{3y}-S_{2y}S_{3x}\|=1/2$. The bound follows, then extends to the other cuts and their convex mixtures. Hence $\rho_1$ is genuinely tripartite entangled. Its one-spin marginals are maximally mixed and its pair marginals are separable.
 
 With ideal coherent readout after every accepted round,
 
-$$
+```math
 K_{\infty,+}^m=\Pi_++a^m(I-\Pi_+),\qquad
 p_m=q+(1-q)r^m,\quad q=\mathrm{Tr}(\Pi_+\rho).
-$$
+```
 
 For $I_8/8$, $p_m\to1/4$ and the conditional state tends to the mixed doublet $\Pi_+/2$. The probability counts the entire successful record per original preparation. Spin coherence and atom survival between rounds are necessary assumptions. The [hard-core derivation](research/HARD_CORE_FILTER.md) gives the cycle reduction, pair marginals, and static scalar-disorder extension in detail.
 
@@ -207,19 +207,19 @@ For $I_8/8$, $p_m\to1/4$ and the conditional state tends to the mixed doublet $\
 
 For every $u>0$, $\tau\ge0$, and flux, the accepted operators satisfy
 
-$$
+```math
 \boxed{\|K_{U,\Phi}(t)-K_{\infty,\Phi}(t)\|\le\epsilon_u(\tau),\qquad
 \epsilon_u(\tau)=\min\{2,20\sqrt3\,\tau/u\}.}
-$$
+```
 
 **Proof.** Write $H=T+UW$, $Q=I-P$, $A=PTP$, and $B=QTP$. The one-particle hopping norm gives $\|T\|\le6J$; the hard-core vacancy graph gives $\|A\|\le2J$. Counting two-hop paths gives $\|B\|^2\le12J^2$: at zero flux the nonnegative Gram matrix has every row sum equal to $12J^2$, and flux cannot increase absolute path sums. Thus $\|TP\|\le4J$.
 
 For a unit vector $\psi\in P$, energy conservation and $W\ge Q$ give
 
-$$
+```math
 U\|Qe^{-itH}\psi\|\le U\|We^{-itH}\psi\|
 \le\|H\psi\|+\|T\|\le10J.
-$$
+```
 
 Therefore $\|Qe^{-itH}P\|\le\min\{1,10J/U\}$. Duhamel's formula for the projected equation then bounds its deviation from $e^{-itA}P$ by $t\|B\|(10J/U)=20\sqrt3 J^2t/U$. Compression with $V$ proves the claim. The [full proof and path-count verification](research/FINITE_REPULSION.md) distinguish leakage probability from coherent spin-operation error.
 
@@ -227,10 +227,10 @@ The success maps obey $\|\mathcal K_U-\mathcal K_\infty\|_\diamond\le2\epsilon_u
 
 For a specified input with ideal success probability $p_0$, finite-$U$ probability $p_U$, and $p_U>0$,
 
-$$
+```math
 |\sqrt{p_U}-\sqrt{p_0}|\le\epsilon_u,\qquad
 D(\rho_U^{\mathrm{succ}},\rho_0^{\mathrm{succ}})\le\min\{1,\epsilon_u/\sqrt{p_0}\}.
-$$
+```
 
 Here $D$ is trace distance. Purification reduces the proof to two unnormalized accepted vectors separated by at most $\epsilon_u$; distance to the line of the second vector bounds their normalized pure-state angle. Partial trace preserves the bound. For $m$ rounds, replace $\epsilon_u$ by $\min\{2,m\epsilon_u\}$ and use the whole-record ideal success probability.
 
@@ -240,10 +240,10 @@ At $u=2048$, $\tau=\pi$, these conservative bounds prove $p_U>0.2184$ and $\lang
 
 Correct return probabilities do not fix the retained state. A trace-preserving spin channel $\mathcal N$ after ideal acceptance gives
 
-$$
+```math
 \mathcal S_{\mathcal N}(\rho)=\mathcal N(K\rho K^\dagger),\qquad
 \mathrm{Tr}\mathcal S_{\mathcal N}(\rho)=\mathrm{Tr}(K\rho K^\dagger).
-$$
+```
 
 Complete local dephasing produces a fully separable spin output with exactly the ideal success probabilities. Destructive terminal imaging can therefore serve expectation estimation without realizing the retained-state instrument.
 
@@ -251,18 +251,18 @@ For the explicit diagnostic of independent phase damping with single-spin cohere
 
 For equal-rate Markovian loss $L_{j,\sigma}=\sqrt\gamma\,b_{j,\sigma}$ with no gains, every loss trajectory is rejected by the ideal **return parity event** $0111$. Since $\sum L^\dagger L=\gamma N$, the accepted return map is exactly
 
-$$
+```math
 \mathcal S_\gamma(\rho)=e^{-3\gamma t}K\rho K^\dagger.
-$$
+```
 
 This particular loss model reduces success without changing the conditional state. Unequal rates need not have that property. The damping and loss channels are stated diagnostics, not fitted detector parameters.
 
 For the complete-image estimator, one loss changes the parity weight to even and receives zero score, while two losses can imitate a singleton collision pattern. If $\lambda=\gamma t$ and each parity bit independently flips with known probability $q$, dividing scores by $e^{-3\lambda}(1-q)^4$ leaves bounded contributions of orders $\lambda^2$, $q^2$, and $\lambda q$. For the exactly calibrated nominal **mixed-input score**, the [certificate](research/CERTIFICATE.md) and [analytical noise budget](research/NOISE_BUDGET.md) give the uniform sufficient window
 
-$$
+```math
 0\le\lambda\le0.01,\quad0\le q\le0.003:
 \qquad |\mathrm{bias}|<0.001430,\qquad \mathbb EY^2<0.411.
-$$
+```
 
 On the maximally mixed input the second-moment bound is $0.302$. Thus the mean-square error is bounded by $0.411/n+(0.001430)^2$ for arbitrary input, before adding calibration and rate uncertainty. These guarantees concern the stated loss and detector channels, and the residual bias must be included when comparing total estimation error.
 
@@ -274,26 +274,26 @@ Spin-rotation invariance and paired reflection constrain the input effects even 
 
 Use three product references with the same orbital loading and measurement channel:
 
-$$
+```math
 \rho_x=|{+x},{+y},{+z}\rangle\langle{+x},{+y},{+z}|,
 \quad \rho_d=|{+z},{+z},{-z}\rangle\langle{+z},{+z},{-z}|,
 \quad \rho_0=|{+z},{+z},{+z}\rangle\langle{+z},{+z},{+z}|.
-$$
+```
 
 Their score means determine $c=8m_x$ and $d=m_d$. Two image features with a nonsingular two-coordinate response can therefore be combined into an exactly unbiased estimator when that response is known. Their second moments $Q_j=\mathbb E_jX^2$ determine all three blocks:
 
-$$
+```math
 t_{\rm s}=Q_0,\qquad t_{\rm o}=3Q_d-2Q_x,\qquad
  t_{\rm e}=6Q_x-3Q_d-2Q_0.
-$$
+```
 
 The same identities reconstruct every outcome effect within the five-dimensional symmetry class. They apply at arbitrary noise strength when the response remains informative; complete erasure cannot be inverted. At the nominal operating point, the [exact certificate](research/CERTIFICATE.md) constructs a second score for $D$ and proves that their full noisy response stays nonsingular throughout $0\le\gamma t\le0.01$, $0\le q\le0.003$ under the stated equal-loss and bit-error channels. For the mixed-input score, exact channel recalibration removes the mean bias and gives $\|T\|<0.444512137719<0.446<9/16$. The primary score has the separate $0.366461$ guarantee stated in Section 3. The rates are used to establish this sufficient window; operational recalibration uses the raw reference responses, without those rates.
 
 With finite calibration data, freeze a score chosen from pilot data and use independent reference data to validate it. Its exact all-input bias is
 
-$$
+```math
 \|A-\chi\|=\sqrt{3(c-1)^2/16+3d^2}.
-$$
+```
 
 The [channel-calibration proof](research/CHANNEL_CALIBRATION.md) converts the two means and three second moments into simultaneous confidence bounds $\beta$ and $U_T$, giving mean-square error at most $U_T/n+\beta^2$ for every unknown input. It includes reference-preparation errors and the cost of known reference copies separately from unknown input copies. Three probes do not establish the symmetry assumptions themselves, and a random inverse of estimated calibration coefficients is not automatically unbiased.
 
@@ -321,10 +321,10 @@ Both certified complete-parity scores therefore prove a strict minimax sampling 
 
 For arbitrary biased estimators in the same per-copy measurement class, a uniform mean-square error at most $\varepsilon^2$ requires
 
-$$
+```math
 N\ge\left(\frac{3}{4\varepsilon}-\pi\right)^2,
 \qquad 0<\varepsilon<\frac1{16\pi}.
-$$
+```
 
 The [finite-sample proof](research/SEPARABLE_BENCHMARK.md#6-finite-sample-bound-allowing-biased-estimators) combines the submodel's separable Fisher-information bound with the scalar van Trees inequality. This is a necessary count, not an attained finite-sample minimax formula. It provides a bias-aware comparison for a fixed validated native estimator; the confidence of calibration must still be distinguished from unconditional estimation risk. The [calibration-cost account](research/CALIBRATION_COST.md) charges pilot and reference preparations explicitly and finds no established one-use total-preparation advantage. Its reuse calculations distinguish finite confidence certificates from regular plug-in asymptotics.
 
