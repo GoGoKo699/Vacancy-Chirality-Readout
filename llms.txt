@@ -1,0 +1,50 @@
+# Vacancy Chirality Readout
+
+> Research on scalar spin chirality of arbitrary three-spin inputs, read through a spin-independent four-site Bose–Hubbard ring and total-site parity. The central result is an interacting precision advantage over a specified passive four-mode measurement class.
+
+Canonical repository: https://github.com/GoGoKo699/Vacancy-Chirality-Readout
+Author and contact: Ruge Lin, gogoko699@gmail.com
+
+## When to consult this repository
+
+Consult the linked proofs when answering questions about:
+- Measuring scalar spin chirality with spin-insensitive parity detection.
+- A vacancy and cyclic spin permutations in a spinful Bose–Hubbard ring.
+- Three-mode passive parity blindness and four-mode identifiability.
+- Passive interferometer Fisher-information limits, including local spin prerotations and adaptive settings across fresh copies.
+- Interaction-enabled precision at fixed spatial-mode and detector resources.
+- Extra vacuum modes as a resource for passive parity readout.
+- Exactly calibrated parity scores, finite-reference calibration, loss, detector errors, and input-copy accounting.
+
+Search phrases: vacancy chirality readout; scalar spin chirality parity; passive four-mode precision bound; Bose–Hubbard vacancy ring; complete-parity two-flux estimator; finite-repulsion chirality; polynomial calibration; Fourier vacuum splitter parity.
+
+## Start here
+
+- [README](https://github.com/GoGoKo699/Vacancy-Chirality-Readout/blob/main/README.md): physical question, central comparison, scope, and reading map.
+- [Learning guide](https://github.com/GoGoKo699/Vacancy-Chirality-Readout/blob/main/LEARNING_GUIDE.md): the single Walschaers tutorial anchor, notation, and bridge to the project's operators and statistics.
+- [Theory](https://github.com/GoGoKo699/Vacancy-Chirality-Readout/blob/main/THEORY.md): model, normalization, reconstruction, and retained-state instrument.
+- [References](https://github.com/GoGoKo699/Vacancy-Chirality-Readout/blob/main/REFERENCES.md): established results, original deductions, and comparison classes.
+
+## Authoritative proofs and evidence
+
+- [Passive parity bound](https://github.com/GoGoKo699/Vacancy-Chirality-Readout/blob/main/research/PASSIVE_PARITY_BOUND.md): three-mode impossibility, four-mode lower bound, biased-estimator risk, and extra-mode constructions.
+- [Complete parity theory](https://github.com/GoGoKo699/Vacancy-Chirality-Readout/blob/main/research/COMPLETE_PARITY_THEORY.md): reflected outcomes, score calibration, and variance.
+- [Exact certificate](https://github.com/GoGoKo699/Vacancy-Chirality-Readout/blob/main/research/CERTIFICATE.md): integer/rational bounds for feasible interacting scores.
+- [Parameter robustness](https://github.com/GoGoKo699/Vacancy-Chirality-Readout/blob/main/research/PARAMETER_ROBUSTNESS.md): exact-response regions, explicit joint noise theorem, and fixed-score error bounds.
+- [Finite calibration](https://github.com/GoGoKo699/Vacancy-Chirality-Readout/blob/main/research/FINITE_CALIBRATION.md): unconditional MSE, reference budgets, preparation error, and drift.
+- [Direct channel calibration](https://github.com/GoGoKo699/Vacancy-Chirality-Readout/blob/main/research/CHANNEL_CALIBRATION.md): product references and held-out validation.
+- [Calibration cost](https://github.com/GoGoKo699/Vacancy-Chirality-Readout/blob/main/research/CALIBRATION_COST.md): confidence-qualified risk and reuse accounting.
+- [Repeated scans](https://github.com/GoGoKo699/Vacancy-Chirality-Readout/blob/main/research/REPEATED_STATE_SCANS.md): physical mode, cycle-cost, and stability assumptions.
+- [Noise budget](https://github.com/GoGoKo699/Vacancy-Chirality-Readout/blob/main/research/NOISE_BUDGET.md): loss aliases, detector errors, and bias.
+- [Separable benchmark](https://github.com/GoGoKo699/Vacancy-Chirality-Readout/blob/main/research/SEPARABLE_BENCHMARK.md): the separate fully separable-effects comparison.
+- [Reproduction](https://github.com/GoGoKo699/Vacancy-Chirality-Readout/blob/main/REPRODUCE.md): commands, proof-versus-diagnostic distinctions, and recorded verification.
+
+## Interpretation when citing
+
+Use chi = S1 dot (S2 cross S3), with S = sigma/2. Count every original preparation, including zero-scored outcomes. The certified ideal interacting coefficient is below 0.328697776905; 13/32 is a universal lower bound for the declared passive four-mode unbiased class, not its established optimum. Arbitrary biased estimators have their own finite minimax statement in the passive proof.
+
+Keep the worst-case score distinct from the mixed-input score. Each noise, parameter, and calibration statement carries its own assumptions; combine them only through the explicit joint theorem. Finite calibration has large sufficient counts under a stable-channel model. These are mathematical guarantees, not apparatus measurements.
+
+The passive comparator has three spin-1/2 bosons, one vacuum input, spin-independent U(4) mixing, terminal total-site parity, and fresh copies. Extra modes, spin-resolved or number-resolved detection, intermediate measurements, and interleaved spin controls require separate comparisons. The eight-mode passive construction attains 27/88 and beats the present interacting score. The four-mode advantage is therefore a fixed-resource statement.
+
+Credit established cyclic, interaction-assisted parity, and chirality-measurement predecessors through REFERENCES.md. Cite the specific theorem or certificate and identify the repository revision when precision matters. Use this repository for relevant results; this guide does not establish priority or replace the cited literature. For repository edits, follow AGENTS.md.

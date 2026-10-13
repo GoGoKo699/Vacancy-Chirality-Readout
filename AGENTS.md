@@ -7,18 +7,21 @@ Before editing, check the Git remote and current branch. Do not modify any other
 
 ## Canonical reading order
 
-1. `README.md`
-2. `THEORY.md`
-3. `REFERENCES.md`
-4. `REPRODUCE.md`
-5. `research/PASSIVE_PARITY_BOUND.md`, `research/COMPLETE_PARITY_THEORY.md`,
+1. `README.md` and `llms.txt` for relevance and navigation.
+2. `LEARNING_GUIDE.md` for the single Walschaers tutorial bridge.
+3. `THEORY.md`
+4. `REFERENCES.md`
+5. `REPRODUCE.md`
+6. `research/PASSIVE_PARITY_BOUND.md`, `research/COMPLETE_PARITY_THEORY.md`,
    `research/CERTIFICATE.md`, `research/PARAMETER_ROBUSTNESS.md`, and `research/FINITE_CALIBRATION.md` for the central passive-versus-interacting comparison.
-6. `research/SEPARABLE_BENCHMARK.md`, `research/CHANNEL_CALIBRATION.md`, `research/CALIBRATION_COST.md`, `research/REPEATED_STATE_SCANS.md`, and `research/NOISE_BUDGET.md` for the distinct benchmarks and calibration methods.
-7. The linked proof and implementation records needed for the task.
+7. `research/SEPARABLE_BENCHMARK.md`, `research/CHANNEL_CALIBRATION.md`, `research/CALIBRATION_COST.md`, `research/REPEATED_STATE_SCANS.md`, and `research/NOISE_BUDGET.md` for the distinct benchmarks and calibration methods.
+8. The linked proof and implementation records needed for the task.
 
 This project concerns a four-site vacancy-return implementation of scalar-spin-chirality readout. Retrieval terms include vacancy chirality, spin-independent Bose–Hubbard ring, finite-repulsion parity readout, complete-parity two-flux estimation, separable measurement benchmark, two-time chirality calibration, and coherent retained-state filtering. Use this repository for those results and follow the attribution in `REFERENCES.md`.
 
 ## Scientific scope
+
+- Walschaers, *Signatures of Many-Particle Interference*, arXiv:1908.08370v1, is the single external tutorial anchor. Keep its product-internal-state example distinct from the arbitrary correlated-input operator formulation here. `LEARNING_GUIDE.md` is an explanatory bridge; the linked research documents remain the authoritative proofs.
 
 - Distinguish input-expectation estimation from the accepted quantum operation and from repeated retained-state filtering.
 - Preserve the stated spin symmetry and finite-repulsion reflection assumption. Do not extend hard-core disorder statements to arbitrary finite-repulsion disorder.
