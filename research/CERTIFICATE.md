@@ -1,7 +1,7 @@
 # Certified complete-parity reconstruction
 
 The standard-library checker [`parity_certificate.py`](parity_certificate.py)
-certifies a feasible, exactly calibrated complete-parity estimator at
+certifies two feasible, exactly calibrated complete-parity scores at
 
 $$
 u=16,\qquad \tau=\pi,\qquad \Phi_+=-2\pi/3,\qquad \Phi_-=-\Phi_+.
@@ -12,6 +12,18 @@ transcendental constants, propagator truncation, arithmetic rounding, calibratio
 rank, and second-moment bound. It does not promote floating-point eigensolver
 residuals to error bounds. The scores were motivated by a floating-point
 optimization; feasibility and the following bounds are independently certified.
+Global optimality of either numerical score search is not asserted.
+
+| Score family | Role | Certified ideal worst-case coefficient |
+|---|---|---:|
+| Primary minimax-oriented score | Passive-parity comparison and finite-channel calibration | $<0.3287<13/32$ |
+| Mixed-input-oriented score | Lower mixed-input variance and its own calibration-cost profiles | $<0.389156263913$ |
+
+The top-level legacy report fields and `SCORE_DECIMALS` describe the mixed-input
+score. The self-contained `passive_separation` report section and
+`PASSIVE_SCORE_DECIMALS` describe the primary score. Their score moments, noise
+bounds, and sufficient neighborhoods are distinct; no mixed-input-score
+neighborhood is transferred to the primary score.
 
 ## Estimator and exact calibration
 
@@ -38,18 +50,19 @@ For randomized fluxes, $n\operatorname{Var}(\widehat\chi)
 =\operatorname{Tr}(\rho T)-\operatorname{Tr}(\rho\chi)^2\le\|T\|$.
 Fixed equal flux allocations have variance no larger than this expression.
 
-The following finite decimals define exact rational reference scores $b_p^0$:
+The following finite decimals define the two exact rational reference vectors.
+The calibration formulas below apply to either vector:
 
-| Pattern | Rational reference score |
-|---|---:|
-| 0001 | 0.736714019013 |
-| 0010 | 0.252900613464 |
-| 0100 | 2.336375499791 |
-| 0111 | 0.730697335072 |
-| 1000 | −0.660422527924 |
-| 1011 | −0.288874449056 |
-| 1101 | −0.305946882115 |
-| 1110 | −0.540240033331 |
+| Pattern | Primary reference $a_p^0$ | Mixed-input reference $b_p^0$ |
+|---|---:|---:|
+| 0001 | 1.095165798450 | 0.736714019013 |
+| 0010 | 0.695667146367 | 0.252900613464 |
+| 0100 | 1.622867200391 | 2.336375499791 |
+| 0111 | 0.549200633781 | 0.730697335072 |
+| 1000 | −0.621840468488 | −0.660422527924 |
+| 1011 | −0.572484748794 | −0.288874449056 |
+| 1101 | −0.414427224699 | −0.305946882115 |
+| 1110 | −0.842443180993 | −0.540240033331 |
 
 They are not themselves asserted to be exactly unbiased. Let $p=0111$,
 $q=0100$, and define
@@ -59,7 +72,7 @@ $$
 r_c=1-\sum_j b_j^0c_j,\qquad r_d=-\sum_j b_j^0d_j.
 $$
 
-The exact scores are $b_p=b_p^0+\alpha$, $b_q=b_q^0+\beta$, and
+Writing either reference vector as $b^0$, the exact scores are $b_p=b_p^0+\alpha$, $b_q=b_q^0+\beta$, and
 $b_j=b_j^0$ otherwise, where
 
 $$
@@ -74,7 +87,7 @@ $$
 $$
 
 $$
-3.76658\times10^{-13}<\alpha<3.76659\times10^{-13},\qquad
+\text{Mixed-input score:}\quad 3.76658\times10^{-13}<\alpha<3.76659\times10^{-13},\qquad
 -4.83984\times10^{-13}<\beta<-4.83983\times10^{-13}.
 $$
 
@@ -82,7 +95,155 @@ Consequently the two-row calibration has rank two and these corrected scores
 exist. The rounded coefficients in a report are not substitutes for exact
 calibration or experimental parameter characterization.
 
-## Certified performance
+## Primary score: certified passive-parity separation
+
+The primary reference vector receives the same exact two-outcome correction at
+$p=0111$ and $q=0100$. Its correction coefficients are approximately
+$-6.91\times10^{-14}$ and $2.35\times10^{-13}$; the report supplies enclosing
+intervals and the exact definition above supplies unbiasedness. The corrected
+second moment obeys
+
+$$
+\boxed{\|T_a\|<0.3287<13/32.}
+$$
+
+Here $13/32$ is the declared passive-parity reference constant; the corresponding
+comparison proof and measurement-class assumptions are separate from this
+finite-model arithmetic certificate. The report explicitly encloses the
+positive gap $13/32-\|T_a\|$. It also provides this score's second and fourth
+moments and reference-state variance profiles. These are primary-score profiles,
+not the mixed-input profiles at the top level of the report.
+
+### Equal loss and bit errors
+
+The corrected primary score satisfies
+
+$$
+A_a<1.623,\qquad C_{1,a}<1.123,\qquad \|T_a\|<0.3287.
+$$
+
+The independently certified auxiliary $D$-score below is unchanged, with
+$A_D<194$, $C_{1,D}<107$, and $\|T_D\|<646$. Applying the analytical noise
+budgets and Schur-complement inverse to these two features proves, uniformly for
+$0\le\lambda\le0.01$ and $0\le q\le0.003$,
+
+$$
+\|T_{a,\mathrm{channel}}\|<0.366461<13/32,
+\qquad |X_{a,\mathrm{channel}}|<1.824413.
+$$
+
+Before full-channel recalibration, the proof-only normalization by
+$r=e^{-3\lambda}(1-q)^4$ gives primary mean-error bound below
+$0.001017469245$ and second moment below $0.344784300186$.
+The auxiliary mean-error bound is below $0.113367439058$ and second moment below
+$701.993354716872$. The same Schur and Cauchy–Schwarz derivation given below for
+the mixed-input score, now with these independently certified primary constants,
+gives the displayed channel bound. Raw product-reference responses absorb $r$,
+so separate rate estimates are unnecessary for exact response calibration.
+Finite empirical calibration instead uses its explicitly finite-data estimator
+and risk budget; exact response inversion is not an empirical unbiasedness claim.
+
+### Verified finite-calibration inputs
+
+Use raw features $Z=(X_a,X_D/4)^T$ and target coordinates
+$x=(\langle\chi\rangle,\langle D\rangle/4)^T$. Write
+$\mathbb EZ=Mx$, $M=r(I+E)$, $B=I-M$, and $h=\sqrt3/4$.
+The preceding normalized mean errors imply row bounds
+$\|E_{1,:}\|_2\le\epsilon_a/h$ and
+$\|E_{2,:}\|_2\le\epsilon_D/(4h)$. With their Euclidean combination
+$\eta$ and $r_{\min}=e^{-0.03}(0.997)^4$, the checker proves
+
+$$
+\begin{aligned}
+\|B\|&\le1-r_{\min}+r_{\min}\eta<0.105,\\
+\|e_1^TB\|_2&\le1-r_{\min}+r_{\min}\epsilon_a/h<0.044,\\
+\|M\|&\le1+\eta<1.066,\qquad
+\sup_\rho\mathbb E_\rho\|Z\|_2^2<44.22.
+\end{aligned}
+$$
+
+The last bound uses $V_a+V_D/16$, and raw moments are no larger than the
+proof-normalized moments because $r\le1$. The primary normalized response-row
+error is also below $0.00235$.
+
+For deterministic polynomial weights
+$w_\ell^T=e_1^T\sum_{j=0}^{\ell-1}B^j$, the report certifies second-moment
+bounds $(0.345,0.396,0.371,0.367)$ for degrees $\ell=1,2,3,4$.
+Degree two uses
+
+$$
+V_2\le(1.044\sqrt{V_a}+0.00235\sqrt{V_D/16})^2<0.396.
+$$
+
+For degrees three and four, comparison with the exact inverse gives
+
+$$
+V_\ell\le\left(\sqrt{0.366461}
++\sqrt{44.22}\,\frac{0.044(0.105)^{\ell-1}}{1-0.105}\right)^2.
+$$
+
+These verified constants supply the finite-calibration analysis; they do not
+replace the extra variance caused by randomly estimated response factors.
+
+### Known detector-only errors
+
+With no atom loss and known independent symmetric bit-flip rate
+$0\le q\le0.03$, exact inversion of the odd-to-odd detector block yields
+
+$$
+\boxed{\|T_{a,q}\|<0.382273<13/32.}
+$$
+
+Even observed patterns still receive zero score and every input trial is
+counted. Let $C$ complement all four parity bits and let $J$ be the all-ones
+matrix on the eight odd patterns. Set
+$\alpha=(1-q)^4$, $\beta=q^2(1-q)^2$, $\gamma=q^4$, and $t=1-2q$.
+The retained detector kernel is
+
+$$
+K=(\alpha-\beta)I+(\gamma-\beta)C+\beta J.
+$$
+
+Its three positive eigenvalues are
+$\lambda_0=(1+t^4)/2$, $\lambda_+=t^2$, and
+$\lambda_-=t(1+t^2)/2$. Hence the corrected score is
+
+$$
+\widetilde a=u a+vCa+w\mathbf1,\quad
+u=\frac{\lambda_+^{-1}+\lambda_-^{-1}}2,\quad
+v=\frac{\lambda_+^{-1}-\lambda_-^{-1}}2\ge0,\quad
+w=(\lambda_0^{-1}-\lambda_+^{-1})\operatorname{mean}(a).
+$$
+
+The exact noisy second moment is
+$(\alpha-\beta)T[\widetilde a]+(\gamma-\beta)T[C\widetilde a]
++\beta\|\widetilde a\|_2^2 I$.
+Dropping the negative middle term and using the score triangle inequality gives
+
+$$
+\|T_{a,q}\|\le
+(\alpha-\beta)(u\sqrt{\|T_a\|}+vA_a+|w|)^2
++\frac{\beta\|a\|_2^2}{t^4}.
+$$
+
+The final term uses $\|K^{-1}\|=t^{-2}$. For uniformity, the first term equals
+
+$$
+\frac{(1+t)^6}{16t^3(1+t^2)^2}
+\left[\sqrt{\|T_a\|}
++\left(\frac q{1-q}\right)^2A_a
++\frac{8q^2(1+t^2)}{1+t^4}|\operatorname{mean}(a)|\right]^2.
+$$
+
+Every displayed factor increases with $q$ on this interval. For the prefactor,
+its logarithmic derivative in $t$ has numerator
+$-3+3t-7t^2-t^3<0$ on $0<t\le1$; the other terms follow directly from
+$q=(1-t)/2$. Also $\beta/t^4=(t^{-2}-1)^2/16$ increases with $q$.
+It therefore suffices to evaluate $q=0.03$ with exact rational arithmetic and
+certified score intervals. This detector-only theorem does not cover atom loss
+or unknown detector-rate correction.
+
+## Mixed-input score: certified performance
 
 The full three-spin operator obeys
 
@@ -117,7 +278,7 @@ Uncharacterized errors with nominal scores, detector misclassification, and loss
 require the separate bias budgets in the complete-parity analysis. In particular,
 using single-odd parity patterns does not inherit return-event loss rejection.
 
-## Stronger stability with all-outcome recalibration
+## Mixed-input score: stability with all-outcome recalibration
 
 Using all eight score corrections gives a larger certified neighborhood than
 the two-outcome correction above. If each effect obeys
@@ -143,7 +304,7 @@ sufficient box is a mathematical continuity guarantee, not an experimentally
 measured tolerance. The derivation below uses the known common eigenspaces of
 all reflection-even effects to avoid a loose maximum-score-square estimate.
 
-## Certified loss and bit-error window
+## Mixed-input score: loss and bit-error window
 
 The same rational score corrections certify
 
@@ -183,7 +344,7 @@ The error and second-moment budgets increase throughout the displayed
 rectangle, as proved in the noise analysis. Exact rational interval arithmetic
 therefore extends the endpoint certificate to the entire rectangle.
 
-## Exact channel recalibration throughout the noise window
+## Mixed-input score: exact channel recalibration
 
 A second fixed image feature removes the modeled noise bias through direct
 channel calibration. Let $v$ be an auxiliary score that reconstructs $D$ in
@@ -274,7 +435,7 @@ Finally, the raw response matrix is $r$ times the normalized response matrix;
 its inverse absorbs $1/r$. Therefore an operational reconstruction using raw
 reference responses implements the same score without knowing $r$.
 
-## Nominal calibration-moment profiles
+## Mixed-input score: nominal calibration-moment profiles
 
 For variance-sensitive planning, the checker also encloses the second and fourth
 moments of the exactly corrected nominal score on the product reference states.
@@ -406,7 +567,7 @@ $\|\partial_\Phi T_{\rm hop}\|\le3/2$. The commutator of a Hermitian operator
 with a projector is bounded by the norm of the operator after an arbitrary
 scalar shift. A Duhamel interpolation therefore gives the displayed constants.
 
-## Proof of the all-outcome stability bound
+## Proof of the mixed-input all-outcome stability bound
 
 Scale the calibration columns as $g_p=(c_p,4d_p)^T$ and let $G$ be the
 resulting $2\times8$ matrix. On the total-spin-1/2 multiplicity space,

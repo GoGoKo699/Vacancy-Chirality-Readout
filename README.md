@@ -1,8 +1,8 @@
 # Vacancy Chirality Readout
 
-**Measuring three-spin chirality through the motion of a single vacancy.**
+**An interacting chirality readout that beats passive four-mode parity measurements.**
 
-Three spin-½ bosons occupy three sites of a four-site ring. Spin-independent hopping in an imposed flux converts their scalar spin chirality into site-parity statistics. At the certified finite-repulsion point $U/J=16$, one duration $Jt=\pi$ and two opposite fluxes reconstruct the input chirality from complete parity images. Every prepared copy contributes to the estimate.
+Three spin-½ bosons occupy three sites of a four-site ring. Spin-independent hopping and interactions in an imposed flux convert their scalar spin chirality into site-parity statistics. At $U/J=16$, one duration $Jt=\pi$ and two opposite fluxes reconstruct the chirality of an arbitrary input spin state. A universal bound on passive four-mode interferometers, followed by the same detector, makes the improvement from this interacting readout quantitative. Every prepared copy contributes to the estimate.
 
 This repository serves as a record of the work and a guide for the author’s self-directed learning. For discussion or potential collaboration, please contact Ruge Lin at [gogoko699@gmail.com](mailto:gogoko699@gmail.com).
 
@@ -19,16 +19,26 @@ Calibrated scores $a_p$ satisfying $\sum_pa_pc_p=1$ and $\sum_pa_pd_p=0$ cancel 
 An [integer/rational certificate](research/CERTIFICATE.md) establishes an exactly calibrated score at the stated operating point with
 
 $$
-\boxed{\sup_\rho n\operatorname{Var}(\widehat\chi)<0.389156263913<\frac9{16}.}
+\boxed{\sup_\rho n\operatorname{Var}(\widehat\chi)<0.328697776905<\frac{13}{32}.}
 $$
 
-The value $9/16$ is the exact minimax coefficient for universally unbiased estimation using **fully separable measurement effects on each three-spin copy**, including adaptive local measurements. The [benchmark proof](research/SEPARABLE_BENCHMARK.md) states the precise measurement class. The certified result reduces the worst-case copy requirement by over 30.8% within this comparison. It does not equate apparatus costs or cover collective measurements across copies.
+The [passive-measurement theorem](research/PASSIVE_PARITY_BOUND.md) proves the lower bound $13/32=0.40625$ for **every spin-independent passive four-mode interferometer followed by complete total-site parity detection**. It permits independent local spin rotations before mixing, randomized and adaptive settings across fresh copies, and all universally unbiased estimators. The native upper bound is over 19.1% below this lower bound. The passive bound is not claimed to be tight. Extra spatial modes, intermediate measurements, interleaved spin controls, and stronger detectors define different resource classes.
 
-The implemented readout can also be calibrated directly using **three known product-state preparations**. They determine the full response within the spin-rotation and reflection symmetry class, including loss and detector errors, without separately known noise rates. At the nominal operating point, exact channel recalibration retains a certified variance coefficient below $0.446<9/16$ throughout the specified equal-loss and bit-error window $\gamma t\le0.01$, $q\le0.003$. Independent validation bounds finite-calibration bias and sampling cost; see [direct channel calibration](research/CHANNEL_CALIBRATION.md).
+The same proof gives finite worst-case mean-square-error bounds for **arbitrary, possibly biased estimators**. With exact channel calibration, the interacting readout beats the passive minimax risk for every $n\ge12{,}000$, even throughout the modeled equal-loss and independent bit-error window below.
 
-**Calibration cost limits the practical claim.** Variance-sensitive validation and a finite-sample separable lower bound that permits biased estimators support an explicit [preparation-cost audit](research/CALIBRATION_COST.md). It does not establish a one-use total-cost advantage when reference and unknown-state preparations cost the same. A [repeated chirality scan](research/REPEATED_STATE_SCANS.md) provides a concrete reuse model with full-cycle costs, drift allowances, and conditions for pooling parallel plaquettes. Its experimental precedents support components; the worked cost profile remains a forecast rather than measured apparatus performance.
+| Interacting readout | Certified worst-case variance coefficient |
+|---|---:|
+| Ideal model, exactly calibrated score | $<0.328698$ |
+| Independent bit errors $q\le0.03$, no loss, known $q$ | $<0.382273$ |
+| Equal-rate loss $\gamma t\le0.01$, independent bit errors $q\le0.003$, exact full-channel calibration | $<0.366461$ |
 
-A complementary [return-only reconstruction](THEORY.md#3-exact-finite-repulsion-reconstruction), using two durations and two fluxes, has a general existence proof for every fixed finite $U/J>0$. The two-setting result is certified at the stated point and in a sufficient neighborhood; it is not asserted for every repulsion.
+The loss and detector rates specify analytical models, not measured apparatus performance. Full-channel calibration uses two known product preparations to determine the mean response, without separately known noise rates. A third preparation determines its second moment within the spin and reflection symmetry class; see [direct channel calibration](research/CHANNEL_CALIBRATION.md).
+
+The [finite-calibration theorem](research/FINITE_CALIBRATION.md) includes reference randomness and preparation costs in an unconditional risk bound. Its independent-stage polynomial correction has a concrete total-preparation advantage after sufficient reuse, with extensions to bounded preparation error and drift. The sufficient reference and reuse counts are large. A [repeated chirality scan](research/REPEATED_STATE_SCANS.md) specifies the stability, cycle-cost, and parallel-channel assumptions needed to interpret such reuse physically.
+
+The mode restriction has an operational meaning: three-mode passive parity measurements cannot identify chirality at all, while one extra vacuum mode makes passive identification possible. Interactions improve precision within that four-mode setting. The separate [separable-effects benchmark](research/SEPARABLE_BENCHMARK.md) has tight unbiased coefficient $9/16$. Number-resolved Fourier readout and ancilla-controlled circuits provide stronger measurement resources; their established results and the interaction-enabled cyclic-parity precedent are credited in [References](REFERENCES.md).
+
+A complementary [return-only reconstruction](THEORY.md#3-exact-finite-repulsion-reconstruction), using two durations and two fluxes, has a general existence proof for every fixed finite $U/J>0$. The two-setting passive separation is certified at the stated Hamiltonian point. Separate parameter neighborhoods are certified for the mixed-input score's comparison with $9/16$; they do not establish passive separation throughout those neighborhoods.
 
 ## What the detector must do
 
@@ -47,14 +57,16 @@ For known particle number at most three, parity pattern $0111$ is exactly occupa
 |---|---|
 | [Theory and proofs](THEORY.md) | Model, both reconstructions, retained-state filter, and physical requirements |
 | [Complete-parity derivation](research/COMPLETE_PARITY_THEORY.md) | One-duration calibration, score optimization, and exact worst-case variance |
+| [Passive parity bound](research/PASSIVE_PARITY_BOUND.md) | Three-mode impossibility, four-mode Fisher bound, constructions, and finite risk with arbitrary estimators |
 | [Separable measurement benchmark](research/SEPARABLE_BENCHMARK.md) | Tight lower bound, adaptive measurements, and scope |
 | [Exact certificate](research/CERTIFICATE.md) | Validated finite-repulsion performance and sufficient neighborhoods |
 | [Direct channel calibration](research/CHANNEL_CALIBRATION.md) | Three product references, unknown noise rates, and finite-sample validation |
 | [Calibration cost and reuse](research/CALIBRATION_COST.md) | Reference counts, finite biased-estimator comparison, confidence, and amortization |
+| [Finite calibration theorem](research/FINITE_CALIBRATION.md) | Independent-stage correction, unconditional risk, total preparation counts, and preparation/drift tolerances |
 | [Repeated chirality scans](research/REPEATED_STATE_SCANS.md) | Candidate workflow, experimental precedents, full-cycle costs, stability, and parallel-channel pooling |
 | [Noise budget](research/NOISE_BUDGET.md) | Loss, parity errors, calibration uncertainty, and mean-square error |
 | [References and attribution](REFERENCES.md) | Mathematical predecessors, measurement baselines, and component experiments |
-| [Reproduce the results](REPRODUCE.md) | Twenty-seven check groups, exact certificates, and source integrity |
+| [Reproduce the results](REPRODUCE.md) | Scientific check groups, exact certificates, and source integrity |
 
 The runtime protocol uses coherent flux hopping, a localized vacancy, calibrated dynamics, and parity detection. It requires no local spin rotations, controlled permutations, or spin-resolved measurements. Direct channel calibration additionally uses known local spin-axis preparations. Calibration, survival, and sampling costs remain part of the comparison with other measurement resources.
 
@@ -64,7 +76,7 @@ With Python 3.12:
 
 ```bash
 python -m pip install -r requirements.txt
-python verify.py --output-dir ../vacancy-verification
+python -B verify.py --output-dir ../vacancy-verification
 ```
 
 Choose a new output directory outside this repository. The verifier reports scientific assertions, exact-certificate completion, preserved numerical-report identity, and source integrity separately. See [REPRODUCE.md](REPRODUCE.md) for interpretation.

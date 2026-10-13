@@ -1,0 +1,52 @@
+{
+  "status": "PASS",
+  "scientific_groups": 4,
+  "groups": {
+    "compression_and_three_modes": {
+      "max_permutation_vs_fock_error": 3.971877329048234e-16,
+      "max_three_mode_chirality_coefficient": 1.3431909664379793e-16,
+      "three_mode_minimax_mse_exact": "3/16",
+      "scope": "Direct amplitudes independently check the compressed-permutation formula."
+    },
+    "four_mode_information_and_prerotations": {
+      "max_local_rotation_coefficient_error": 1.3877787807814457e-17,
+      "max_vandermonde_identity_error": 1.6653345369377348e-16,
+      "largest_example_fisher_to_bound_ratio": 0.2627650192580185,
+      "rational_vertex_fisher_bounds": {
+        "0": "32/13",
+        "1/10": "97600/38907",
+        "1/5": "775/297",
+        "7/10": "107200/20961"
+      },
+      "unbiased_passive_variance_lower_bound": "13/32",
+      "scope": "Numerical examples and exact cube-vertex arithmetic supplement the convexity proof."
+    },
+    "explicit_four_mode_construction": {
+      "algebraic_choice_x": "2/5",
+      "coefficient_exact": "935/1344",
+      "symmetric_second_moment": 0.25722789115646266,
+      "mixed_second_moment": 0.6956845238095237,
+      "family_optimum_x": 0.38574579167605755,
+      "family_optimum_coefficient": 0.6951353898097207,
+      "scope": "An explicit unbiased construction; the one-parameter optimum is not a global passive optimum."
+    },
+    "finite_risk_and_uniform_ring": {
+      "epsilon": "0.001",
+      "prior_radius_over_h": "1/10",
+      "necessary_passive_count_interval": [
+        396538.95246757823,
+        396538.95246757823
+      ],
+      "necessary_passive_integer_copies": 396539,
+      "noisy_native_coarse_coefficient": "0.367",
+      "all_biased_strict_comparison_sufficient_n": 12000,
+      "exact_sufficient_threshold": "5813280/503",
+      "uniform_ring_fisher_bound": "80/51",
+      "uniform_ring_variance_lower_bound": "51/80",
+      "max_ring_coefficient_error": 2.0051312418120651e-16,
+      "max_ring_vs_full_bosonic_model_error": 2.8600156080155335e-15,
+      "nominal_noninteracting_ring_is_blind": true,
+      "scope": "Rational finite-risk constants; ring formulas checked against the independent full bosonic implementation."
+    }
+  }
+}

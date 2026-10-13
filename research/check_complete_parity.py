@@ -10,6 +10,7 @@ from pathlib import Path
 
 import numpy as np
 import complete_parity as cp
+from parity_certificate import PASSIVE_SCORE_DECIMALS, PIVOTS
 
 
 def run():
@@ -44,6 +45,34 @@ def run():
     assert abs(cal['mixed_variance'] - .284895494202985) < 1e-12
     assert abs(cal['probabilities'] @ scores) < 1e-12
     group2 = dict(block_coefficients=coefficients, **cp.summary(cal))
+
+    # Reconstruct the new reference score independently from the complete
+    # 120-state floating model; import only its exact decimal definition.
+    primary_scores = np.array(PASSIVE_SCORE_DECIMALS, dtype=float)
+    primary_residual = np.array([1., 0.])-cal['coefficients']@primary_scores
+    primary_correction = np.linalg.solve(cal['coefficients'][:, PIVOTS], primary_residual)
+    primary_scores[list(PIVOTS)] += primary_correction
+    primary_mean = np.einsum('p,pij->ij', primary_scores, odd)
+    primary_moment = np.einsum('p,pij->ij', primary_scores**2, cal['even'])
+    primary_error = float(np.linalg.norm(primary_mean-fr.CHI, 2))
+    assert primary_error < 1e-12
+    primary_blocks = []
+    for projector in projectors:
+        value = float(np.trace(primary_moment@projector).real/np.trace(projector).real)
+        assert np.linalg.norm(primary_moment@projector-value*projector, 2) < 1e-12
+        primary_blocks.append(value)
+    primary_worst = float(np.linalg.eigvalsh(primary_moment)[-1])
+    assert abs(max(primary_blocks)-primary_worst) < 1e-12
+    assert primary_worst < .328697776905 < 13/32
+    group2['primary_minimax_score'] = dict(
+        score_family='primary minimax-oriented feasible score',
+        patterns=[''.join(map(str, p)) for p in cp.PATTERNS],
+        scores=primary_scores.tolist(), two_pivot_corrections=primary_correction.tolist(),
+        reconstruction_residual=primary_error, block_coefficients=primary_blocks,
+        worst_variance=primary_worst,
+        mixed_variance=float(cal['probabilities']@primary_scores**2),
+        checked_upper_bound=.328697776905, passive_reference=13/32,
+        scope='Independent 120-state numerical cross-check; exact enclosure is in parity_certificate.py.')
 
     x = np.array([[0, 1], [1, 0]], complex)
     y = np.array([[0, -1j], [1j, 0]], complex)
@@ -110,10 +139,30 @@ def run():
     assert np.linalg.norm(clean_mean/alpha-fr.CHI, 2) <= amax*b/alpha+1e-12
     assert np.linalg.eigvalsh(clean_second/alpha**2)[-1] <= (
         cal['worst_variance']/alpha+b*amax**2/alpha**2)+1e-12
+    # Independent known-detector correction at the certified window endpoint.
+    # The direct probability kernel and full effects avoid using the analytic
+    # complement-matrix inverse or its operator-norm bound.
+    detector_q = .03
+    odd_kernel = np.array([[detector_q**sum(x != y for x, y in zip(p, t))
+                            *(1-detector_q)**(4-sum(x != y for x, y in zip(p, t)))
+                            for p in cp.PATTERNS] for t in cp.PATTERNS])
+    detector_scores = np.linalg.solve(odd_kernel, primary_scores)
+    detector_mean, detector_moment = cp.bit_flip_observables(
+        dict(effects=e, scores=detector_scores), detector_q)
+    detector_error = float(np.linalg.norm(detector_mean-fr.CHI, 2))
+    detector_worst = float(np.linalg.eigvalsh(detector_moment)[-1])
+    assert detector_error < 1e-12
+    assert detector_worst < .382273 < 13/32
+
     group4 = dict(lambda_loss=lam, bit_flip=q, number_probabilities=number,
                   simple_bias_bound=float(bias_bound), second_moment_bound=float(moment_bound),
                   adversarial_examples_max_bias=max_bias,
                   scope='Probability-budget and detector-channel cross-checks, not a device fit.')
+    group4['primary_detector_only'] = dict(
+        bit_flip=detector_q, atom_loss=False, corrected_scores=detector_scores.tolist(),
+        reconstruction_residual=detector_error, worst_variance=detector_worst,
+        checked_upper_bound=.382273, passive_reference=13/32,
+        scope='Single endpoint numerical cross-check; the uniform window has a separate exact certificate.')
     return dict(status='PASS', scientific_groups=4,
                 groups=dict(effects_and_reconstruction=group1, symmetry_variance=group2,
                             separable_attainment=group3, noise_budget=group4))

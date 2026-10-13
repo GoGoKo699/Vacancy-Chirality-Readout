@@ -5,13 +5,21 @@ under exact calibration. Finite reference preparation and validation have
 their own cost. This account keeps those resources explicit and distinguishes
 finite confidence certificates from asymptotic planning calculations.
 
+For a finite **unconditional** construction within the certified noise
+window, see [FINITE_CALIBRATION.md](FINITE_CALIBRATION.md). It uses independent
+reference stages and a bounded polynomial correction, includes the reference
+preparations in a passive-comparison cost theorem, and treats bounded
+preparation error and drift. The present account describes the distinct
+held-out-validation and regular inverse-response methods; its numerical
+planning profiles use the mixed-input score.
+
 The implemented-channel assumptions, product probes, and empirical Bernstein
 certificate are in [CHANNEL_CALIBRATION.md](CHANNEL_CALIBRATION.md). Its
 variance-sensitive radii use Maurer and Pontil (2009), Theorem 4
 ([MP2009](../REFERENCES.md)); they include the finite-sample terms proportional
 to $B/(N-1)$ and $B^2/(N-1)$ for a score bounded by $B$.
 Preparation error and drift must be included in the final bounds used below.
-For the specified loss and bit-error window, the exactly recalibrated score
+For the specified loss and bit-error window, the exactly recalibrated mixed-input score
 has $V<0.446$ and absolute score below $2.626$
 ([certificate](CERTIFICATE.md)). These are useful planning bounds for that
 score. A score obtained from a random pilot inverse must have its own range

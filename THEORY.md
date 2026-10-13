@@ -1,6 +1,6 @@
 # Vacancy chirality readout: model, results, and proofs
 
-A localized vacancy in a four-site ring converts three-spin chirality into position statistics. Complete parity images permit exact reconstruction at one duration and two opposite fluxes whenever their calibrated contrasts span the target observable; a certified finite-repulsion example achieves a minimax sampling advantage over universally unbiased protocols using fully separable measurements on each input copy. Return frequencies alone provide a two-duration reconstruction for every fixed finite repulsion. For a known total particle number at most three, total site parity recognizes the return event exactly. Retaining an entangled output additionally requires spin-coherent measurement back-action.
+A localized vacancy in a four-site ring converts three-spin chirality into position statistics. Complete parity images permit exact reconstruction at one duration and two opposite fluxes. A certified interacting readout beats a universal precision bound for passive four-mode interferometers with the same terminal parity detector. The passive comparison permits arbitrary estimators and adaptation across fresh copies; its finite-risk formulation is given in the [passive theorem](research/PASSIVE_PARITY_BOUND.md). The separate separable-effects comparison, return-only reconstruction, and retained-state filter are complementary results. For a known total particle number at most three, total site parity recognizes the return event exactly. Retaining an entangled output additionally requires spin-coherent measurement back-action.
 
 ## 1. Model and measurement
 
@@ -128,17 +128,24 @@ $$
 
 The last equality follows because $T$ has three scalar total-spin/reflection blocks, and a state in its largest-eigenvalue block has zero chirality. Fixed equal allocations between fluxes have no larger variance. The [complete proof](research/COMPLETE_PARITY_THEORY.md) also derives the weighted Gram formula for the minimum mixed-input variance.
 
-At $u=16$, $\tau=\pi$, an [integer/rational certificate](research/CERTIFICATE.md) proves a nonzero calibration minor and constructs an exactly feasible score by correcting two rational reference scores. For this corrected score,
+At $u=16$, $\tau=\pi$, an [integer/rational certificate](research/CERTIFICATE.md) proves a nonzero calibration minor and constructs exactly feasible scores by correcting two rational reference coordinates. The score designed for worst-case precision satisfies
 
 $$
-\boxed{\sup_\rho n\operatorname{Var}_\rho(\widehat\chi)<0.389156263913,}
+\boxed{\sup_\rho n\operatorname{Var}_\rho(\widehat\chi)<0.328697776905<13/32.}
 $$
 
+This is a certified feasible score, without a claim of global optimality. The [passive theorem](research/PASSIVE_PARITY_BOUND.md) derives $13/32$ as a lower bound for arbitrary spin-independent passive $U(4)$ followed by complete site parity, including product spin unitaries before mixing. It also proves three-mode impossibility, gives an explicit passive four-mode reconstruction, and extends the comparison to biased estimators through a finite minimax risk bound. Number resolution, extra spatial modes, intermediate detection, and spin controls interleaved with spatial mixing are different measurement resources.
+
+Exact recalibration of the modeled channel retains a worst-case coefficient below $0.366461$ for equal-rate loss $\gamma t\le0.01$ and independent bit errors $q\le0.003$. The [finite-calibration theorem](research/FINITE_CALIBRATION.md) replaces exact response coefficients by independent product-reference batches, with unconditional error and preparation-cost bounds, including explicit preparation and drift allowances.
+
+A separate score minimizes the variance at the maximally mixed input. Its nearby exactly corrected version satisfies
+
 $$
-0.284895494200<n\operatorname{Var}_{I_8/8}(\widehat\chi)<0.284895494206.
+\|T_{\rm mixed}\|<0.389156263913,\qquad
+0.284895494200<n\operatorname{Var}_{I_8/8}(\widehat\chi_{\rm mixed})<0.284895494206.
 $$
 
-These are outward-certified bounds for the stated finite model. An all-outcome recalibration also guarantees $\|T\|<0.536350926403<9/16$ whenever each parity effect changes by operator norm at most $0.0015$, preserving the stated symmetries and completeness. In the uniform ring this includes the sufficient box $|u-16|,|\tau-\pi|,|\Phi_++2\pi/3|<0.00009$ with $\Phi_-=-\Phi_+$. This conservative box proves stability with a nonzero margin; it is not an estimate of laboratory tolerance. The certificate also retains smaller neighborhoods with tighter variance bounds. The [noise budget](research/NOISE_BUDGET.md) treats losses, detector-bit errors, calibration, and normalization separately. In particular, singleton patterns retain collision information but can also occur after two particles are lost. The return-only existence theorem above remains the alternative established for every fixed finite $u>0$.
+For this mixed-input score, the certificate also proves $\|T\|<0.536350926403<9/16$ after all-outcome recalibration whenever each parity effect changes by operator norm at most $0.0015$, preserving the stated symmetries and completeness. In the uniform ring this includes the sufficient box $|u-16|,|\tau-\pi|,|\Phi_++2\pi/3|<0.00009$ with $\Phi_-=-\Phi_+$. These are sufficient mathematical neighborhoods, not measured control tolerances. They concern that score and the separable benchmark; they do not extend the passive separation to the same parameter box. The [noise budget](research/NOISE_BUDGET.md) treats loss aliases, detector errors, calibration, and normalization separately. The return-only existence theorem remains established for every fixed finite $u>0$.
 
 ## 4. Hard-core return instrument and retained entanglement
 

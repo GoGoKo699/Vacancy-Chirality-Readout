@@ -30,6 +30,7 @@
     "1101",
     "1110"
   ],
+  "score_family": "mixed-input-oriented feasible score",
   "rational_reference_scores": [
     "0.736714019013",
     "0.252900613464",
@@ -448,6 +449,260 @@
         ]
       }
     }
+  },
+  "passive_separation": {
+    "score_family": "primary minimax-oriented feasible score",
+    "optimality_scope": "No global score-optimality certificate is asserted.",
+    "rational_reference_scores": [
+      "1.095165798450",
+      "0.695667146367",
+      "1.622867200391",
+      "0.549200633781",
+      "-0.621840468488",
+      "-0.572484748794",
+      "-0.414427224699",
+      "-0.842443180993"
+    ],
+    "pivot_patterns": [
+      "0111",
+      "0100"
+    ],
+    "pivot_determinant": [
+      "-0.003664877543543",
+      "-0.003664877543542"
+    ],
+    "exact_score_correction_intervals": {
+      "alpha": [
+        "-0.000000000000069098",
+        "-0.000000000000069097"
+      ],
+      "beta": [
+        "0.000000000000235367",
+        "0.000000000000235368"
+      ]
+    },
+    "calibrated_second_moment_eigenvalues": {
+      "symmetric": [
+        "0.328697776903440",
+        "0.328697776904969"
+      ],
+      "reflection_odd": [
+        "0.328697776903340",
+        "0.328697776904869"
+      ],
+      "reflection_even_standard": [
+        "0.328697776903379",
+        "0.328697776904907"
+      ]
+    },
+    "calibrated_second_moment_norm_upper": "0.328697776904969",
+    "score_absolute_upper": "1.622867200391236",
+    "singleton_half_range_upper": "1.122353834439618",
+    "passive_reference_exact": "13/32",
+    "ideal_gap_lower": "0.077552223095031",
+    "calibration_moments": {
+      "scope": "Exact nominal ideal-model planning profiles; not measured variances of an implemented channel or a pilot-fitted score.",
+      "flux_allocation": "independent equal-probability randomization",
+      "score_definition": "primary minimax-oriented rational scores plus exact two-outcome correction",
+      "score_absolute_upper": "1.622867200391236",
+      "sector_order": [
+        "symmetric",
+        "reflection_odd",
+        "reflection_even_standard"
+      ],
+      "second_moment_eigenvalues": [
+        [
+          "0.328697776904201",
+          "0.328697776904202"
+        ],
+        [
+          "0.328697776904083",
+          "0.328697776904084"
+        ],
+        [
+          "0.328697776904113",
+          "0.328697776904114"
+        ]
+      ],
+      "fourth_moment_eigenvalues": [
+        [
+          "0.185392313498132",
+          "0.185392313498133"
+        ],
+        [
+          "0.219958913665572",
+          "0.219958913665573"
+        ],
+        [
+          "0.175386352663902",
+          "0.175386352663903"
+        ]
+      ],
+      "probes": {
+        "xyz": {
+          "mean_exact": "1/8",
+          "sector_weights_exact": [
+            "1/2",
+            "1/4",
+            "1/4"
+          ],
+          "second_moment": [
+            "0.328697776904149",
+            "0.328697776904150"
+          ],
+          "fourth_moment": [
+            "0.191532473331435",
+            "0.191532473331436"
+          ],
+          "variance_X": [
+            "0.313072776904149",
+            "0.313072776904150"
+          ],
+          "variance_X_squared": [
+            "0.083490244789705",
+            "0.083490244789706"
+          ]
+        },
+        "001": {
+          "mean_exact": "0",
+          "sector_weights_exact": [
+            "1/3",
+            "1/2",
+            "1/6"
+          ],
+          "second_moment": [
+            "0.328697776904127",
+            "0.328697776904128"
+          ],
+          "fourth_moment": [
+            "0.201007953442814",
+            "0.201007953442815"
+          ],
+          "variance_X": [
+            "0.328697776904127",
+            "0.328697776904128"
+          ],
+          "variance_X_squared": [
+            "0.092965724901098",
+            "0.092965724901099"
+          ]
+        },
+        "000": {
+          "mean_exact": "0",
+          "sector_weights_exact": [
+            "1",
+            "0",
+            "0"
+          ],
+          "second_moment": [
+            "0.328697776904201",
+            "0.328697776904202"
+          ],
+          "fourth_moment": [
+            "0.185392313498132",
+            "0.185392313498133"
+          ],
+          "variance_X": [
+            "0.328697776904201",
+            "0.328697776904202"
+          ],
+          "variance_X_squared": [
+            "0.077350084956368",
+            "0.077350084956369"
+          ]
+        },
+        "010": {
+          "mean_exact": "0",
+          "sector_weights_exact": [
+            "1/3",
+            "0",
+            "2/3"
+          ],
+          "second_moment": [
+            "0.328697776904142",
+            "0.328697776904143"
+          ],
+          "fourth_moment": [
+            "0.178721672941979",
+            "0.178721672941980"
+          ],
+          "variance_X": [
+            "0.328697776904142",
+            "0.328697776904143"
+          ],
+          "variance_X_squared": [
+            "0.070679444400253",
+            "0.070679444400254"
+          ]
+        }
+      }
+    },
+    "full_channel": {
+      "uniform_window": {
+        "lambda": [
+          "0",
+          "0.01"
+        ],
+        "bit_error_q": [
+          "0",
+          "0.003"
+        ]
+      },
+      "coarse_primary_bounds": {
+        "A": "1.623",
+        "C1": "1.123",
+        "T": "0.3287"
+      },
+      "certified_auxiliary_source": "channel_recalibration auxiliary D score",
+      "normalized_chi_mean_error_upper": "0.001017469244508",
+      "normalized_chi_second_moment_upper": "0.344784300185690",
+      "normalized_D_mean_error_upper": "0.113367439057571",
+      "normalized_D_second_moment_upper": "701.993354716871592",
+      "normalized_response_determinant_lower": "0.932197533973938",
+      "raw_response_determinant_lower": "0.857060633002494",
+      "channel_recalibrated_score_absolute_upper": "1.824412629249486",
+      "channel_recalibrated_second_moment_upper": "0.366460374238054",
+      "passive_gap_lower": "0.039789625761946",
+      "operational_rates_required": false,
+      "requires": "Exact response calibration; equal spin-independent loss and independent symmetric bit errors.",
+      "finite_data_scope": "Finite empirical calibration is a separate estimator and risk budget."
+    },
+    "finite_calibration_inputs": {
+      "feature_definition": "Raw Z=(X_primary,X_D/4), target x=(<chi>,<D>/4)",
+      "raw_clean_factor_lower": "0.958852486475226",
+      "normalized_response_row_error_upper": [
+        "0.002349744568835",
+        "0.065452721457227"
+      ],
+      "normalized_response_error_norm_upper": "0.065494885645340",
+      "response_residual_norm_upper": "0.103947447477219",
+      "first_response_residual_row_norm_upper": "0.043400571947183",
+      "response_norm_upper": "1.065494885645340",
+      "feature_second_moment_trace_upper": "44.219368969990164",
+      "mean_weight_second_moment_upper": [
+        "0.344784300185690",
+        "0.395119522625782",
+        "0.370837757092059",
+        "0.366919338686148"
+      ],
+      "polynomial_degrees": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "detector_only": {
+      "uniform_bit_error_window": [
+        "0",
+        "0.03"
+      ],
+      "requires": "No atom loss; known independent symmetric bit-flip probability; exact odd-block score correction.",
+      "second_moment_operator_norm_upper": "0.382272000344484",
+      "corrected_score_absolute_upper": "1.838280828920598",
+      "passive_gap_lower": "0.023977999655516"
+    },
+    "scope": "Nominal Hamiltonian point. Mixed-input-score neighborhoods are not transferred to this score."
   },
   "effect_neighborhood": {
     "uniform_effect_operator_norm_radius": "0.00001",

@@ -69,7 +69,45 @@
       "worst_variance": 0.389156263910116,
       "max_abs_score": 2.336375499790797,
       "reconstruction_residual": 6.7287270058019226e-15,
-      "scope": "Floating-point diagnostics; see the separate exact certificate."
+      "scope": "Floating-point diagnostics; see the separate exact certificate.",
+      "primary_minimax_score": {
+        "score_family": "primary minimax-oriented feasible score",
+        "patterns": [
+          "0001",
+          "0010",
+          "0100",
+          "0111",
+          "1000",
+          "1011",
+          "1101",
+          "1110"
+        ],
+        "scores": [
+          1.09516579845,
+          0.695667146367,
+          1.622867200391158,
+          0.5492006337809255,
+          -0.621840468488,
+          -0.572484748794,
+          -0.414427224699,
+          -0.842443180993
+        ],
+        "two_pivot_corrections": [
+          -7.448116541993142e-14,
+          1.5778408466197227e-13
+        ],
+        "reconstruction_residual": 6.198313369756091e-15,
+        "block_coefficients": [
+          0.32869777690419927,
+          0.32869777690410934,
+          0.328697776904078
+        ],
+        "worst_variance": 0.32869777690420116,
+        "mixed_variance": 0.3286977769041465,
+        "checked_upper_bound": 0.328697776905,
+        "passive_reference": 0.40625,
+        "scope": "Independent 120-state numerical cross-check; exact enclosure is in parity_certificate.py."
+      }
     },
     "separable_attainment": {
       "six_Pauli_mixed_variance": 0.5625,
@@ -88,7 +126,26 @@
       "simple_bias_bound": 0.0014288705314760126,
       "second_moment_bound": 0.40851779245249814,
       "adversarial_examples_max_bias": 0.0006698465695855749,
-      "scope": "Probability-budget and detector-channel cross-checks, not a device fit."
+      "scope": "Probability-budget and detector-channel cross-checks, not a device fit.",
+      "primary_detector_only": {
+        "bit_flip": 0.03,
+        "atom_loss": false,
+        "corrected_scores": [
+          1.2357134976383917,
+          0.7844823238775356,
+          1.8326522690309182,
+          0.6186553045105785,
+          -0.7041185399033841,
+          -0.647153206659767,
+          -0.4694478721097772,
+          -0.952953043393268
+        ],
+        "reconstruction_residual": 6.201822361474369e-15,
+        "worst_variance": 0.37717490748551746,
+        "checked_upper_bound": 0.382273,
+        "passive_reference": 0.40625,
+        "scope": "Single endpoint numerical cross-check; the uniform window has a separate exact certificate."
+      }
     }
   }
 }

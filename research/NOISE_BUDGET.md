@@ -7,7 +7,15 @@ below are analytical. The [exact certificate](CERTIFICATE.md) establishes the
 score and operator bounds used in the uniform noise window in Section 5.
 The finer numerical table evaluates the bounds with the floating-point scores
 in [complete_parity.py](complete_parity.py). The loss and detector channels
-are diagnostic models; their parameters are not measured apparatus data. An alternative [direct channel calibration](CHANNEL_CALIBRATION.md) includes the whole noisy response in its two-coordinate reconstruction, without separately known rates. At the nominal operating point, the [exact certificate](CERTIFICATE.md) proves that this full-channel recalibration gives an unbiased estimator with second moment below $0.446$ throughout the same $\lambda\le0.01$, $q\le0.003$ rectangle. Exact response coefficients are assumed for that unbiasedness statement. The method uses known product references and an independent finite-data validation budget; the fixed-score bounds below remain useful when that recalibration is not performed.
+are diagnostic models; their parameters are not measured apparatus data.
+[Direct channel calibration](CHANNEL_CALIBRATION.md) includes the whole
+noisy response without separately known rates. For the worst-case-oriented
+score, the [exact certificate](CERTIFICATE.md) gives an unbiased second
+moment below $0.366461$ throughout $\lambda\le0.01$, $q\le0.003$.
+The mixed-input score has a separate bound below $0.446$ in the same window.
+Both assume exact response coefficients. The [finite-calibration theorem](FINITE_CALIBRATION.md)
+accounts for finite reference data and preparation/drift errors. All generic
+budgets below must be evaluated with the particular score being implemented.
 
 ## 1. Score convention and input-trial accounting
 
@@ -331,8 +339,27 @@ flux-dependent error law require their own calibrated channel.
 
 ## 5. A certified uniform window and a numerical diagnostic
 
-For the exactly calibrated nominal estimator at $u=16$, $\tau=\pi$,
-the [rational-arithmetic certificate](CERTIFICATE.md#certified-loss-and-bit-error-window)
+For the worst-case-oriented score at $u=16$, $\tau=\pi$, the
+[certificate](CERTIFICATE.md) proves $A<1.623$, $C_1<1.123$, and
+$\|T\|<0.3287$. The formulas above give, uniformly over
+$0\le\lambda\le0.01$, $0\le q\le0.003$,
+
+$$
+|\mathbb EY-\langle\chi\rangle|<0.001018,\qquad
+\mathbb EY^2<0.344785.
+$$
+
+These are bounds for survival-and-no-flip correction; the bias remains.
+The two-feature full-channel inverse removes that bias under exact
+calibration and has second moment below $0.366461<13/32$. Without particle
+loss, inversion of the odd-parity bit-error kernel instead gives an exactly
+unbiased coefficient below $0.382273$ for known $q\le0.03$. The certificate
+derives and checks these two different corrections separately.
+
+### Mixed-input score and diagnostic table
+
+For the exactly calibrated mixed-input estimator at $u=16$, $\tau=\pi$,
+the [rational-arithmetic certificate](CERTIFICATE.md#mixed-input-score-loss-and-bit-error-window)
 proves $A<2.337$, $C_1<1.499$, and $\|T\|<0.390$.
 For every $0\le\lambda\le0.01$, $0\le q\le0.003$, and every input,
 known survival-and-no-flip correction then gives

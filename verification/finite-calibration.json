@@ -1,0 +1,158 @@
+{
+  "status": "PASS",
+  "scientific_groups": 2,
+  "arithmetic": "Exact fractions and outward rational intervals; no floating arithmetic.",
+  "dependency": {
+    "certificate_sha256": "9e9e75481981e659a5bbc48c74aafa031a0d578eff32d67454aadc71efe7d832",
+    "certificate_file": "complete-parity-certificate.json",
+    "source_object": "passive_separation.finite_calibration_inputs",
+    "verified_supplied_inputs": {
+      "feature_definition": "Raw Z=(X_primary,X_D/4), target x=(<chi>,<D>/4)",
+      "raw_clean_factor_lower": "0.958852486475226",
+      "normalized_response_row_error_upper": [
+        "0.002349744568835",
+        "0.065452721457227"
+      ],
+      "normalized_response_error_norm_upper": "0.065494885645340",
+      "response_residual_norm_upper": "0.103947447477219",
+      "first_response_residual_row_norm_upper": "0.043400571947183",
+      "response_norm_upper": "1.065494885645340",
+      "feature_second_moment_trace_upper": "44.219368969990164",
+      "mean_weight_second_moment_upper": [
+        "0.344784300185690",
+        "0.395119522625782",
+        "0.370837757092059",
+        "0.366919338686148"
+      ],
+      "polynomial_degrees": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "coarse_bounds_used": {
+      "response_residual_norm_upper": "21/200",
+      "first_response_residual_row_norm_upper": "11/250",
+      "response_norm_upper": "533/500",
+      "feature_second_moment_trace_upper": "2211/50"
+    },
+    "mean_weight_second_moment_bounds_used": [
+      "69/200",
+      "99/250",
+      "371/1000",
+      "367/1000"
+    ]
+  },
+  "target_rmse": "0.001",
+  "passive_per_task_expected_count_necessary_interval": [
+    "396538.952467578231279",
+    "396538.952467578231280"
+  ],
+  "groups": [
+    {
+      "group": "unconditional_finite_calibration_and_reuse",
+      "reference_stage_totals": [
+        2000000,
+        20000000,
+        200000000
+      ],
+      "reference_stage_allocations": [
+        {
+          "x_probe": 1600000,
+          "d_probe": 400000
+        },
+        {
+          "x_probe": 16000000,
+          "d_probe": 4000000
+        },
+        {
+          "x_probe": 160000000,
+          "d_probe": 40000000
+        }
+      ],
+      "weight_covariance_operator_norm_bounds": [
+        "0.000000000000000000000000",
+        "0.000013800000000000000000",
+        "0.000001738585944000000000",
+        "0.000000167598662140777472"
+      ],
+      "deterministic_bias_upper": "221/10000000",
+      "squared_target_mean_norm_bound": "0.229",
+      "unconditional_mse_upper": "0.000000999620889004164390",
+      "unconditional_mse_less_than": "0.0000009996325",
+      "comparison": {
+        "tasks": 16000,
+        "target_preparations_per_task": 382000,
+        "reference_preparations": 222000000,
+        "interacting_total_preparations": 6334000000,
+        "passive_expected_total_necessary_interval": [
+          "6344623239.481251700477",
+          "6344623239.481251700478"
+        ],
+        "passive_fixed_integer_budget_necessary": 6344623240,
+        "scope": "The ceiling applies to fixed or almost-sure integer budgets; the unrounded interval applies to expected budgets."
+      }
+    },
+    {
+      "group": "preparation_error_and_channel_drift",
+      "reference_response_error_norm_upper": "81/1000000",
+      "target_response_drift_norm_upper": "1/50000",
+      "feature_second_moment_matrix_drift_norm_upper": "1/1000",
+      "reference_stage_totals": [
+        2000000,
+        20000000,
+        200000000
+      ],
+      "mean_weight_deviation_bounds": [
+        "0.000000000000000000000000",
+        "0.000081000000000000000000",
+        "0.000093075561000000000000",
+        "0.000094718693025441000000"
+      ],
+      "mean_weight_second_moment_bounds": [
+        "0.345000000000000000000001",
+        "0.396678200027982014214341",
+        "0.371754366823860648480602",
+        "0.367763543536465657776876"
+      ],
+      "weight_covariance_operator_norm_bounds": [
+        "0.000000000000000000000000",
+        "0.000013800000000000000001",
+        "0.000001741533572653728057",
+        "0.000000167962593526157321"
+      ],
+      "final_mean_weight_norm_upper": "1.049199818693025441000000",
+      "deterministic_bias_squared_upper": "0.000000004628557039098651",
+      "target_sampling_mse_upper": "0.000000958108549189148180",
+      "random_calibration_mse_upper": "0.000000035788586797721817",
+      "unconditional_mse_upper": "0.000000998525693025968646",
+      "unconditional_mse_less_than": "0.0000009985257",
+      "angular_preparation": {
+        "pure_bloch_vector_angle_radians_upper": "1/200",
+        "response_error_norm_upper": "320333/4000000000",
+        "requires": "Cyclic permutation of the same actual pure triad; second probe has identical first two Bloch vectors; errors remain within the same orbital embedding."
+      },
+      "comparison": {
+        "tasks": 20000,
+        "target_preparations_per_task": 385000,
+        "reference_preparations": 222000000,
+        "interacting_total_preparations": 7922000000,
+        "passive_expected_total_necessary_interval": [
+          "7930779049.351564625597",
+          "7930779049.351564625598"
+        ],
+        "passive_fixed_integer_budget_necessary": 7930779050,
+        "scope": "The ceiling applies to fixed or almost-sure integer budgets; the unrounded interval applies to expected budgets."
+      }
+    }
+  ],
+  "assumptions": [
+    "Spin and paired-reflection covariance; fixed predetermined two-feature score.",
+    "Independent reference stages and target trials; every preparation is counted.",
+    "Targets are fixed independently of the shared calibration randomness.",
+    "Separate arbitrary-state tasks; no promised common target model.",
+    "Equal preparation costs for the total-count comparison.",
+    "Noise, preparation, and drift windows are model assumptions, not apparatus data."
+  ]
+}

@@ -19,10 +19,18 @@ SCALE = 1 << BITS
 ORDER = 1280
 NORM_BOUND = 256
 PATTERNS = tuple(p for p in itertools.product((0, 1), repeat=4) if sum(p) % 2)
+# Mixed-input-oriented score; retained for its own moments and existing reports.
 SCORE_DECIMALS = (
     '0.736714019013', '0.252900613464', '2.336375499791',
     '0.730697335072', '-0.660422527924', '-0.288874449056',
     '-0.305946882115', '-0.540240033331',
+)
+# Primary minimax-oriented feasible score.  Certification establishes feasibility
+# and performance, not global optimality of the numerical score search.
+PASSIVE_SCORE_DECIMALS = (
+    '1.095165798450', '0.695667146367', '1.622867200391',
+    '0.549200633781', '-0.621840468488', '-0.572484748794',
+    '-0.414427224699', '-0.842443180993',
 )
 # The exact correction uses these two columns of the two-row calibration map.
 PIVOTS = (PATTERNS.index((0, 1, 1, 1)), PATTERNS.index((0, 1, 0, 0)))
@@ -583,6 +591,156 @@ def calibration_moment_certificate(es, error, b, alpha, beta):
     }
 
 
+def passive_separation_certificate(es, error, cs, ds, roots, auxiliary_report):
+    """Primary feasible score, passive-reference gaps, noise and calibration."""
+    reference = tuple(F(v) for v in PASSIVE_SCORE_DECIMALS)
+    det, alpha, beta, correction_norm = correction(cs, ds, reference)
+    scores = [Interval(v) for v in reference]
+    scores[PIVOTS[0]] += alpha
+    scores[PIVOTS[1]] += beta
+    eig = {k: v.centered_widen(correction_norm)
+           for k, v in second_moment(es, error, reference).items()}
+    t_upper = max(v.hi for v in eig.values())
+    passive_bound = F(13, 32)
+    assert t_upper < F(3287, 10000) < passive_bound
+    a_upper = max(v.abs_upper() for v in scores)
+    singleton = [v for pattern, v in zip(PATTERNS, scores) if sum(pattern) == 1]
+    c1_upper = (max(v.hi for v in singleton)-min(v.lo for v in singleton))/2
+    assert a_upper < F(1623, 1000) and c1_upper < F(1123, 1000)
+    moment_report = calibration_moment_certificate(es, error, reference, alpha, beta)
+    moment_report['score_definition'] = 'primary minimax-oriented rational scores plus exact two-outcome correction'
+
+    # The auxiliary score is identical to the separately certified D feature.
+    # Read its validated report; never transfer another chi-score's bounds.
+    assert F(auxiliary_report['auxiliary_score_absolute_upper']) < 194
+    assert F(auxiliary_report['auxiliary_singleton_half_range_upper']) < 107
+    assert F(auxiliary_report['auxiliary_second_moment_norm_upper']) < 646
+    z = positive_exponential(F(1, 100))-1
+    exp_3lambda = positive_exponential(F(3, 100))
+    q = F(3, 1000)
+    no_flip = (1-q)**4
+    even_flip = 6*q*q*(1-q)**2+q**4
+    odd_flip = 4*q*(1-q)**3+4*q**3*(1-q)
+
+    def budgets(a, c1, t):
+        bias = (3*c1*z*z+a*even_flip/no_flip*(1+3*z*z)
+                +3*a*odd_flip/no_flip*z)
+        second = exp_3lambda*(no_flip*t+even_flip*a*a
+                             +3*z*z*(no_flip+even_flip)*a*a
+                             +(3*z+z*z*z)*odd_flip*a*a)/(no_flip*no_flip)
+        return bias.hi, second.hi
+
+    chi_error, chi_second = budgets(F(1623, 1000), F(1123, 1000), F(3287, 10000))
+    d_error, d_second = budgets(F(194), F(107), F(646))
+    chi_c, chi_d = 4*chi_error/roots[3].lo, chi_error/roots[3].lo
+    d_c, d_d = 4*d_error/roots[3].lo, d_error/roots[3].lo
+    schur = 1-chi_c-chi_d*d_c/(1-d_d)
+    assert 1-d_d > 0 and schur > 0
+    wa, wv = 1/schur, chi_d/((1-d_d)*schur)
+    channel_second = (wa*sqrt_upper(chi_second)+wv*sqrt_upper(d_second))**2
+    channel_score = (wa*F(1623, 1000)+wv*194)*exp_3lambda.hi/no_flip
+    assert channel_second < F(366461, 10**6) < passive_bound
+    assert channel_score < F(1824413, 10**6)
+
+    # Raw feature Z=(X_a,X_D/4) responds to x=(<chi>,<D>/4).
+    # Its clean factor r lies in [rmin,1].  The normalized response is I+E.
+    rmin = no_flip/exp_3lambda.hi
+    row1, row2 = chi_c, d_d
+    eta = sqrt_upper(row1*row1+row2*row2)
+    kappa_b = 1-rmin+rmin*eta
+    first_row_b = 1-rmin+rmin*row1
+    response_norm = 1+eta
+    feature_trace = chi_second+d_second/16
+    assert row1 < F(235, 100000)
+    assert kappa_b < F(105, 1000)
+    assert first_row_b < F(44, 1000)
+    assert response_norm < F(1066, 1000)
+    assert feature_trace < F(4422, 100)
+    # Polynomial weights w_l^T=e1^T sum_{j=0}^{l-1}(I-Mraw)^j.
+    degree_bounds = [chi_second]
+    degree_bounds.append((F(1044, 1000)*sqrt_upper(chi_second)
+                          +F(235, 100000)*sqrt_upper(d_second/16))**2)
+    for degree in (3, 4):
+        tail = F(44, 1000)*F(105, 1000)**(degree-1)/(1-F(105, 1000))
+        degree_bounds.append((sqrt_upper(F(366461, 10**6))
+                              +sqrt_upper(F(4422, 100))*tail)**2)
+    degree_limits = (F(345, 1000), F(396, 1000), F(371, 1000), F(367, 1000))
+    assert all(v < bound for v, bound in zip(degree_bounds, degree_limits))
+
+    # Known detector-only bit flips: invert the odd-to-odd 8x8 kernel exactly.
+    # The endpoint bound is monotone on 0<=q<=.03; proof in CERTIFICATE.md.
+    detector_q = F(3, 100)
+    t = 1-2*detector_q
+    detector_alpha = (1-detector_q)**4
+    detector_beta = detector_q**2*(1-detector_q)**2
+    lambda0 = (1+t**4)/2
+    lambda_plus = t*t
+    lambda_minus = t*(1+t*t)/2
+    inv_u = (1/lambda_plus+1/lambda_minus)/2
+    inv_v = (1/lambda_plus-1/lambda_minus)/2
+    assert inv_v >= 0
+    mean = sum(scores, Interval(0))/8
+    w_abs = abs(1/lambda0-1/lambda_plus)*mean.abs_upper()
+    l2_squared = sum(v.abs_upper()**2 for v in scores)
+    detector_second = ((detector_alpha-detector_beta)
+                       *(inv_u*sqrt_upper(t_upper)+inv_v*a_upper+w_abs)**2
+                       +detector_beta*l2_squared/t**4)
+    assert detector_second < F(382273, 10**6) < passive_bound
+    detector_score = (inv_u+inv_v)*a_upper+w_abs
+    return {
+        'score_family': 'primary minimax-oriented feasible score',
+        'optimality_scope': 'No global score-optimality certificate is asserted.',
+        'rational_reference_scores': list(PASSIVE_SCORE_DECIMALS),
+        'pivot_patterns': [''.join(map(str, PATTERNS[j])) for j in PIVOTS],
+        'pivot_determinant': display(det),
+        'exact_score_correction_intervals': {'alpha': display(alpha, 18), 'beta': display(beta, 18)},
+        'calibrated_second_moment_eigenvalues': {k: display(v) for k, v in eig.items()},
+        'calibrated_second_moment_norm_upper': decimal_bound(t_upper, 15, True),
+        'score_absolute_upper': decimal_bound(a_upper, 15, True),
+        'singleton_half_range_upper': decimal_bound(c1_upper, 15, True),
+        'passive_reference_exact': '13/32',
+        'ideal_gap_lower': decimal_bound(passive_bound-t_upper, 15),
+        'calibration_moments': moment_report,
+        'full_channel': {
+            'uniform_window': {'lambda': ['0', '0.01'], 'bit_error_q': ['0', '0.003']},
+            'coarse_primary_bounds': {'A': '1.623', 'C1': '1.123', 'T': '0.3287'},
+            'certified_auxiliary_source': 'channel_recalibration auxiliary D score',
+            'normalized_chi_mean_error_upper': decimal_bound(chi_error, 15, True),
+            'normalized_chi_second_moment_upper': decimal_bound(chi_second, 15, True),
+            'normalized_D_mean_error_upper': decimal_bound(d_error, 15, True),
+            'normalized_D_second_moment_upper': decimal_bound(d_second, 15, True),
+            'normalized_response_determinant_lower': decimal_bound((1-d_d)*schur, 15),
+            'raw_response_determinant_lower': decimal_bound(rmin*rmin*(1-d_d)*schur, 15),
+            'channel_recalibrated_score_absolute_upper': decimal_bound(channel_score, 15, True),
+            'channel_recalibrated_second_moment_upper': decimal_bound(channel_second, 15, True),
+            'passive_gap_lower': decimal_bound(passive_bound-channel_second, 15),
+            'operational_rates_required': False,
+            'requires': 'Exact response calibration; equal spin-independent loss and independent symmetric bit errors.',
+            'finite_data_scope': 'Finite empirical calibration is a separate estimator and risk budget.',
+        },
+        'finite_calibration_inputs': {
+            'feature_definition': 'Raw Z=(X_primary,X_D/4), target x=(<chi>,<D>/4)',
+            'raw_clean_factor_lower': decimal_bound(rmin, 15),
+            'normalized_response_row_error_upper': [decimal_bound(v, 15, True) for v in (row1, row2)],
+            'normalized_response_error_norm_upper': decimal_bound(eta, 15, True),
+            'response_residual_norm_upper': decimal_bound(kappa_b, 15, True),
+            'first_response_residual_row_norm_upper': decimal_bound(first_row_b, 15, True),
+            'response_norm_upper': decimal_bound(response_norm, 15, True),
+            'feature_second_moment_trace_upper': decimal_bound(feature_trace, 15, True),
+            'mean_weight_second_moment_upper': [decimal_bound(v, 15, True) for v in degree_bounds],
+            'polynomial_degrees': [1, 2, 3, 4],
+        },
+        'detector_only': {
+            'uniform_bit_error_window': ['0', '0.03'],
+            'requires': 'No atom loss; known independent symmetric bit-flip probability; exact odd-block score correction.',
+            'second_moment_operator_norm_upper': decimal_bound(detector_second, 15, True),
+            'corrected_score_absolute_upper': decimal_bound(detector_score, 15, True),
+            'passive_gap_lower': decimal_bound(passive_bound-detector_second, 15),
+        },
+        'scope': 'Nominal Hamiltonian point. Mixed-input-score neighborhoods are not transferred to this score.',
+    }
+
+
 def run():
     if not __debug__:
         raise RuntimeError("Run the certificate without Python optimization.")
@@ -603,6 +761,7 @@ def run():
     strong_report = strong_neighborhood(es, effect_error, cs, ds, b, alpha, beta, pi, roots)
     channel_report = channel_recalibration_certificate(es, effect_error, cs, ds, roots)
     moment_report = calibration_moment_certificate(es, effect_error, b, alpha, beta)
+    passive_report = passive_separation_certificate(es, effect_error, cs, ds, roots, channel_report)
     # A finite open parameter box, all parameters varied while preserving the
     # uniform spin-independent ring and using recalibrated outcome scores.
     radius = F(1, 10**7)
@@ -636,6 +795,7 @@ def run():
         'matrix_rounding_error_units': model_error_units,
         'action_error_strict_upper': '1e-170',
         'patterns': [''.join(map(str, p)) for p in PATTERNS],
+        'score_family': 'mixed-input-oriented feasible score',
         'rational_reference_scores': list(SCORE_DECIMALS),
         'calibration_c': [display(v) for v in cs],
         'calibration_d': [display(v) for v in ds],
@@ -649,6 +809,7 @@ def run():
         'all_outcome_robustness': strong_report,
         'channel_recalibration': channel_report,
         'calibration_moments': moment_report,
+        'passive_separation': passive_report,
         'effect_neighborhood': {
             'uniform_effect_operator_norm_radius': '0.00001',
             'requires': 'SU(2) invariance, flux reflection, exact recalibration, complete POVM',

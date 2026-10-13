@@ -1,6 +1,6 @@
 # Reproduce the results
 
-The root verifier runs all 16 preserved scientific groups, four complete-parity numerical cross-checks, one independent integer/rational certificate, three channel-calibration cross-checks, and three calibration-cost cross-checks. It verifies the bytes and membership of the preserved research package before and after execution, and records hashes of the current verification code.
+The root verifier runs all 16 preserved scientific groups, four complete-parity numerical cross-checks, one independent integer/rational certificate, three channel-calibration cross-checks, three calibration-cost cross-checks, four passive-parity cross-checks, and two finite-calibration checks. It verifies the bytes and membership of the preserved research package before and after execution, and records hashes of the current verification code.
 
 ## Run
 
@@ -8,7 +8,7 @@ Use Python 3.12 and the pinned numerical dependencies:
 
 ```bash
 python -m pip install -r requirements.txt
-python verify.py --output-dir ../vacancy-verification
+python -B verify.py --output-dir ../vacancy-verification
 ```
 
 The output directory must be new and outside the repository. The wrapper supplies single-thread numerical-library settings, disables bytecode writes, and keeps Python assertions enabled in subprocesses. Existing outputs are never overwritten.
@@ -19,14 +19,16 @@ The new exact certificate can also run independently using only the Python stand
 python research/parity_certificate.py --output ../parity-certificate/certificate.json
 ```
 
-## Twenty-seven scientific check groups
+## Thirty-three scientific check groups
 
 | Groups | Implementation | Coverage |
 |---:|---|---|
+| 4 | [Passive-parity cross-checks](research/check_passive_parity.py) | Three-mode blindness; four-mode Fisher information and local prerotations; constructive identifiability; finite-risk constants and the matched passive ring |
+| 2 | [Finite-calibration checks](research/check_finite_calibration.py) | Exact dependency-bound unconditional risk and total counts; preparation and drift extension |
 | 3 | [Calibration-cost cross-checks](research/check_calibration_cost.py) | Exact moments against the numerical model; confidence-box propagation; biased separable information/prior bound; finite counts, full-cycle cost, stability, and matched-channel pooling |
 | 3 | [Channel-calibration cross-checks](research/check_channel_calibration.py) | Product-reference identities; full noisy-effect reconstruction; calibrated mean and variance; a symmetry-breaking counterexample |
 | 4 | [Complete-parity cross-checks](research/check_complete_parity.py) | Physical opposite-flux effects, exact reconstruction identities checked numerically, symmetry-block variance, separable benchmark attainment, and loss/detector probability budgets |
-| 1 | [Complete-parity exact certificate](research/parity_certificate.py) | Rational/integer enclosure of propagator, calibration rank, exactly corrected scores, second and fourth moments, sufficient neighborhoods, and a uniform noise window |
+| 1 | [Complete-parity exact certificate](research/parity_certificate.py) | Rational/integer enclosure of propagator, calibration rank, both score families, moments, mixed-input neighborhoods, passive-separation noise windows, and finite-calibration inputs |
 | 5 | [Preserved resource checker](source/resource-review-2026-10-10/check_resources.py) | Exact return-parity projector; complete number-block loss evolution; detector dephasing and recurrence; matched variance; detection-error budgets |
 | 5 | [Preserved finite-repulsion checker](source/resource-review-2026-10-10/prior/check_followup.py) | Complete bosonic Hamiltonian and independent constructions; accepted-operation bounds; two-observable contrast and calibration; finite-round filtering; first-order diagnostic |
 | 1 | [Preserved short-time certificate](source/resource-review-2026-10-10/prior/exact_short_time.py) | Integer/rational coefficient arithmetic proving the leading chirality and nuisance terms |
@@ -42,16 +44,27 @@ The same checker tests full-cycle reuse and stability boundaries, adds a specifi
 
 The new exact checker constructs its own Hamiltonian in the complete 40-state fixed-magnetization sector. Collective spin symmetry makes its three input columns sufficient to certify the full eight-dimensional input effects. Its numerical bounds use no floating matrix exponential or eigensolver. The [certificate account](research/CERTIFICATE.md) explains the enclosure, while the [separable benchmark](research/SEPARABLE_BENCHMARK.md) is an analytical theorem; the numerical checker verifies its saturating local protocol.
 
+The [passive bound](research/PASSIVE_PARITY_BOUND.md) is an analytical theorem;
+the numerical checker exercises its operator identities, information bounds,
+constructions, and finite constants. Random settings are cross-checks, not
+a proof of the universal bound. The [finite-calibration checker](research/check_finite_calibration.py)
+reads the exact-certificate report from the same run, verifies every imported
+channel bound, and records the report's SHA-256 hash. Its rational arithmetic
+certifies the sufficient finite examples in [FINITE_CALIBRATION.md](research/FINITE_CALIBRATION.md).
+The underlying statistical and direct-sum statements are proved in that
+document. To run this checker separately, supply both `--certificate` and
+`--output` with the corresponding absolute report paths.
+
 ## Read the output
 
-The root `RECEIPT.json` separates scientific assertions, new certificate completion, preserved-report byte identity, and input integrity. Overall `status: PASS` requires all 27 groups to succeed, the preserved reports to remain byte-identical, and both preserved-source and current-code integrity checks to pass.
+The root `RECEIPT.json` separates scientific assertions, new certificate completion, preserved-report byte identity, and input integrity. Overall `status: PASS` requires all 33 groups to succeed, the preserved reports to remain byte-identical, and both preserved-source and current-code integrity checks to pass.
 
-The old numerical evidence remains under `source-run/`, with wrapper output in `source-verifier.log`. New diagnostic, channel-calibration, calibration-cost, and exact-certificate reports and logs are written alongside it. The receipt gives their paths, return codes, and current-code hashes.
+The old numerical evidence remains under `source-run/`, with wrapper output in `source-verifier.log`. Diagnostic, channel-calibration, calibration-cost, exact-certificate, passive-parity, and finite-calibration reports and logs are written alongside it. The receipt gives their paths, return codes, and current-code hashes.
 
 A different numerical-library environment can change floating-point report bytes while leaving scientific assertions true. Inspect the separate fields and recorded differences in that case; preserve the original evidence. Floating-point agreement supplements the proofs. Only the specifically enclosed quantities in the exact certificates have validated numerical intervals. No verifier certifies laboratory parameters.
 
 ## Recorded verification
 
-The [complete-parity integration receipt](verification/COMPLETE_PARITY_RECEIPT.json) records **PASS** for all 27 groups. The compact [exact-certificate report](verification/complete-parity-certificate.json) and [numerical cross-check report](verification/complete-parity-diagnostics.json) record the parity results. The [channel-calibration report](verification/channel-calibration.json) checks the three-reference reconstruction. The [calibration-cost report](verification/calibration-cost.json) records the new checks and explicitly hypothetical cost profile. The receipt binds them to the checked implementation through its input hashes. These curated reports were copied from a completed external verification run.
+The [passive-separation integration receipt](verification/PASSIVE_SEPARATION_RECEIPT.json) records **PASS** for all 33 groups. The [exact-certificate report](verification/complete-parity-certificate.json) retains the mixed-input results and adds the improved score, noise windows, and finite-calibration inputs. The [numerical cross-check report](verification/complete-parity-diagnostics.json) checks both scores independently in the full 120-state model. The [passive-parity report](verification/passive-parity.json) and [finite-calibration report](verification/finite-calibration.json) record the new theorem cross-checks and unconditional finite examples. The [channel-calibration report](verification/channel-calibration.json) and [calibration-cost report](verification/calibration-cost.json) retain the distinct three-reference and conditional-validation checks. These reports were copied from the same completed external verification run; the receipt records its code hashes and the finite report binds its exact-certificate dependency by hash.
 
-The earlier [16-group integration receipt](verification/RECEIPT.json) is retained as historical evidence. The imported scientific reports remain byte-identical under Python **3.12.14**, NumPy **2.3.5**, and SciPy **1.17.0**. The [import manifest](source/IMPORT_MANIFEST.json) still covers all 79 incoming files, including the original root manifest. No preserved report or source file is regenerated in place.
+The earlier [27-group receipt](verification/COMPLETE_PARITY_RECEIPT.json) and [16-group receipt](verification/RECEIPT.json) remain historical evidence for their recorded code versions. The imported scientific reports remain byte-identical under Python **3.12.14**, NumPy **2.3.5**, and SciPy **1.17.0**. The [import manifest](source/IMPORT_MANIFEST.json) still covers all 79 incoming files, including the original root manifest. No preserved report or source file is regenerated in place.
